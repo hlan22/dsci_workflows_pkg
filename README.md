@@ -1,6 +1,49 @@
 # DSCI 310 Final Exam Review
 
-The main topics for the final exam are workflows and making a package. This repo is my notes that collect and synthesize information from the textbook, class, and external resources.
+The main topics for the final exam are workflows and making a package. This repo is my notes that collect and synthesize information from the textbook, class, assessments, and external resources.
+
+---
+
+### Outline of Assessment Topics
+
+Any "Note" listed is something I want to create additional notes for in my review!
+
+##### Assignments
+- [X] [**Assignment 1**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia1.html): (Not Included) Setup and Installation (you can find them [here](https://ubc-dsci.github.io/dsci-310-student/computer-setup.html))
+- [X] [**Assignment 2**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia2.html): Git merge conflicts ([learn more here](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts))
+    - [ ] Note: Want to make a review of the different types
+- [X] [**Assignment 3**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia3.html): (Not Included) Dockerfiles
+- [X] [**Assignment 4**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia4.html): Reproducible reports using Quarto
+    - [ ] Note: Need to make a summary page that lists all improvements possible
+- [ ] [**Assignment 5**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia5.html): Packaging (for walk-through, see [this for R](https://r-pkgs.org/whole-game.html) or [this for python](https://py-pkgs.org/03-how-to-package-a-python))
+    - [ ] Note: Need to learn how to do python packages
+    - [ ] Note: Need to summarize and streamline R packages
+    - [ ] Note: Want to improve and update R packages made from this course
+    - [ ] Note: Want to go over potential conflicts you can run into, and main things to know in a time crunch
+
+##### Tutorials
+- [X] [**Tutorial 1**](): Setup
+- [X] [**Tutorial 2**](): Git Basics
+    - [ ] Note: Transfer git basics info from dsci-review repo
+- [ ] [**Tutorial 3**](): R and Python Environments (`renv` and `conda`)
+- [X] [**Tutorial 4**](): Environments and Docker Containers
+- [ ] [**Tutorial 5**](): Bash Scripts and Github Actions
+- [ ] [**Tutorial 6**](): Refactoring a Quarto Report
+- [ ] [**Tutorial 7**](): Quarto and Github Pages
+- [ ] [**Tutorial 8**](): Writing Tests using `testthat` for R or `pytest` for Python
+- [ ] [**Tutorial 9**](): Create a Quarto Website (using `gh-pages`)
+    - [ ] Note: Making a Website (through main, docs, and gh-pages)
+- [X] [**Tutorial 10**](): Packaging (work period for Assignment 5)
+- [ ] [**Tutorial 11**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t11.html): Packaging with Continuous Integration and Continuous Deployment
+
+##### Milestones
+- [X] [**Milestone 1**](https://ubc-dsci.github.io/dsci-310-student/project/m1.html): Data Analysis, Docker, Git basics
+- [X] [**Milestone 2**](https://ubc-dsci.github.io/dsci-310-student/project/m2.html): Abstract code, Quarto doc, Makefile
+    - [ ] Note: Transfer information about Makefiles from dsci-review repo
+- [ ] [**Milestone 3**](https://ubc-dsci.github.io/dsci-310-student/project/m3.html): Abstract functions, Testing, Validation
+- [ ] [**Milestone 4**](https://ubc-dsci.github.io/dsci-310-student/project/m4.html): Packaging, Documentation, and Fixing previous issues
+
+---
 
 ### Final Exam Information
 
@@ -14,7 +57,6 @@ The main topics for the final exam are workflows and making a package. This repo
 Welcome to your final exam for the course!
 
 #### Topics Covered:
-
 1. Interact with Git + GitHub with branches and pull requests.
 2. Split a monolithic report into separate scripts.
 3. Use a Makefile to run your analysis code.
@@ -22,17 +64,13 @@ Welcome to your final exam for the course!
 5. Create a functioning R package.
 
 ##### Exam Notes
-
 * This exam will have you use an exam template repository to practice the skills we have covered in class this term.
 * You will not be building a full report or full package from scratch. We have provided a skeleton for you to work with.
 * AI / LLM / ChatBots are allowed for the exam
 * You are not allowed to communicate or collaborate with another human / classmate during the exam.
 
 ##### New Skill Necessary
-
-There may be a new mechanics you will need to get access to the exam, specifically copying a template repository into the organization.
-
-If this is new to you and you want an example to practice for:
+There may be a new mechanics you will need to get access to the exam, specifically copying a template repository into the organization. If this is new to you and you want an example to practice for:
 
 1. Go to <https://github.com/DSCI-310/template-repository-example>
 2. Click the green "Use this template" button
@@ -41,7 +79,8 @@ If this is new to you and you want an example to practice for:
 5. Set the ownership to your own account, rename the repo as needed - For the exam, you will use the course organization and have a specific repo name for the exam
 6. Treat this "template" that you have copied into your account as a new repository. It is pre-populated with files so you are not starting from a completely empty repository.
 
-### Credit
+---
 
+### Credit
 Although this repo is made by Heidi, credit goes towards Daniel Chen and other contributors for the DSCI 310 course for most material in the repo.
 Thanks!
