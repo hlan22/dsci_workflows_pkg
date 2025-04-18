@@ -1,0 +1,56 @@
+[
+  {
+    "objectID": "intro_to_git.html",
+    "href": "intro_to_git.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site",
+    "crumbs": [
+      "Basics",
+      "Intro to Git Commands"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Final Exam Review",
+    "section": "",
+    "text": "Welcome to my DSCI 310 Final Exam Review!\nThis is a review of DSCI 310, but specifically for topics that will be covered on the final. This means there will be less emphasis on topics such as Docker containers, git basics, Renv, etc.\n\nLearning Outcomes\nBy the end of the course, students will be able to:\n\nDefend and justify the importance of creating data science workflows that are reproducible and trustworthy and the elements that go into such a workflow (e.g., writing clear, robust, accurate and reproducible code, managing and sharing compute environments, defined collaboration strategies, etc).\nConstructively criticize the workflows and data analysis of others in regards to its reproducibility and trustworthiness.\nDevelop a data science project (including code and non-code documents such as reports) that uses reproducible and trustworthy workflows\nDemonstrate how to effectively share and collaborate on data science projects and software by creating robust code packages, using reproducible compute environments, and leveraging collaborative development tools.\nDefend and justify the benefit of, and employ automated testing regimes, continuous integration and continuous deployment for managing and maintaining data science projects and packages.\nDemonstrate strong communication, teamwork, and collaborative skills by working on a significant data science project with peers throughout the course.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "making_websites.html",
+    "href": "making_websites.html",
+    "title": "Making Websites With Quarto",
+    "section": "",
+    "text": "Start with:\nquarto create\n\nSelect project &gt; website &gt; Directory: / &gt; Title: Final Review\n\nAlternatively, create the following files:\n\n_quarto.yml\nindex.qmd\n&lt;project_name&gt;.Rproj\nstyles.css (not necessary)\nother .qmd files (not necessary)\nAdd files to .gitignore",
+    "crumbs": [
+      "Basics",
+      "Making Websites With Quarto"
+    ]
+  },
+  {
+    "objectID": "making_websites.html#website-bones",
+    "href": "making_websites.html#website-bones",
+    "title": "Making Websites With Quarto",
+    "section": "",
+    "text": "Start with:\nquarto create\n\nSelect project &gt; website &gt; Directory: / &gt; Title: Final Review\n\nAlternatively, create the following files:\n\n_quarto.yml\nindex.qmd\n&lt;project_name&gt;.Rproj\nstyles.css (not necessary)\nother .qmd files (not necessary)\nAdd files to .gitignore",
+    "crumbs": [
+      "Basics",
+      "Making Websites With Quarto"
+    ]
+  },
+  {
+    "objectID": "making_websites.html#main-locations-with-github-pages-for-rendering",
+    "href": "making_websites.html#main-locations-with-github-pages-for-rendering",
+    "title": "Making Websites With Quarto",
+    "section": "3 Main Locations with GitHub Pages for Rendering",
+    "text": "3 Main Locations with GitHub Pages for Rendering\n\n/(root): You are ready simply by doing:\n\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\nquarto render index.qmd\nThis will make an index.html file that git will look for. If you do not have a index.html file in your root folder, it will instead display your README.md!\nPush all changes, including the rendered page, to the (main branch) repo.\n\ndocs/: There are a few tasks necessary:\n\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nEnsure docs/ is not blocked in the .gitignore file\nSet output-dir: docs under project: type: in _quarto.yml\n\n\ngh-pages branch:\n\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nDelete any docs/ folder\nblock the docs and _site folder in the .gitignore file\n\ngit checkout --orphan gh-pages\ngit reset --hard # make sure all changes are committed before running this!\ngit commit --allow-empty -m \"Initialising gh-pages branch\"\ngit push origin gh-pages\n\nquarto publish gh-pages\nYou can still use the regular quarto render or quarto preview to build your site locally, but you will no longer need to manually build and push the site to the main branch!\nAdd a github action to make it automatically build:\ncode .github/workflows/build.yml\nAnd copy the following contents into it:\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}",
+    "crumbs": [
+      "Basics",
+      "Making Websites With Quarto"
+    ]
+  }
+]
