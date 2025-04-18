@@ -9,7 +9,8 @@ website:
     contents:
       - text: "Introduction"
         href: index.qmd
-      - section: "Basics"
+        
+      - text: "Basics"
         contents:
           - href: intro_to_git.qmd
             text: "Git Commands"
@@ -17,6 +18,7 @@ website:
             text: "Git Concepts"
           - href: bash_scripts.qmd
             text: "Bash Scripts"
+            
       - section: "General"
         contents: 
           - href: environments.qmd
@@ -25,19 +27,36 @@ website:
             text: "Docker Containers"
           - href: github_actions.qmd
             text: "GitHub Actions"
+          - href: ci_cd.qmd
+            text: "CI & CD"
+          - href: makefiles.qmd
+            text: "Makefiles"
+            
       - section: "Quarto"
         contents: 
           - href: quarto_docs.qmd
-            text: "Reproducible Quarto Docs"
+            text: "Quarto Reports"
           - href: making_websites.qmd
-            text: "Websites With Quarto"
+            text: "Quarto Websites"
+            
       - section: "Packages"
         contents:
-          - functions.qmd
-          - tests.qmd
+          - href: making_a_package.qmd
+            text: "Package Building"
+          - href: functions.qmd
+            text: "Functions"
+          - href: tests.qmd
+            text: "Testing"
+          - href: validation.qmd
+            text: "Validation"
+          - href: dependencies.qmd
+            text: "Dependencies"
+          - href: supporting.qmd
+            text: "Badges, Licenses & More"
 
 format:
   html:
+    code-copy: true
     theme:
       - cosmo
       - brand

@@ -1,0 +1,14 @@
+---
+title: "dependencies"
+format: html
+---
+
+How to find, list, and include dependencies for your package.
+
+- dont include packages you dont need to
+
+- the recommend section
+
+- where you can find all packages AND THEIR CURRENT status number thingy
+
+- relate to renv

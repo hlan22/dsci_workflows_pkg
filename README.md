@@ -1,17 +1,16 @@
 # DSCI 310 Final Exam Review
 
-The main topics for the final exam are workflows and making a package. This repo is my notes that collect and synthesize information from the textbook, class, assessments, and external resources.
+The main topics for the final exam are workflows and making a package. 
+This repo is my notes that collect and synthesize information from the textbook, class, assessments, and external resources.
 
 ---
 
 ### Outline of Assessment Topics
 
-Any "Note" listed is something I want to create additional notes for in my review!
-
 ##### Assignments
 - [X] [**Assignment 1**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia1.html): (Not Included) Setup and Installation (you can find them [here](https://ubc-dsci.github.io/dsci-310-student/computer-setup.html))
 - [X] [**Assignment 2**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia2.html): Git merge conflicts ([learn more here](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts))
-    - [ ] Note: Want to make a review of the different types
+    - [ ] Note: Make a review of the different types of conflicts
 - [X] [**Assignment 3**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia3.html): (Not Included) Dockerfiles
 - [X] [**Assignment 4**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia4.html): Reproducible reports using Quarto
     - [ ] Note: Need to make a summary page that lists all improvements possible
@@ -22,26 +21,32 @@ Any "Note" listed is something I want to create additional notes for in my revie
     - [ ] Note: Want to go over potential conflicts you can run into, and main things to know in a time crunch
 
 ##### Tutorials
-- [X] [**Tutorial 1**](): Setup
-- [X] [**Tutorial 2**](): Git Basics
+- [X] [**Tutorial 1**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t1.html): Setup
+- [X] [**Tutorial 2**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t2.html): Git Basics
     - [ ] Note: Transfer git basics info from dsci-review repo
-- [ ] [**Tutorial 3**](): R and Python Environments (`renv` and `conda`)
-- [X] [**Tutorial 4**](): Environments and Docker Containers
-- [ ] [**Tutorial 5**](): Bash Scripts and Github Actions
-- [ ] [**Tutorial 6**](): Refactoring a Quarto Report
-- [ ] [**Tutorial 7**](): Quarto and Github Pages
-- [ ] [**Tutorial 8**](): Writing Tests using `testthat` for R or `pytest` for Python
-- [ ] [**Tutorial 9**](): Create a Quarto Website (using `gh-pages`)
+- [ ] [**Tutorial 3**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t3.html): R and Python Environments (`renv` and `conda`)
+- [X] [**Tutorial 4**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t4.html): Environments and Docker Containers
+- [ ] [**Tutorial 5**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t5.html): Bash Scripts and Github Actions
+- [ ] [**Tutorial 6**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t6.html): Refactoring a Quarto Report
+- [ ] [**Tutorial 7**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t7.html): Quarto and Github Pages
+- [ ] [**Tutorial 8**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t8.html): Writing Tests using `testthat` for R or `pytest` for Python
+- [ ] [**Tutorial 9**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t9.html): Create a Quarto Website (using `gh-pages`)
     - [ ] Note: Making a Website (through main, docs, and gh-pages)
-- [X] [**Tutorial 10**](): Packaging (work period for Assignment 5)
+- [X] [**Tutorial 10**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t10.html): Packaging (work period for Assignment 5)
 - [ ] [**Tutorial 11**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t11.html): Packaging with Continuous Integration and Continuous Deployment
 
-##### Milestones
+#### Milestones
 - [X] [**Milestone 1**](https://ubc-dsci.github.io/dsci-310-student/project/m1.html): Data Analysis, Docker, Git basics
 - [X] [**Milestone 2**](https://ubc-dsci.github.io/dsci-310-student/project/m2.html): Abstract code, Quarto doc, Makefile
     - [ ] Note: Transfer information about Makefiles from dsci-review repo
 - [ ] [**Milestone 3**](https://ubc-dsci.github.io/dsci-310-student/project/m3.html): Abstract functions, Testing, Validation
 - [ ] [**Milestone 4**](https://ubc-dsci.github.io/dsci-310-student/project/m4.html): Packaging, Documentation, and Fixing previous issues
+
+#### Other
+
+- [ ] Review the [Textbook](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/)
+- [ ] Review Lecture Notes
+- [ ] Review Lecture Concepts
 
 ---
 
