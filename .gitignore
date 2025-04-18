@@ -47,3 +47,11 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# quarto website
+/.quarto/
+_site/
+*_files/
+docs/ 
+# if you are rendering from docs/, don't keep line above
+# we are rendering from github pages

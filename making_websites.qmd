@@ -1,0 +1,35 @@
+---
+title: "Making Websites"
+format: html
+---
+
+## Website Structure
+
+Start with:
+
+```
+quarto create
+```
+
+* Select `project` > `website` > Directory: `/` > Title: `Final Review`
+
+Alternatively, create the following files:
+
+* `_quarto.yml`
+* `index.qmd`
+* `<project_name>.Rproj`
+* `styles.css` (not necessary)
+* other `.qmd` files (not necessary)
+* Add files to `.gitignore`
+
+## 3 Main Locations with GitHub Pages for Rendering
+
+1. `/(root)`: You are ready simply by doing:
+
+```
+quarto render
+```
+Push all changes to the (main branch) repo, and select the right option in Settings > Pages > Build and deployment > Branch .
+
+2. `docs/`:
+3. `gh-pages` branch:
