@@ -1,0 +1,17 @@
+---
+title: "quarto_docs"
+format: html
+---
+
+### Side Notes
+
+Quarto Documents
+
+| Execution Option | Description | Values |
+|-------------------|------------------------|-----------------------------|
+| `eval` | Evaluate the code chunk (if false, just echos the code into the output). | `true` <br> `false` |
+| `echo` | Include the source code in output. | `true` <br> `false` <br> `fenced` |
+| `output` | Include the results of executing the code in the output. | `true` <br> `false` <br> `asis` (raw markdown, without Quarto’s standard enclosing markdown) |
+| `warning` | Include warnings in the output. | `true` <br> `false` |
+| `error` | Include errors in the output (note: errors won't stop document processing). | `true` <br> `false` |
+| `include` | Prevent any output (code or results) from being included. | `true` <br> `false` |

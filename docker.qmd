@@ -1,0 +1,163 @@
+---
+title: "docker"
+format: html
+---
+
+# Containers
+
+### Basic container
+
+What is a container?
+
+  * they are basically a virtual machine, where you can specify all the software you need to run files you want.
+
+```bash
+docker run hello-world
+```
+This command runs a container that executes a script that prints out the hello docker text. When this script runs, it exits and the container exits to give you your prompt back
+
+
+### An R Container
+
+With this code you can run an R container:
+
+```bash
+docker run --rm -it rocker/r-ver:4.3.2
+```
+You can open up and launch R or run `R --version` to get your current R version.
+
+### An RStudio Container
+
+With this code you can run an RStudio container:
+
+```bash
+docker run --rm -e PASSWORD="pizza" -p 8787:8787 rocker/rstudio:4.4.2
+```
+Here are what the commands mean:
+
+* `--rm` means remove. It is saying to delete the container when I am done with it!
+* `-e` stands for environments. It lets you pass in special parameters necessary to run that container.
+* `-p` stands for port. It is where you specify the container will be run through on your computer.
+
+After running it, you can visit <http://localhost:8787> and view the RStudio container.
+
+If you create any files in this container instance, all your work will be lost!
+
+##### An RStudio Tidyverse Container
+
+You can also make a Tidyverse container, where tidyverse is already installed! Pretty sweet.
+
+```bash
+docker run --rm -e PASSWORD="pizza" -p 8787:8787 rocker/tidyverse:4.4.2
+```
+
+Note that if you run two sessions at once, you will need to change the port mapping on one of them.
+
+* <http://localhost:8888> is commonly known for jupyterlab
+
+### DockerFiles
+
+A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.
+
+You can create it simply with the command `code Dockerfile`.
+
+It is a special type of file, so make sure it does NOT end with something like .txt or .sh or anything. It is simply just Dockerfile (with a capital D).
+
+The following is a sample of what you can do with a Dockerfile:
+
+```bash
+FROM rocker/rstudio:4.2.2
+# this builds the base image from rstudio
+
+# you can run basic bash commands that will run while setting up the container
+RUN echo "Hello"
+RUN pwd
+
+# you can install apps and such so that you have them in your image
+RUN apt-get install -y git
+
+# you can copy files onto your image/container
+COPY renv.lock /home/rstudio/renv.lock
+COPY README.md /home/rstudio/README.md 
+
+# we can even install packages into the image
+RUN Rscript -e "install.packages('renv', repos = c(CRAN = 'https://cloud.r-project.org'))"
+# with the renv package we can keep r packages in our image without having to manually download them each time
+# we have to set the working directory first
+WORKDIR /home/rstudio
+# then we can copy other project files
+COPY renv/ /home/rstudio/renv
+COPY bash_script.sh /home/rstudio/bash_script.sh
+COPY newRpackage_usage.R /home/rstudio/newRpackage_usage.R 
+
+# however!
+# Installing the remotes package allows us to pin the version of the package we're installing
+RUN Rscript -e "install.packages('remotes', repos = c(CRAN = 'https://cloud.r-project.org'))"
+# now we can install a package like this:
+RUN Rscript -e "remotes::install_version('cowsay', version='1.0.0')"
+# this saves us the hassle of having to copy all of our project files
+# while still keeping the package versions we want!
+
+RUN echo "Wow! There are so many things you can do with Dockerfiles!"
+```
+
+Now that you have completed your super-cool Dockerfile, you can now build your very OWN container! How exciting!
+
+#### Building and Running 'mycontainer'
+
+Assuming you've made your own Dockerfile, you can now build your own container with this command:
+
+```bash
+docker build --tag mycontainer .
+```
+Note you can replace `mycontainer` with whatever you would like your container to be called. 
+Also note that it is very important to have the `.` at the end, as that is for your current working directory. 
+This command will look for a Dockerfile within your current directory and then build the container.
+
+The command `docker images` will let you see what images you have going.
+
+After you have built your container, you can now run it using:
+
+```bash
+docker run --rm -it -e PASSWORD="pizza" -p 8787:8787 -v /$(pwd):/home/rstudio/work mycontainer
+```
+* Note you replace`mycontainer` with the name of the container you just build, and can of course replace the password.
+* Also note that the `-v` stands for volume. It will copy all of your local files into the container (just for you when you run it) for you to be able to use at ease.
+
+What if I am too lazy to type that long run command? Let's learn about .yml files where you can run the docker in a much easier way!
+
+  * Side note: after you build you container you can also push it to docker so that anyone can use it
+
+#### Running docker easier
+
+We can create a special docker-compose.yml file where we are saved from having to write a long run command line. Note that docker specifically recognizes this file name, so the naming convention is important.
+
+Here is a sample of what one would look like:
+
+```bash
+services:
+  analysis-env:
+    image: hlan22/mycontainer
+    ports:
+      - "8787:8787"
+    volumes:
+      - .:/home/rstudio/work
+    environment:
+      PASSWORD: "pizza"
+
+# This file is a replacement for having to write the following command line
+# docker run --rm -it -e PASSWORD="pizza" -p 8787:8787 
+# -v /$(pwd):/home/rstudio/work rocker/tidyverse:4.4.2
+```
+
+To run this file, you just need to type the following:
+
+```bash
+docker-compose up
+```
+
+Although, with this method, you need to remove it manually afterwards with:
+
+```bash
+docker-compose rm
+```

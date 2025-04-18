@@ -1,0 +1,39 @@
+---
+title: "Bash Scripts"
+format: html
+---
+
+What are they? A **bash script** is a .sh (shell) document that contains bash commands, which you can run from the terminal. They are often useful if you have the same bash lines you need to run repetitively when working on a project.
+
+We can make a sample `bash_script.sh` by typing: 
+```bash
+code bash_script.sh
+```
+
+Here is a sample of what you can put in a bash script:
+
+```bash
+pwd
+ls
+echo "hello"
+git status
+```
+We can run the file by typing into terminal:
+
+```bash 
+bash bash_script.sh
+```
+
+## Other notes: 
+
+Sometimes there are files in our computer’s filesystem that are prefixed with `.`, for example `.gitignore`, `.DS_Store` and `.ipynb_checkpoints`. These are known as hidden files, and your computer’s default is to hide them from you, regardless of whether you use a graphical user interface (e.g., Finder, Explorer, Nautilus) or the Bash shell to explore our computer’s filesystem.
+
+#### What is SSH authentication?
+
+SSH stands for secure shell protocol (for authentication). SSH can be use for other forms of authentication as well (beyond GitHub), including logging into remote machines in the cloud. So for many these reasons it is worthwhile learning.
+
+See this [link to SSH part in the textbook](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/030-ssh-for-authentication.html) for more information on SSH.
+
+## Bash Scripts for Package Making
+
+!!!

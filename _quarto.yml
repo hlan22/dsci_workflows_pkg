@@ -12,8 +12,25 @@ website:
       - section: "Basics"
         contents:
           - href: intro_to_git.qmd
-            text: Intro to Git Commands
-          - making_websites.qmd
+            text: "Git Commands"
+          - href: git_concepts.qmd
+            text: "Git Concepts"
+          - href: bash_scripts.qmd
+            text: "Bash Scripts"
+      - section: "General"
+        contents: 
+          - href: environments.qmd
+            text: "Environments"
+          - href: docker.qmd
+            text: "Docker Containers"
+          - href: github_actions.qmd
+            text: "GitHub Actions"
+      - section: "Quarto"
+        contents: 
+          - href: quarto_docs.qmd
+            text: "Reproducible Quarto Docs"
+          - href: making_websites.qmd
+            text: "Websites With Quarto"
       - section: "Packages"
         contents:
           - functions.qmd

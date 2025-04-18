@@ -1,0 +1,23 @@
+---
+title: "Environments"
+format: html
+---
+
+## R Environments: renv
+
+1. Create an RStudio project fpr the repo
+2. Install `renv` package if you haven't already
+3. Initialize project as an `renv` project
+4. Install new R package (.lock file will not update until you use it)
+5. Create (and save) R script that uses the new R package
+
+```r
+install.packages("renv")
+renv::init()
+install.packages("cowsay")
+renv::snapshot()
+```
+
+And there you have an R environment!
+
+## Python Environments

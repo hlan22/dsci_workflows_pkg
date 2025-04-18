@@ -1,0 +1,89 @@
+---
+title: "Basic Git Concepts"
+format: html
+---
+
+GitHub is the remote repository where you commit changes to the version control history.
+At a minimum, you should at least push your work to GitHub at the end of every work session.
+
+## Branches
+
+#### The benefits of branches: 
+
+* Branches allow you to have a playground for developing and testing new additions to your code, as well as fixes. This playground lets your explore, experiment and test in a safe place - away from others that might be using or depending on the current version of your code. 
+
+* This is perhaps more obviously useful if your project is deployed and has users (e.g., a data visualization dashboard, an R or Python package, a phone app, etc), but this can also be useful for code that make up a data analyses. Because, in addition to the reasons stated above for branching, branching also lets you organize units of work into smaller, more manageable chunks that are easier for collaborators to check over and review. 
+
+* Several branch playgrounds can co-exist, one for each new code addition or fix being worked on. This allows for parallelization of work!
+
+#### Creating a pull-request: 
+
+* To create a pull request, you click the green button `Compare & pull request`. In the new page, add a message to describe the changes you have made, scroll down to review the changed files, and the click the green button that reads `Create pull request`. If you are working together in a team, you could also designate certain team members to review your work and assign relevant labels, via the right hand side panel. 
+
+* The next step is for a collaborator to review your work and merge it in if they approve it.
+
+* Tutorial 2 is all about creating branches and pull requests. It also makes you create two branches and see the conflict when you try and pull them both despite them editing the same place. This ends in a merge conflict that you can solve in the github interface.
+
+
+
+## GitHub Worklow and Git Flow
+
+#### GitHub Workflow 
+
+- Features a single "main" branch that also serves as the deployment branch, we call this main. 
+  - Every new contribution is done on a new branch (with a meaningful name) created from main. 
+  - Contributions from that new branch are sent back to main by means of a pull request, which ideally is reviewed & tested before merging.
+
+#### Git Flow 
+
+- **Two** “main” branches that last forever, main for deployment and develop where things are tested before they are released to main. 
+- Three supporting branches: `feature`, `release` & `hotfix`. Both feature & release branches are created from develop. feature branches should be merged into develop before they are incorporated into a release. release branches eventually get merged into main after adequate review and testing.
+
+## Merge conflicts
+
+-   IMPORTANT: You must know how to deal with multiple types of merge conflicts
+-   You need to know how to resolve basic file merge conflicts, but also branch merge conflicts
+-   The two main types of branch merge conflict resolutions involve:
+    1.  Manually push back in changes 
+    2.  Restructure commits so that changes are pushed at a later date
+
+### Merge Branches
+
+What happens when a branch falls behind main? There are two ways you can update the branch.
+
+1.  Using merge
+
+-   How to catch up a branch that has fallen behind the main branch using the command line:
+    1.  run `git pull origin main` to pull any changes from the remote version of main that we might not have
+    2.  run `git switch <branch>` to make sure we are on the branch we want to catch up
+    3.  run `git merge main` to merge the changes
+    4.  run `git push origin <branch>` to push our updated branch to the remote
+
+This bash code is rewritten below for copying convenience:
+
+```bash
+git pull origin main
+git switch <branch>
+git merge main
+git push origin <branch>
+```
+
+2.  Using rebase
+    1.  Make sure everything is committed in your new branch
+    2.  Move to the main branch: `git switch main`
+    3.  Make sure the main branch is up to date: `git pull origin main`
+    4.  Move back over to your branch: `git switch <branch>`
+    5.  Update the changes from main: `git rebase main`
+
+This bash code is rewritten below for copying convenience:
+
+```bash
+git switch main
+git pull origin main
+git switch <branch>
+git rebase main
+```
+
+### Personal Access Tokens (PAT)
+
+PATs are important!
