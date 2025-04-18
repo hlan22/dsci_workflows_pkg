@@ -1,177 +1,35 @@
 [
   {
-    "objectID": "docker.html",
-    "href": "docker.html",
-    "title": "docker",
+    "objectID": "making_a_package.html#python-packages",
+    "href": "making_a_package.html#python-packages",
+    "title": "Steps For Making A Package",
+    "section": "Python Packages",
+    "text": "Python Packages",
+    "crumbs": [
+      "Packages",
+      "Package Building"
+    ]
+  },
+  {
+    "objectID": "github_actions.html",
+    "href": "github_actions.html",
+    "title": "github_actions",
     "section": "",
-    "text": "Containers\n\nBasic container\nWhat is a container?\n\nthey are basically a virtual machine, where you can specify all the software you need to run files you want.\n\ndocker run hello-world\nThis command runs a container that executes a script that prints out the hello docker text. When this script runs, it exits and the container exits to give you your prompt back\n\n\nAn R Container\nWith this code you can run an R container:\ndocker run --rm -it rocker/r-ver:4.3.2\nYou can open up and launch R or run R --version to get your current R version.\n\n\nAn RStudio Container\nWith this code you can run an RStudio container:\ndocker run --rm -e PASSWORD=\"pizza\" -p 8787:8787 rocker/rstudio:4.4.2\nHere are what the commands mean:\n\n--rm means remove. It is saying to delete the container when I am done with it!\n-e stands for environments. It lets you pass in special parameters necessary to run that container.\n-p stands for port. It is where you specify the container will be run through on your computer.\n\nAfter running it, you can visit http://localhost:8787 and view the RStudio container.\nIf you create any files in this container instance, all your work will be lost!\n\nAn RStudio Tidyverse Container\nYou can also make a Tidyverse container, where tidyverse is already installed! Pretty sweet.\ndocker run --rm -e PASSWORD=\"pizza\" -p 8787:8787 rocker/tidyverse:4.4.2\nNote that if you run two sessions at once, you will need to change the port mapping on one of them.\n\nhttp://localhost:8888 is commonly known for jupyterlab\n\n\n\n\nDockerFiles\nA Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.\nYou can create it simply with the command code Dockerfile.\nIt is a special type of file, so make sure it does NOT end with something like .txt or .sh or anything. It is simply just Dockerfile (with a capital D).\nThe following is a sample of what you can do with a Dockerfile:\nFROM rocker/rstudio:4.2.2\n# this builds the base image from rstudio\n\n# you can run basic bash commands that will run while setting up the container\nRUN echo \"Hello\"\nRUN pwd\n\n# you can install apps and such so that you have them in your image\nRUN apt-get install -y git\n\n# you can copy files onto your image/container\nCOPY renv.lock /home/rstudio/renv.lock\nCOPY README.md /home/rstudio/README.md \n\n# we can even install packages into the image\nRUN Rscript -e \"install.packages('renv', repos = c(CRAN = 'https://cloud.r-project.org'))\"\n# with the renv package we can keep r packages in our image without having to manually download them each time\n# we have to set the working directory first\nWORKDIR /home/rstudio\n# then we can copy other project files\nCOPY renv/ /home/rstudio/renv\nCOPY bash_script.sh /home/rstudio/bash_script.sh\nCOPY newRpackage_usage.R /home/rstudio/newRpackage_usage.R \n\n# however!\n# Installing the remotes package allows us to pin the version of the package we're installing\nRUN Rscript -e \"install.packages('remotes', repos = c(CRAN = 'https://cloud.r-project.org'))\"\n# now we can install a package like this:\nRUN Rscript -e \"remotes::install_version('cowsay', version='1.0.0')\"\n# this saves us the hassle of having to copy all of our project files\n# while still keeping the package versions we want!\n\nRUN echo \"Wow! There are so many things you can do with Dockerfiles!\"\nNow that you have completed your super-cool Dockerfile, you can now build your very OWN container! How exciting!\n\nBuilding and Running ‘mycontainer’\nAssuming you’ve made your own Dockerfile, you can now build your own container with this command:\ndocker build --tag mycontainer .\nNote you can replace mycontainer with whatever you would like your container to be called. Also note that it is very important to have the . at the end, as that is for your current working directory. This command will look for a Dockerfile within your current directory and then build the container.\nThe command docker images will let you see what images you have going.\nAfter you have built your container, you can now run it using:\ndocker run --rm -it -e PASSWORD=\"pizza\" -p 8787:8787 -v /$(pwd):/home/rstudio/work mycontainer\n\nNote you replacemycontainer with the name of the container you just build, and can of course replace the password.\nAlso note that the -v stands for volume. It will copy all of your local files into the container (just for you when you run it) for you to be able to use at ease.\n\nWhat if I am too lazy to type that long run command? Let’s learn about .yml files where you can run the docker in a much easier way!\n\nSide note: after you build you container you can also push it to docker so that anyone can use it\n\n\n\nRunning docker easier\nWe can create a special docker-compose.yml file where we are saved from having to write a long run command line. Note that docker specifically recognizes this file name, so the naming convention is important.\nHere is a sample of what one would look like:\nservices:\n  analysis-env:\n    image: hlan22/mycontainer\n    ports:\n      - \"8787:8787\"\n    volumes:\n      - .:/home/rstudio/work\n    environment:\n      PASSWORD: \"pizza\"\n\n# This file is a replacement for having to write the following command line\n# docker run --rm -it -e PASSWORD=\"pizza\" -p 8787:8787 \n# -v /$(pwd):/home/rstudio/work rocker/tidyverse:4.4.2\nTo run this file, you just need to type the following:\ndocker-compose up\nAlthough, with this method, you need to remove it manually afterwards with:\ndocker-compose rm",
+    "text": "GitHub Actions\nWe can make github actions to help automate our processes.\nWe have two main examples we can work with, one from class and one from the website.\nIn order for github actions to work, it needs to be placed in a very specific folder location of: .github/workflows/&lt;file.yml&gt;\nmkdir -p .github/workflows/\ncd .github/workflows/\ncode bash.yml\nThe following is a sample of a github action you can do, where you run a bash command:\nname: Run a bash command # this is what specifies the automation\n\non:\n  workflow_dispatch: # says: manually run this in the github interface...\n  push: # if a push happens to the repo then ...\n    branches: [main] # if a push happens to the main branch also make these changes\n    paths:  # or only trigger when one of these files is changed\n      - 'Dockerfile'\n      - .github/workflows/bash.yml # or whatever you named the file\n      - 'conda-linux-64.lock'\n      # could also do something like every week update it ... etc.\n\njobs: # specify the jobs you want to create\n  run_bash_command: # name of the job, the one yaml understands\n    name: Run a bash command using github actions # a human-readable name that is nice for us to look at\n    runs-on: ubuntu-latest # operating system you want github to run on, this one is most common for linux, you could say windows-latest or mac-latest too\n    steps: # actual steps to run\n      - name: Check out the repo # run git clone and cd into it\n        uses: actions/checkout@v4 # probably automating off something in your repository, so usually your first step\n      - name: Run a command manually\n        run: ls -a\n      - name: Run multiple commands manually # use a vertical bar |\n        run: | \n          pwd\n          ls -a\n      - name: Run multiple commands manually with script\n        run: bash bash_script.sh\nThen you can just commit this file and the action should work!\nThere are also other github actions you can do, of course. Here is one taken from the course textbook that allows you to publish your docker image to docker hub.\n# Publishes docker image, pinning actions to a commit SHA,\n# and updating most recently built image with the latest tag.\n# Can be triggered by either pushing a commit that changes the `Dockerfile`,\n# or manually dispatching the workflow.\n\nname: Publish Docker image\n\non:\n  workflow_dispatch:\n  push:\n    paths:\n      - 'Dockerfile'\n      - .github/workflows/docker-publish.yml # or whatever you named the file\n      - 'conda-linux-64.lock'\n\njobs:\n  push_to_registry:\n    name: Push Docker image to Docker Hub\n    runs-on: ubuntu-latest\n    steps:\n      - name: Check out the repo\n        uses: actions/checkout@v4\n\n      - name: Log in to Docker Hub\n        uses: docker/login-action@v3\n        with:\n          username: ${{ secrets.DOCKER_USERNAME }} # do not change, add as secret\n          password: ${{ secrets.DOCKER_PASSWORD }} # do not change, add as secret\n\n      - name: Extract metadata (tags, labels) for Docker\n        id: meta\n        uses: docker/metadata-action@v5\n        with:\n          images: ttimbers/dsci522-dockerfile-practice # change to your image\n          tags: |\n            type=raw, value={{sha}},enable=${{github.ref_type != 'tag' }}\n            type=raw, value=latest\n\n      - name: Build and push Docker image\n        uses: docker/build-push-action@v6\n        with:\n          context: .\n          file: ./Dockerfile\n          push: true\n          tags: ${{ steps.meta.outputs.tags }}\n          labels: ${{ steps.meta.outputs.labels }}\nCheckout https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html for more customization.\nAlso note that in this one you need to add a secret username and password in the repo you’re in, and you also need to edit to proper naming.",
     "crumbs": [
       "General",
-      "Docker Containers"
+      "GitHub Actions"
     ]
   },
   {
-    "objectID": "environments.html",
-    "href": "environments.html",
-    "title": "Environments",
+    "objectID": "dependencies.html",
+    "href": "dependencies.html",
+    "title": "dependencies",
     "section": "",
-    "text": "Create an RStudio project fpr the repo\nInstall renv package if you haven’t already\nInitialize project as an renv project\nInstall new R package (.lock file will not update until you use it)\nCreate (and save) R script that uses the new R package\n\ninstall.packages(\"renv\")\nrenv::init()\ninstall.packages(\"cowsay\")\nrenv::snapshot()\nAnd there you have an R environment!",
+    "text": "How to find, list, and include dependencies for your package.\n\ndont include packages you dont need to\nthe recommend section\nwhere you can find all packages AND THEIR CURRENT status number thingy\nrelate to renv",
     "crumbs": [
-      "General",
-      "Environments"
-    ]
-  },
-  {
-    "objectID": "environments.html#r-environments-renv",
-    "href": "environments.html#r-environments-renv",
-    "title": "Environments",
-    "section": "",
-    "text": "Create an RStudio project fpr the repo\nInstall renv package if you haven’t already\nInitialize project as an renv project\nInstall new R package (.lock file will not update until you use it)\nCreate (and save) R script that uses the new R package\n\ninstall.packages(\"renv\")\nrenv::init()\ninstall.packages(\"cowsay\")\nrenv::snapshot()\nAnd there you have an R environment!",
-    "crumbs": [
-      "General",
-      "Environments"
-    ]
-  },
-  {
-    "objectID": "environments.html#python-environments",
-    "href": "environments.html#python-environments",
-    "title": "Environments",
-    "section": "Python Environments",
-    "text": "Python Environments",
-    "crumbs": [
-      "General",
-      "Environments"
-    ]
-  },
-  {
-    "objectID": "quarto_docs.html",
-    "href": "quarto_docs.html",
-    "title": "quarto_docs",
-    "section": "",
-    "text": "Side Notes\nQuarto Documents\n\n\n\n\n\n\n\n\nExecution Option\nDescription\nValues\n\n\n\n\neval\nEvaluate the code chunk (if false, just echos the code into the output).\ntrue  false\n\n\necho\nInclude the source code in output.\ntrue  false  fenced\n\n\noutput\nInclude the results of executing the code in the output.\ntrue  false  asis (raw markdown, without Quarto’s standard enclosing markdown)\n\n\nwarning\nInclude warnings in the output.\ntrue  false\n\n\nerror\nInclude errors in the output (note: errors won’t stop document processing).\ntrue  false\n\n\ninclude\nPrevent any output (code or results) from being included.\ntrue  false",
-    "crumbs": [
-      "Quarto",
-      "Reproducible Quarto Docs"
-    ]
-  },
-  {
-    "objectID": "making_websites.html",
-    "href": "making_websites.html",
-    "title": "Websites With Quarto",
-    "section": "",
-    "text": "Here’s a basic outline as to how to make websites using quarto (and rstudio/vscode)!",
-    "crumbs": [
-      "Quarto",
-      "Websites With Quarto"
-    ]
-  },
-  {
-    "objectID": "making_websites.html#website-bones",
-    "href": "making_websites.html#website-bones",
-    "title": "Websites With Quarto",
-    "section": "Website “Bones”",
-    "text": "Website “Bones”\nStart with:\nquarto create\n\nSelect project &gt; website &gt; Directory: / &gt; Title: Final Review\n\nAlternatively, create the following files:\n\n_quarto.yml\nindex.qmd\n&lt;project_name&gt;.Rproj\nstyles.css (not necessary)\nother .qmd files (not necessary)\nAdd files to .gitignore",
-    "crumbs": [
-      "Quarto",
-      "Websites With Quarto"
-    ]
-  },
-  {
-    "objectID": "making_websites.html#main-locations",
-    "href": "making_websites.html#main-locations",
-    "title": "Websites With Quarto",
-    "section": "3 Main Locations",
-    "text": "3 Main Locations\nHere are the 3 main locations you can use GitHub Pages for rendering your website!\n\n/(root)\nYou are ready simply by doing:\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\nquarto render index.qmd\nThis will make an index.html file that git will look for. If you do not have a index.html file in your root folder, it will instead display your README.md!\nPush all changes, including the rendered page, to the (main branch) repo.\n\n\ndocs/\nThere are a few tasks necessary:\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nEnsure docs/ is not blocked in the .gitignore file\nSet output-dir: docs under project: type: in _quarto.yml\n\n\n\ngh-pages branch\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nDelete any docs/ folder\nblock the docs and _site folder in the .gitignore file\n\ngit checkout --orphan gh-pages\ngit reset --hard # make sure all changes are committed before running this!\ngit commit --allow-empty -m \"Initialising gh-pages branch\"\ngit push origin gh-pages\nWhich now you can test-run the website with:\ngit switch main\nquarto publish gh-pages\nYou can still use the regular quarto render or quarto preview to build your site locally, but you will no longer need to manually build and push the site to the main branch!\nAdd a github action to make it automatically build:\ncode .github/workflows/build.yml\nAnd copy the following contents into it:\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}",
-    "crumbs": [
-      "Quarto",
-      "Websites With Quarto"
-    ]
-  },
-  {
-    "objectID": "git_concepts.html",
-    "href": "git_concepts.html",
-    "title": "Basic Git Concepts",
-    "section": "",
-    "text": "GitHub is the remote repository where you commit changes to the version control history. At a minimum, you should at least push your work to GitHub at the end of every work session.",
-    "crumbs": [
-      "Basics",
-      "Git Concepts"
-    ]
-  },
-  {
-    "objectID": "git_concepts.html#branches",
-    "href": "git_concepts.html#branches",
-    "title": "Basic Git Concepts",
-    "section": "Branches",
-    "text": "Branches\n\nThe benefits of branches:\n\nBranches allow you to have a playground for developing and testing new additions to your code, as well as fixes. This playground lets your explore, experiment and test in a safe place - away from others that might be using or depending on the current version of your code.\nThis is perhaps more obviously useful if your project is deployed and has users (e.g., a data visualization dashboard, an R or Python package, a phone app, etc), but this can also be useful for code that make up a data analyses. Because, in addition to the reasons stated above for branching, branching also lets you organize units of work into smaller, more manageable chunks that are easier for collaborators to check over and review.\nSeveral branch playgrounds can co-exist, one for each new code addition or fix being worked on. This allows for parallelization of work!\n\n\n\nCreating a pull-request:\n\nTo create a pull request, you click the green button Compare & pull request. In the new page, add a message to describe the changes you have made, scroll down to review the changed files, and the click the green button that reads Create pull request. If you are working together in a team, you could also designate certain team members to review your work and assign relevant labels, via the right hand side panel.\nThe next step is for a collaborator to review your work and merge it in if they approve it.\nTutorial 2 is all about creating branches and pull requests. It also makes you create two branches and see the conflict when you try and pull them both despite them editing the same place. This ends in a merge conflict that you can solve in the github interface.",
-    "crumbs": [
-      "Basics",
-      "Git Concepts"
-    ]
-  },
-  {
-    "objectID": "git_concepts.html#github-worklow-and-git-flow",
-    "href": "git_concepts.html#github-worklow-and-git-flow",
-    "title": "Basic Git Concepts",
-    "section": "GitHub Worklow and Git Flow",
-    "text": "GitHub Worklow and Git Flow\n\nGitHub Workflow\n\nFeatures a single “main” branch that also serves as the deployment branch, we call this main.\n\nEvery new contribution is done on a new branch (with a meaningful name) created from main.\nContributions from that new branch are sent back to main by means of a pull request, which ideally is reviewed & tested before merging.\n\n\n\n\nGit Flow\n\nTwo “main” branches that last forever, main for deployment and develop where things are tested before they are released to main.\nThree supporting branches: feature, release & hotfix. Both feature & release branches are created from develop. feature branches should be merged into develop before they are incorporated into a release. release branches eventually get merged into main after adequate review and testing.",
-    "crumbs": [
-      "Basics",
-      "Git Concepts"
-    ]
-  },
-  {
-    "objectID": "git_concepts.html#merge-conflicts",
-    "href": "git_concepts.html#merge-conflicts",
-    "title": "Basic Git Concepts",
-    "section": "Merge conflicts",
-    "text": "Merge conflicts\n\nIMPORTANT: You must know how to deal with multiple types of merge conflicts\nYou need to know how to resolve basic file merge conflicts, but also branch merge conflicts\nThe two main types of branch merge conflict resolutions involve:\n\nManually push back in changes\nRestructure commits so that changes are pushed at a later date\n\n\n\nMerge Branches\nWhat happens when a branch falls behind main? There are two ways you can update the branch.\n\nUsing merge\n\n\nHow to catch up a branch that has fallen behind the main branch using the command line:\n\nrun git pull origin main to pull any changes from the remote version of main that we might not have\nrun git switch &lt;branch&gt; to make sure we are on the branch we want to catch up\nrun git merge main to merge the changes\nrun git push origin &lt;branch&gt; to push our updated branch to the remote\n\n\nThis bash code is rewritten below for copying convenience:\ngit pull origin main\ngit switch &lt;branch&gt;\ngit merge main\ngit push origin &lt;branch&gt;\n\nUsing rebase\n\nMake sure everything is committed in your new branch\nMove to the main branch: git switch main\nMake sure the main branch is up to date: git pull origin main\nMove back over to your branch: git switch &lt;branch&gt;\nUpdate the changes from main: git rebase main\n\n\nThis bash code is rewritten below for copying convenience:\ngit switch main\ngit pull origin main\ngit switch &lt;branch&gt;\ngit rebase main\n\n\nPersonal Access Tokens (PAT)\nPATs are important!",
-    "crumbs": [
-      "Basics",
-      "Git Concepts"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Final Exam Review",
-    "section": "",
-    "text": "Welcome to my DSCI 310 Final Exam Review!\nThis is a review of DSCI 310, but specifically for topics that will be covered on the final. This means there will be less emphasis on topics such as Docker containers, git basics, Renv, etc.\n\nLearning Outcomes\nBy the end of the course, students will be able to:\n\nDefend and justify the importance of creating data science workflows that are reproducible and trustworthy and the elements that go into such a workflow (e.g., writing clear, robust, accurate and reproducible code, managing and sharing compute environments, defined collaboration strategies, etc).\nConstructively criticize the workflows and data analysis of others in regards to its reproducibility and trustworthiness.\nDevelop a data science project (including code and non-code documents such as reports) that uses reproducible and trustworthy workflows\nDemonstrate how to effectively share and collaborate on data science projects and software by creating robust code packages, using reproducible compute environments, and leveraging collaborative development tools.\nDefend and justify the benefit of, and employ automated testing regimes, continuous integration and continuous deployment for managing and maintaining data science projects and packages.\nDemonstrate strong communication, teamwork, and collaborative skills by working on a significant data science project with peers throughout the course.",
-    "crumbs": [
-      "Introduction"
-    ]
-  },
-  {
-    "objectID": "bash_scripts.html",
-    "href": "bash_scripts.html",
-    "title": "Bash Scripts",
-    "section": "",
-    "text": "What are they? A bash script is a .sh (shell) document that contains bash commands, which you can run from the terminal. They are often useful if you have the same bash lines you need to run repetitively when working on a project.\nWe can make a sample bash_script.sh by typing:\nHere is a sample of what you can put in a bash script:\nWe can run the file by typing into terminal:",
-    "crumbs": [
-      "Basics",
-      "Bash Scripts"
-    ]
-  },
-  {
-    "objectID": "bash_scripts.html#other-notes",
-    "href": "bash_scripts.html#other-notes",
-    "title": "Bash Scripts",
-    "section": "Other notes:",
-    "text": "Other notes:\nSometimes there are files in our computer’s filesystem that are prefixed with ., for example .gitignore, .DS_Store and .ipynb_checkpoints. These are known as hidden files, and your computer’s default is to hide them from you, regardless of whether you use a graphical user interface (e.g., Finder, Explorer, Nautilus) or the Bash shell to explore our computer’s filesystem.\n\nWhat is SSH authentication?\nSSH stands for secure shell protocol (for authentication). SSH can be use for other forms of authentication as well (beyond GitHub), including logging into remote machines in the cloud. So for many these reasons it is worthwhile learning.\nSee this link to SSH part in the textbook for more information on SSH.",
-    "crumbs": [
-      "Basics",
-      "Bash Scripts"
-    ]
-  },
-  {
-    "objectID": "bash_scripts.html#bash-scripts-for-package-making",
-    "href": "bash_scripts.html#bash-scripts-for-package-making",
-    "title": "Bash Scripts",
-    "section": "Bash Scripts for Package Making",
-    "text": "Bash Scripts for Package Making\n!!!",
-    "crumbs": [
-      "Basics",
-      "Bash Scripts"
+      "Packages",
+      "Dependencies"
     ]
   },
   {
@@ -241,14 +99,284 @@
     ]
   },
   {
-    "objectID": "github_actions.html",
-    "href": "github_actions.html",
-    "title": "github_actions",
+    "objectID": "quarto_docs.html",
+    "href": "quarto_docs.html",
+    "title": "quarto_docs",
     "section": "",
-    "text": "GitHub Actions\nWe can make github actions to help automate our processes.\nWe have two main examples we can work with, one from class and one from the website.\nIn order for github actions to work, it needs to be placed in a very specific folder location of: .github/workflows/&lt;file.yml&gt;\nmkdir -p .github/workflows/\ncd .github/workflows/\ncode bash.yml\nThe following is a sample of a github action you can do, where you run a bash command:\nname: Run a bash command # this is what specifies the automation\n\non:\n  workflow_dispatch: # says: manually run this in the github interface...\n  push: # if a push happens to the repo then ...\n    branches: [main] # if a push happens to the main branch also make these changes\n    paths:  # or only trigger when one of these files is changed\n      - 'Dockerfile'\n      - .github/workflows/bash.yml # or whatever you named the file\n      - 'conda-linux-64.lock'\n      # could also do something like every week update it ... etc.\n\njobs: # specify the jobs you want to create\n  run_bash_command: # name of the job, the one yaml understands\n    name: Run a bash command using github actions # a human-readable name that is nice for us to look at\n    runs-on: ubuntu-latest # operating system you want github to run on, this one is most common for linux, you could say windows-latest or mac-latest too\n    steps: # actual steps to run\n      - name: Check out the repo # run git clone and cd into it\n        uses: actions/checkout@v4 # probably automating off something in your repository, so usually your first step\n      - name: Run a command manually\n        run: ls -a\n      - name: Run multiple commands manually # use a vertical bar |\n        run: | \n          pwd\n          ls -a\n      - name: Run multiple commands manually with script\n        run: bash bash_script.sh\nThen you can just commit this file and the action should work!\nThere are also other github actions you can do, of course. Here is one taken from the course textbook that allows you to publish your docker image to docker hub.\n# Publishes docker image, pinning actions to a commit SHA,\n# and updating most recently built image with the latest tag.\n# Can be triggered by either pushing a commit that changes the `Dockerfile`,\n# or manually dispatching the workflow.\n\nname: Publish Docker image\n\non:\n  workflow_dispatch:\n  push:\n    paths:\n      - 'Dockerfile'\n      - .github/workflows/docker-publish.yml # or whatever you named the file\n      - 'conda-linux-64.lock'\n\njobs:\n  push_to_registry:\n    name: Push Docker image to Docker Hub\n    runs-on: ubuntu-latest\n    steps:\n      - name: Check out the repo\n        uses: actions/checkout@v4\n\n      - name: Log in to Docker Hub\n        uses: docker/login-action@v3\n        with:\n          username: ${{ secrets.DOCKER_USERNAME }} # do not change, add as secret\n          password: ${{ secrets.DOCKER_PASSWORD }} # do not change, add as secret\n\n      - name: Extract metadata (tags, labels) for Docker\n        id: meta\n        uses: docker/metadata-action@v5\n        with:\n          images: ttimbers/dsci522-dockerfile-practice # change to your image\n          tags: |\n            type=raw, value={{sha}},enable=${{github.ref_type != 'tag' }}\n            type=raw, value=latest\n\n      - name: Build and push Docker image\n        uses: docker/build-push-action@v6\n        with:\n          context: .\n          file: ./Dockerfile\n          push: true\n          tags: ${{ steps.meta.outputs.tags }}\n          labels: ${{ steps.meta.outputs.labels }}\nCheckout https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html for more customization.\nAlso note that in this one you need to add a secret username and password in the repo you’re in, and you also need to edit to proper naming.",
+    "text": "Side Notes\nQuarto Documents\n\n\n\n\n\n\n\n\nExecution Option\nDescription\nValues\n\n\n\n\neval\nEvaluate the code chunk (if false, just echos the code into the output).\ntrue  false\n\n\necho\nInclude the source code in output.\ntrue  false  fenced\n\n\noutput\nInclude the results of executing the code in the output.\ntrue  false  asis (raw markdown, without Quarto’s standard enclosing markdown)\n\n\nwarning\nInclude warnings in the output.\ntrue  false\n\n\nerror\nInclude errors in the output (note: errors won’t stop document processing).\ntrue  false\n\n\ninclude\nPrevent any output (code or results) from being included.\ntrue  false",
+    "crumbs": [
+      "Quarto",
+      "Quarto Reports"
+    ]
+  },
+  {
+    "objectID": "making_websites.html",
+    "href": "making_websites.html",
+    "title": "Websites With Quarto",
+    "section": "",
+    "text": "Here’s a basic outline as to how to make websites using quarto (and rstudio/vscode)!",
+    "crumbs": [
+      "Quarto",
+      "Quarto Websites"
+    ]
+  },
+  {
+    "objectID": "making_websites.html#website-bones",
+    "href": "making_websites.html#website-bones",
+    "title": "Websites With Quarto",
+    "section": "Website “Bones”",
+    "text": "Website “Bones”\nStart with:\nquarto create\n\nSelect project &gt; website &gt; Directory: / &gt; Title: Final Review\n\nAlternatively, create the following files:\n\n_quarto.yml\nindex.qmd\n&lt;project_name&gt;.Rproj\nstyles.css (not necessary)\nother .qmd files (not necessary)\nAdd files to .gitignore",
+    "crumbs": [
+      "Quarto",
+      "Quarto Websites"
+    ]
+  },
+  {
+    "objectID": "making_websites.html#main-locations",
+    "href": "making_websites.html#main-locations",
+    "title": "Websites With Quarto",
+    "section": "3 Main Locations",
+    "text": "3 Main Locations\nHere are the 3 main locations you can use GitHub Pages for rendering your website!\n\n/(root)\nYou are ready simply by doing:\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\nquarto render index.qmd\nThis will make an index.html file that git will look for. If you do not have a index.html file in your root folder, it will instead display your README.md!\nPush all changes, including the rendered page, to the (main branch) repo.\n\n\ndocs/\nThere are a few tasks necessary:\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nEnsure docs/ is not blocked in the .gitignore file\nSet output-dir: docs under project: type: in _quarto.yml\n\n\n\ngh-pages branch\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nDelete any docs/ folder\nblock the docs and _site folder in the .gitignore file\n\ngit checkout --orphan gh-pages\ngit reset --hard # make sure all changes are committed before running this!\ngit commit --allow-empty -m \"Initialising gh-pages branch\"\ngit push origin gh-pages\nWhich now you can test-run the website with:\ngit switch main\nquarto publish gh-pages\nYou can still use the regular quarto render or quarto preview to build your site locally, but you will no longer need to manually build and push the site to the main branch!\nAdd a github action to make it automatically build:\ncode .github/workflows/build.yml\nAnd copy the following contents into it:\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}",
+    "crumbs": [
+      "Quarto",
+      "Quarto Websites"
+    ]
+  },
+  {
+    "objectID": "git_concepts.html",
+    "href": "git_concepts.html",
+    "title": "Basic Git Concepts",
+    "section": "",
+    "text": "GitHub is the remote repository where you commit changes to the version control history. At a minimum, you should at least push your work to GitHub at the end of every work session.",
+    "crumbs": [
+      "Basics",
+      "Git Concepts"
+    ]
+  },
+  {
+    "objectID": "git_concepts.html#branches",
+    "href": "git_concepts.html#branches",
+    "title": "Basic Git Concepts",
+    "section": "Branches",
+    "text": "Branches\n\nThe benefits of branches:\n\nBranches allow you to have a playground for developing and testing new additions to your code, as well as fixes. This playground lets your explore, experiment and test in a safe place - away from others that might be using or depending on the current version of your code.\nThis is perhaps more obviously useful if your project is deployed and has users (e.g., a data visualization dashboard, an R or Python package, a phone app, etc), but this can also be useful for code that make up a data analyses. Because, in addition to the reasons stated above for branching, branching also lets you organize units of work into smaller, more manageable chunks that are easier for collaborators to check over and review.\nSeveral branch playgrounds can co-exist, one for each new code addition or fix being worked on. This allows for parallelization of work!\n\n\n\nCreating a pull-request:\n\nTo create a pull request, you click the green button Compare & pull request. In the new page, add a message to describe the changes you have made, scroll down to review the changed files, and the click the green button that reads Create pull request. If you are working together in a team, you could also designate certain team members to review your work and assign relevant labels, via the right hand side panel.\nThe next step is for a collaborator to review your work and merge it in if they approve it.\nTutorial 2 is all about creating branches and pull requests. It also makes you create two branches and see the conflict when you try and pull them both despite them editing the same place. This ends in a merge conflict that you can solve in the github interface.",
+    "crumbs": [
+      "Basics",
+      "Git Concepts"
+    ]
+  },
+  {
+    "objectID": "git_concepts.html#github-worklow-and-git-flow",
+    "href": "git_concepts.html#github-worklow-and-git-flow",
+    "title": "Basic Git Concepts",
+    "section": "GitHub Worklow and Git Flow",
+    "text": "GitHub Worklow and Git Flow\n\nGitHub Workflow\n\nFeatures a single “main” branch that also serves as the deployment branch, we call this main.\n\nEvery new contribution is done on a new branch (with a meaningful name) created from main.\nContributions from that new branch are sent back to main by means of a pull request, which ideally is reviewed & tested before merging.\n\n\n\n\nGit Flow\n\nTwo “main” branches that last forever, main for deployment and develop where things are tested before they are released to main.\nThree supporting branches: feature, release & hotfix. Both feature & release branches are created from develop. feature branches should be merged into develop before they are incorporated into a release. release branches eventually get merged into main after adequate review and testing.",
+    "crumbs": [
+      "Basics",
+      "Git Concepts"
+    ]
+  },
+  {
+    "objectID": "git_concepts.html#merge-conflicts",
+    "href": "git_concepts.html#merge-conflicts",
+    "title": "Basic Git Concepts",
+    "section": "Merge conflicts",
+    "text": "Merge conflicts\n\nIMPORTANT: You must know how to deal with multiple types of merge conflicts\nYou need to know how to resolve basic file merge conflicts, but also branch merge conflicts\nThe two main types of branch merge conflict resolutions involve:\n\nManually push back in changes\nRestructure commits so that changes are pushed at a later date\n\n\n\nMerge Branches\nWhat happens when a branch falls behind main? There are two ways you can update the branch.\n\nUsing merge\n\n\nHow to catch up a branch that has fallen behind the main branch using the command line:\n\nrun git pull origin main to pull any changes from the remote version of main that we might not have\nrun git switch &lt;branch&gt; to make sure we are on the branch we want to catch up\nrun git merge main to merge the changes\nrun git push origin &lt;branch&gt; to push our updated branch to the remote\n\n\nThis bash code is rewritten below for copying convenience:\ngit pull origin main\ngit switch &lt;branch&gt;\ngit merge main\ngit push origin &lt;branch&gt;\n\nUsing rebase\n\nMake sure everything is committed in your new branch\nMove to the main branch: git switch main\nMake sure the main branch is up to date: git pull origin main\nMove back over to your branch: git switch &lt;branch&gt;\nUpdate the changes from main: git rebase main\n\n\nThis bash code is rewritten below for copying convenience:\ngit switch main\ngit pull origin main\ngit switch &lt;branch&gt;\ngit rebase main\n\n\nPersonal Access Tokens (PAT)\nPATs are important!",
+    "crumbs": [
+      "Basics",
+      "Git Concepts"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DSCI 310 Final Exam Review",
+    "section": "",
+    "text": "Welcome to my DSCI 310 Final Exam Review!\nThis is a review of DSCI 310, but specifically for topics that will be covered on the final. This means there will be less emphasis on topics such as Docker containers, git basics, Renv, etc.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#learning-outcomes",
+    "href": "index.html#learning-outcomes",
+    "title": "DSCI 310 Final Exam Review",
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\nBy the end of the course, students will be able to:\n\nDefend and justify the importance of creating data science workflows that are reproducible and trustworthy and the elements that go into such a workflow (e.g., writing clear, robust, accurate and reproducible code, managing and sharing compute environments, defined collaboration strategies, etc).\nConstructively criticize the workflows and data analysis of others in regards to its reproducibility and trustworthiness.\nDevelop a data science project (including code and non-code documents such as reports) that uses reproducible and trustworthy workflows\nDemonstrate how to effectively share and collaborate on data science projects and software by creating robust code packages, using reproducible compute environments, and leveraging collaborative development tools.\nDefend and justify the benefit of, and employ automated testing regimes, continuous integration and continuous deployment for managing and maintaining data science projects and packages.\nDemonstrate strong communication, teamwork, and collaborative skills by working on a significant data science project with peers throughout the course.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#outline-of-assessments",
+    "href": "index.html#outline-of-assessments",
+    "title": "DSCI 310 Final Exam Review",
+    "section": "Outline of Assessments",
+    "text": "Outline of Assessments\n\nAssignments\n\nAssignment 1: (Not Included) Setup and Installation (you can find them here)\nAssignment 2: Git merge conflicts (learn more here)\n\nNote: Make a review of the different types of conflicts\n\nAssignment 3: (Not Included) Dockerfiles\nAssignment 4: Reproducible reports using Quarto\n\nNote: Need to make a summary page that lists all improvements possible\n\nAssignment 5: Packaging (for walk-through, see this for R or this for python)\n\nNote: Need to learn how to do python packages\nNote: Need to summarize and streamline R packages\nNote: Want to improve and update R packages made from this course\nNote: Want to go over potential conflicts you can run into, and main things to know in a time crunch\n\n\n\n\nTutorials\n\nTutorial 1: Setup\nTutorial 2: Git Basics\n\nNote: Transfer git basics info from dsci-review repo\n\nTutorial 3: R and Python Environments (renv and conda)\nTutorial 4: Environments and Docker Containers\nTutorial 5: Bash Scripts and Github Actions\nTutorial 6: Refactoring a Quarto Report\nTutorial 7: Quarto and Github Pages\nTutorial 8: Writing Tests using testthat for R or pytest for Python\nTutorial 9: Create a Quarto Website (using gh-pages)\n\nNote: Making a Website (through main, docs, and gh-pages)\n\nTutorial 10: Packaging (work period for Assignment 5)\nTutorial 11: Packaging with Continuous Integration and Continuous Deployment\n\n\n\nMilestones\n\nMilestone 1: Data Analysis, Docker, Git basics\nMilestone 2: Abstract code, Quarto doc, Makefile\n\nNote: Transfer information about Makefiles from dsci-review repo\n\nMilestone 3: Abstract functions, Testing, Validation\nMilestone 4: Packaging, Documentation, and Fixing previous issues\n\n\n\nOther\n\nReview the Textbook\nReview Lecture Notes\nReview Lecture Concepts",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#final-exam-information",
+    "href": "index.html#final-exam-information",
+    "title": "DSCI 310 Final Exam Review",
+    "section": "Final Exam Information",
+    "text": "Final Exam Information\n\nThe best way to study is to look though the in-class examples, individual assignments, and be comfortable with all the mechanics you were asked to do for your milestone assignments.\nThink of the final as an individual assessment for everything you were asked to do for the project milestones.\nYou will have 2 hours for the exam. For reference, it took [the professor] just under 30 minutes to get though it.\nBelow is the instructions that you will see before the exam. The format is the same as the midterm.\n\n\nFinal Exam Instructions\nWelcome to your final exam for the course!\n\nTopics Covered:\n\nInteract with Git + GitHub with branches and pull requests.\nSplit a monolithic report into separate scripts.\nUse a Makefile to run your analysis code.\nAdd functions and unit tests to a package.\nCreate a functioning R package.\n\n\nExam Notes\n\nThis exam will have you use an exam template repository to practice the skills we have covered in class this term.\nYou will not be building a full report or full package from scratch. We have provided a skeleton for you to work with.\nAI / LLM / ChatBots are allowed for the exam\nYou are not allowed to communicate or collaborate with another human / classmate during the exam.\n\n\n\nNew Skill Necessary\nThere may be a new mechanics you will need to get access to the exam, specifically copying a template repository into the organization. If this is new to you and you want an example to practice for:\n\nGo to https://github.com/DSCI-310/template-repository-example\nClick the green “Use this template” button\nSelect “Create a new repository”\nLeave the “Include all branches” unchecked.\nSet the ownership to your own account, rename the repo as needed - For the exam, you will use the course organization and have a specific repo name for the exam\nTreat this “template” that you have copied into your account as a new repository. It is pre-populated with files so you are not starting from a completely empty repository.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#credit",
+    "href": "index.html#credit",
+    "title": "DSCI 310 Final Exam Review",
+    "section": "Credit",
+    "text": "Credit\nAlthough this repo is made by Heidi, credit goes towards Daniel Chen and other contributors for the DSCI 310 course for most material in the repo. Thanks!",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "bash_scripts.html",
+    "href": "bash_scripts.html",
+    "title": "Bash Scripts",
+    "section": "",
+    "text": "What are they? A bash script is a .sh (shell) document that contains bash commands, which you can run from the terminal. They are often useful if you have the same bash lines you need to run repetitively when working on a project.\nWe can make a sample bash_script.sh by typing:\nHere is a sample of what you can put in a bash script:\nWe can run the file by typing into terminal:",
+    "crumbs": [
+      "Basics",
+      "Bash Scripts"
+    ]
+  },
+  {
+    "objectID": "bash_scripts.html#other-notes",
+    "href": "bash_scripts.html#other-notes",
+    "title": "Bash Scripts",
+    "section": "Other notes:",
+    "text": "Other notes:\nSometimes there are files in our computer’s filesystem that are prefixed with ., for example .gitignore, .DS_Store and .ipynb_checkpoints. These are known as hidden files, and your computer’s default is to hide them from you, regardless of whether you use a graphical user interface (e.g., Finder, Explorer, Nautilus) or the Bash shell to explore our computer’s filesystem.\n\nWhat is SSH authentication?\nSSH stands for secure shell protocol (for authentication). SSH can be use for other forms of authentication as well (beyond GitHub), including logging into remote machines in the cloud. So for many these reasons it is worthwhile learning.\nSee this link to SSH part in the textbook for more information on SSH.",
+    "crumbs": [
+      "Basics",
+      "Bash Scripts"
+    ]
+  },
+  {
+    "objectID": "bash_scripts.html#bash-scripts-for-package-making",
+    "href": "bash_scripts.html#bash-scripts-for-package-making",
+    "title": "Bash Scripts",
+    "section": "Bash Scripts for Package Making",
+    "text": "Bash Scripts for Package Making\n!!!",
+    "crumbs": [
+      "Basics",
+      "Bash Scripts"
+    ]
+  },
+  {
+    "objectID": "supporting.html#contribution-document",
+    "href": "supporting.html#contribution-document",
+    "title": "supporting",
+    "section": "Contribution Document",
+    "text": "Contribution Document",
+    "crumbs": [
+      "Packages",
+      "Badges, Licenses & More"
+    ]
+  },
+  {
+    "objectID": "supporting.html#code-of-conduct",
+    "href": "supporting.html#code-of-conduct",
+    "title": "supporting",
+    "section": "Code of Conduct",
+    "text": "Code of Conduct",
+    "crumbs": [
+      "Packages",
+      "Badges, Licenses & More"
+    ]
+  },
+  {
+    "objectID": "supporting.html#licenses",
+    "href": "supporting.html#licenses",
+    "title": "supporting",
+    "section": "Licenses",
+    "text": "Licenses",
+    "crumbs": [
+      "Packages",
+      "Badges, Licenses & More"
+    ]
+  },
+  {
+    "objectID": "supporting.html#readme.md-outline",
+    "href": "supporting.html#readme.md-outline",
+    "title": "supporting",
+    "section": "README.md Outline",
+    "text": "README.md Outline\n(or README.Rmd outline for that matter)",
+    "crumbs": [
+      "Packages",
+      "Badges, Licenses & More"
+    ]
+  },
+  {
+    "objectID": "tests.html",
+    "href": "tests.html",
+    "title": "tests",
+    "section": "",
+    "text": "testthat Package\n\n\ncodecov Package",
+    "crumbs": [
+      "Packages",
+      "Testing"
+    ]
+  },
+  {
+    "objectID": "environments.html",
+    "href": "environments.html",
+    "title": "Environments",
+    "section": "",
+    "text": "Create an RStudio project fpr the repo\nInstall renv package if you haven’t already\nInitialize project as an renv project\nInstall new R package (.lock file will not update until you use it)\nCreate (and save) R script that uses the new R package\n\ninstall.packages(\"renv\")\nrenv::init()\ninstall.packages(\"cowsay\")\nrenv::snapshot()\nAnd there you have an R environment!",
     "crumbs": [
       "General",
-      "GitHub Actions"
+      "Environments"
+    ]
+  },
+  {
+    "objectID": "environments.html#r-environments-renv",
+    "href": "environments.html#r-environments-renv",
+    "title": "Environments",
+    "section": "",
+    "text": "Create an RStudio project fpr the repo\nInstall renv package if you haven’t already\nInitialize project as an renv project\nInstall new R package (.lock file will not update until you use it)\nCreate (and save) R script that uses the new R package\n\ninstall.packages(\"renv\")\nrenv::init()\ninstall.packages(\"cowsay\")\nrenv::snapshot()\nAnd there you have an R environment!",
+    "crumbs": [
+      "General",
+      "Environments"
+    ]
+  },
+  {
+    "objectID": "environments.html#python-environments",
+    "href": "environments.html#python-environments",
+    "title": "Environments",
+    "section": "Python Environments",
+    "text": "Python Environments",
+    "crumbs": [
+      "General",
+      "Environments"
+    ]
+  },
+  {
+    "objectID": "ci_cd.html",
+    "href": "ci_cd.html",
+    "title": "ci_cd",
+    "section": "",
+    "text": "Continuous Integration and Deployment",
+    "crumbs": [
+      "General",
+      "CI & CD"
+    ]
+  },
+  {
+    "objectID": "docker.html",
+    "href": "docker.html",
+    "title": "docker",
+    "section": "",
+    "text": "Containers\n\nBasic container\nWhat is a container?\n\nthey are basically a virtual machine, where you can specify all the software you need to run files you want.\n\ndocker run hello-world\nThis command runs a container that executes a script that prints out the hello docker text. When this script runs, it exits and the container exits to give you your prompt back\n\n\nAn R Container\nWith this code you can run an R container:\ndocker run --rm -it rocker/r-ver:4.3.2\nYou can open up and launch R or run R --version to get your current R version.\n\n\nAn RStudio Container\nWith this code you can run an RStudio container:\ndocker run --rm -e PASSWORD=\"pizza\" -p 8787:8787 rocker/rstudio:4.4.2\nHere are what the commands mean:\n\n--rm means remove. It is saying to delete the container when I am done with it!\n-e stands for environments. It lets you pass in special parameters necessary to run that container.\n-p stands for port. It is where you specify the container will be run through on your computer.\n\nAfter running it, you can visit http://localhost:8787 and view the RStudio container.\nIf you create any files in this container instance, all your work will be lost!\n\nAn RStudio Tidyverse Container\nYou can also make a Tidyverse container, where tidyverse is already installed! Pretty sweet.\ndocker run --rm -e PASSWORD=\"pizza\" -p 8787:8787 rocker/tidyverse:4.4.2\nNote that if you run two sessions at once, you will need to change the port mapping on one of them.\n\nhttp://localhost:8888 is commonly known for jupyterlab\n\n\n\n\nDockerFiles\nA Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.\nYou can create it simply with the command code Dockerfile.\nIt is a special type of file, so make sure it does NOT end with something like .txt or .sh or anything. It is simply just Dockerfile (with a capital D).\nThe following is a sample of what you can do with a Dockerfile:\nFROM rocker/rstudio:4.2.2\n# this builds the base image from rstudio\n\n# you can run basic bash commands that will run while setting up the container\nRUN echo \"Hello\"\nRUN pwd\n\n# you can install apps and such so that you have them in your image\nRUN apt-get install -y git\n\n# you can copy files onto your image/container\nCOPY renv.lock /home/rstudio/renv.lock\nCOPY README.md /home/rstudio/README.md \n\n# we can even install packages into the image\nRUN Rscript -e \"install.packages('renv', repos = c(CRAN = 'https://cloud.r-project.org'))\"\n# with the renv package we can keep r packages in our image without having to manually download them each time\n# we have to set the working directory first\nWORKDIR /home/rstudio\n# then we can copy other project files\nCOPY renv/ /home/rstudio/renv\nCOPY bash_script.sh /home/rstudio/bash_script.sh\nCOPY newRpackage_usage.R /home/rstudio/newRpackage_usage.R \n\n# however!\n# Installing the remotes package allows us to pin the version of the package we're installing\nRUN Rscript -e \"install.packages('remotes', repos = c(CRAN = 'https://cloud.r-project.org'))\"\n# now we can install a package like this:\nRUN Rscript -e \"remotes::install_version('cowsay', version='1.0.0')\"\n# this saves us the hassle of having to copy all of our project files\n# while still keeping the package versions we want!\n\nRUN echo \"Wow! There are so many things you can do with Dockerfiles!\"\nNow that you have completed your super-cool Dockerfile, you can now build your very OWN container! How exciting!\n\nBuilding and Running ‘mycontainer’\nAssuming you’ve made your own Dockerfile, you can now build your own container with this command:\ndocker build --tag mycontainer .\nNote you can replace mycontainer with whatever you would like your container to be called. Also note that it is very important to have the . at the end, as that is for your current working directory. This command will look for a Dockerfile within your current directory and then build the container.\nThe command docker images will let you see what images you have going.\nAfter you have built your container, you can now run it using:\ndocker run --rm -it -e PASSWORD=\"pizza\" -p 8787:8787 -v /$(pwd):/home/rstudio/work mycontainer\n\nNote you replacemycontainer with the name of the container you just build, and can of course replace the password.\nAlso note that the -v stands for volume. It will copy all of your local files into the container (just for you when you run it) for you to be able to use at ease.\n\nWhat if I am too lazy to type that long run command? Let’s learn about .yml files where you can run the docker in a much easier way!\n\nSide note: after you build you container you can also push it to docker so that anyone can use it\n\n\n\nRunning docker easier\nWe can create a special docker-compose.yml file where we are saved from having to write a long run command line. Note that docker specifically recognizes this file name, so the naming convention is important.\nHere is a sample of what one would look like:\nservices:\n  analysis-env:\n    image: hlan22/mycontainer\n    ports:\n      - \"8787:8787\"\n    volumes:\n      - .:/home/rstudio/work\n    environment:\n      PASSWORD: \"pizza\"\n\n# This file is a replacement for having to write the following command line\n# docker run --rm -it -e PASSWORD=\"pizza\" -p 8787:8787 \n# -v /$(pwd):/home/rstudio/work rocker/tidyverse:4.4.2\nTo run this file, you just need to type the following:\ndocker-compose up\nAlthough, with this method, you need to remove it manually afterwards with:\ndocker-compose rm",
+    "crumbs": [
+      "General",
+      "Docker Containers"
     ]
   }
 ]
