@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.6.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – Final Exam Review</title>
+<title>Intro to Git Commands – Final Exam Review</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,10 +35,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b512256bc363577b27543e003c495f0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-50b4abff8b0f30bb501ab99a3cda6e79.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -129,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./making_websites.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Making Websites With Quarto</span></a>
+ <span class="menu-text">Websites With Quarto</span></a>
   </div>
 </li>
       </ul>
@@ -162,15 +162,25 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#basic-symbols" id="toc-basic-symbols" class="nav-link active" data-scroll-target="#basic-symbols">Basic Symbols</a></li>
+  <li><a href="#general-bash-commands" id="toc-general-bash-commands" class="nav-link" data-scroll-target="#general-bash-commands">General Bash Commands</a></li>
+  <li><a href="#git-specific-commands" id="toc-git-specific-commands" class="nav-link" data-scroll-target="#git-specific-commands">Git-Specific Commands</a></li>
+  <li><a href="#flags" id="toc-flags" class="nav-link" data-scroll-target="#flags">Flags</a></li>
+  <li><a href="#commands-for-undoing" id="toc-commands-for-undoing" class="nav-link" data-scroll-target="#commands-for-undoing">Commands for Undoing</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_to_git.html">Basics</a></li><li class="breadcrumb-item"><a href="./intro_to_git.html">Intro to Git Commands</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">Intro to Git Commands</h1>
 </div>
 
 
@@ -187,9 +197,434 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>About this site</p>
+<p>Below are some useful tables that can help streamline your workflow in Git Bash.</p>
+<section id="basic-symbols" class="level2">
+<h2 class="anchored" data-anchor-id="basic-symbols">Basic Symbols</h2>
+<div id="tbl-symbol" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-symbol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Basic Symbols
+</figcaption>
+<div aria-describedby="tbl-symbol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Symbol</th>
+<th style="text-align: left;">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>.</code></td>
+<td style="text-align: left;">Current working directory</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>..</code></td>
+<td style="text-align: left;">Parent working directory</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>~</code></td>
+<td style="text-align: left;">Home directory</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>-&lt;letter&gt;</code></td>
+<td style="text-align: left;">One dash makes bash only look at the first letter</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>--&lt;word&gt;</code></td>
+<td style="text-align: left;">Two dashes makes bash look at the word as a whole</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="general-bash-commands" class="level2">
+<h2 class="anchored" data-anchor-id="general-bash-commands">General Bash Commands</h2>
+<div id="tbl-bash" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bash-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: General Bash Commands
+</figcaption>
+<div aria-describedby="tbl-bash-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 73%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Bash Command</th>
+<th style="text-align: left;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>pwd</code></td>
+<td style="text-align: left;">Prints the current working directory path. Stands for “print working directory”</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>ls</code></td>
+<td style="text-align: left;">Lists files and directories in the current directory. Use <code>ls -l</code> for detailed info and use <code>ls -a</code> to see all files. Stands for “listing”. You can also do <code>ls &lt;folder&gt;</code> of a directory of interest that you aren’t currently in!</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>cd &lt;directory&gt;</code></td>
+<td style="text-align: left;">Steps into <code>&lt;directory&gt;</code>. Use <code>cd ..</code> to go up to parent file. Stands for “change directory”. <code>cd -</code> takes you to the previous directory you were in, and <code>cd ~</code> takes you right back to the computer’s home directory.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>mkdir &lt;directory&gt;</code></td>
+<td style="text-align: left;">Creates a new directory named <code>&lt;directory&gt;</code>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>rmdir &lt;directory&gt;</code></td>
+<td style="text-align: left;">Deletes an empty directory. Use <code>rm -r &lt;directory&gt;</code> to delete non-empty ones.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>rm &lt;file&gt;</code></td>
+<td style="text-align: left;">Deletes a file. Use <code>rm -r &lt;directory&gt;</code> to remove a directory recursively.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>restore &lt;file&gt;</code></td>
+<td style="text-align: left;">Restores a file to the last commit you pulled (undos changes made)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>touch &lt;file&gt;</code></td>
+<td style="text-align: left;">Creates an empty file named <code>&lt;file&gt;</code>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>echo "text" &gt; file</code></td>
+<td style="text-align: left;">Writes “text” into <code>file</code>, replacing existing content.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>cat &lt;file&gt;</code></td>
+<td style="text-align: left;">Displays the contents of a file.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>mv &lt;source&gt; &lt;target&gt;</code></td>
+<td style="text-align: left;">Moves or renames a file or directory.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>cp &lt;source&gt; &lt;target&gt;</code></td>
+<td style="text-align: left;">Copies a file. Use <code>-r</code> for recursive copying.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>clear</code></td>
+<td style="text-align: left;">Clears the terminal screen.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>history</code></td>
+<td style="text-align: left;">Shows a list of recently executed commands.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>history &gt; history.txt</code></td>
+<td style="text-align: left;">Places history into a <code>history.txt</code> file.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>grep "pattern" file</code></td>
+<td style="text-align: left;">Searches for “pattern” in a file.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>chmod +x &lt;file&gt;</code></td>
+<td style="text-align: left;">Makes a file executable.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>alt</code>+<code>shift</code>+<code>#</code></td>
+<td style="text-align: left;">Comments out whatever is written in the command line for the history output.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="git-specific-commands" class="level2">
+<h2 class="anchored" data-anchor-id="git-specific-commands">Git-Specific Commands</h2>
+<div id="tbl-git" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-git-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Git Commands
+</figcaption>
+<div aria-describedby="tbl-git-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 67%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Git Command</th>
+<th style="text-align: left;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>git init</code></td>
+<td style="text-align: left;">Initializes a new Git repository in the current directory.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git clone &lt;repo-url&gt;</code></td>
+<td style="text-align: left;">Clones a remote repository to your local machine.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>git status</code></td>
+<td style="text-align: left;">Shows the current status of the repository.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git add &lt;file&gt;</code></td>
+<td style="text-align: left;">Stages a file for the next commit. Use <code>git add .</code> to stage all changes.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>git restore &lt;file&gt;</code></td>
+<td style="text-align: left;">Discards any changes in the file in your wd</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git commit -m "msg"</code></td>
+<td style="text-align: left;">Commits staged changes with a message.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>git log</code></td>
+<td style="text-align: left;">Displays the commit history of the repository.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git branch</code></td>
+<td style="text-align: left;">Lists all branches in the repository. Use <code>git branch &lt;name&gt;</code> to create a new branch.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>git checkout &lt;branch&gt;</code></td>
+<td style="text-align: left;">Switches to the specified branch.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git switch -c &lt;branch_name&gt;</code> or <code>git checkout -b &lt;new-branch&gt;</code></td>
+<td style="text-align: left;">To create AND switch to a new branch.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>git fetch --all</code></td>
+<td style="text-align: left;">Fetches all changes to all branches</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git merge &lt;branch&gt;</code></td>
+<td style="text-align: left;">Merges <code>&lt;branch&gt;</code> into the current branch.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>git pull</code></td>
+<td style="text-align: left;">Fetches and integrates changes from the remote repository.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git push</code></td>
+<td style="text-align: left;">Pushes committed changes to the remote repository.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>git push origin &lt;branch_name&gt;</code></td>
+<td style="text-align: left;">Pushes changes to a remote branch.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git remote -v</code></td>
+<td style="text-align: left;">Lists the remote repositories linked to the local repository.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>git reset --hard &lt;commit&gt;</code></td>
+<td style="text-align: left;">Resets the repository to a specific commit, discarding all changes.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git stash</code></td>
+<td style="text-align: left;">Temporarily saves uncommitted changes. Use <code>git stash pop</code> to reapply them.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="flags" class="level2">
+<h2 class="anchored" data-anchor-id="flags">Flags</h2>
+<div id="tbl-flags" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-flags-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: “Flags” for commands
+</figcaption>
+<div aria-describedby="tbl-flags-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 90%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Flag</th>
+<th style="text-align: left;">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>-a</code></td>
+<td style="text-align: left;">Stands for “all”; often used to show all entries, including hidden ones (e.g., <code>ls -a</code>).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>-c</code></td>
+<td style="text-align: left;">Used to pass a command string to be executed (e.g., <code>bash -c "echo Hello"</code>, or <code>git switch -c patch-docs</code> to switch to a branch named patch-docs).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>-v</code></td>
+<td style="text-align: left;">Stands for “verbose”, meaning it provides detailed output of the command execution (e.g., <code>git branch -v</code> sees all branches in the repo).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>-f</code></td>
+<td style="text-align: left;">Stands for “force”, often used to override warnings or prompts (e.g., <code>rm -f</code>).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>-r</code></td>
+<td style="text-align: left;">Stands for “recursive”, allowing commands to act on directories and their contents (e.g., <code>rm -r</code>).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>-h</code></td>
+<td style="text-align: left;">Stands for “help”; displays usage information for a command (e.g., <code>ls -h</code> for human-readable sizes).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>-n</code></td>
+<td style="text-align: left;">Often used to indicate a “dry run” where the command is simulated without making actual changes.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>-p</code></td>
+<td style="text-align: left;">Commonly used for “preserve” or “prompt” functionality, depending on the command. In <code>mkdir -p parent/kid</code>, it allows you to make multiple directories without having to do individual commands, so it “preserves” the call for all files.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>-d</code></td>
+<td style="text-align: left;">Often for delete (e.g., <code>git branch -d &lt;branch_name&gt;</code> deletes a local branch)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>--help</code></td>
+<td style="text-align: left;">Can use after most commands to display usage information and available options (e.g., <code>ls --help</code>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="commands-for-undoing" class="level2">
+<h2 class="anchored" data-anchor-id="commands-for-undoing">Commands for Undoing</h2>
+<p>Special thanks to <a href="https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git">this</a> and <a href="https://stackoverflow.com/questions/1146973/how-do-i-revert-all-local-changes-in-git-managed-project-to-previous-state">this</a> stack overflow response!</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 37%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Circumstance</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>git checkout .</code></td>
+<td>You want to discard all uncommitted changes in your working directory.</td>
+<td>Reverts all modified files in the working directory to their state in the last commit, leaving staged changes intact.</td>
+</tr>
+<tr class="even">
+<td><code>git restore .</code></td>
+<td>Same as <code>git checkout .</code>, but for Git version &gt;= 2.23.</td>
+<td>Same as <code>git checkout .</code>, restores working directory files to match the last commit.</td>
+</tr>
+<tr class="odd">
+<td><code>git reset</code></td>
+<td>You want to unstage all changes in the index (staged changes) while keeping working directory changes.</td>
+<td>Resets the index to match the current HEAD, effectively unstaging all changes. Unpushed commits remain unless specified otherwise.</td>
+</tr>
+<tr class="even">
+<td><code>git revert &lt;commit 1&gt; &lt;commit 2&gt;</code></td>
+<td>You want to undo specific commits in a branch’s history without altering the commit history.</td>
+<td>Creates new commits that reverse the changes introduced by the specified commits, preserving history.</td>
+</tr>
+<tr class="odd">
+<td><code>git clean -f</code></td>
+<td>You want to remove untracked files (e.g., new files not yet added to Git).</td>
+<td>Deletes untracked files from the working directory. The <code>-f</code> flag forces the removal.</td>
+</tr>
+<tr class="even">
+<td><code>git clean -fd</code></td>
+<td>You want to remove untracked directories (e.g., generated or temporary directories).</td>
+<td>Deletes untracked directories and their contents. The <code>-fd</code> flag forces removal and includes directories.</td>
+</tr>
+<tr class="odd">
+<td><code>git reset --hard</code></td>
+<td>You want to completely discard all uncommitted changes in both the working directory and index.</td>
+<td>Resets the working directory and index to match the current HEAD, erasing all uncommitted changes.</td>
+</tr>
+<tr class="even">
+<td><code>git reset &lt;commit&gt;</code></td>
+<td>You want to move the branch pointer to a previous commit, discarding later commits.</td>
+<td>Resets the current branch to the specified commit, removing commits after it from history (unless <code>--soft</code> is used).</td>
+</tr>
+<tr class="odd">
+<td><code>git reset --soft &lt;commit&gt;</code></td>
+<td>You want to keep changes from commits but remove the commits themselves.</td>
+<td>Moves the branch pointer to the specified commit, keeping changes in the working directory and index for re-committing.</td>
+</tr>
+<tr class="even">
+<td><code>git checkout &lt;file&gt;</code></td>
+<td>You want to discard changes to a specific file in the working directory.</td>
+<td>Reverts the specified file to its state in the last commit, leaving other files unchanged.</td>
+</tr>
+<tr class="odd">
+<td><code>git restore &lt;file&gt;</code></td>
+<td>Same as <code>git checkout &lt;file&gt;</code>, but for Git version &gt;= 2.23.</td>
+<td>Reverts the specified file to its state in the last commit, similar to <code>git checkout &lt;file&gt;</code>.</td>
+</tr>
+<tr class="even">
+<td><code>git stash</code></td>
+<td>You want to temporarily save uncommitted changes to work on something else.</td>
+<td>Saves uncommitted changes (both staged and unstaged) to a stash, reverting the working directory to the last commit.</td>
+</tr>
+<tr class="odd">
+<td><code>git stash pop</code></td>
+<td>You want to reapply previously stashed changes and remove them from the stash.</td>
+<td>Applies the most recent stashed changes to the working directory and removes them from the stash.</td>
+</tr>
+<tr class="even">
+<td><code>git revert HEAD</code></td>
+<td>You want to undo the most recent commit while keeping the commit history.</td>
+<td>Creates a new commit that reverses the changes made in the last commit (HEAD).</td>
+</tr>
+<tr class="odd">
+<td><code>git clean -f -X</code></td>
+<td>You want to remove only ignored files (e.g., files matching .gitignore patterns).</td>
+<td>Deletes untracked files that are ignored by Git, useful for cleaning build artifacts.</td>
+</tr>
+<tr class="even">
+<td><code>git clean -f -x</code></td>
+<td>You want to remove both ignored and untracked files.</td>
+<td>Deletes all untracked files, including those ignored by Git, with the <code>-f</code> flag to force removal.</td>
+</tr>
+<tr class="odd">
+<td><code>git reset --hard &lt;commit&gt;</code></td>
+<td>You want to reset the branch and working directory to a specific commit, discarding all changes after it.</td>
+<td>Resets the branch, index, and working directory to the specified commit, erasing all subsequent changes.</td>
+</tr>
+<tr class="even">
+<td><code>git reflog</code></td>
+<td>You want to recover a commit or branch that was accidentally reset or deleted.</td>
+<td>Shows a log of all reference changes (e.g., commits, resets), allowing you to find and restore lost commits using their SHA.</td>
+</tr>
+<tr class="odd">
+<td><code>git checkout &lt;commit&gt; -- &lt;file&gt;</code></td>
+<td>You want to restore a specific file from a past commit.</td>
+<td>Reverts the specified file to its state in the given commit, leaving other files unchanged.</td>
+</tr>
+<tr class="even">
+<td><code>git rm --cached &lt;file&gt;</code></td>
+<td>You want to untrack a file but keep it in the working directory.</td>
+<td>Removes the file from the index (stops tracking it) but leaves the file in the working directory.</td>
+</tr>
+</tbody>
+</table>
+<p>Also <a href="https://stackoverflow.com/questions/24127507/is-it-possible-to-center-tables-in-a-markdown-file">check out this stack overflow response</a> for information about aligning tables!</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

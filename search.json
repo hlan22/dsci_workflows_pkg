@@ -2,9 +2,64 @@
   {
     "objectID": "intro_to_git.html",
     "href": "intro_to_git.html",
-    "title": "About",
+    "title": "Intro to Git Commands",
     "section": "",
-    "text": "About this site",
+    "text": "Below are some useful tables that can help streamline your workflow in Git Bash.",
+    "crumbs": [
+      "Basics",
+      "Intro to Git Commands"
+    ]
+  },
+  {
+    "objectID": "intro_to_git.html#basic-symbols",
+    "href": "intro_to_git.html#basic-symbols",
+    "title": "Intro to Git Commands",
+    "section": "Basic Symbols",
+    "text": "Basic Symbols\n\n\n\nTable 1: Basic Symbols\n\n\n\n\n\nSymbol\nDefinition\n\n\n\n\n.\nCurrent working directory\n\n\n..\nParent working directory\n\n\n~\nHome directory\n\n\n-&lt;letter&gt;\nOne dash makes bash only look at the first letter\n\n\n--&lt;word&gt;\nTwo dashes makes bash look at the word as a whole",
+    "crumbs": [
+      "Basics",
+      "Intro to Git Commands"
+    ]
+  },
+  {
+    "objectID": "intro_to_git.html#general-bash-commands",
+    "href": "intro_to_git.html#general-bash-commands",
+    "title": "Intro to Git Commands",
+    "section": "General Bash Commands",
+    "text": "General Bash Commands\n\n\n\nTable 2: General Bash Commands\n\n\n\n\n\n\n\n\n\nBash Command\nMeaning\n\n\n\n\npwd\nPrints the current working directory path. Stands for “print working directory”\n\n\nls\nLists files and directories in the current directory. Use ls -l for detailed info and use ls -a to see all files. Stands for “listing”. You can also do ls &lt;folder&gt; of a directory of interest that you aren’t currently in!\n\n\ncd &lt;directory&gt;\nSteps into &lt;directory&gt;. Use cd .. to go up to parent file. Stands for “change directory”. cd - takes you to the previous directory you were in, and cd ~ takes you right back to the computer’s home directory.\n\n\nmkdir &lt;directory&gt;\nCreates a new directory named &lt;directory&gt;.\n\n\nrmdir &lt;directory&gt;\nDeletes an empty directory. Use rm -r &lt;directory&gt; to delete non-empty ones.\n\n\nrm &lt;file&gt;\nDeletes a file. Use rm -r &lt;directory&gt; to remove a directory recursively.\n\n\nrestore &lt;file&gt;\nRestores a file to the last commit you pulled (undos changes made)\n\n\ntouch &lt;file&gt;\nCreates an empty file named &lt;file&gt;.\n\n\necho \"text\" &gt; file\nWrites “text” into file, replacing existing content.\n\n\ncat &lt;file&gt;\nDisplays the contents of a file.\n\n\nmv &lt;source&gt; &lt;target&gt;\nMoves or renames a file or directory.\n\n\ncp &lt;source&gt; &lt;target&gt;\nCopies a file. Use -r for recursive copying.\n\n\nclear\nClears the terminal screen.\n\n\nhistory\nShows a list of recently executed commands.\n\n\nhistory &gt; history.txt\nPlaces history into a history.txt file.\n\n\ngrep \"pattern\" file\nSearches for “pattern” in a file.\n\n\nchmod +x &lt;file&gt;\nMakes a file executable.\n\n\nalt+shift+#\nComments out whatever is written in the command line for the history output.",
+    "crumbs": [
+      "Basics",
+      "Intro to Git Commands"
+    ]
+  },
+  {
+    "objectID": "intro_to_git.html#git-specific-commands",
+    "href": "intro_to_git.html#git-specific-commands",
+    "title": "Intro to Git Commands",
+    "section": "Git-Specific Commands",
+    "text": "Git-Specific Commands\n\n\n\nTable 3: Git Commands\n\n\n\n\n\n\n\n\n\nGit Command\nMeaning\n\n\n\n\ngit init\nInitializes a new Git repository in the current directory.\n\n\ngit clone &lt;repo-url&gt;\nClones a remote repository to your local machine.\n\n\ngit status\nShows the current status of the repository.\n\n\ngit add &lt;file&gt;\nStages a file for the next commit. Use git add . to stage all changes.\n\n\ngit restore &lt;file&gt;\nDiscards any changes in the file in your wd\n\n\ngit commit -m \"msg\"\nCommits staged changes with a message.\n\n\ngit log\nDisplays the commit history of the repository.\n\n\ngit branch\nLists all branches in the repository. Use git branch &lt;name&gt; to create a new branch.\n\n\ngit checkout &lt;branch&gt;\nSwitches to the specified branch.\n\n\ngit switch -c &lt;branch_name&gt; or git checkout -b &lt;new-branch&gt;\nTo create AND switch to a new branch.\n\n\ngit fetch --all\nFetches all changes to all branches\n\n\ngit merge &lt;branch&gt;\nMerges &lt;branch&gt; into the current branch.\n\n\ngit pull\nFetches and integrates changes from the remote repository.\n\n\ngit push\nPushes committed changes to the remote repository.\n\n\ngit push origin &lt;branch_name&gt;\nPushes changes to a remote branch.\n\n\ngit remote -v\nLists the remote repositories linked to the local repository.\n\n\ngit reset --hard &lt;commit&gt;\nResets the repository to a specific commit, discarding all changes.\n\n\ngit stash\nTemporarily saves uncommitted changes. Use git stash pop to reapply them.",
+    "crumbs": [
+      "Basics",
+      "Intro to Git Commands"
+    ]
+  },
+  {
+    "objectID": "intro_to_git.html#flags",
+    "href": "intro_to_git.html#flags",
+    "title": "Intro to Git Commands",
+    "section": "Flags",
+    "text": "Flags\n\n\n\nTable 4: “Flags” for commands\n\n\n\n\n\n\n\n\n\nFlag\nDefinition\n\n\n\n\n-a\nStands for “all”; often used to show all entries, including hidden ones (e.g., ls -a).\n\n\n-c\nUsed to pass a command string to be executed (e.g., bash -c \"echo Hello\", or git switch -c patch-docs to switch to a branch named patch-docs).\n\n\n-v\nStands for “verbose”, meaning it provides detailed output of the command execution (e.g., git branch -v sees all branches in the repo).\n\n\n-f\nStands for “force”, often used to override warnings or prompts (e.g., rm -f).\n\n\n-r\nStands for “recursive”, allowing commands to act on directories and their contents (e.g., rm -r).\n\n\n-h\nStands for “help”; displays usage information for a command (e.g., ls -h for human-readable sizes).\n\n\n-n\nOften used to indicate a “dry run” where the command is simulated without making actual changes.\n\n\n-p\nCommonly used for “preserve” or “prompt” functionality, depending on the command. In mkdir -p parent/kid, it allows you to make multiple directories without having to do individual commands, so it “preserves” the call for all files.\n\n\n-d\nOften for delete (e.g., git branch -d &lt;branch_name&gt; deletes a local branch)\n\n\n--help\nCan use after most commands to display usage information and available options (e.g., ls --help)",
+    "crumbs": [
+      "Basics",
+      "Intro to Git Commands"
+    ]
+  },
+  {
+    "objectID": "intro_to_git.html#commands-for-undoing",
+    "href": "intro_to_git.html#commands-for-undoing",
+    "title": "Intro to Git Commands",
+    "section": "Commands for Undoing",
+    "text": "Commands for Undoing\nSpecial thanks to this and this stack overflow response!\n\n\n\n\n\n\n\n\nCommand\nCircumstance\nWhat It Does\n\n\n\n\ngit checkout .\nYou want to discard all uncommitted changes in your working directory.\nReverts all modified files in the working directory to their state in the last commit, leaving staged changes intact.\n\n\ngit restore .\nSame as git checkout ., but for Git version &gt;= 2.23.\nSame as git checkout ., restores working directory files to match the last commit.\n\n\ngit reset\nYou want to unstage all changes in the index (staged changes) while keeping working directory changes.\nResets the index to match the current HEAD, effectively unstaging all changes. Unpushed commits remain unless specified otherwise.\n\n\ngit revert &lt;commit 1&gt; &lt;commit 2&gt;\nYou want to undo specific commits in a branch’s history without altering the commit history.\nCreates new commits that reverse the changes introduced by the specified commits, preserving history.\n\n\ngit clean -f\nYou want to remove untracked files (e.g., new files not yet added to Git).\nDeletes untracked files from the working directory. The -f flag forces the removal.\n\n\ngit clean -fd\nYou want to remove untracked directories (e.g., generated or temporary directories).\nDeletes untracked directories and their contents. The -fd flag forces removal and includes directories.\n\n\ngit reset --hard\nYou want to completely discard all uncommitted changes in both the working directory and index.\nResets the working directory and index to match the current HEAD, erasing all uncommitted changes.\n\n\ngit reset &lt;commit&gt;\nYou want to move the branch pointer to a previous commit, discarding later commits.\nResets the current branch to the specified commit, removing commits after it from history (unless --soft is used).\n\n\ngit reset --soft &lt;commit&gt;\nYou want to keep changes from commits but remove the commits themselves.\nMoves the branch pointer to the specified commit, keeping changes in the working directory and index for re-committing.\n\n\ngit checkout &lt;file&gt;\nYou want to discard changes to a specific file in the working directory.\nReverts the specified file to its state in the last commit, leaving other files unchanged.\n\n\ngit restore &lt;file&gt;\nSame as git checkout &lt;file&gt;, but for Git version &gt;= 2.23.\nReverts the specified file to its state in the last commit, similar to git checkout &lt;file&gt;.\n\n\ngit stash\nYou want to temporarily save uncommitted changes to work on something else.\nSaves uncommitted changes (both staged and unstaged) to a stash, reverting the working directory to the last commit.\n\n\ngit stash pop\nYou want to reapply previously stashed changes and remove them from the stash.\nApplies the most recent stashed changes to the working directory and removes them from the stash.\n\n\ngit revert HEAD\nYou want to undo the most recent commit while keeping the commit history.\nCreates a new commit that reverses the changes made in the last commit (HEAD).\n\n\ngit clean -f -X\nYou want to remove only ignored files (e.g., files matching .gitignore patterns).\nDeletes untracked files that are ignored by Git, useful for cleaning build artifacts.\n\n\ngit clean -f -x\nYou want to remove both ignored and untracked files.\nDeletes all untracked files, including those ignored by Git, with the -f flag to force removal.\n\n\ngit reset --hard &lt;commit&gt;\nYou want to reset the branch and working directory to a specific commit, discarding all changes after it.\nResets the branch, index, and working directory to the specified commit, erasing all subsequent changes.\n\n\ngit reflog\nYou want to recover a commit or branch that was accidentally reset or deleted.\nShows a log of all reference changes (e.g., commits, resets), allowing you to find and restore lost commits using their SHA.\n\n\ngit checkout &lt;commit&gt; -- &lt;file&gt;\nYou want to restore a specific file from a past commit.\nReverts the specified file to its state in the given commit, leaving other files unchanged.\n\n\ngit rm --cached &lt;file&gt;\nYou want to untrack a file but keep it in the working directory.\nRemoves the file from the index (stops tracking it) but leaves the file in the working directory.\n\n\n\nAlso check out this stack overflow response for information about aligning tables!",
     "crumbs": [
       "Basics",
       "Intro to Git Commands"
@@ -23,34 +78,34 @@
   {
     "objectID": "making_websites.html",
     "href": "making_websites.html",
-    "title": "Making Websites With Quarto",
+    "title": "Websites With Quarto",
     "section": "",
-    "text": "Start with:\nquarto create\n\nSelect project &gt; website &gt; Directory: / &gt; Title: Final Review\n\nAlternatively, create the following files:\n\n_quarto.yml\nindex.qmd\n&lt;project_name&gt;.Rproj\nstyles.css (not necessary)\nother .qmd files (not necessary)\nAdd files to .gitignore",
+    "text": "Here’s a basic outline as to how to make websites using quarto (and rstudio/vscode)!",
     "crumbs": [
       "Basics",
-      "Making Websites With Quarto"
+      "Websites With Quarto"
     ]
   },
   {
     "objectID": "making_websites.html#website-bones",
     "href": "making_websites.html#website-bones",
-    "title": "Making Websites With Quarto",
-    "section": "",
-    "text": "Start with:\nquarto create\n\nSelect project &gt; website &gt; Directory: / &gt; Title: Final Review\n\nAlternatively, create the following files:\n\n_quarto.yml\nindex.qmd\n&lt;project_name&gt;.Rproj\nstyles.css (not necessary)\nother .qmd files (not necessary)\nAdd files to .gitignore",
+    "title": "Websites With Quarto",
+    "section": "Website “Bones”",
+    "text": "Website “Bones”\nStart with:\nquarto create\n\nSelect project &gt; website &gt; Directory: / &gt; Title: Final Review\n\nAlternatively, create the following files:\n\n_quarto.yml\nindex.qmd\n&lt;project_name&gt;.Rproj\nstyles.css (not necessary)\nother .qmd files (not necessary)\nAdd files to .gitignore",
     "crumbs": [
       "Basics",
-      "Making Websites With Quarto"
+      "Websites With Quarto"
     ]
   },
   {
-    "objectID": "making_websites.html#main-locations-with-github-pages-for-rendering",
-    "href": "making_websites.html#main-locations-with-github-pages-for-rendering",
-    "title": "Making Websites With Quarto",
-    "section": "3 Main Locations with GitHub Pages for Rendering",
-    "text": "3 Main Locations with GitHub Pages for Rendering\n\n/(root): You are ready simply by doing:\n\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\nquarto render index.qmd\nThis will make an index.html file that git will look for. If you do not have a index.html file in your root folder, it will instead display your README.md!\nPush all changes, including the rendered page, to the (main branch) repo.\n\ndocs/: There are a few tasks necessary:\n\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nEnsure docs/ is not blocked in the .gitignore file\nSet output-dir: docs under project: type: in _quarto.yml\n\n\ngh-pages branch:\n\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nDelete any docs/ folder\nblock the docs and _site folder in the .gitignore file\n\ngit checkout --orphan gh-pages\ngit reset --hard # make sure all changes are committed before running this!\ngit commit --allow-empty -m \"Initialising gh-pages branch\"\ngit push origin gh-pages\n\nquarto publish gh-pages\nYou can still use the regular quarto render or quarto preview to build your site locally, but you will no longer need to manually build and push the site to the main branch!\nAdd a github action to make it automatically build:\ncode .github/workflows/build.yml\nAnd copy the following contents into it:\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}",
+    "objectID": "making_websites.html#main-locations",
+    "href": "making_websites.html#main-locations",
+    "title": "Websites With Quarto",
+    "section": "3 Main Locations",
+    "text": "3 Main Locations\nHere are the 3 main locations you can use GitHub Pages for rendering your website!\n\n/(root)\nYou are ready simply by doing:\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\nquarto render index.qmd\nThis will make an index.html file that git will look for. If you do not have a index.html file in your root folder, it will instead display your README.md!\nPush all changes, including the rendered page, to the (main branch) repo.\n\n\ndocs/\nThere are a few tasks necessary:\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nEnsure docs/ is not blocked in the .gitignore file\nSet output-dir: docs under project: type: in _quarto.yml\n\n\n\ngh-pages branch\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nDelete any docs/ folder\nblock the docs and _site folder in the .gitignore file\n\ngit checkout --orphan gh-pages\ngit reset --hard # make sure all changes are committed before running this!\ngit commit --allow-empty -m \"Initialising gh-pages branch\"\ngit push origin gh-pages\nWhich now you can test-run the website with:\ngit switch main\nquarto publish gh-pages\nYou can still use the regular quarto render or quarto preview to build your site locally, but you will no longer need to manually build and push the site to the main branch!\nAdd a github action to make it automatically build:\ncode .github/workflows/build.yml\nAnd copy the following contents into it:\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}",
     "crumbs": [
       "Basics",
-      "Making Websites With Quarto"
+      "Websites With Quarto"
     ]
   }
 ]
