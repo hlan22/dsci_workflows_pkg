@@ -1,11 +1,13 @@
 ---
-title: "Making Websites With Quarto"
+title: "Websites With Quarto"
 format:
   html:
     code-copy: true
 execute:
   eval: false
 ---
+
+Here's a basic outline as to how to make websites using quarto (and rstudio/vscode)!
 
 ## Website "Bones"
 
@@ -26,9 +28,13 @@ Alternatively, create the following files:
 * other `.qmd` files (not necessary)
 * Add files to `.gitignore`
 
-## 3 Main Locations with GitHub Pages for Rendering
+## 3 Main Locations
 
-1. `/(root)`: You are ready simply by doing:
+Here are the 3 main locations you can use GitHub Pages for rendering your website!
+
+#### `/(root)`
+
+You are ready simply by doing:
 
 Select the right option in Settings > Pages > Build and deployment > Branch.
 
@@ -40,14 +46,16 @@ This will make an `index.html` file that git will look for. If you do not have a
 
 Push all changes, including the rendered page, to the (main branch) repo.
 
-2. `docs/`: There are a few tasks necessary:
+#### `docs/`
+
+There are a few tasks necessary:
 
 Select the right option in Settings > Pages > Build and deployment > Branch.
 
 * Ensure `docs/` is not blocked in the `.gitignore` file
 * Set `output-dir: docs` under project: type: in `_quarto.yml`
 
-3. `gh-pages` branch:
+#### `gh-pages` branch
 
 Select the right option in Settings > Pages > Build and deployment > Branch.
 
@@ -59,7 +67,11 @@ git checkout --orphan gh-pages
 git reset --hard # make sure all changes are committed before running this!
 git commit --allow-empty -m "Initialising gh-pages branch"
 git push origin gh-pages
+```
+Which now you can test-run the website with:
 
+```bash
+git switch main
 quarto publish gh-pages
 ```
 

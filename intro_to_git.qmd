@@ -1,5 +1,116 @@
 ---
-title: "About"
+title: "Intro to Git Commands"
 ---
 
-About this site
+Below are some useful tables that can help streamline your workflow in Git Bash.
+
+## Basic Symbols
+
+| Symbol      | Definition                                        |
+|:-----------|:---------------------------------------------------|
+| `.`         | Current working directory                         |
+| `..`        | Parent working directory                          |
+| `~`         | Home directory                                    |
+| `-<letter>` | One dash makes bash only look at the first letter |
+| `--<word>`  | Two dashes makes bash look at the word as a whole |
+
+: Basic Symbols {#tbl-symbol}
+
+## General Bash Commands
+
+| Bash Command        | Meaning                          |
+|:--------------------|:---------------------------------------------------------|
+| `pwd`| Prints the current working directory path. Stands for "print working directory" |
+| `ls` | Lists files and directories in the current directory. Use `ls -l` for detailed info and use `ls -a` to see all files. Stands for "listing". You can also do `ls <folder>` of a directory of interest that you aren't currently in! |
+| `cd <directory>` | Steps into `<directory>`. Use `cd ..` to go up to parent file. Stands for "change directory". `cd -` takes you to the previous directory you were in, and `cd ~` takes you right back to the computer's home directory. |
+| `mkdir <directory>` | Creates a new directory named `<directory>`. |
+| `rmdir <directory>`| Deletes an empty directory. Use `rm -r <directory>` to delete non-empty ones. |
+|`rm <file>`| Deletes a file. Use `rm -r <directory>` to remove a directory recursively. |
+| `restore <file>` | Restores a file to the last commit you pulled (undos changes made) |
+| `touch <file>` | Creates an empty file named `<file>`. |
+| `echo "text" > file` | Writes "text" into `file`, replacing existing content. |
+| `cat <file>` | Displays the contents of a file. |
+| `mv <source> <target>` | Moves or renames a file or directory. |
+| `cp <source> <target>` | Copies a file. Use `-r` for recursive copying. |
+| `clear` | Clears the terminal screen. |
+| `history` | Shows a list of recently executed commands. |
+| `history > history.txt` | Places history into a `history.txt` file. |
+| `grep "pattern" file` | Searches for "pattern" in a file. |
+| `chmod +x <file>` | Makes a file executable. |
+| `alt`+`shift`+`#` | Comments out whatever is written in the command line for the history output. |
+
+: General Bash Commands {#tbl-bash}
+
+## Git-Specific Commands
+
+| Git Command | Meaning |
+|:-----------------------|:-------------------------------------------------|
+| `git init` | Initializes a new Git repository in the current directory. |
+| `git clone <repo-url>` | Clones a remote repository to your local machine. |
+| `git status` | Shows the current status of the repository. |
+| `git add <file>` | Stages a file for the next commit. Use `git add .` to stage all changes. |
+| `git restore <file>` | Discards any changes in the file in your wd |
+| `git commit -m "msg"` | Commits staged changes with a message. |
+| `git log` | Displays the commit history of the repository. |
+| `git branch` | Lists all branches in the repository. Use `git branch <name>` to create a new branch. |
+| `git checkout <branch>` | Switches to the specified branch. |
+| `git switch -c <branch_name>` \n or `git checkout -b <new-branch>` | To create AND switch to a new branch. |
+| `git fetch --all` | Fetches all changes to all branches |
+| `git merge <branch>` | Merges `<branch>` into the current branch. |
+| `git pull` | Fetches and integrates changes from the remote repository. |
+| `git push` | Pushes committed changes to the remote repository. |
+| `git push origin <branch_name>` | Pushes changes to a remote branch. |
+| `git remote -v` | Lists the remote repositories linked to the local repository. |
+| `git reset --hard <commit>` | Resets the repository to a specific commit, discarding all changes. |
+| `git stash` | Temporarily saves uncommitted changes. Use `git stash pop` to reapply them. |
+
+: Git Commands {#tbl-git}
+
+
+## Flags
+
+| Flag | Definition |
+|:------|:------------------------------------------------------------------|
+| `-a` | Stands for "all"; often used to show all entries, including hidden ones (e.g., `ls -a`). |
+| `-c` | Used to pass a command string to be executed (e.g., `bash -c "echo Hello"`, or `git switch -c patch-docs` to switch to a branch named patch-docs). |
+| `-v` | Stands for "verbose", meaning it provides detailed output of the command execution (e.g., `git branch -v` sees all branches in the repo). |
+| `-f` | Stands for "force", often used to override warnings or prompts (e.g., `rm -f`). |
+| `-r` | Stands for "recursive", allowing commands to act on directories and their contents (e.g., `rm -r`). |
+| `-h` | Stands for "help"; displays usage information for a command (e.g., `ls -h` for human-readable sizes). |
+| `-n` | Often used to indicate a "dry run" where the command is simulated without making actual changes. |
+| `-p` | Commonly used for "preserve" or "prompt" functionality, depending on the command. In `mkdir -p parent/kid`, it allows you to make multiple directories without having to do individual commands, so it "preserves" the call for all files. |
+| `-d` | Often for delete (e.g., `git branch -d <branch_name>` deletes a local branch) |
+| `--help` | Can use after most commands to display usage information and available options (e.g., `ls --help`) |
+
+: "Flags" for commands {#tbl-flags}
+
+## Commands for Undoing
+
+Special thanks to [this](https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git) and [this](https://stackoverflow.com/questions/1146973/how-do-i-revert-all-local-changes-in-git-managed-project-to-previous-state) stack overflow response!
+
+
+| Command | Circumstance | What It Does |
+|---------|--------------|--------------|
+| `git checkout .` | You want to discard all uncommitted changes in your working directory. | Reverts all modified files in the working directory to their state in the last commit, leaving staged changes intact. |
+| `git restore .` | Same as `git checkout .`, but for Git version >= 2.23. | Same as `git checkout .`, restores working directory files to match the last commit. |
+| `git reset` | You want to unstage all changes in the index (staged changes) while keeping working directory changes. | Resets the index to match the current HEAD, effectively unstaging all changes. Unpushed commits remain unless specified otherwise. |
+| `git revert <commit 1> <commit 2>` | You want to undo specific commits in a branch’s history without altering the commit history. | Creates new commits that reverse the changes introduced by the specified commits, preserving history. |
+| `git clean -f` | You want to remove untracked files (e.g., new files not yet added to Git). | Deletes untracked files from the working directory. The `-f` flag forces the removal. |
+| `git clean -fd` | You want to remove untracked directories (e.g., generated or temporary directories). | Deletes untracked directories and their contents. The `-fd` flag forces removal and includes directories. |
+| `git reset --hard` | You want to completely discard all uncommitted changes in both the working directory and index. | Resets the working directory and index to match the current HEAD, erasing all uncommitted changes. |
+| `git reset <commit>` | You want to move the branch pointer to a previous commit, discarding later commits. | Resets the current branch to the specified commit, removing commits after it from history (unless `--soft` is used). |
+| `git reset --soft <commit>` | You want to keep changes from commits but remove the commits themselves. | Moves the branch pointer to the specified commit, keeping changes in the working directory and index for re-committing. |
+| `git checkout <file>` | You want to discard changes to a specific file in the working directory. | Reverts the specified file to its state in the last commit, leaving other files unchanged. |
+| `git restore <file>` | Same as `git checkout <file>`, but for Git version >= 2.23. | Reverts the specified file to its state in the last commit, similar to `git checkout <file>`. |
+| `git stash` | You want to temporarily save uncommitted changes to work on something else. | Saves uncommitted changes (both staged and unstaged) to a stash, reverting the working directory to the last commit. |
+| `git stash pop` | You want to reapply previously stashed changes and remove them from the stash. | Applies the most recent stashed changes to the working directory and removes them from the stash. |
+| `git revert HEAD` | You want to undo the most recent commit while keeping the commit history. | Creates a new commit that reverses the changes made in the last commit (HEAD). |
+| `git clean -f -X` | You want to remove only ignored files (e.g., files matching .gitignore patterns). | Deletes untracked files that are ignored by Git, useful for cleaning build artifacts. |
+| `git clean -f -x` | You want to remove both ignored and untracked files. | Deletes all untracked files, including those ignored by Git, with the `-f` flag to force removal. |
+| `git reset --hard <commit>` | You want to reset the branch and working directory to a specific commit, discarding all changes after it. | Resets the branch, index, and working directory to the specified commit, erasing all subsequent changes. |
+| `git reflog` | You want to recover a commit or branch that was accidentally reset or deleted. | Shows a log of all reference changes (e.g., commits, resets), allowing you to find and restore lost commits using their SHA. |
+| `git checkout <commit> -- <file>` | You want to restore a specific file from a past commit. | Reverts the specified file to its state in the given commit, leaving other files unchanged. |
+| `git rm --cached <file>` | You want to untrack a file but keep it in the working directory. | Removes the file from the index (stops tracking it) but leaves the file in the working directory. |
+
+
+Also [check out this stack overflow response](https://stackoverflow.com/questions/24127507/is-it-possible-to-center-tables-in-a-markdown-file) for information about aligning tables!
