@@ -1,9 +1,9 @@
 ---
-title: "Making Websites"
+title: "Making Websites With Quarto"
 format: html
 ---
 
-## Website Structure
+## Website "Bones"
 
 Start with:
 
@@ -27,9 +27,18 @@ Alternatively, create the following files:
 1. `/(root)`: You are ready simply by doing:
 
 ```
-quarto render
+quarto render index.qmd
 ```
+
+This will make an `index.html` file that git will look for. If you do not have a index.html file in your root folder, it will instead display your `README.md`!
+
 Push all changes to the (main branch) repo, and select the right option in Settings > Pages > Build and deployment > Branch .
 
-2. `docs/`:
+2. `docs/`: There are a few tasks necessary:
+
+* Ensure `docs/` is not blocked in the `.gitignore` file
+* Set `output-dir: docs` under project: type: in `_quarto.yml`
+
 3. `gh-pages` branch:
+
+* Delete any `docs/` folder and block in the `.gitignore` file

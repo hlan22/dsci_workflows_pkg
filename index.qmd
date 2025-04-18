@@ -1,7 +1,18 @@
 ---
-title: "FinalReview"
+title: "Final Exam Review"
 ---
 
-This is a Quarto website.
+Welcome to my DSCI 310 Final Exam Review!
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+This is a review of DSCI 310, but specifically for topics that will be covered on the final. This means there will be less emphasis on topics such as Docker containers, git basics, Renv, etc.
+
+### Learning Outcomes
+
+By the end of the course, students will be able to:
+
+1. Defend and justify the importance of creating data science workflows that are reproducible and trustworthy and the elements that go into such a workflow (e.g., writing clear, robust, accurate and reproducible code, managing and sharing compute environments, defined collaboration strategies, etc).
+2. Constructively criticize the workflows and data analysis of others in regards to its reproducibility and trustworthiness.
+3. Develop a data science project (including code and non-code documents such as reports) that uses reproducible and trustworthy workflows
+4. Demonstrate how to effectively share and collaborate on data science projects and software by creating robust code packages, using reproducible compute environments, and leveraging collaborative development tools.
+5. Defend and justify the benefit of, and employ automated testing regimes, continuous integration and continuous deployment for managing and maintaining data science projects and packages.
+6. Demonstrate strong communication, teamwork, and collaborative skills by working on a significant data science project with peers throughout the course.
