@@ -3,17 +3,6 @@ project:
 
 website:
   title: "Final Exam Review"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - href: making_websites.qmd
-        text: Making Websites With Quarto
-      - href: about.qmd
-        text: Not Sure Yet
-
-website:
-  title: "Final Exam Review"
   sidebar:
     style: "docked"
     search: true
@@ -30,7 +19,6 @@ website:
           - functions.qmd
           - tests.qmd
 
-
 format:
   html:
     theme:
@@ -38,6 +26,3 @@ format:
       - brand
     css: styles.css
     toc: true
-
-
-

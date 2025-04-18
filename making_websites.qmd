@@ -1,13 +1,17 @@
 ---
 title: "Making Websites With Quarto"
-format: html
+format:
+  html:
+    code-copy: true
+execute:
+  eval: false
 ---
 
 ## Website "Bones"
 
 Start with:
 
-```
+```bash
 quarto create
 ```
 
@@ -26,19 +30,74 @@ Alternatively, create the following files:
 
 1. `/(root)`: You are ready simply by doing:
 
-```
+Select the right option in Settings > Pages > Build and deployment > Branch.
+
+```bash
 quarto render index.qmd
 ```
 
 This will make an `index.html` file that git will look for. If you do not have a index.html file in your root folder, it will instead display your `README.md`!
 
-Push all changes to the (main branch) repo, and select the right option in Settings > Pages > Build and deployment > Branch .
+Push all changes, including the rendered page, to the (main branch) repo.
 
 2. `docs/`: There are a few tasks necessary:
+
+Select the right option in Settings > Pages > Build and deployment > Branch.
 
 * Ensure `docs/` is not blocked in the `.gitignore` file
 * Set `output-dir: docs` under project: type: in `_quarto.yml`
 
 3. `gh-pages` branch:
 
-* Delete any `docs/` folder and block in the `.gitignore` file
+Select the right option in Settings > Pages > Build and deployment > Branch.
+
+* Delete any `docs/` folder 
+* block the `docs` and `_site` folder in the `.gitignore` file
+
+```bash
+git checkout --orphan gh-pages
+git reset --hard # make sure all changes are committed before running this!
+git commit --allow-empty -m "Initialising gh-pages branch"
+git push origin gh-pages
+
+quarto publish gh-pages
+```
+
+You can still use the regular `quarto render` or `quarto preview` to build your site locally, but you will no longer need to manually build and push the site to the main branch!
+
+Add a github action to make it automatically build:
+
+```bash
+code .github/workflows/build.yml
+```
+
+And copy the following contents into it:
+
+```bash
+on:
+  workflow_dispatch:
+  push:
+    branches: main
+
+name: Quarto Publish
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
