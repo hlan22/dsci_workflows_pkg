@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Websites With Quarto – Final Exam Review</title>
+<title>Basic Git Concepts – Final Exam Review</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-360dfb76d7d7ff9ffda507c77b5c9c5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-50b4abff8b0f30bb501ab99a3cda6e79.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./quarto_docs.html">Quarto</a></li><li class="breadcrumb-item"><a href="./making_websites.html">Websites With Quarto</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_to_git.html">Basics</a></li><li class="breadcrumb-item"><a href="./git_concepts.html">Git Concepts</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -162,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./git_concepts.html" class="sidebar-item-text sidebar-link">
+  <a href="./git_concepts.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Git Concepts</span></a>
   </div>
 </li>
@@ -220,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./making_websites.html" class="sidebar-item-text sidebar-link active">
+  <a href="./making_websites.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Websites With Quarto</span></a>
   </div>
 </li>
@@ -259,17 +259,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#website-bones" id="toc-website-bones" class="nav-link active" data-scroll-target="#website-bones">Website “Bones”</a></li>
-  <li><a href="#main-locations" id="toc-main-locations" class="nav-link" data-scroll-target="#main-locations">3 Main Locations</a></li>
+  <li><a href="#branches" id="toc-branches" class="nav-link active" data-scroll-target="#branches">Branches</a></li>
+  <li><a href="#github-worklow-and-git-flow" id="toc-github-worklow-and-git-flow" class="nav-link" data-scroll-target="#github-worklow-and-git-flow">GitHub Worklow and Git Flow</a></li>
+  <li><a href="#merge-conflicts" id="toc-merge-conflicts" class="nav-link" data-scroll-target="#merge-conflicts">Merge conflicts</a>
+  <ul class="collapse">
+  <li><a href="#merge-branches" id="toc-merge-branches" class="nav-link" data-scroll-target="#merge-branches">Merge Branches</a></li>
+  <li><a href="#personal-access-tokens-pat" id="toc-personal-access-tokens-pat" class="nav-link" data-scroll-target="#personal-access-tokens-pat">Personal Access Tokens (PAT)</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./quarto_docs.html">Quarto</a></li><li class="breadcrumb-item"><a href="./making_websites.html">Websites With Quarto</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_to_git.html">Basics</a></li><li class="breadcrumb-item"><a href="./git_concepts.html">Git Concepts</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Websites With Quarto</h1>
+<h1 class="title">Basic Git Concepts</h1>
 </div>
 
 
@@ -286,87 +291,96 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Here’s a basic outline as to how to make websites using quarto (and rstudio/vscode)!</p>
-<section id="website-bones" class="level2">
-<h2 class="anchored" data-anchor-id="website-bones">Website “Bones”</h2>
-<p>Start with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> create</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>GitHub is the remote repository where you commit changes to the version control history. At a minimum, you should at least push your work to GitHub at the end of every work session.</p>
+<section id="branches" class="level2">
+<h2 class="anchored" data-anchor-id="branches">Branches</h2>
+<section id="the-benefits-of-branches" class="level4">
+<h4 class="anchored" data-anchor-id="the-benefits-of-branches">The benefits of branches:</h4>
 <ul>
-<li>Select <code>project</code> &gt; <code>website</code> &gt; Directory: <code>/</code> &gt; Title: <code>Final Review</code></li>
-</ul>
-<p>Alternatively, create the following files:</p>
-<ul>
-<li><code>_quarto.yml</code></li>
-<li><code>index.qmd</code></li>
-<li><code>&lt;project_name&gt;.Rproj</code></li>
-<li><code>styles.css</code> (not necessary)</li>
-<li>other <code>.qmd</code> files (not necessary)</li>
-<li>Add files to <code>.gitignore</code></li>
+<li><p>Branches allow you to have a playground for developing and testing new additions to your code, as well as fixes. This playground lets your explore, experiment and test in a safe place - away from others that might be using or depending on the current version of your code.</p></li>
+<li><p>This is perhaps more obviously useful if your project is deployed and has users (e.g., a data visualization dashboard, an R or Python package, a phone app, etc), but this can also be useful for code that make up a data analyses. Because, in addition to the reasons stated above for branching, branching also lets you organize units of work into smaller, more manageable chunks that are easier for collaborators to check over and review.</p></li>
+<li><p>Several branch playgrounds can co-exist, one for each new code addition or fix being worked on. This allows for parallelization of work!</p></li>
 </ul>
 </section>
-<section id="main-locations" class="level2">
-<h2 class="anchored" data-anchor-id="main-locations">3 Main Locations</h2>
-<p>Here are the 3 main locations you can use GitHub Pages for rendering your website!</p>
-<section id="root" class="level4">
-<h4 class="anchored" data-anchor-id="root"><code>/(root)</code></h4>
-<p>You are ready simply by doing:</p>
-<p>Select the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render index.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will make an <code>index.html</code> file that git will look for. If you do not have a index.html file in your root folder, it will instead display your <code>README.md</code>!</p>
-<p>Push all changes, including the rendered page, to the (main branch) repo.</p>
-</section>
-<section id="docs" class="level4">
-<h4 class="anchored" data-anchor-id="docs"><code>docs/</code></h4>
-<p>There are a few tasks necessary:</p>
-<p>Select the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.</p>
+<section id="creating-a-pull-request" class="level4">
+<h4 class="anchored" data-anchor-id="creating-a-pull-request">Creating a pull-request:</h4>
 <ul>
-<li>Ensure <code>docs/</code> is not blocked in the <code>.gitignore</code> file</li>
-<li>Set <code>output-dir: docs</code> under project: type: in <code>_quarto.yml</code></li>
+<li><p>To create a pull request, you click the green button <code>Compare &amp; pull request</code>. In the new page, add a message to describe the changes you have made, scroll down to review the changed files, and the click the green button that reads <code>Create pull request</code>. If you are working together in a team, you could also designate certain team members to review your work and assign relevant labels, via the right hand side panel.</p></li>
+<li><p>The next step is for a collaborator to review your work and merge it in if they approve it.</p></li>
+<li><p>Tutorial 2 is all about creating branches and pull requests. It also makes you create two branches and see the conflict when you try and pull them both despite them editing the same place. This ends in a merge conflict that you can solve in the github interface.</p></li>
 </ul>
 </section>
-<section id="gh-pages-branch" class="level4">
-<h4 class="anchored" data-anchor-id="gh-pages-branch"><code>gh-pages</code> branch</h4>
-<p>Select the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.</p>
+</section>
+<section id="github-worklow-and-git-flow" class="level2">
+<h2 class="anchored" data-anchor-id="github-worklow-and-git-flow">GitHub Worklow and Git Flow</h2>
+<section id="github-workflow" class="level4">
+<h4 class="anchored" data-anchor-id="github-workflow">GitHub Workflow</h4>
 <ul>
-<li>Delete any <code>docs/</code> folder</li>
-<li>block the <code>docs</code> and <code>_site</code> folder in the <code>.gitignore</code> file</li>
+<li>Features a single “main” branch that also serves as the deployment branch, we call this main.
+<ul>
+<li>Every new contribution is done on a new branch (with a meaningful name) created from main.</li>
+<li>Contributions from that new branch are sent back to main by means of a pull request, which ideally is reviewed &amp; tested before merging.</li>
+</ul></li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--orphan</span> gh-pages</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--hard</span> <span class="co"># make sure all changes are committed before running this!</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"Initialising gh-pages branch"</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Which now you can test-run the website with:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch main</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can still use the regular <code>quarto render</code> or <code>quarto preview</code> to build your site locally, but you will no longer need to manually build and push the site to the main branch!</p>
-<p>Add a github action to make it automatically build:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> .github/workflows/build.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>And copy the following contents into it:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">on:</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">workflow_dispatch:</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">push:</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">branches:</span> main</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ex">name:</span> Quarto Publish</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">jobs:</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">build-deploy:</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">runs-on:</span> ubuntu-latest</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">permissions:</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>      <span class="ex">contents:</span> write</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">steps:</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Check out repository</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> actions/checkout@v4</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Set up Quarto</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> quarto-dev/quarto-actions/setup@v2</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Render and Publish</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> quarto-dev/quarto-actions/publish@v2</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        <span class="ex">with:</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>          <span class="ex">target:</span> gh-pages</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        <span class="ex">env:</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>          <span class="ex">GITHUB_TOKEN:</span> <span class="va">${</span><span class="er">{ secrets.GITHUB_TOKEN </span><span class="va">}</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="git-flow" class="level4">
+<h4 class="anchored" data-anchor-id="git-flow">Git Flow</h4>
+<ul>
+<li><strong>Two</strong> “main” branches that last forever, main for deployment and develop where things are tested before they are released to main.</li>
+<li>Three supporting branches: <code>feature</code>, <code>release</code> &amp; <code>hotfix</code>. Both feature &amp; release branches are created from develop. feature branches should be merged into develop before they are incorporated into a release. release branches eventually get merged into main after adequate review and testing.</li>
+</ul>
+</section>
+</section>
+<section id="merge-conflicts" class="level2">
+<h2 class="anchored" data-anchor-id="merge-conflicts">Merge conflicts</h2>
+<ul>
+<li>IMPORTANT: You must know how to deal with multiple types of merge conflicts</li>
+<li>You need to know how to resolve basic file merge conflicts, but also branch merge conflicts</li>
+<li>The two main types of branch merge conflict resolutions involve:
+<ol type="1">
+<li>Manually push back in changes</li>
+<li>Restructure commits so that changes are pushed at a later date</li>
+</ol></li>
+</ul>
+<section id="merge-branches" class="level3">
+<h3 class="anchored" data-anchor-id="merge-branches">Merge Branches</h3>
+<p>What happens when a branch falls behind main? There are two ways you can update the branch.</p>
+<ol type="1">
+<li>Using merge</li>
+</ol>
+<ul>
+<li>How to catch up a branch that has fallen behind the main branch using the command line:
+<ol type="1">
+<li>run <code>git pull origin main</code> to pull any changes from the remote version of main that we might not have</li>
+<li>run <code>git switch &lt;branch&gt;</code> to make sure we are on the branch we want to catch up</li>
+<li>run <code>git merge main</code> to merge the changes</li>
+<li>run <code>git push origin &lt;branch&gt;</code> to push our updated branch to the remote</li>
+</ol></li>
+</ul>
+<p>This bash code is rewritten below for copying convenience:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull origin main</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="op">&lt;</span>branch<span class="op">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge main</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin <span class="op">&lt;</span>branch<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Using rebase
+<ol type="1">
+<li>Make sure everything is committed in your new branch</li>
+<li>Move to the main branch: <code>git switch main</code></li>
+<li>Make sure the main branch is up to date: <code>git pull origin main</code></li>
+<li>Move back over to your branch: <code>git switch &lt;branch&gt;</code></li>
+<li>Update the changes from main: <code>git rebase main</code></li>
+</ol></li>
+</ol>
+<p>This bash code is rewritten below for copying convenience:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch main</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull origin main</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="op">&lt;</span>branch<span class="op">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rebase main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="personal-access-tokens-pat" class="level3">
+<h3 class="anchored" data-anchor-id="personal-access-tokens-pat">Personal Access Tokens (PAT)</h3>
+<p>PATs are important!</p>
 
 
 </section>
