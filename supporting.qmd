@@ -1,5 +1,5 @@
 ---
-title: "supporting"
+title: "Supporting Information For Packages"
 format: html
 ---
 
@@ -11,6 +11,52 @@ format: html
 
 ## Licenses
 
+
+
+
+
 ## README.md Outline
 
-(or README.Rmd outline for that matter)
+Now that your package is on GitHub, the `README.md` file matters.
+It is the package's home page and welcome mat, at least until you decide to give it a website, add a vignette, or submit it to CRAN.
+
+The `use_readme_rmd()` function initializes a basic, executable `README.Rmd` ready for you to edit:
+
+```r
+use_readme_rmd()
+```
+
+In addition to creating `README.Rmd`, this adds some lines to `.Rbuildignore`, and creates a Git pre-commit hook to help you keep `README.Rmd` and `README.md` in sync.
+
+`README.Rmd` already has sections that prompt you to:
+
+-   Describe the purpose of the package.
+-   Provide installation instructions. If a GitHub remote is detected when `use_readme_rmd()` is called, this section is pre-filled with instructions on how to install from GitHub.
+-   Show a bit of usage.
+
+How to populate this skeleton?
+Copy stuff liberally from `DESCRIPTION` and any formal and informal tests or examples you have.
+Anything is better than nothing.
+This is helpful because people probably won't install your package and comb through individual help files to figure out how to use it.
+
+We like to write the `README` in R Markdown, so it can feature actual usage.
+The inclusion of live code also makes it less likely that your `README` grows stale and out-of-sync with your actual package.
+
+To make your own edits, if RStudio has not already done so, open `README.Rmd` for editing.
+Make sure it shows some usage of `str_split_one()`.
+
+The `README.Rmd` we use is here: [README.Rmd](https://github.com/jennybc/regexcite/blob/main/README.Rmd).
+
+Don't forget to render it to make `README.md`!
+The pre-commit hook should remind you if you try to commit `README.Rmd`, but not `README.md`, and also when `README.md` appears to be out-of-date.
+
+The very best way to render `README.Rmd` is with `build_readme()`, because it takes care to render with the most current version of your package, i.e. it installs a temporary copy from the current source.
+
+```r
+build_readme()
+```
+
+You can see the rendered `README.md` simply by [visiting regexcite on GitHub](https://github.com/jennybc/regexcite#readme).
+
+
+

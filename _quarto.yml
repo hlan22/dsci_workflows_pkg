@@ -42,7 +42,7 @@ website:
       - section: "Packages"
         contents:
           - href: making_a_package.qmd
-            text: "Package Building"
+            text: "Making an R Package"
           - href: functions.qmd
             text: "Functions"
           - href: tests.qmd

@@ -1,9 +1,7 @@
 ---
-title: "Steps For Making A Package"
+title: "Steps For Making An R Package"
 format: html
 ---
-
-## R Packages
 
 This explanation has been taken entirely from [The Whole Game](https://r-pkgs.org/whole-game.html), edited and simplified by me. Credit is given completely to those authors!
 
@@ -210,6 +208,11 @@ But we're not done yet! We still need to trigger the conversion of this new roxy
 document()
 ```
 
+The call `document()` does two main jobs:
+
+1.  Converts our roxygen comments into proper R documentation.
+2.  (Re)generates `NAMESPACE`.
+
 You should now be able to preview your help file for your function like so:
 
 ```r
@@ -243,6 +246,7 @@ Your package should pass `R CMD check` cleanly now and forever more: 0 errors, 0
 ```r
 check()
 ```
+
 ---
 
 ## `install()`
@@ -368,34 +372,9 @@ str_split_one <- function(string, pattern, n = Inf) {
 
 Don't forget to also update the test file!
 
-Here are the updated contents of `tests/testthat/test-str_split_one.R`.
-In addition to the change in the function's name and arguments, we've added a couple more tests.
+Before we take the new `str_split_one()` out for a test drive, we need to call `document()`. Why? We need to regenerate the `NAMESPACE` file to include the new imports.
 
-```r
-test_that("str_split_one() splits a string", {
-  expect_equal(str_split_one("a,b,c", ","), c("a", "b", "c"))
-})
-
-test_that("str_split_one() errors if input length > 1", {
-  expect_error(str_split_one(c("a,b","c,d"), ","))
-})
-
-test_that("str_split_one() exposes features of stringr::str_split()", {
-  expect_equal(str_split_one("a,b,c", ",", n = 2), c("a", "b,c"))
-  expect_equal(str_split_one("a.b", stringr::fixed(".")), c("a", "b"))
-})
-```
-
-Before we take the new `str_split_one()` out for a test drive, we need to call `document()`.
-Why?
-Remember that `document()` does two main jobs:
-
-1.  Converts our roxygen comments into proper R documentation.
-2.  (Re)generates `NAMESPACE`.
-
-The second job is especially important here, since we will no longer export `function-name()` and we will newly export `str_split_one()`.
-Don't be dismayed by the warning about `"Objects listed as exports, but not present in namespace: function-name"`.
-That always happens when you remove something from the namespace.
+Don't be dismayed by the warning about `"Objects listed as exports, but not present in namespace: function-name"`. That always happens when you remove something from the namespace.
 
 ```r
 document()
@@ -407,19 +386,19 @@ Try out the new `str_split_one()` function by simulating package installation vi
 load_all()
 str_split_one("a, b, c", pattern = ", ")
 ```
+
 ---
 
 ## `use_github()`
 
-You've seen us making commits during the development process for your package.
-Our use of version control and the decision to expose the development process means you can inspect the state of the regexcite source at each developmental stage.
-By looking at so-called diffs, you can see exactly how each devtools helper function modifies the source files that constitute the regexcite package.
+You've seen us making commits during the development process for your package. By looking at diffs, you can see exactly how each `devtools` helper function modifies the source files that make up the package.
 
-How would you connect your local regexcite package and Git repository to a companion repository on GitHub?
-Here are three approaches:
+How would you connect your local package and Git repository to a companion repository on GitHub? Here are three approaches:
 
-1.  [`use_github()`](https://usethis.r-lib.org/reference/use_github.html) is a helper that we recommend for the long-term. We won't demonstrate it here because it requires some credential setup on your end. We also don't want to tear down and rebuild the public regexcite package every time we build this book.
+1.  [`use_github()`](https://usethis.r-lib.org/reference/use_github.html) is a helper that we recommend for the long-term.
+
 2.  Set up the GitHub repo first! It sounds counter-intuitive, but the easiest way to get your work onto GitHub is to initiate there, then use RStudio to start working in a synced local copy. This approach is described in Happy Git's workflows [New project, GitHub first](https://happygitwithr.com/new-github-first.html) and [Existing project, GitHub first](https://happygitwithr.com/existing-github-first.html).
+
 3.  Command line Git can always be used to add a remote repository *post hoc*. This is described in the Happy Git workflow [Existing project, GitHub last](https://happygitwithr.com/existing-github-last.html).
 
 Any of these approaches will connect your local project to a GitHub repo, public or private, which you can push to or pull from using the Git client built into RStudio.
@@ -427,6 +406,8 @@ Any of these approaches will connect your local project to a GitHub repo, public
 ---
 
 ## `use_readme_rmd()`
+
+Please see [the README section in the Badges, Licenses & More page](#supporting.qmd) for more thorough information!
 
 Now that your package is on GitHub, the `README.md` file matters.
 It is the package's home page and welcome mat, at least until you decide to give it a website, add a vignette, or submit it to CRAN.
@@ -437,40 +418,17 @@ The `use_readme_rmd()` function initializes a basic, executable `README.Rmd` rea
 use_readme_rmd()
 ```
 
-In addition to creating `README.Rmd`, this adds some lines to `.Rbuildignore`, and creates a Git pre-commit hook to help you keep `README.Rmd` and `README.md` in sync.
+* This creates `README.Rmd`, 
+* adds some lines to `.Rbuildignore`
+* creates a Git pre-commit hook to help you keep `README.Rmd` and `README.md` in sync.
 
-`README.Rmd` already has sections that prompt you to:
+Fill out the `README.Rmd` file!
 
--   Describe the purpose of the package.
--   Provide installation instructions. If a GitHub remote is detected when `use_readme_rmd()` is called, this section is pre-filled with instructions on how to install from GitHub.
--   Show a bit of usage.
-
-How to populate this skeleton?
-Copy stuff liberally from `DESCRIPTION` and any formal and informal tests or examples you have.
-Anything is better than nothing.
-This is helpful because people probably won't install your package and comb through individual help files to figure out how to use it.
-
-We like to write the `README` in R Markdown, so it can feature actual usage.
-The inclusion of live code also makes it less likely that your `README` grows stale and out-of-sync with your actual package.
-
-To make your own edits, if RStudio has not already done so, open `README.Rmd` for editing.
-Make sure it shows some usage of `str_split_one()`.
-
-The `README.Rmd` we use is here: [README.Rmd](https://github.com/jennybc/regexcite/blob/main/README.Rmd).
-
-Don't forget to render it to make `README.md`!
-The pre-commit hook should remind you if you try to commit `README.Rmd`, but not `README.md`, and also when `README.md` appears to be out-of-date.
-
-The very best way to render `README.Rmd` is with `build_readme()`, because it takes care to render with the most current version of your package, i.e. it installs a temporary copy from the current source.
+Don't forget to render it to make `README.md`:
 
 ```r
 build_readme()
 ```
-
-You can see the rendered `README.md` simply by [visiting regexcite on GitHub](https://github.com/jennybc/regexcite#readme).
-
-Finally, don't forget to do one last commit.
-And push, if you're using GitHub.
 
 ---
 
@@ -483,17 +441,11 @@ check()
 ```
 
 Your package should have no errors, warnings or notes.
-This would be a good time to re-build and install it properly.
-And celebrate!
+This would be a good time to re-build and install it properly, and celebrate!
 
 ```r
 install()
 ```
-
-Feel free to visit the [regexcite package](https://github.com/jennybc/regexcite) on GitHub, which appears exactly as developed here.
-The commit history reflects each individual step, so use the diffs to see the addition and modification of files, as the package evolved.
-The rest of this book goes in greater detail for each step you've seen here and much more.
-
 
 ## Review
 
@@ -520,8 +472,3 @@ You will call these functions multiple times per day or per hour, during develop
 -   `document()`
 -   `test()`
 -   `check()`
-
-
-## Python Packages
-
-(add info talking about python packages)
