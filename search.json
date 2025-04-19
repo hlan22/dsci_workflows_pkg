@@ -2,210 +2,188 @@
   {
     "objectID": "making_a_package.html",
     "href": "making_a_package.html",
-    "title": "Steps For Making A Package",
+    "title": "Steps For Making An R Package",
     "section": "",
     "text": "This explanation has been taken entirely from The Whole Game, edited and simplified by me. Credit is given completely to those authors!",
     "crumbs": [
       "Packages",
-      "Package Building"
-    ]
-  },
-  {
-    "objectID": "making_a_package.html#r-packages",
-    "href": "making_a_package.html#r-packages",
-    "title": "Steps For Making A Package",
-    "section": "",
-    "text": "This explanation has been taken entirely from The Whole Game, edited and simplified by me. Credit is given completely to those authors!",
-    "crumbs": [
-      "Packages",
-      "Package Building"
+      "Making an R Package"
     ]
   },
   {
     "objectID": "making_a_package.html#devtools",
     "href": "making_a_package.html#devtools",
-    "title": "Steps For Making A Package",
+    "title": "Steps For Making An R Package",
     "section": "devtools",
     "text": "devtools\nLoad the devtools package, which is the public face of a set of packages that support various aspects of package development. The most obvious of these packages is the usethis package, which you’ll see is also being loaded.\ninstall.packages(\"devtools\")\nlibrary(devtools)\n\nPackage Components\nFeatures commonly seen in released packages:\n\nFunctions to address a specific need\nVersion control and an open development process.\nAccess to established workflows for installation, getting help, and checking quality.\n\nDocumentation for individual functions via roxygen2.\nUnit testing with testthat.\nDocumentation for the package as a whole via an executable README.Rmd.",
     "crumbs": [
       "Packages",
-      "Package Building"
+      "Making an R Package"
     ]
   },
   {
     "objectID": "making_a_package.html#create_package",
     "href": "making_a_package.html#create_package",
-    "title": "Steps For Making A Package",
+    "title": "Steps For Making An R Package",
     "section": "create_package()",
     "text": "create_package()\nCall create_package() to initialize a new package in a directory on your computer.\n\ncreate_package() will automatically create that directory if it doesn’t exist yet.\nMake a deliberate choice about where to create this package on your computer. It should not be nested inside another RStudio Project, R package, or Git repo.\nPut your chosen path into a create_package() call like this:\n\ncreate_package(\"~/git/pathToPackage\")\nIf you’re working in RStudio, you should find yourself in a new instance of RStudio, opened into your new package (and Project). RStudio has special handling for packages and you should now see a Build tab in the same pane as Environment and History.\nYou probably need to call library(devtools) again, because create_package() has probably dropped you into a fresh R session, in your new package.\nlibrary(devtools)\nWhat’s in this new directory that is an R package and an RStudio Project?\n\n\n\nTable 1: Files in an R Package\n\n\n\n\n\n\n\n\n\nFile\nUse\n\n\n\n\n.Rbuildignore\nLists files that we need to have around but that should not be included when building the R package from source.\n\n\n.Rproj.user\nIf you have it, is a directory used internally by RStudio.\n\n\n.gitignore\nAnticipates Git usage and tells Git to ignore some standard, behind-the-scenes files created by R and RStudio.\n\n\nDESCRIPTION\nProvides metadata about your package.\n\n\nNAMESPACE\nDeclares the functions your package exports for external use and the external functions your package imports from other packages.\n\n\nR/ directory\nThe “business end” of your package. It will soon contain .R files with function definitions.\n\n\n*.Rproj\nThe file that makes this directory an RStudio Project. Even if you don’t use RStudio, this file is harmless.",
     "crumbs": [
       "Packages",
-      "Package Building"
+      "Making an R Package"
     ]
   },
   {
     "objectID": "making_a_package.html#use_git",
     "href": "making_a_package.html#use_git",
-    "title": "Steps For Making A Package",
+    "title": "Steps For Making An R Package",
     "section": "use_git()",
     "text": "use_git()\nThis directory is an R package and an RStudio Project. We can also make it also a Git repository with use_git().\nuse_git()\n\nThe only thing that changes is the creation of a .git directory, which is hidden in most contexts, including the RStudio file browser. Its existence is evidence that we have indeed initialized a Git repo here.\nIf you’re using RStudio, it probably requested permission to relaunch itself in this Project, which you should do. You can do so manually by quitting, then relaunching RStudio by double clicking on your project file.",
     "crumbs": [
       "Packages",
-      "Package Building"
+      "Making an R Package"
     ]
   },
   {
     "objectID": "making_a_package.html#use_r",
     "href": "making_a_package.html#use_r",
-    "title": "Steps For Making A Package",
+    "title": "Steps For Making An R Package",
     "section": "use_r()",
     "text": "use_r()\nNow we get to write functions for our package!\nRefer to the functions page for more information.\nWhere should you put the definition of your function?\n\nSave it in a .R file, in the R/ sub-directory of your package.\nA reasonable starting position is to make a new .R file for each user-facing function in your package and name the file after the function. As you add more functions, you’ll want to relax this and begin to group related functions together.\nNote: The function file should NOT contain any of the other top-level code we have recently executed, such as library calls library(devtools), or other things such as use_git().\n\nYou can use the use_r() function to help create new files in the R/ directory:\nuse_r(\"function_name\")",
     "crumbs": [
       "Packages",
-      "Package Building"
+      "Making an R Package"
     ]
   },
   {
     "objectID": "making_a_package.html#sec-whole-game-load-all",
     "href": "making_a_package.html#sec-whole-game-load-all",
-    "title": "Steps For Making A Package",
+    "title": "Steps For Making An R Package",
     "section": "load_all()",
     "text": "load_all()\nHow do we test drive our functions though? Call load_all() to make the functions you made available for experimentation.\nload_all()\n\nload_all() simulates the process of building, installing, and attaching the package.\nAs your package accumulates more functions, some exported, some not, some of which call each other, some of which call functions from packages you depend on, load_all() gives you a much more accurate sense of how the package is developing than test driving functions defined in the global environment.\nIt also allows much faster iteration than actually building, installing, and attaching the package.\n\nNote that load_all() has made the functions available, although it does not exist in the global environment. You can check with the following:\nexists(\"function-name\", where = globalenv(), inherits = FALSE)\nIf you see TRUE instead of FALSE, that indicates you’re still using a script-oriented workflow and sourcing your functions. Here’s how to get back on track:\n\nClean out the global environment and restart R.\nRe-attach devtools with library(devtools) and re-load your functions with load_all().\nRedefine the test input and call your function again.\nRun exists(\"function-name\", where = globalenv(), inherits = FALSE) again and you should see FALSE.",
     "crumbs": [
       "Packages",
-      "Package Building"
+      "Making an R Package"
     ]
   },
   {
     "objectID": "making_a_package.html#check",
     "href": "making_a_package.html#check",
-    "title": "Steps For Making A Package",
+    "title": "Steps For Making An R Package",
     "section": "check()",
     "text": "check()\nWe have informal, empirical evidence that our functions work. But how can we be sure that all the moving parts of the package still work?\nR CMD check, executed in the shell, is the gold standard for checking that an R package is in full working order. check() is a convenient way to run this without leaving your R session.\ncheck()\nNote that check() produces rather voluminous output, optimized for interactive consumption.\nAt this point, we expect 1 warning (and 0 errors, 0 notes):\nNon-standard license specification:\n  `use_mit_license()`, `use_gpl3_license()` \n   or friends to pick a license\nShout out to this clear description of different licenses: Pick a License, Any License. – Jeff Atwood\nWe currently have a placeholder in the License field of DESCRIPTION that’s deliberately invalid and suggests a resolution.\nLicense: `use_mit_license()`, `use_gpl3_license()` \n          or friends to pick a license\nTo configure a valid license for the package, call use_mit_license().\nuse_mit_license()\nThis configures the License field correctly for the MIT license, which promises to name the copyright holders and year in a LICENSE file. Open the newly created LICENSE file and confirm it looks something like this:\nYEAR: 2025\nCOPYRIGHT HOLDER: regexcite authors\n\nLike other license helpers, use_mit_license() also puts a copy of the full license in LICENSE.md and adds this file to .Rbuildignore.\nIt’s considered a best practice to include a full license in your package’s source, such as on GitHub, but CRAN disallows the inclusion of this file in a package tarball.",
     "crumbs": [
       "Packages",
-      "Package Building"
+      "Making an R Package"
     ]
   },
   {
     "objectID": "making_a_package.html#description",
     "href": "making_a_package.html#description",
-    "title": "Steps For Making A Package",
+    "title": "Steps For Making An R Package",
     "section": "DESCRIPTION",
     "text": "DESCRIPTION\nThe DESCRIPTION file provides metadata about your package.\nMake these edits:\n\nMake yourself the author. If you don’t have an ORCID (a research ID), you can omit the comment = ... portion.\nWrite some descriptive text in the Title and Description fields.\nEnsure you have a license\n\nWhen you’re done, DESCRIPTION should look similar to this:\nPackage: regexcite\nTitle: Make Regular Expressions More Exciting\nVersion: 0.0.0.9000\nAuthors@R: \n    person(\"Jane\", \"Doe\", , \"jane@example.com\", role = c(\"aut\", \"cre\"))\nDescription: Convenience functions to make some common tasks with string\n    manipulation and regular expressions a bit easier.\nLicense: MIT + file LICENSE\nEncoding: UTF-8\nRoxygen: list(markdown = TRUE)\nRoxygenNote: 7.1.2",
     "crumbs": [
       "Packages",
-      "Package Building"
+      "Making an R Package"
     ]
   },
   {
     "objectID": "making_a_package.html#sec-whole-game-document",
     "href": "making_a_package.html#sec-whole-game-document",
-    "title": "Steps For Making A Package",
+    "title": "Steps For Making An R Package",
     "section": "document()",
-    "text": "document()\nLearn how to write Roxygen statements on the functions page\nBut we’re not done yet! We still need to trigger the conversion of this new roxygen comment into man/function-name.Rd with document():\ndocument()\nYou should now be able to preview your help file for your function like so:\n?function-name\n\nYou’ll see a message like “Rendering development documentation for function-name”, which reminds that you are basically previewing draft documentation. That is, this documentation is present in your package’s source, but is not yet present in an installed package.\nIf it doesn’t work for you, you may need to call load_all() first, then try again.\n\n\nNAMESPACE Updates\nIn addition to converting function-name()’s special comment into man/function-name.Rd, the call to document() updates the NAMESPACE file, based on @export tags found in roxygen comments.\nOpen NAMESPACE for inspection. The contents should be:\n# Generated by roxygen2: do not edit by hand\n\nexport(function-name)\n\nThe export directive in NAMESPACE is what makes function-name() available to a user after attaching your-package via library(your-package). J* ust as it is entirely possible to author .Rd files “by hand”, you can manage NAMESPACE explicitly yourself. But we choose to delegate this to devtools (and roxygen2).",
+    "text": "document()\nLearn how to write Roxygen statements on the functions page\nBut we’re not done yet! We still need to trigger the conversion of this new roxygen comment into man/function-name.Rd with document():\ndocument()\nThe call document() does two main jobs:\n\nConverts our roxygen comments into proper R documentation.\n(Re)generates NAMESPACE.\n\nYou should now be able to preview your help file for your function like so:\n?function-name\n\nYou’ll see a message like “Rendering development documentation for function-name”, which reminds that you are basically previewing draft documentation. That is, this documentation is present in your package’s source, but is not yet present in an installed package.\nIf it doesn’t work for you, you may need to call load_all() first, then try again.\n\n\nNAMESPACE Updates\nIn addition to converting function-name()’s special comment into man/function-name.Rd, the call to document() updates the NAMESPACE file, based on @export tags found in roxygen comments.\nOpen NAMESPACE for inspection. The contents should be:\n# Generated by roxygen2: do not edit by hand\n\nexport(function-name)\n\nThe export directive in NAMESPACE is what makes function-name() available to a user after attaching your-package via library(your-package). J* ust as it is entirely possible to author .Rd files “by hand”, you can manage NAMESPACE explicitly yourself. But we choose to delegate this to devtools (and roxygen2).",
     "crumbs": [
       "Packages",
-      "Package Building"
+      "Making an R Package"
     ]
   },
   {
     "objectID": "making_a_package.html#check-again",
     "href": "making_a_package.html#check-again",
-    "title": "Steps For Making A Package",
+    "title": "Steps For Making An R Package",
     "section": "check() again",
     "text": "check() again\nYour package should pass R CMD check cleanly now and forever more: 0 errors, 0 warnings, 0 notes.\ncheck()",
     "crumbs": [
       "Packages",
-      "Package Building"
+      "Making an R Package"
     ]
   },
   {
     "objectID": "making_a_package.html#install",
     "href": "making_a_package.html#install",
-    "title": "Steps For Making A Package",
+    "title": "Steps For Making An R Package",
     "section": "install()",
     "text": "install()\nNow that we know we have a minimum viable product, let’s install your package into your library via install():\ninstall()\nAfter installation is complete, we can attach and use your package like any other package. Let’s revisit our small example from the top.\nlibrary(yourPackage)\n\nstuff &lt;- 1\n\nfunction-name(stuff)\nThis is also a good time to restart your R session and ensure you have a clean workspace.",
     "crumbs": [
       "Packages",
-      "Package Building"
+      "Making an R Package"
     ]
   },
   {
     "objectID": "making_a_package.html#use_testthat",
     "href": "making_a_package.html#use_testthat",
-    "title": "Steps For Making A Package",
+    "title": "Steps For Making An R Package",
     "section": "use_testthat()",
     "text": "use_testthat()\nPlease see the tests page for more information on making tests.\nWe should test our functions to ensure they follow the behavior we expect.\nuse_testthat()\n\nThis initializes the unit testing machinery for your package.\nIt adds Suggests: testthat to DESCRIPTION, creates the directory tests/testthat/, and adds the script tests/testthat.R.\n\nThe helper use_test() opens and/or creates a test file.\nuse_test(\"function-name\")\nMake sure to write the actual tests!\nRun your tests as such:\ntest()\n\nYour tests are also run whenever you check() the package.",
     "crumbs": [
       "Packages",
-      "Package Building"
+      "Making an R Package"
     ]
   },
   {
     "objectID": "making_a_package.html#use_package",
     "href": "making_a_package.html#use_package",
-    "title": "Steps For Making A Package",
+    "title": "Steps For Making An R Package",
     "section": "use_package()",
-    "text": "use_package()\nYou will inevitably want to use a function from another package in your own package. We will need to use package-specific methods for declaring the other packages we need (i.e. our dependencies) and for using these packages in ours. If you plan to submit a package to CRAN, note that this even applies to functions in packages that you think of as “always available”, such as stats::median() or utils::head().\nOne common dilemma when using R’s regular expression functions is uncertainty about whether to request perl = TRUE or perl = FALSE. And then there are often, but not always, other arguments that alter how patterns are matched, such as fixed, ignore.case, and invert. It can be hard to keep track of which functions use which arguments and how the arguments interact, so many users never get to the point where they retain these details without rereading the docs.\nLet’s imagine you decide you’d rather build your package using the stringr (and stringi) package than base R’s regular expression functions.\nFirst, declare your general intent to use some functions from the stringr namespace with use_package():\nuse_package(\"stringr\")\nThis adds the stringr package to the Imports field of DESCRIPTION. And that is all it does.\nLet’s revisit function-name() to make it more stringr-like.\nHere are some changes to include:\n\nRename the function to str_split_one(), to signal that it is a wrapper around stringr::str_split().\nAdopt the argument names from stringr::str_split(). Now we have string and pattern (and n), instead of x and split.\nIntroduce a bit of argument checking and edge case handling. This is unrelated to the switch to stringr and would be equally beneficial in the version built on strsplit().\nUse the package::function() form when calling stringr::str_split(). This specifies that we want to call the str_split() function from the stringr namespace. There is more than one way to call a function from another package.\n\nBut now we need to rename the function file based on the new function name!\nBecause this comes up fairly often in real life, we have the rename_files() function, which choreographs the renaming of a file in R/ and its associated companion files below test/.\nrename_files(\"function-name\", \"new-function-name\")\nHere are the updated contents of R/str_split_one.R. In addition to changing the function definition, we’ve also updated the roxygen header to reflect the new arguments and to include examples that show off the stringr features.\n#' Split a string\n#'\n#' @param string A character vector with, at most, one element.\n#' @inheritParams stringr::str_split\n#'\n#' @return A character vector.\n#' @export\n#'\n#' @examples\n#' x &lt;- \"alfa,bravo,charlie,delta\"\n#' str_split_one(x, pattern = \",\")\n#' str_split_one(x, pattern = \",\", n = 2)\n#'\n#' y &lt;- \"192.168.0.1\"\n#' str_split_one(y, pattern = stringr::fixed(\".\"))\nstr_split_one &lt;- function(string, pattern, n = Inf) {\n  stopifnot(is.character(string), length(string) &lt;= 1)\n  if (length(string) == 1) {\n    stringr::str_split(string = string, pattern = pattern, n = n)[[1]]\n  } else {\n    character()\n  }\n}\nDon’t forget to also update the test file!\nHere are the updated contents of tests/testthat/test-str_split_one.R. In addition to the change in the function’s name and arguments, we’ve added a couple more tests.\ntest_that(\"str_split_one() splits a string\", {\n  expect_equal(str_split_one(\"a,b,c\", \",\"), c(\"a\", \"b\", \"c\"))\n})\n\ntest_that(\"str_split_one() errors if input length &gt; 1\", {\n  expect_error(str_split_one(c(\"a,b\",\"c,d\"), \",\"))\n})\n\ntest_that(\"str_split_one() exposes features of stringr::str_split()\", {\n  expect_equal(str_split_one(\"a,b,c\", \",\", n = 2), c(\"a\", \"b,c\"))\n  expect_equal(str_split_one(\"a.b\", stringr::fixed(\".\")), c(\"a\", \"b\"))\n})\nBefore we take the new str_split_one() out for a test drive, we need to call document(). Why? Remember that document() does two main jobs:\n\nConverts our roxygen comments into proper R documentation.\n(Re)generates NAMESPACE.\n\nThe second job is especially important here, since we will no longer export function-name() and we will newly export str_split_one(). Don’t be dismayed by the warning about \"Objects listed as exports, but not present in namespace: function-name\". That always happens when you remove something from the namespace.\ndocument()\nTry out the new str_split_one() function by simulating package installation via load_all():\nload_all()\nstr_split_one(\"a, b, c\", pattern = \", \")",
+    "text": "use_package()\nYou will inevitably want to use a function from another package in your own package. We will need to use package-specific methods for declaring the other packages we need (i.e. our dependencies) and for using these packages in ours. If you plan to submit a package to CRAN, note that this even applies to functions in packages that you think of as “always available”, such as stats::median() or utils::head().\nOne common dilemma when using R’s regular expression functions is uncertainty about whether to request perl = TRUE or perl = FALSE. And then there are often, but not always, other arguments that alter how patterns are matched, such as fixed, ignore.case, and invert. It can be hard to keep track of which functions use which arguments and how the arguments interact, so many users never get to the point where they retain these details without rereading the docs.\nLet’s imagine you decide you’d rather build your package using the stringr (and stringi) package than base R’s regular expression functions.\nFirst, declare your general intent to use some functions from the stringr namespace with use_package():\nuse_package(\"stringr\")\nThis adds the stringr package to the Imports field of DESCRIPTION. And that is all it does.\nLet’s revisit function-name() to make it more stringr-like.\nHere are some changes to include:\n\nRename the function to str_split_one(), to signal that it is a wrapper around stringr::str_split().\nAdopt the argument names from stringr::str_split(). Now we have string and pattern (and n), instead of x and split.\nIntroduce a bit of argument checking and edge case handling. This is unrelated to the switch to stringr and would be equally beneficial in the version built on strsplit().\nUse the package::function() form when calling stringr::str_split(). This specifies that we want to call the str_split() function from the stringr namespace. There is more than one way to call a function from another package.\n\nBut now we need to rename the function file based on the new function name!\nBecause this comes up fairly often in real life, we have the rename_files() function, which choreographs the renaming of a file in R/ and its associated companion files below test/.\nrename_files(\"function-name\", \"new-function-name\")\nHere are the updated contents of R/str_split_one.R. In addition to changing the function definition, we’ve also updated the roxygen header to reflect the new arguments and to include examples that show off the stringr features.\n#' Split a string\n#'\n#' @param string A character vector with, at most, one element.\n#' @inheritParams stringr::str_split\n#'\n#' @return A character vector.\n#' @export\n#'\n#' @examples\n#' x &lt;- \"alfa,bravo,charlie,delta\"\n#' str_split_one(x, pattern = \",\")\n#' str_split_one(x, pattern = \",\", n = 2)\n#'\n#' y &lt;- \"192.168.0.1\"\n#' str_split_one(y, pattern = stringr::fixed(\".\"))\nstr_split_one &lt;- function(string, pattern, n = Inf) {\n  stopifnot(is.character(string), length(string) &lt;= 1)\n  if (length(string) == 1) {\n    stringr::str_split(string = string, pattern = pattern, n = n)[[1]]\n  } else {\n    character()\n  }\n}\nDon’t forget to also update the test file!\nBefore we take the new str_split_one() out for a test drive, we need to call document(). Why? We need to regenerate the NAMESPACE file to include the new imports.\nDon’t be dismayed by the warning about \"Objects listed as exports, but not present in namespace: function-name\". That always happens when you remove something from the namespace.\ndocument()\nTry out the new str_split_one() function by simulating package installation via load_all():\nload_all()\nstr_split_one(\"a, b, c\", pattern = \", \")",
     "crumbs": [
       "Packages",
-      "Package Building"
+      "Making an R Package"
     ]
   },
   {
     "objectID": "making_a_package.html#use_github",
     "href": "making_a_package.html#use_github",
-    "title": "Steps For Making A Package",
+    "title": "Steps For Making An R Package",
     "section": "use_github()",
-    "text": "use_github()\nYou’ve seen us making commits during the development process for your package. Our use of version control and the decision to expose the development process means you can inspect the state of the regexcite source at each developmental stage. By looking at so-called diffs, you can see exactly how each devtools helper function modifies the source files that constitute the regexcite package.\nHow would you connect your local regexcite package and Git repository to a companion repository on GitHub? Here are three approaches:\n\nuse_github() is a helper that we recommend for the long-term. We won’t demonstrate it here because it requires some credential setup on your end. We also don’t want to tear down and rebuild the public regexcite package every time we build this book.\nSet up the GitHub repo first! It sounds counter-intuitive, but the easiest way to get your work onto GitHub is to initiate there, then use RStudio to start working in a synced local copy. This approach is described in Happy Git’s workflows New project, GitHub first and Existing project, GitHub first.\nCommand line Git can always be used to add a remote repository post hoc. This is described in the Happy Git workflow Existing project, GitHub last.\n\nAny of these approaches will connect your local project to a GitHub repo, public or private, which you can push to or pull from using the Git client built into RStudio.",
+    "text": "use_github()\nYou’ve seen us making commits during the development process for your package. By looking at diffs, you can see exactly how each devtools helper function modifies the source files that make up the package.\nHow would you connect your local package and Git repository to a companion repository on GitHub? Here are three approaches:\n\nuse_github() is a helper that we recommend for the long-term.\nSet up the GitHub repo first! It sounds counter-intuitive, but the easiest way to get your work onto GitHub is to initiate there, then use RStudio to start working in a synced local copy. This approach is described in Happy Git’s workflows New project, GitHub first and Existing project, GitHub first.\nCommand line Git can always be used to add a remote repository post hoc. This is described in the Happy Git workflow Existing project, GitHub last.\n\nAny of these approaches will connect your local project to a GitHub repo, public or private, which you can push to or pull from using the Git client built into RStudio.",
     "crumbs": [
       "Packages",
-      "Package Building"
+      "Making an R Package"
     ]
   },
   {
     "objectID": "making_a_package.html#use_readme_rmd",
     "href": "making_a_package.html#use_readme_rmd",
-    "title": "Steps For Making A Package",
+    "title": "Steps For Making An R Package",
     "section": "use_readme_rmd()",
-    "text": "use_readme_rmd()\nNow that your package is on GitHub, the README.md file matters. It is the package’s home page and welcome mat, at least until you decide to give it a website, add a vignette, or submit it to CRAN.\nThe use_readme_rmd() function initializes a basic, executable README.Rmd ready for you to edit:\nuse_readme_rmd()\nIn addition to creating README.Rmd, this adds some lines to .Rbuildignore, and creates a Git pre-commit hook to help you keep README.Rmd and README.md in sync.\nREADME.Rmd already has sections that prompt you to:\n\nDescribe the purpose of the package.\nProvide installation instructions. If a GitHub remote is detected when use_readme_rmd() is called, this section is pre-filled with instructions on how to install from GitHub.\nShow a bit of usage.\n\nHow to populate this skeleton? Copy stuff liberally from DESCRIPTION and any formal and informal tests or examples you have. Anything is better than nothing. This is helpful because people probably won’t install your package and comb through individual help files to figure out how to use it.\nWe like to write the README in R Markdown, so it can feature actual usage. The inclusion of live code also makes it less likely that your README grows stale and out-of-sync with your actual package.\nTo make your own edits, if RStudio has not already done so, open README.Rmd for editing. Make sure it shows some usage of str_split_one().\nThe README.Rmd we use is here: README.Rmd.\nDon’t forget to render it to make README.md! The pre-commit hook should remind you if you try to commit README.Rmd, but not README.md, and also when README.md appears to be out-of-date.\nThe very best way to render README.Rmd is with build_readme(), because it takes care to render with the most current version of your package, i.e. it installs a temporary copy from the current source.\nbuild_readme()\nYou can see the rendered README.md simply by visiting regexcite on GitHub.\nFinally, don’t forget to do one last commit. And push, if you’re using GitHub.",
+    "text": "use_readme_rmd()\nPlease see the README section in the Badges, Licenses & More page for more thorough information!\nNow that your package is on GitHub, the README.md file matters. It is the package’s home page and welcome mat, at least until you decide to give it a website, add a vignette, or submit it to CRAN.\nThe use_readme_rmd() function initializes a basic, executable README.Rmd ready for you to edit:\nuse_readme_rmd()\n\nThis creates README.Rmd,\nadds some lines to .Rbuildignore\ncreates a Git pre-commit hook to help you keep README.Rmd and README.md in sync.\n\nFill out the README.Rmd file!\nDon’t forget to render it to make README.md:\nbuild_readme()",
     "crumbs": [
       "Packages",
-      "Package Building"
+      "Making an R Package"
     ]
   },
   {
     "objectID": "making_a_package.html#the-end-check-and-install",
     "href": "making_a_package.html#the-end-check-and-install",
-    "title": "Steps For Making A Package",
+    "title": "Steps For Making An R Package",
     "section": "The end: check() and install()",
-    "text": "The end: check() and install()\nLet’s run check() again to make sure all is still well.\ncheck()\nYour package should have no errors, warnings or notes. This would be a good time to re-build and install it properly. And celebrate!\ninstall()\nFeel free to visit the regexcite package on GitHub, which appears exactly as developed here. The commit history reflects each individual step, so use the diffs to see the addition and modification of files, as the package evolved. The rest of this book goes in greater detail for each step you’ve seen here and much more.",
+    "text": "The end: check() and install()\nLet’s run check() again to make sure all is still well.\ncheck()\nYour package should have no errors, warnings or notes. This would be a good time to re-build and install it properly, and celebrate!\ninstall()",
     "crumbs": [
       "Packages",
-      "Package Building"
+      "Making an R Package"
     ]
   },
   {
     "objectID": "making_a_package.html#review",
     "href": "making_a_package.html#review",
-    "title": "Steps For Making A Package",
+    "title": "Steps For Making An R Package",
     "section": "Review",
     "text": "Review\nHere is a review of the key functions you’ve seen in this chapter, organized roughly by their role in the development process.\nThese functions setup parts of the package and are typically called once per package:\n\ncreate_package()\nuse_git()\nuse_mit_license()\nuse_testthat()\nuse_github()\nuse_readme_rmd()\n\nYou will call these functions on a regular basis, as you add functions and tests or take on dependencies:\n\nuse_r()\nuse_test()\nuse_package()\n\nYou will call these functions multiple times per day or per hour, during development:\n\nload_all()\ndocument()\ntest()\ncheck()",
     "crumbs": [
       "Packages",
-      "Package Building"
-    ]
-  },
-  {
-    "objectID": "making_a_package.html#python-packages",
-    "href": "making_a_package.html#python-packages",
-    "title": "Steps For Making A Package",
-    "section": "Python Packages",
-    "text": "Python Packages\n(add info talking about python packages)",
-    "crumbs": [
-      "Packages",
-      "Package Building"
+      "Making an R Package"
     ]
   },
   {
@@ -503,7 +481,7 @@
   {
     "objectID": "supporting.html#contribution-document",
     "href": "supporting.html#contribution-document",
-    "title": "supporting",
+    "title": "Supporting Information For Packages",
     "section": "Contribution Document",
     "text": "Contribution Document",
     "crumbs": [
@@ -514,7 +492,7 @@
   {
     "objectID": "supporting.html#code-of-conduct",
     "href": "supporting.html#code-of-conduct",
-    "title": "supporting",
+    "title": "Supporting Information For Packages",
     "section": "Code of Conduct",
     "text": "Code of Conduct",
     "crumbs": [
@@ -525,7 +503,7 @@
   {
     "objectID": "supporting.html#licenses",
     "href": "supporting.html#licenses",
-    "title": "supporting",
+    "title": "Supporting Information For Packages",
     "section": "Licenses",
     "text": "Licenses",
     "crumbs": [
@@ -536,9 +514,9 @@
   {
     "objectID": "supporting.html#readme.md-outline",
     "href": "supporting.html#readme.md-outline",
-    "title": "supporting",
+    "title": "Supporting Information For Packages",
     "section": "README.md Outline",
-    "text": "README.md Outline\n(or README.Rmd outline for that matter)",
+    "text": "README.md Outline\nNow that your package is on GitHub, the README.md file matters. It is the package’s home page and welcome mat, at least until you decide to give it a website, add a vignette, or submit it to CRAN.\nThe use_readme_rmd() function initializes a basic, executable README.Rmd ready for you to edit:\nuse_readme_rmd()\nIn addition to creating README.Rmd, this adds some lines to .Rbuildignore, and creates a Git pre-commit hook to help you keep README.Rmd and README.md in sync.\nREADME.Rmd already has sections that prompt you to:\n\nDescribe the purpose of the package.\nProvide installation instructions. If a GitHub remote is detected when use_readme_rmd() is called, this section is pre-filled with instructions on how to install from GitHub.\nShow a bit of usage.\n\nHow to populate this skeleton? Copy stuff liberally from DESCRIPTION and any formal and informal tests or examples you have. Anything is better than nothing. This is helpful because people probably won’t install your package and comb through individual help files to figure out how to use it.\nWe like to write the README in R Markdown, so it can feature actual usage. The inclusion of live code also makes it less likely that your README grows stale and out-of-sync with your actual package.\nTo make your own edits, if RStudio has not already done so, open README.Rmd for editing. Make sure it shows some usage of str_split_one().\nThe README.Rmd we use is here: README.Rmd.\nDon’t forget to render it to make README.md! The pre-commit hook should remind you if you try to commit README.Rmd, but not README.md, and also when README.md appears to be out-of-date.\nThe very best way to render README.Rmd is with build_readme(), because it takes care to render with the most current version of your package, i.e. it installs a temporary copy from the current source.\nbuild_readme()\nYou can see the rendered README.md simply by visiting regexcite on GitHub.",
     "crumbs": [
       "Packages",
       "Badges, Licenses & More"
@@ -549,7 +527,7 @@
     "href": "tests.html",
     "title": "Testing for Packages",
     "section": "",
-    "text": "We’ve tested function-name() informally, in a single example. We can, and should, express a concrete expectation about the correct function-name() result for a specific input.\nFirst, we declare our intent to write unit tests and to use the testthat package for this, via use_testthat():\nuse_testthat()\n\nThis initializes the unit testing machinery for your package.\nIt adds Suggests: testthat to DESCRIPTION, creates the directory tests/testthat/, and adds the script tests/testthat.R.\nYou’ll notice that testthat is probably added with a minimum version of 3.0.0 and a second DESCRIPTION field, Config/testthat/edition: 3.\n\nHowever, it’s still up to YOU to write the actual tests!\nThe helper use_test() opens and/or creates a test file. If R/function-name.R is the active file in RStudio, you can just call use_test(). However, we can also provide the basename explicitly:\nuse_test(\"function-name\")\n\nThis creates the file tests/testthat/test-function-name.R.\nIf it had already existed, use_test() would have just opened it.\nYou will notice that there is an example test in the newly created file - delete that code and replace it with something like this:\n\ntest_that(\"strsplit1() splits a string\", {\n  expect_equal(strsplit1(\"a,b,c\", split = \",\"), c(\"a\", \"b\", \"c\"))\n})\nThis tests that function-name() gives the expected result.\nRun this test interactively, as you will when you write your own. If test_that() or function-name() can’t be found, that suggests that you probably need to call load_all().\ntest()\n\nYour tests are also run whenever you check() the package.",
+    "text": "We’ve tested function-name() informally, in a single example. We can, and should, express a concrete expectation about the correct function-name() result for a specific input.\nFirst, we declare our intent to write unit tests and to use the testthat package for this, via use_testthat():\nuse_testthat()\n\nThis initializes the unit testing machinery for your package.\nIt adds Suggests: testthat to DESCRIPTION, creates the directory tests/testthat/, and adds the script tests/testthat.R.\nYou’ll notice that testthat is probably added with a minimum version of 3.0.0 and a second DESCRIPTION field, Config/testthat/edition: 3.\n\nHowever, it’s still up to YOU to write the actual tests!\nThe helper use_test() opens and/or creates a test file. If R/function-name.R is the active file in RStudio, you can just call use_test(). However, we can also provide the basename explicitly:\nuse_test(\"function-name\")\n\nThis creates the file tests/testthat/test-function-name.R.\nIf it had already existed, use_test() would have just opened it.\nYou will notice that there is an example test in the newly created file - delete that code and replace it with something like this:\n\ntest_that(\"strsplit1() splits a string\", {\n  expect_equal(strsplit1(\"a,b,c\", split = \",\"), c(\"a\", \"b\", \"c\"))\n})\nThis tests that function-name() gives the expected result.\nRun this test interactively, as you will when you write your own. If test_that() or function-name() can’t be found, that suggests that you probably need to call load_all().\ntest()\n\nYour tests are also run whenever you check() the package.\n\n\n\n\nHere are the updated contents of tests/testthat/test-str_split_one.R. In addition to the change in the function’s name and arguments, we’ve added a couple more tests.\ntest_that(\"str_split_one() splits a string\", {\n  expect_equal(str_split_one(\"a,b,c\", \",\"), c(\"a\", \"b\", \"c\"))\n})\n\ntest_that(\"str_split_one() errors if input length &gt; 1\", {\n  expect_error(str_split_one(c(\"a,b\",\"c,d\"), \",\"))\n})\n\ntest_that(\"str_split_one() exposes features of stringr::str_split()\", {\n  expect_equal(str_split_one(\"a,b,c\", \",\", n = 2), c(\"a\", \"b,c\"))\n  expect_equal(str_split_one(\"a.b\", stringr::fixed(\".\")), c(\"a\", \"b\"))\n})",
     "crumbs": [
       "Packages",
       "Testing"
@@ -561,6 +539,17 @@
     "title": "Testing for Packages",
     "section": "",
     "text": "We’ve tested function-name() informally, in a single example. We can, and should, express a concrete expectation about the correct function-name() result for a specific input.\nFirst, we declare our intent to write unit tests and to use the testthat package for this, via use_testthat():\nuse_testthat()\n\nThis initializes the unit testing machinery for your package.\nIt adds Suggests: testthat to DESCRIPTION, creates the directory tests/testthat/, and adds the script tests/testthat.R.\nYou’ll notice that testthat is probably added with a minimum version of 3.0.0 and a second DESCRIPTION field, Config/testthat/edition: 3.\n\nHowever, it’s still up to YOU to write the actual tests!\nThe helper use_test() opens and/or creates a test file. If R/function-name.R is the active file in RStudio, you can just call use_test(). However, we can also provide the basename explicitly:\nuse_test(\"function-name\")\n\nThis creates the file tests/testthat/test-function-name.R.\nIf it had already existed, use_test() would have just opened it.\nYou will notice that there is an example test in the newly created file - delete that code and replace it with something like this:\n\ntest_that(\"strsplit1() splits a string\", {\n  expect_equal(strsplit1(\"a,b,c\", split = \",\"), c(\"a\", \"b\", \"c\"))\n})\nThis tests that function-name() gives the expected result.\nRun this test interactively, as you will when you write your own. If test_that() or function-name() can’t be found, that suggests that you probably need to call load_all().\ntest()\n\nYour tests are also run whenever you check() the package.",
+    "crumbs": [
+      "Packages",
+      "Testing"
+    ]
+  },
+  {
+    "objectID": "tests.html#examples-and-how-to-write-tests",
+    "href": "tests.html#examples-and-how-to-write-tests",
+    "title": "Testing for Packages",
+    "section": "",
+    "text": "Here are the updated contents of tests/testthat/test-str_split_one.R. In addition to the change in the function’s name and arguments, we’ve added a couple more tests.\ntest_that(\"str_split_one() splits a string\", {\n  expect_equal(str_split_one(\"a,b,c\", \",\"), c(\"a\", \"b\", \"c\"))\n})\n\ntest_that(\"str_split_one() errors if input length &gt; 1\", {\n  expect_error(str_split_one(c(\"a,b\",\"c,d\"), \",\"))\n})\n\ntest_that(\"str_split_one() exposes features of stringr::str_split()\", {\n  expect_equal(str_split_one(\"a,b,c\", \",\", n = 2), c(\"a\", \"b,c\"))\n  expect_equal(str_split_one(\"a.b\", stringr::fixed(\".\")), c(\"a\", \"b\"))\n})",
     "crumbs": [
       "Packages",
       "Testing"

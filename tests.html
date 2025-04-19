@@ -250,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./making_a_package.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Package Building</span></a>
+ <span class="menu-text">Making an R Package</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -358,6 +358,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="examples-and-how-to-write-tests" class="level2">
 <h2 class="anchored" data-anchor-id="examples-and-how-to-write-tests">Examples and How to Write Tests</h2>
+<p>Here are the updated contents of <code>tests/testthat/test-str_split_one.R</code>. In addition to the change in the function’s name and arguments, we’ve added a couple more tests.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"str_split_one() splits a string"</span>, {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">str_split_one</span>(<span class="st">"a,b,c"</span>, <span class="st">","</span>), <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"str_split_one() errors if input length &gt; 1"</span>, {</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_error</span>(<span class="fu">str_split_one</span>(<span class="fu">c</span>(<span class="st">"a,b"</span>,<span class="st">"c,d"</span>), <span class="st">","</span>))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"str_split_one() exposes features of stringr::str_split()"</span>, {</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">str_split_one</span>(<span class="st">"a,b,c"</span>, <span class="st">","</span>, <span class="at">n =</span> <span class="dv">2</span>), <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b,c"</span>))</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">str_split_one</span>(<span class="st">"a.b"</span>, stringr<span class="sc">::</span><span class="fu">fixed</span>(<span class="st">"."</span>)), <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="librarycodecov" class="level1">
@@ -365,7 +378,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>It is a good idea to use the <a href="https://covr.r-lib.org">covr package</a> to track what proportion of your package’s source code is exercised by the tests.</p>
 <p>Do these steps to integrate it into your package checks:</p>
 <p>Add the badge to your <code>README.Rmd</code> by inputting the following line:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
