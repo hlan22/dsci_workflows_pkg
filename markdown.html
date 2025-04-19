@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Websites With Quarto – DSCI 310 Review</title>
+<title>Markdown Tips – DSCI 310 Review</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -101,6 +67,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -114,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./markdown.html">Quarto</a></li><li class="breadcrumb-item"><a href="./making_websites.html">Quarto Websites</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./markdown.html">Quarto</a></li><li class="breadcrumb-item"><a href="./markdown.html">Markdown Tips</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -226,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markdown.html" class="sidebar-item-text sidebar-link">
+  <a href="./markdown.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Markdown Tips</span></a>
   </div>
 </li>
@@ -238,7 +233,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./making_websites.html" class="sidebar-item-text sidebar-link active">
+  <a href="./making_websites.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto Websites</span></a>
   </div>
 </li>
@@ -301,17 +296,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#website-bones" id="toc-website-bones" class="nav-link active" data-scroll-target="#website-bones">Website “Bones”</a></li>
-  <li><a href="#main-locations" id="toc-main-locations" class="nav-link" data-scroll-target="#main-locations">3 Main Locations</a></li>
+  <li><a href="#basic-symbols" id="toc-basic-symbols" class="nav-link active" data-scroll-target="#basic-symbols">Basic Symbols</a></li>
+  <li><a href="#letters" id="toc-letters" class="nav-link" data-scroll-target="#letters">Letters</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a>
+  <ul class="collapse">
+  <li><a href="#greek-alphabet" id="toc-greek-alphabet" class="nav-link" data-scroll-target="#greek-alphabet">Greek Alphabet</a></li>
+  </ul></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a>
+  <ul class="collapse">
+  <li><a href="#different-fonts" id="toc-different-fonts" class="nav-link" data-scroll-target="#different-fonts">Different Fonts</a></li>
+  <li><a href="#actions-on-letters" id="toc-actions-on-letters" class="nav-link" data-scroll-target="#actions-on-letters">Actions on Letters</a></li>
+  <li><a href="#math-equations" id="toc-math-equations" class="nav-link" data-scroll-target="#math-equations">Math Equations</a></li>
+  </ul></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"></a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"></a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./markdown.html">Quarto</a></li><li class="breadcrumb-item"><a href="./making_websites.html">Quarto Websites</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./markdown.html">Quarto</a></li><li class="breadcrumb-item"><a href="./markdown.html">Markdown Tips</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Websites With Quarto</h1>
+<h1 class="title">Markdown Tips</h1>
 </div>
 
 
@@ -328,90 +336,513 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Here’s a basic outline as to how to make websites using quarto (and rstudio/vscode)!</p>
-<section id="website-bones" class="level2">
-<h2 class="anchored" data-anchor-id="website-bones">Website “Bones”</h2>
-<p>Start with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> create</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Select <code>project</code> &gt; <code>website</code> &gt; Directory: <code>/</code> &gt; Title: <code>Final Review</code></li>
-</ul>
-<p>Alternatively, create the following files:</p>
-<ul>
-<li><code>_quarto.yml</code></li>
-<li><code>index.qmd</code></li>
-<li><code>&lt;project_name&gt;.Rproj</code></li>
-<li><code>styles.css</code> (not necessary)</li>
-<li>other <code>.qmd</code> files (not necessary)</li>
-<li>Add files to <code>.gitignore</code></li>
-</ul>
+<p>Each time I forget how to do something in Rmarkdown, I often need to visit multiple websites to figure out my goal. I am just using this as a central location for all this information!</p>
+<p>Here’s a very basic guide for all-things you need to know for latex writing in Rmarkdown!</p>
+<section id="basic-symbols" class="level2">
+<h2 class="anchored" data-anchor-id="basic-symbols">Basic Symbols</h2>
+<style>
+/* Narrow and center-align Markdown tables in HTML output */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: auto; /* This keeps the table only as wide as needed */
+}
+
+table th, table td {
+  padding: 1px; /* Minimal padding to reduce column width */
+  /* text-align: center; Center-aligns content in each cell */
+}
+</style>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 35%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aimed Result</th>
+<th>What to Type</th>
+<th>Other Info</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\rightarrow\)</span></td>
+<td><code>$\rightarrow$</code></td>
+<td>can also do left, up, down</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\Rightarrow\)</span></td>
+<td><code>$\Rightarrow$</code></td>
+<td>can also do left, up, down</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\leftrightarrow\)</span></td>
+<td><code>$\leftrightarrow$</code></td>
+<td>also <code>$\updownarrow$</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\swarrow\)</span></td>
+<td><code>$\swarrow$</code></td>
+<td>(sw= SouthWest) also do nw, ne, se</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\rightharpoonup\)</span></td>
+<td><code>$\rightharpoonup$</code></td>
+<td><span class="math inline">\(\leftharpoonup\)</span>, <span class="math inline">\(\leftharpoondown\)</span>, <span class="math inline">\(\rightharpoondown\)</span>, <span class="math inline">\(\upharpoonright\)</span>, <span class="math inline">\(\downharpoonleft\)</span>, <span class="math inline">\(\upharpoonleft\)</span>, <span class="math inline">\(\downharpoonright\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\longrightarrow\)</span></td>
+<td><code>$\longrightarrow$</code></td>
+<td>Often used in functions/sequences</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\to\)</span></td>
+<td><code>$\to$</code></td>
+<td>Used in Limits (equivalent to right arrow)</td>
+</tr>
+<tr class="even">
+<td>————–</td>
+<td>————–</td>
+<td>————</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\infty\)</span></td>
+<td><code>$\infty$</code></td>
+<td>Don’t get why not shorten infinity to inf…</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\approx\)</span></td>
+<td><code>$\approx$</code></td>
+<td><span class="math inline">\(\thickapprox\)</span> <code>$\thickapprox$</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\sim\)</span></td>
+<td><code>$\sim$</code></td>
+<td><code>$N \sim Pois(\lambda)$</code></td>
+</tr>
+<tr class="even">
+<td>————–</td>
+<td>————–</td>
+<td>————</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mid\)</span> <span class="math inline">\(\mathbb{P}(A \mid B)\)</span></td>
+<td><code>$\mid$</code> <code>$\mathbb{P}(A \mid B)$</code></td>
+<td>Just typing <code>|</code> does the same, so what is the use?</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x \ge y, y \le z\)</span></td>
+<td><code>$x \ge y, y \le z$</code></td>
+<td><strong>g</strong>reater-than-or-<strong>e</strong>qual</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\cdots, \dots\)</span></td>
+<td><code>$\cdots, \dots$</code></td>
+<td>Useful for <code>$x_{1} + x_{2} + \cdots + x_{n}$</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(A \subset B\)</span>, <span class="math inline">\(B \subseteq C\)</span></td>
+<td><code>$A \subset B$, $B \subseteq C$</code></td>
+<td>cool~</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(A \cup B\)</span>, <span class="math inline">\(B \cap C\)</span></td>
+<td><code>$A \cup B$, $B \cap C$</code></td>
+<td>cool maths</td>
+</tr>
+<tr class="even">
+<td>————–</td>
+<td>————–</td>
+<td>————</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\sin(x), \cos(x), \tan(x), \log(x)\)</span></td>
+<td><code>$\sin(x), \cos(x), \tan(x), \log(x)$</code></td>
+<td>cool to not have to do a <code>\text{}</code> in front of it!</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="main-locations" class="level2">
-<h2 class="anchored" data-anchor-id="main-locations">3 Main Locations</h2>
-<p>Here are the 3 main locations you can use GitHub Pages for rendering your website!</p>
-<section id="root" class="level4">
-<h4 class="anchored" data-anchor-id="root"><code>/(root)</code></h4>
-<p>You are ready simply by doing:</p>
-<p>Select the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render index.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will make an <code>index.html</code> file that git will look for. If you do not have a index.html file in your root folder, it will instead display your <code>README.md</code>!</p>
-<p>Push all changes, including the rendered page, to the (main branch) repo.</p>
+<section id="letters" class="level2">
+<h2 class="anchored" data-anchor-id="letters">Letters</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 37%">
+<col style="width: 34%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aimed Result</th>
+<th>What to Type</th>
+<th>Other Info</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mathbb{E}\)</span></td>
+<td><code>$\mathbb{E}$</code></td>
+<td><code>$\mathbb{E}(x) = $</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\pi\)</span></td>
+<td><code>$\pi$</code></td>
+<td>(Can also do <span class="math inline">\(\Pi\)</span>: <code>$\Pi$</code>)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\ell\)</span></td>
+<td><code>$\ell$</code></td>
+<td>Useful for log-likelihood</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\partial\)</span></td>
+<td><code>$\partial$</code></td>
+<td>partial derivatives! ‘del’</td>
+</tr>
+<tr class="odd">
+<td>—————</td>
+<td>—————–</td>
+<td>—————————–</td>
+</tr>
+<tr class="even">
+<td>Comparing similar letters</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(P,\mathrm{P}, \mathbb{P}\)</span></td>
+<td><code>$P,\mathrm{P}, \mathbb{P}$</code></td>
+<td>(mathrm for “math roman font”)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\sum \Sigma\)</span></td>
+<td><code>$\sum \Sigma$</code></td>
+<td>same but different</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\in\)</span></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\Pi, \prod\)</span></td>
+<td><code>$\Pi, \prod$</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="docs" class="level4">
-<h4 class="anchored" data-anchor-id="docs"><code>docs/</code></h4>
-<p>There are a few tasks necessary:</p>
-<p>Select the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.</p>
-<ul>
-<li>Ensure <code>docs/</code> is not blocked in the <code>.gitignore</code> file</li>
-<li>Set <code>output-dir: docs</code> under project: type: in <code>_quarto.yml</code></li>
-</ul>
+<section id="section" class="level1">
+<h1></h1>
+<section id="greek-alphabet" class="level2">
+<h2 class="anchored" data-anchor-id="greek-alphabet">Greek Alphabet</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 20%">
+<col style="width: 15%">
+<col style="width: 12%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\alpha A\)</span></td>
+<td><code>$\alpha A$</code></td>
+<td><span class="math inline">\(\beta B\)</span></td>
+<td><code>$\beta B$</code></td>
+<td><span class="math inline">\(\gamma \Gamma\)</span></td>
+<td><code>$\gamma \Gamma$</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\delta \Delta\)</span></td>
+<td><code>$\delta \Delta$</code></td>
+<td><span class="math inline">\(\epsilon \varepsilon E\)</span></td>
+<td><code>$\epsilon \varepsilon E$</code></td>
+<td><span class="math inline">\(\zeta Z \sigma\)</span></td>
+<td><code>$\zeta Z \sigma$</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\eta H\)</span></td>
+<td><code>$\eta H$</code></td>
+<td><span class="math inline">\(\theta \vartheta \Theta\)</span></td>
+<td><code>$\theta \vartheta \Theta$</code></td>
+<td><span class="math inline">\(\iota I\)</span></td>
+<td><code>$\iota I$</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\kappa K\)</span></td>
+<td><code>$\kappa K$</code></td>
+<td><span class="math inline">\(\lambda \Lambda\)</span></td>
+<td><code>$\lambda \Lambda$</code></td>
+<td><span class="math inline">\(\mu M\)</span></td>
+<td><code>$\mu M$</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\nu N\)</span></td>
+<td><code>$\nu N$</code></td>
+<td><span class="math inline">\(\xi\Xi\)</span></td>
+<td><code>$\xi\Xi$</code></td>
+<td><span class="math inline">\(o O\)</span></td>
+<td><code>$o O$</code> (omicron)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\pi \Pi\)</span></td>
+<td><code>$\pi \Pi$</code></td>
+<td><span class="math inline">\(\rho\varrho P\)</span></td>
+<td><code>$\rho\varrho P$</code></td>
+<td><span class="math inline">\(\sigma \Sigma\)</span></td>
+<td><code>$\sigma \Sigma$</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\tau T\)</span></td>
+<td><code>$\tau T$</code></td>
+<td><span class="math inline">\(\upsilon \Upsilon\)</span></td>
+<td><code>$\upsilon \Upsilon$</code></td>
+<td><span class="math inline">\(\phi \varphi \Phi\)</span></td>
+<td><code>$\phi \varphi \Phi$</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\chi X\)</span></td>
+<td><code>$\chi X$</code></td>
+<td><span class="math inline">\(\psi \Psi\)</span></td>
+<td><code>$\psi \Psi$</code></td>
+<td><span class="math inline">\(\omega \Omega\)</span></td>
+<td><code>$\omega \Omega$</code></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="gh-pages-branch" class="level4">
-<h4 class="anchored" data-anchor-id="gh-pages-branch"><code>gh-pages</code> branch</h4>
-<p>Select the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.</p>
+</section>
+<section id="section-1" class="level1">
+<h1></h1>
+<section id="different-fonts" class="level2">
+<h2 class="anchored" data-anchor-id="different-fonts">Different Fonts</h2>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(N\)</span></td>
+<td><code>$N$</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathcal{N}\)</span></td>
+<td><code>$\mathcal{N}$</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathbf{N}\)</span></td>
+<td><code>$\mathbf{N}$</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathbb{N}\)</span></td>
+<td><code>$\mathbb{N}$</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathscr{N}\)</span></td>
+<td><code>$\mathscr{N}$</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="actions-on-letters" class="level2">
+<h2 class="anchored" data-anchor-id="actions-on-letters">Actions on Letters</h2>
+<p>(Also a way with HTML to write a table that looks the same)</p>
+<table>
+<caption>
+<span id="tab:table2">Table1.3:</span>Actions_on_Letters
+</caption>
+</table><table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Aimed Result</th>
+<th>What to Type</th>
+<th>Other Info</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\bar x, \overline{x}\)</span></td>
+<td><code>$\bar x, \overline{x}$</code></td>
+<td>Diff: how many letters it can cover</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\hat x\)</span> `</td>
+<td><span class="math inline">\(\hat x\)</span>`</td>
+<td>how to cover multiple</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\tilde{x}\)</span> `</td>
+<td><span class="math inline">\(\tilde{x}\)</span>`</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\binom{n}{k}\)</span> `</td>
+<td><span class="math inline">\(\binom{n}{k}\)</span>`</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="math-equations" class="level2">
+<h2 class="anchored" data-anchor-id="math-equations">Math Equations</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 35%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aimed Result</th>
+<th>What to Type</th>
+<th>Other Info</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\frac{1}{n}\)</span></td>
+<td><code>$\frac{1}{n}$</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>writing multiple aligned equations</td>
+<td>wrap in <code>$$\begin{aligned} \end{aligned}$$</code></td>
+<td>split lines with <code>\\</code> and line up equal signs with <code>&amp;=</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\left[ x^\frac{y}{z} \right]\)</span></td>
+<td>wrap in <code>$\left[ x^\frac{y}{z} \right]$</code></td>
+<td>larger brackets that cover whole equation</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\lim_{x \to \infty} f(x)\)</span> or <span class="math display">\[\lim_{x \to \infty} f(x)\]</span></td>
+<td><code>$\lim_{x \to \infty} f(x)$</code></td>
+<td>If you use <code>$$</code> around original equation or <code>$\underset{}$</code>, it will put <span class="math inline">\(x \to \infty\)</span> below. Ex: <code>$$\lim_{x \to \infty} f(x)$$</code> and <code>$\underset{x \to \infty} {\text{lim}} f(x)$</code> both make the 2nd option shown. (although <code>$$</code> makes it larger)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\sum_{n=1}^{\infty} 2^{-n} = 1\)</span> or <span class="math display">\[\sum_{i=1}^{n} X_i\]</span></td>
+<td><code>$\sum_{i=1}^{n} X_i$</code></td>
+<td>(same as above)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\prod_{i=a}^{b} f(i)\)</span> or <span class="math display">\[\prod_{i=a}^{b} f(i)\]</span></td>
+<td><code>$\prod_{i=a}^{b} f(i)$</code></td>
+<td>(same as above)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\int_{a}^{b} x^2 dx\)</span></td>
+<td><code>$\int_{a}^{b} x^2 dx$</code></td>
+<td>Integrals are written the same with <code>$$</code> or <code>$</code></td>
+</tr>
+<tr class="even">
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\underset{x \to \infty} {\text{lim}} f(x)\)</span></td>
+<td><code>$\underset{x \to \infty} {\text{lim}}$</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\underset{\text{this is cool}} {\underbrace{x=4}}\)</span></td>
+<td><code>$\underset{\text{this is cool}} {\underbrace{x=4}}$</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Here may be a better way of showing how to align equations:</p>
+<pre><code>$$
+\begin{align}
+x &amp;= 1 + y \\
+  &amp;= 3 \\
+\end{align}
+$$</code></pre>
+<p>And a good way of showing how to make if statements:</p>
+<pre><code>$$
+Z^{re} = 
+\begin{cases}
+0     &amp; \text{if } Z \le a \\
+Z - a &amp; \text{if } a &lt; Z \le a + b  \\
+b    &amp; Z &gt; a + b
+\end{cases}
+$$</code></pre>
+<p>Note: if you accidentally press 0 on the additional part of the keyboard, it will change the cursor to be a dash below the character instead of in front!</p>
+<hr>
+</section>
+</section>
+<section id="section-2" class="level1">
+<h1></h1>
+</section>
+<section id="section-3" class="level1">
+<h1></h1>
+</section>
+<section id="section-4" class="level1">
+<h1></h1>
+<blockquote class="blockquote">
+<p>Credit for Sources Used:</p>
+<p>It is no longer useful for me, but still good to give thanks and credit!</p>
+</blockquote>
 <ul>
-<li>Delete any <code>docs/</code> folder</li>
-<li>block the <code>docs</code> and <code>_site</code> folder in the <code>.gitignore</code> file</li>
+<li><p>https://www.geeksforgeeks.org/arrow-symbols-in-latex/ (used for different types of arrows)</p></li>
+<li><p>https://stackoverflow.com/questions/70565733/how-to-manually-create-a-simple-table-and-present-it-with-knitrkable-in-r-markd (used for making a different type of table)</p></li>
+<li><p>https://www.overleaf.com/learn/latex/Integrals%2C_sums_and_limits (used for math equations, middle section)</p></li>
+<li><p>https://rpruim.github.io/s341/S19/from-class/MathinRmd.html (used for letters/symbols)</p></li>
+<li><p>https://stackoverflow.com/questions/39671612/how-to-type-tilde-in-formulas-in-rmarkdown (this is the website that would always come up over the years for the tilde and I owe it so much of my time, thank you!)</p></li>
+<li><p>https://tex.stackexchange.com/questions/78736/bigger-parentheses-in-equations (large brackets)</p></li>
+<li><p>https://tex.stackexchange.com/questions/225523/how-to-write-partial-differential-equation-ex-dq-dt-ds-dt-with-real-partial-d (partial derivatives)</p></li>
+<li><p>https://tex.stackexchange.com/questions/47170/how-to-write-conditional-equations-with-one-sided-curly-brackets (if cases)</p></li>
+<li><p>https://tex.stackexchange.com/questions/535648/special-n-character (fonts)</p></li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--orphan</span> gh-pages</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--hard</span> <span class="co"># make sure all changes are committed before running this!</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"Initialising gh-pages branch"</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Which now you can test-run the website with:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch main</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can still use the regular <code>quarto render</code> or <code>quarto preview</code> to build your site locally, but you will no longer need to manually build and push the site to the main branch!</p>
-<p>Add a github action to make it automatically build:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> .github/workflows/build.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>And copy the following contents into it:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">on:</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">workflow_dispatch:</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">push:</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">branches:</span> main</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ex">name:</span> Quarto Publish</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">jobs:</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">build-deploy:</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">runs-on:</span> ubuntu-latest</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">permissions:</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>      <span class="ex">contents:</span> write</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">steps:</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Check out repository</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> actions/checkout@v4</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Set up Quarto</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> quarto-dev/quarto-actions/setup@v2</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Render and Publish</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> quarto-dev/quarto-actions/publish@v2</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        <span class="ex">with:</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>          <span class="ex">target:</span> gh-pages</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        <span class="ex">env:</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>          <span class="ex">GITHUB_TOKEN:</span> <span class="va">${</span><span class="er">{ secrets.GITHUB_TOKEN </span><span class="va">}</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This may be useful (not used yet):</p>
+<ul>
+<li>https://mystmd.org/guide/math</li>
+<li>https://bookdown.org/yihui/rmarkdown/markdown-syntax.html</li>
+<li>https://wiki.snowdrift.coop/editorial/markdown#:~:text=For%20capital%20letters%20or%20Roman,also%20work%20for%20lower%2Dcase. (want to include images)</li>
+</ul>
+<p>Also hope to talk about how to do the colored boxes like in:</p>
+<ul>
+<li>file:///C:/Users/Heidi/Documents/research_work/weekly_work/week8/week8_precipitation_changes.html</li>
+<li>And it would be cool to figure out how to do roman numerals</li>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

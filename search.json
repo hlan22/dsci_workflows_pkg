@@ -319,83 +319,6 @@
     ]
   },
   {
-    "objectID": "making_websites.html",
-    "href": "making_websites.html",
-    "title": "Websites With Quarto",
-    "section": "",
-    "text": "Here’s a basic outline as to how to make websites using quarto (and rstudio/vscode)!",
-    "crumbs": [
-      "Quarto",
-      "Quarto Websites"
-    ]
-  },
-  {
-    "objectID": "making_websites.html#website-bones",
-    "href": "making_websites.html#website-bones",
-    "title": "Websites With Quarto",
-    "section": "Website “Bones”",
-    "text": "Website “Bones”\nStart with:\nquarto create\n\nSelect project &gt; website &gt; Directory: / &gt; Title: Final Review\n\nAlternatively, create the following files:\n\n_quarto.yml\nindex.qmd\n&lt;project_name&gt;.Rproj\nstyles.css (not necessary)\nother .qmd files (not necessary)\nAdd files to .gitignore",
-    "crumbs": [
-      "Quarto",
-      "Quarto Websites"
-    ]
-  },
-  {
-    "objectID": "making_websites.html#main-locations",
-    "href": "making_websites.html#main-locations",
-    "title": "Websites With Quarto",
-    "section": "3 Main Locations",
-    "text": "3 Main Locations\nHere are the 3 main locations you can use GitHub Pages for rendering your website!\n\n/(root)\nYou are ready simply by doing:\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\nquarto render index.qmd\nThis will make an index.html file that git will look for. If you do not have a index.html file in your root folder, it will instead display your README.md!\nPush all changes, including the rendered page, to the (main branch) repo.\n\n\ndocs/\nThere are a few tasks necessary:\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nEnsure docs/ is not blocked in the .gitignore file\nSet output-dir: docs under project: type: in _quarto.yml\n\n\n\ngh-pages branch\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nDelete any docs/ folder\nblock the docs and _site folder in the .gitignore file\n\ngit checkout --orphan gh-pages\ngit reset --hard # make sure all changes are committed before running this!\ngit commit --allow-empty -m \"Initialising gh-pages branch\"\ngit push origin gh-pages\nWhich now you can test-run the website with:\ngit switch main\nquarto publish gh-pages\nYou can still use the regular quarto render or quarto preview to build your site locally, but you will no longer need to manually build and push the site to the main branch!\nAdd a github action to make it automatically build:\ncode .github/workflows/build.yml\nAnd copy the following contents into it:\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}",
-    "crumbs": [
-      "Quarto",
-      "Quarto Websites"
-    ]
-  },
-  {
-    "objectID": "git_concepts.html",
-    "href": "git_concepts.html",
-    "title": "Basic Git Concepts",
-    "section": "",
-    "text": "GitHub is the remote repository where you commit changes to the version control history. At a minimum, you should at least push your work to GitHub at the end of every work session.",
-    "crumbs": [
-      "Basics",
-      "Git Concepts"
-    ]
-  },
-  {
-    "objectID": "git_concepts.html#branches",
-    "href": "git_concepts.html#branches",
-    "title": "Basic Git Concepts",
-    "section": "Branches",
-    "text": "Branches\n\nThe benefits of branches:\n\nBranches allow you to have a playground for developing and testing new additions to your code, as well as fixes. This playground lets your explore, experiment and test in a safe place - away from others that might be using or depending on the current version of your code.\nThis is perhaps more obviously useful if your project is deployed and has users (e.g., a data visualization dashboard, an R or Python package, a phone app, etc), but this can also be useful for code that make up a data analyses. Because, in addition to the reasons stated above for branching, branching also lets you organize units of work into smaller, more manageable chunks that are easier for collaborators to check over and review.\nSeveral branch playgrounds can co-exist, one for each new code addition or fix being worked on. This allows for parallelization of work!\n\n\n\nCreating a pull-request:\n\nTo create a pull request, you click the green button Compare & pull request. In the new page, add a message to describe the changes you have made, scroll down to review the changed files, and the click the green button that reads Create pull request. If you are working together in a team, you could also designate certain team members to review your work and assign relevant labels, via the right hand side panel.\nThe next step is for a collaborator to review your work and merge it in if they approve it.\nTutorial 2 is all about creating branches and pull requests. It also makes you create two branches and see the conflict when you try and pull them both despite them editing the same place. This ends in a merge conflict that you can solve in the github interface.",
-    "crumbs": [
-      "Basics",
-      "Git Concepts"
-    ]
-  },
-  {
-    "objectID": "git_concepts.html#github-worklow-and-git-flow",
-    "href": "git_concepts.html#github-worklow-and-git-flow",
-    "title": "Basic Git Concepts",
-    "section": "GitHub Worklow and Git Flow",
-    "text": "GitHub Worklow and Git Flow\n\nGitHub Workflow\n\nFeatures a single “main” branch that also serves as the deployment branch, we call this main.\n\nEvery new contribution is done on a new branch (with a meaningful name) created from main.\nContributions from that new branch are sent back to main by means of a pull request, which ideally is reviewed & tested before merging.\n\n\n\n\nGit Flow\n\nTwo “main” branches that last forever, main for deployment and develop where things are tested before they are released to main.\nThree supporting branches: feature, release & hotfix. Both feature & release branches are created from develop. feature branches should be merged into develop before they are incorporated into a release. release branches eventually get merged into main after adequate review and testing.",
-    "crumbs": [
-      "Basics",
-      "Git Concepts"
-    ]
-  },
-  {
-    "objectID": "git_concepts.html#merge-conflicts",
-    "href": "git_concepts.html#merge-conflicts",
-    "title": "Basic Git Concepts",
-    "section": "Merge conflicts",
-    "text": "Merge conflicts\n\nIMPORTANT: You must know how to deal with multiple types of merge conflicts\nYou need to know how to resolve basic file merge conflicts, but also branch merge conflicts\nThe two main types of branch merge conflict resolutions involve:\n\nManually push back in changes\nRestructure commits so that changes are pushed at a later date\n\n\n\nMerge Branches\nWhat happens when a branch falls behind main? There are two ways you can update the branch.\n\nUsing merge\n\n\nHow to catch up a branch that has fallen behind the main branch using the command line:\n\nrun git pull origin main to pull any changes from the remote version of main that we might not have\nrun git switch &lt;branch&gt; to make sure we are on the branch we want to catch up\nrun git merge main to merge the changes\nrun git push origin &lt;branch&gt; to push our updated branch to the remote\n\n\nThis bash code is rewritten below for copying convenience:\ngit pull origin main\ngit switch &lt;branch&gt;\ngit merge main\ngit push origin &lt;branch&gt;\n\nUsing rebase\n\nMake sure everything is committed in your new branch\nMove to the main branch: git switch main\nMake sure the main branch is up to date: git pull origin main\nMove back over to your branch: git switch &lt;branch&gt;\nUpdate the changes from main: git rebase main\n\n\nThis bash code is rewritten below for copying convenience:\ngit switch main\ngit pull origin main\ngit switch &lt;branch&gt;\ngit rebase main\n\n\nPersonal Access Tokens (PAT)\nPATs are important!",
-    "crumbs": [
-      "Basics",
-      "Git Concepts"
-    ]
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "DSCI 310 Final Exam Review",
@@ -443,6 +366,160 @@
     "text": "Credit\nAlthough this repo is made by Heidi, credit goes towards Daniel Chen and other contributors for the DSCI 310 course for most material in the repo. Thanks!",
     "crumbs": [
       "Introduction"
+    ]
+  },
+  {
+    "objectID": "git_concepts.html",
+    "href": "git_concepts.html",
+    "title": "Basic Git Concepts",
+    "section": "",
+    "text": "GitHub is the remote repository where you commit changes to the version control history. At a minimum, you should at least push your work to GitHub at the end of every work session.",
+    "crumbs": [
+      "Basics",
+      "Git Concepts"
+    ]
+  },
+  {
+    "objectID": "git_concepts.html#branches",
+    "href": "git_concepts.html#branches",
+    "title": "Basic Git Concepts",
+    "section": "Branches",
+    "text": "Branches\n\nThe benefits of branches:\n\nBranches allow you to have a playground for developing and testing new additions to your code, as well as fixes. This playground lets your explore, experiment and test in a safe place - away from others that might be using or depending on the current version of your code.\nThis is perhaps more obviously useful if your project is deployed and has users (e.g., a data visualization dashboard, an R or Python package, a phone app, etc), but this can also be useful for code that make up a data analyses. Because, in addition to the reasons stated above for branching, branching also lets you organize units of work into smaller, more manageable chunks that are easier for collaborators to check over and review.\nSeveral branch playgrounds can co-exist, one for each new code addition or fix being worked on. This allows for parallelization of work!\n\n\n\nCreating a pull-request:\n\nTo create a pull request, you click the green button Compare & pull request. In the new page, add a message to describe the changes you have made, scroll down to review the changed files, and the click the green button that reads Create pull request. If you are working together in a team, you could also designate certain team members to review your work and assign relevant labels, via the right hand side panel.\nThe next step is for a collaborator to review your work and merge it in if they approve it.\nTutorial 2 is all about creating branches and pull requests. It also makes you create two branches and see the conflict when you try and pull them both despite them editing the same place. This ends in a merge conflict that you can solve in the github interface.",
+    "crumbs": [
+      "Basics",
+      "Git Concepts"
+    ]
+  },
+  {
+    "objectID": "git_concepts.html#github-worklow-and-git-flow",
+    "href": "git_concepts.html#github-worklow-and-git-flow",
+    "title": "Basic Git Concepts",
+    "section": "GitHub Worklow and Git Flow",
+    "text": "GitHub Worklow and Git Flow\n\nGitHub Workflow\n\nFeatures a single “main” branch that also serves as the deployment branch, we call this main.\n\nEvery new contribution is done on a new branch (with a meaningful name) created from main.\nContributions from that new branch are sent back to main by means of a pull request, which ideally is reviewed & tested before merging.\n\n\n\n\nGit Flow\n\nTwo “main” branches that last forever, main for deployment and develop where things are tested before they are released to main.\nThree supporting branches: feature, release & hotfix. Both feature & release branches are created from develop. feature branches should be merged into develop before they are incorporated into a release. release branches eventually get merged into main after adequate review and testing.",
+    "crumbs": [
+      "Basics",
+      "Git Concepts"
+    ]
+  },
+  {
+    "objectID": "git_concepts.html#merge-conflicts",
+    "href": "git_concepts.html#merge-conflicts",
+    "title": "Basic Git Concepts",
+    "section": "Merge conflicts",
+    "text": "Merge conflicts\n\nIMPORTANT: You must know how to deal with multiple types of merge conflicts\nYou need to know how to resolve basic file merge conflicts, but also branch merge conflicts\nThe two main types of branch merge conflict resolutions involve:\n\nManually push back in changes\nRestructure commits so that changes are pushed at a later date\n\n\n\nMerge Branches\nWhat happens when a branch falls behind main? There are two ways you can update the branch.\n\nUsing merge\n\n\nHow to catch up a branch that has fallen behind the main branch using the command line:\n\nrun git pull origin main to pull any changes from the remote version of main that we might not have\nrun git switch &lt;branch&gt; to make sure we are on the branch we want to catch up\nrun git merge main to merge the changes\nrun git push origin &lt;branch&gt; to push our updated branch to the remote\n\n\nThis bash code is rewritten below for copying convenience:\ngit pull origin main\ngit switch &lt;branch&gt;\ngit merge main\ngit push origin &lt;branch&gt;\n\nUsing rebase\n\nMake sure everything is committed in your new branch\nMove to the main branch: git switch main\nMake sure the main branch is up to date: git pull origin main\nMove back over to your branch: git switch &lt;branch&gt;\nUpdate the changes from main: git rebase main\n\n\nThis bash code is rewritten below for copying convenience:\ngit switch main\ngit pull origin main\ngit switch &lt;branch&gt;\ngit rebase main\n\n\nPersonal Access Tokens (PAT)\nPATs are important!",
+    "crumbs": [
+      "Basics",
+      "Git Concepts"
+    ]
+  },
+  {
+    "objectID": "making_websites.html",
+    "href": "making_websites.html",
+    "title": "Websites With Quarto",
+    "section": "",
+    "text": "Here’s a basic outline as to how to make websites using quarto (and rstudio/vscode)!",
+    "crumbs": [
+      "Quarto",
+      "Quarto Websites"
+    ]
+  },
+  {
+    "objectID": "making_websites.html#website-bones",
+    "href": "making_websites.html#website-bones",
+    "title": "Websites With Quarto",
+    "section": "Website “Bones”",
+    "text": "Website “Bones”\nStart with:\nquarto create\n\nSelect project &gt; website &gt; Directory: / &gt; Title: Final Review\n\nAlternatively, create the following files:\n\n_quarto.yml\nindex.qmd\n&lt;project_name&gt;.Rproj\nstyles.css (not necessary)\nother .qmd files (not necessary)\nAdd files to .gitignore",
+    "crumbs": [
+      "Quarto",
+      "Quarto Websites"
+    ]
+  },
+  {
+    "objectID": "making_websites.html#main-locations",
+    "href": "making_websites.html#main-locations",
+    "title": "Websites With Quarto",
+    "section": "3 Main Locations",
+    "text": "3 Main Locations\nHere are the 3 main locations you can use GitHub Pages for rendering your website!\n\n/(root)\nYou are ready simply by doing:\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\nquarto render index.qmd\nThis will make an index.html file that git will look for. If you do not have a index.html file in your root folder, it will instead display your README.md!\nPush all changes, including the rendered page, to the (main branch) repo.\n\n\ndocs/\nThere are a few tasks necessary:\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nEnsure docs/ is not blocked in the .gitignore file\nSet output-dir: docs under project: type: in _quarto.yml\n\n\n\ngh-pages branch\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nDelete any docs/ folder\nblock the docs and _site folder in the .gitignore file\n\ngit checkout --orphan gh-pages\ngit reset --hard # make sure all changes are committed before running this!\ngit commit --allow-empty -m \"Initialising gh-pages branch\"\ngit push origin gh-pages\nWhich now you can test-run the website with:\ngit switch main\nquarto publish gh-pages\nYou can still use the regular quarto render or quarto preview to build your site locally, but you will no longer need to manually build and push the site to the main branch!\nAdd a github action to make it automatically build:\ncode .github/workflows/build.yml\nAnd copy the following contents into it:\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}",
+    "crumbs": [
+      "Quarto",
+      "Quarto Websites"
+    ]
+  },
+  {
+    "objectID": "markdown.html",
+    "href": "markdown.html",
+    "title": "Markdown Tips",
+    "section": "",
+    "text": "Each time I forget how to do something in Rmarkdown, I often need to visit multiple websites to figure out my goal. I am just using this as a central location for all this information!\nHere’s a very basic guide for all-things you need to know for latex writing in Rmarkdown!",
+    "crumbs": [
+      "Quarto",
+      "Markdown Tips"
+    ]
+  },
+  {
+    "objectID": "markdown.html#basic-symbols",
+    "href": "markdown.html#basic-symbols",
+    "title": "Markdown Tips",
+    "section": "Basic Symbols",
+    "text": "Basic Symbols\n\n\n\n\n\n\n\n\n\nAimed Result\nWhat to Type\nOther Info\n\n\n\n\n\\(\\rightarrow\\)\n$\\rightarrow$\ncan also do left, up, down\n\n\n\\(\\Rightarrow\\)\n$\\Rightarrow$\ncan also do left, up, down\n\n\n\\(\\leftrightarrow\\)\n$\\leftrightarrow$\nalso $\\updownarrow$\n\n\n\\(\\swarrow\\)\n$\\swarrow$\n(sw= SouthWest) also do nw, ne, se\n\n\n\\(\\rightharpoonup\\)\n$\\rightharpoonup$\n\\(\\leftharpoonup\\), \\(\\leftharpoondown\\), \\(\\rightharpoondown\\), \\(\\upharpoonright\\), \\(\\downharpoonleft\\), \\(\\upharpoonleft\\), \\(\\downharpoonright\\)\n\n\n\\(\\longrightarrow\\)\n$\\longrightarrow$\nOften used in functions/sequences\n\n\n\\(\\to\\)\n$\\to$\nUsed in Limits (equivalent to right arrow)\n\n\n————–\n————–\n————\n\n\n\\(\\infty\\)\n$\\infty$\nDon’t get why not shorten infinity to inf…\n\n\n\\(\\approx\\)\n$\\approx$\n\\(\\thickapprox\\) $\\thickapprox$\n\n\n\\(\\sim\\)\n$\\sim$\n$N \\sim Pois(\\lambda)$\n\n\n————–\n————–\n————\n\n\n\\(\\mid\\) \\(\\mathbb{P}(A \\mid B)\\)\n$\\mid$ $\\mathbb{P}(A \\mid B)$\nJust typing | does the same, so what is the use?\n\n\n\\(x \\ge y, y \\le z\\)\n$x \\ge y, y \\le z$\ngreater-than-or-equal\n\n\n\\(\\cdots, \\dots\\)\n$\\cdots, \\dots$\nUseful for $x_{1} + x_{2} + \\cdots + x_{n}$\n\n\n\\(A \\subset B\\), \\(B \\subseteq C\\)\n$A \\subset B$, $B \\subseteq C$\ncool~\n\n\n\\(A \\cup B\\), \\(B \\cap C\\)\n$A \\cup B$, $B \\cap C$\ncool maths\n\n\n————–\n————–\n————\n\n\n\\(\\sin(x), \\cos(x), \\tan(x), \\log(x)\\)\n$\\sin(x), \\cos(x), \\tan(x), \\log(x)$\ncool to not have to do a \\text{} in front of it!",
+    "crumbs": [
+      "Quarto",
+      "Markdown Tips"
+    ]
+  },
+  {
+    "objectID": "markdown.html#letters",
+    "href": "markdown.html#letters",
+    "title": "Markdown Tips",
+    "section": "Letters",
+    "text": "Letters\n\n\n\n\n\n\n\n\nAimed Result\nWhat to Type\nOther Info\n\n\n\n\n\\(\\mathbb{E}\\)\n$\\mathbb{E}$\n$\\mathbb{E}(x) = $\n\n\n\\(\\pi\\)\n$\\pi$\n(Can also do \\(\\Pi\\): $\\Pi$)\n\n\n\\(\\ell\\)\n$\\ell$\nUseful for log-likelihood\n\n\n\\(\\partial\\)\n$\\partial$\npartial derivatives! ‘del’\n\n\n—————\n—————–\n—————————–\n\n\nComparing similar letters\n\n\n\n\n\\(P,\\mathrm{P}, \\mathbb{P}\\)\n$P,\\mathrm{P}, \\mathbb{P}$\n(mathrm for “math roman font”)\n\n\n\\(\\sum \\Sigma\\)\n$\\sum \\Sigma$\nsame but different\n\n\n\\(\\in\\)\n\n\n\n\n\\(\\Pi, \\prod\\)\n$\\Pi, \\prod$",
+    "crumbs": [
+      "Quarto",
+      "Markdown Tips"
+    ]
+  },
+  {
+    "objectID": "markdown.html#greek-alphabet",
+    "href": "markdown.html#greek-alphabet",
+    "title": "Markdown Tips",
+    "section": "Greek Alphabet",
+    "text": "Greek Alphabet\n\n\n\n\n\n\n\n\n\n\n\n\\(\\alpha A\\)\n$\\alpha A$\n\\(\\beta B\\)\n$\\beta B$\n\\(\\gamma \\Gamma\\)\n$\\gamma \\Gamma$\n\n\n\\(\\delta \\Delta\\)\n$\\delta \\Delta$\n\\(\\epsilon \\varepsilon E\\)\n$\\epsilon \\varepsilon E$\n\\(\\zeta Z \\sigma\\)\n$\\zeta Z \\sigma$\n\n\n\\(\\eta H\\)\n$\\eta H$\n\\(\\theta \\vartheta \\Theta\\)\n$\\theta \\vartheta \\Theta$\n\\(\\iota I\\)\n$\\iota I$\n\n\n\\(\\kappa K\\)\n$\\kappa K$\n\\(\\lambda \\Lambda\\)\n$\\lambda \\Lambda$\n\\(\\mu M\\)\n$\\mu M$\n\n\n\\(\\nu N\\)\n$\\nu N$\n\\(\\xi\\Xi\\)\n$\\xi\\Xi$\n\\(o O\\)\n$o O$ (omicron)\n\n\n\\(\\pi \\Pi\\)\n$\\pi \\Pi$\n\\(\\rho\\varrho P\\)\n$\\rho\\varrho P$\n\\(\\sigma \\Sigma\\)\n$\\sigma \\Sigma$\n\n\n\\(\\tau T\\)\n$\\tau T$\n\\(\\upsilon \\Upsilon\\)\n$\\upsilon \\Upsilon$\n\\(\\phi \\varphi \\Phi\\)\n$\\phi \\varphi \\Phi$\n\n\n\\(\\chi X\\)\n$\\chi X$\n\\(\\psi \\Psi\\)\n$\\psi \\Psi$\n\\(\\omega \\Omega\\)\n$\\omega \\Omega$",
+    "crumbs": [
+      "Quarto",
+      "Markdown Tips"
+    ]
+  },
+  {
+    "objectID": "markdown.html#different-fonts",
+    "href": "markdown.html#different-fonts",
+    "title": "Markdown Tips",
+    "section": "Different Fonts",
+    "text": "Different Fonts\n\n\n\n\\(N\\)\n$N$\n\n\n\\(\\mathcal{N}\\)\n$\\mathcal{N}$\n\n\n\\(\\mathbf{N}\\)\n$\\mathbf{N}$\n\n\n\\(\\mathbb{N}\\)\n$\\mathbb{N}$\n\n\n\\(\\mathscr{N}\\)\n$\\mathscr{N}$",
+    "crumbs": [
+      "Quarto",
+      "Markdown Tips"
+    ]
+  },
+  {
+    "objectID": "markdown.html#actions-on-letters",
+    "href": "markdown.html#actions-on-letters",
+    "title": "Markdown Tips",
+    "section": "Actions on Letters",
+    "text": "Actions on Letters\n(Also a way with HTML to write a table that looks the same)\n\n\nTable1.3:Actions_on_Letters\n\n\n\n\nAimed Result\nWhat to Type\nOther Info\n\n\n\n\n\\(\\bar x, \\overline{x}\\)\n$\\bar x, \\overline{x}$\nDiff: how many letters it can cover\n\n\n\\(\\hat x\\) `\n\\(\\hat x\\)`\nhow to cover multiple\n\n\n\\(\\tilde{x}\\) `\n\\(\\tilde{x}\\)`\n\n\n\n\\(\\binom{n}{k}\\) `\n\\(\\binom{n}{k}\\)`",
+    "crumbs": [
+      "Quarto",
+      "Markdown Tips"
+    ]
+  },
+  {
+    "objectID": "markdown.html#math-equations",
+    "href": "markdown.html#math-equations",
+    "title": "Markdown Tips",
+    "section": "Math Equations",
+    "text": "Math Equations\n\n\n\n\n\n\n\n\nAimed Result\nWhat to Type\nOther Info\n\n\n\n\n\\(\\frac{1}{n}\\)\n$\\frac{1}{n}$\n\n\n\n\n\n\n\n\n—\n—\n—\n\n\nwriting multiple aligned equations\nwrap in $$\\begin{aligned} \\end{aligned}$$\nsplit lines with \\\\ and line up equal signs with &=\n\n\n\\(\\left[ x^\\frac{y}{z} \\right]\\)\nwrap in $\\left[ x^\\frac{y}{z} \\right]$\nlarger brackets that cover whole equation\n\n\n\n\n\n\n\n—\n—\n—\n\n\n\\(\\lim_{x \\to \\infty} f(x)\\) or \\[\\lim_{x \\to \\infty} f(x)\\]\n$\\lim_{x \\to \\infty} f(x)$\nIf you use $$ around original equation or $\\underset{}$, it will put \\(x \\to \\infty\\) below. Ex: $$\\lim_{x \\to \\infty} f(x)$$ and $\\underset{x \\to \\infty} {\\text{lim}} f(x)$ both make the 2nd option shown. (although $$ makes it larger)\n\n\n\\(\\sum_{n=1}^{\\infty} 2^{-n} = 1\\) or \\[\\sum_{i=1}^{n} X_i\\]\n$\\sum_{i=1}^{n} X_i$\n(same as above)\n\n\n\\(\\prod_{i=a}^{b} f(i)\\) or \\[\\prod_{i=a}^{b} f(i)\\]\n$\\prod_{i=a}^{b} f(i)$\n(same as above)\n\n\n\\(\\int_{a}^{b} x^2 dx\\)\n$\\int_{a}^{b} x^2 dx$\nIntegrals are written the same with $$ or $\n\n\n—\n—\n—\n\n\n\\(\\underset{x \\to \\infty} {\\text{lim}} f(x)\\)\n$\\underset{x \\to \\infty} {\\text{lim}}$\n\n\n\n\\(\\underset{\\text{this is cool}} {\\underbrace{x=4}}\\)\n$\\underset{\\text{this is cool}} {\\underbrace{x=4}}$\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHere may be a better way of showing how to align equations:\n$$\n\\begin{align}\nx &= 1 + y \\\\\n  &= 3 \\\\\n\\end{align}\n$$\nAnd a good way of showing how to make if statements:\n$$\nZ^{re} = \n\\begin{cases}\n0     & \\text{if } Z \\le a \\\\\nZ - a & \\text{if } a &lt; Z \\le a + b  \\\\\nb    & Z &gt; a + b\n\\end{cases}\n$$\nNote: if you accidentally press 0 on the additional part of the keyboard, it will change the cursor to be a dash below the character instead of in front!",
+    "crumbs": [
+      "Quarto",
+      "Markdown Tips"
     ]
   },
   {
