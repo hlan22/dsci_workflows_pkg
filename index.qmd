@@ -32,7 +32,7 @@ By the end of the course, students will be able to:
     - [ ] Note: Need to make a summary page that lists all improvements possible
 - [ ] [**Assignment 5**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia5.html): Packaging (for walk-through, see [this for R](https://r-pkgs.org/whole-game.html) or [this for python](https://py-pkgs.org/03-how-to-package-a-python))
     - [ ] Note: Need to learn how to do python packages
-    - [ ] Note: Need to summarize and streamline R packages
+    - [X] Note: Need to summarize and streamline R packages
     - [ ] Note: Want to improve and update R packages made from this course
     - [ ] Note: Want to go over potential conflicts you can run into, and main things to know in a time crunch
 

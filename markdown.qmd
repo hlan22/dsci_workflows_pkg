@@ -1,0 +1,194 @@
+---
+title: "Markdown Tips"
+format: html
+---
+
+
+Each time I forget how to do something in Rmarkdown, I often need to visit multiple websites to figure out my goal. I am just using this as a central location for all this information!
+
+Here's a very basic guide for all-things you need to know for latex writing in Rmarkdown!
+
+
+## Basic Symbols
+
+<style>
+/* Narrow and center-align Markdown tables in HTML output */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: auto; /* This keeps the table only as wide as needed */
+}
+
+table th, table td {
+  padding: 1px; /* Minimal padding to reduce column width */
+  /* text-align: center; Center-aligns content in each cell */
+}
+</style>
+
+| Aimed Result     | What to Type       | Other Info                 |
+|--------------    |--------------      |------------                |
+|$\rightarrow$     | `$\rightarrow$`    | can also do left, up, down |
+|$\Rightarrow$     | `$\Rightarrow$`    | can also do left, up, down |
+|$\leftrightarrow$ | `$\leftrightarrow$`| also `$\updownarrow$`      |
+|$\swarrow$        | `$\swarrow$`       | (sw= SouthWest) also do nw, ne, se |
+|$\rightharpoonup$ | `$\rightharpoonup$`| $\leftharpoonup$, $\leftharpoondown$, $\rightharpoondown$, $\upharpoonright$, $\downharpoonleft$, $\upharpoonleft$, $\downharpoonright$ |
+|$\longrightarrow$ | `$\longrightarrow$`| Often used in functions/sequences |
+| $\to$            | `$\to$`            | Used in Limits (equivalent to right arrow) |
+|--------------    |--------------      |------------                |
+|$\infty$          | `$\infty$`         | Don't get why not shorten infinity to inf... |
+|$\approx$         | `$\approx$`        |  $\thickapprox$ `$\thickapprox$`|
+|$\sim$            | `$\sim$`           |  `$N \sim Pois(\lambda)$`  |
+|--------------    |--------------      |------------                |
+|$\mid$ $\mathbb{P}(A \mid B)$ | `$\mid$` `$\mathbb{P}(A \mid B)$` | Just typing `|` does the same, so what is the use?  |
+|$x \ge y, y \le z$|`$x \ge y, y \le z$`|**g**reater-than-or-**e**qual |
+| $\cdots, \dots$  | `$\cdots, \dots$`  | Useful for `$x_{1} + x_{2} + \cdots + x_{n}$` |
+| $A \subset B$, $B \subseteq C$ | `$A \subset B$, $B \subseteq C$` |  cool~ |
+| $A \cup B$, $B \cap C$ | `$A \cup B$, $B \cap C$` | cool maths | 
+|--------------    |--------------      |------------  |
+| $\sin(x), \cos(x), \tan(x), \log(x)$ | `$\sin(x), \cos(x), \tan(x), \log(x)$` | cool to not have to do a `\text{}` in front of it! |
+
+## Letters
+
+|Aimed Result   |  What to Type   |  Other Info                 | 
+|-------------  | ------------    | ----------                  |
+|$\mathbb{E}$   | `$\mathbb{E}$`  | `$\mathbb{E}(x) = $`        |
+|$\pi$          | `$\pi$`         | (Can also do $\Pi$: `$\Pi$`)|
+|$\ell$         | `$\ell$`        | Useful for log-likelihood   |
+|$\partial$     | `$\partial$`    | partial derivatives! 'del'  |
+|---------------|-----------------|-----------------------------|
+| Comparing similar letters |     |                             |
+|$P,\mathrm{P}, \mathbb{P}$ | `$P,\mathrm{P}, \mathbb{P}$` | (mathrm for “math roman font”) |
+|$\sum \Sigma$  | `$\sum \Sigma$` | same but different          | 
+|$\in$          |                 |                             |
+|$\Pi, \prod$   | `$\Pi, \prod$`  |                             |
+
+#
+
+## Greek Alphabet
+
+|            |              |            |              |           |         |
+| ---------- | ----------   | ---------- | ------------ | --------- | ------- |
+| $\alpha A$ | `$\alpha A$` | $\beta B$  | `$\beta B$` | $\gamma \Gamma$ | `$\gamma \Gamma$` |
+| $\delta \Delta$ | `$\delta \Delta$` | $\epsilon \varepsilon E$ | `$\epsilon \varepsilon E$` | $\zeta Z \sigma$ | `$\zeta Z \sigma$`|
+| $\eta H$ | `$\eta H$` | $\theta \vartheta \Theta$ | ` $\theta \vartheta \Theta$` | $\iota I$ | `$\iota I$` | 
+| $\kappa K$ | `$\kappa K$` | $\lambda \Lambda$ | `$\lambda \Lambda$` | $\mu M$ | `$\mu M$` |
+| $\nu N$ | `$\nu N$` | $\xi\Xi$ | `$\xi\Xi$` | $o O$ | `$o O$` (omicron) | 
+| $\pi \Pi$ | `$\pi \Pi$` | $\rho\varrho P$ | `$\rho\varrho P$` | $\sigma \Sigma$ | `$\sigma \Sigma$` | 
+| $\tau T$ | `$\tau T$` | $\upsilon \Upsilon$ | `$\upsilon \Upsilon$` | $\phi \varphi \Phi$ | `$\phi \varphi \Phi$` |
+| $\chi X$ | `$\chi X$` | $\psi \Psi$ | `$\psi \Psi$` | $\omega \Omega$ | `$\omega \Omega$` | 
+
+#
+
+## Different Fonts 
+
+|                  |                 |
+|------------------|-----------------|
+| $N$              | `$N$`           |
+| $\mathcal{N}$    | `$\mathcal{N}$` |
+| $\mathbf{N}$     | `$\mathbf{N}$`  |
+| $\mathbb{N}$     | `$\mathbb{N}$`  |
+| $\mathscr{N}$    | `$\mathscr{N}$` |
+
+
+## Actions on Letters
+
+(Also a way with HTML to write a table that looks the same)
+
+<table>
+<caption><span id="tab:table2">Table1.3:</span>Actions_on_Letters</caption>
+Aimed Result            What to Type               Other Info
+-------------           ------------               ----------
+$\bar x, \overline{x}$  `$\bar x, \overline{x}$`   Diff: how many letters it can cover
+$\hat x$               `$\hat x$`                  how to cover multiple 
+$\tilde{x}$            `$\tilde{x}$`                   
+$\binom{n}{k}$         `$\binom{n}{k}$` 
+</table>
+
+## Math Equations
+
+| Aimed Result    | What to Type     | Other Info |
+|--------------   |--------------    |------------|
+| $\frac{1}{n}$     | `$\frac{1}{n}$`  |            |
+|   |   |   |
+| ---             | ---               | ---        |
+| writing multiple aligned equations  | wrap in `$$\begin{aligned} \end{aligned}$$` | split lines with `\\` and line up equal signs with `&=`  |
+| $\left[ x^\frac{y}{z} \right]$  | wrap in `$\left[ x^\frac{y}{z} \right]$`  | larger brackets that cover whole equation  |
+|   |   |   |
+| ---             | ---               | ---        |
+| $\lim_{x \to \infty} f(x)$ or $$\lim_{x \to \infty} f(x)$$ | `$\lim_{x \to \infty} f(x)$`  | If you use `$$` around original equation or `$\underset{}$`, it will put $x \to \infty$ below. Ex: `$$\lim_{x \to \infty} f(x)$$` and `$\underset{x \to \infty} {\text{lim}} f(x)$` both make the 2nd option shown. (although `$$` makes it larger) |
+| $\sum_{n=1}^{\infty} 2^{-n} = 1$ or $$\sum_{i=1}^{n} X_i$$ | `$\sum_{i=1}^{n} X_i$` | (same as above) |
+| $\prod_{i=a}^{b} f(i)$ or $$\prod_{i=a}^{b} f(i)$$ | `$\prod_{i=a}^{b} f(i)$`  | (same as above) |
+| $\int_{a}^{b} x^2 dx$ | `$\int_{a}^{b} x^2 dx$` | Integrals are written the same with `$$` or `$` |
+| --- | --- | --- |
+| $\underset{x \to \infty} {\text{lim}} f(x)$  | `$\underset{x \to \infty} {\text{lim}}$`  |   |
+| $\underset{\text{this is cool}} {\underbrace{x=4}}$  | `$\underset{\text{this is cool}} {\underbrace{x=4}}$`  |   |
+|   |   |   |
+|   |   |   |
+
+
+Here may be a better way of showing how to align equations:
+
+```
+$$
+\begin{align}
+x &= 1 + y \\
+  &= 3 \\
+\end{align}
+$$
+```
+And a good way of showing how to make if statements:
+
+```
+$$
+Z^{re} = 
+\begin{cases}
+0     & \text{if } Z \le a \\
+Z - a & \text{if } a < Z \le a + b  \\
+b    & Z > a + b
+\end{cases}
+$$
+```
+
+Note: if you accidentally press 0 on the additional part of the keyboard, it will change the cursor to be a dash below the character instead of in front!
+
+---
+
+#
+
+#
+
+#
+
+> Credit for Sources Used:
+>
+> It is no longer useful for me, but still good to give thanks and credit!
+
+* https://www.geeksforgeeks.org/arrow-symbols-in-latex/ (used for different types of arrows)
+
+* https://stackoverflow.com/questions/70565733/how-to-manually-create-a-simple-table-and-present-it-with-knitrkable-in-r-markd (used for making a different type of table)
+
+* https://www.overleaf.com/learn/latex/Integrals%2C_sums_and_limits (used for math equations, middle section)
+
+* https://rpruim.github.io/s341/S19/from-class/MathinRmd.html (used for letters/symbols) 
+
+* https://stackoverflow.com/questions/39671612/how-to-type-tilde-in-formulas-in-rmarkdown (this is the website that would always come up over the years for the tilde and I owe it so much of my time, thank you!)
+
+* https://tex.stackexchange.com/questions/78736/bigger-parentheses-in-equations (large brackets)
+
+* https://tex.stackexchange.com/questions/225523/how-to-write-partial-differential-equation-ex-dq-dt-ds-dt-with-real-partial-d (partial derivatives)
+
+* https://tex.stackexchange.com/questions/47170/how-to-write-conditional-equations-with-one-sided-curly-brackets (if cases)
+
+* https://tex.stackexchange.com/questions/535648/special-n-character (fonts)
+
+
+This may be useful (not used yet):
+
+* https://mystmd.org/guide/math
+* https://bookdown.org/yihui/rmarkdown/markdown-syntax.html 
+* https://wiki.snowdrift.coop/editorial/markdown#:~:text=For%20capital%20letters%20or%20Roman,also%20work%20for%20lower%2Dcase. (want to include images)
+
+Also hope to talk about how to do the colored boxes like in:
+
+* file:///C:/Users/Heidi/Documents/research_work/weekly_work/week8/week8_precipitation_changes.html
+* And it would be cool to figure out how to do roman numerals

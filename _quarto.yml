@@ -34,6 +34,8 @@ website:
             
       - section: "Quarto"
         contents: 
+          - href: markdown.qmd
+            name: "Markdown Tips"
           - href: quarto_docs.qmd
             text: "Quarto Reports"
           - href: making_websites.qmd
