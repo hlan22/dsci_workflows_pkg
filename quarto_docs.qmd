@@ -3,9 +3,13 @@ title: "quarto_docs"
 format: html
 ---
 
-### Side Notes
 
-Quarto Documents
+## Table and Image: Labelling and Referencing
+
+
+
+
+## Execution Options for `.qmd` and `.Rmd`
 
 | Execution Option | Description | Values |
 |-------------------|------------------------|-----------------------------|

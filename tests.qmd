@@ -1,8 +1,67 @@
 ---
-title: "tests"
+title: "Testing for Packages"
 format: html
 ---
 
-# `testthat` Package
+# `library(testthat)`
 
-# `codecov` Package
+## Thorough steps for an R Package
+
+We've tested `function-name()` **informally**, in a single example.
+We can, and should, express a concrete expectation about the correct `function-name()` result for a specific input.
+
+First, we declare our intent to write unit tests and to use the testthat package for this, via `use_testthat()`:
+
+```r
+use_testthat()
+```
+
+* This initializes the unit testing machinery for your package.
+* It adds `Suggests: testthat` to `DESCRIPTION`, creates the directory `tests/testthat/`, and adds the script `tests/testthat.R`.
+* You'll notice that testthat is probably added with a minimum version of 3.0.0 and a second DESCRIPTION field, `Config/testthat/edition: 3`.
+
+However, it's still up to YOU to write the actual tests!
+
+The helper `use_test()` opens and/or creates a test file.
+If `R/function-name.R` is the active file in RStudio, you can just call `use_test()`.
+However, we can also provide the basename explicitly:
+
+```r
+use_test("function-name")
+```
+
+* This creates the file `tests/testthat/test-function-name.R`.
+* If it had already existed, `use_test()` would have just opened it.
+* You will notice that there is an example test in the newly created file - delete that code and replace it with something like this:
+
+```r
+test_that("strsplit1() splits a string", {
+  expect_equal(strsplit1("a,b,c", split = ","), c("a", "b", "c"))
+})
+```
+
+This tests that `function-name()` gives the expected result.
+
+Run this test interactively, as you will when you write your own.
+If `test_that()` or `function-name()` can't be found, that suggests that you probably need to call `load_all()`.
+
+```r
+test()
+```
+
+* Your tests are also run whenever you `check()` the package.
+
+
+## Examples and How to Write Tests
+
+# `library(codecov)`
+
+It is a good idea to use the [covr package](https://covr.r-lib.org) to track what proportion of your package's source code is exercised by the tests. 
+
+Do these steps to integrate it into your package checks:
+
+Add the badge to your `README.Rmd` by inputting the following line:
+
+```r
+
+```

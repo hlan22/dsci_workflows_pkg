@@ -5,6 +5,9 @@ format: html
 
 ## How to Write Functions
 
+To learn more about that take a look at the [Functions chapter](https://r4ds.hadley.nz/functions.html) of R for Data Science and the [Functions chapter](https://adv-r.hadley.nz/functions.html) of Advanced R.
+
+
 ## ROxygen Guide
 
 (Taken from [The Whole Game](https://r-pkgs.org/whole-game.html) R Package building guide)

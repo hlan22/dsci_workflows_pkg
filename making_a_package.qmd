@@ -5,9 +5,9 @@ format: html
 
 ## R Packages
 
-### The Whole Game {#sec-whole-game}
+This explanation has been taken entirely from [The Whole Game](https://r-pkgs.org/whole-game.html), edited and simplified by me. Credit is given completely to those authors!
 
-## Load devtools and friends
+## `devtools`
 
 Load the `devtools` package, which is the public face of a set of packages that support various aspects of package development.
 The most obvious of these packages is the `usethis` package, which you'll see is also being loaded.
@@ -17,13 +17,12 @@ install.packages("devtools")
 library(devtools)
 ```
 
-### Components of a package
+### Package Components
 
 Features commonly seen in released packages:
 
--   Functions to address a specific need, in this case helpers for work with regular expressions.
--   Version control and an open development process.
-    -   This is completely optional in your work, but highly recommended. You'll see how Git and GitHub help us expose all the intermediate stages of our toy package.
+-   **Functions** to address a specific need
+-   **Version control** and an open development process.
 -   Access to established workflows for installation, getting help, and checking quality.
     -   Documentation for individual functions via [roxygen2](https://roxygen2.r-lib.org).
     -   Unit testing with [testthat](https://testthat.r-lib.org).
@@ -32,18 +31,16 @@ Features commonly seen in released packages:
 ## `create_package()`
 
 Call `create_package()` to initialize a new package in a directory on your computer.
-`create_package()` will automatically create that directory if it doesn't exist yet.
-Make a deliberate choice about where to create this package on your computer.
-It should not be nested inside another RStudio Project, R package, or Git repo.
 
-Put your chosen path into a `create_package()` call like this:
+* `create_package()` will automatically create that directory if it doesn't exist yet.
+* Make a deliberate choice about where to create this package on your computer. It should not be nested inside another RStudio Project, R package, or Git repo.
+* Put your chosen path into a `create_package()` call like this:
 
 ```r
 create_package("~/git/pathToPackage")
 ```
 
-If you're working in RStudio, you should find yourself in a new instance of RStudio, opened into your new package (and Project).
-RStudio has special handling for packages and you should now see a *Build* tab in the same pane as *Environment* and *History*.
+If you're working in RStudio, you should find yourself in a new instance of RStudio, opened into your new package (and Project). RStudio has special handling for packages and you should now see a *Build* tab in the same pane as *Environment* and *History*.
 
 You probably need to call `library(devtools)` again, because `create_package()` has probably dropped you into a fresh R session, in your new package.
 
@@ -52,66 +49,66 @@ library(devtools)
 ```
 
 What's in this new directory that is an R package and an RStudio Project?
-Here's a listing (locally, you can consult your *Files* pane):
 
-| File       | Use                                                      |
-|:-----------|:---------------------------------------------------------|
-| `.Rbuildignore` | Lists files that we need to have around but that should not be included when building the R package from source. |
-|`.Rproj.user` | If you have it, is a directory used internally by RStudio. |
-| `.gitignore` | Anticipates Git usage and tells Git to ignore some standard, behind-the-scenes files created by R and RStudio. |
+| File          | Use                                                   |
+|:--------------|:------------------------------------------------------|
+|`.Rbuildignore`| Lists files that we need to have around but that should not be included when building the R package from source. |
+|`.Rproj.user`  | If you have it, is a directory used internally by RStudio.|
+| `.gitignore`  | Anticipates Git usage and tells Git to ignore some standard, behind-the-scenes files created by R and RStudio. |
 | `DESCRIPTION` | Provides metadata about your package. |
 | `NAMESPACE`   | Declares the functions your package exports for external use and the external functions your package imports from other packages.
-| The `R/` directory | The "business end" of your package. It will soon contain `.R` files with function definitions. |
-| `*.Rproj`  | The file that makes this directory an RStudio Project. Even if you don't use RStudio, this file is harmless. |
+| `R/` directory| The "business end" of your package. It will soon contain `.R` files with function definitions. |
+| `*.Rproj`     | The file that makes this directory an RStudio Project. Even if you don't use RStudio, this file is harmless. |
+
+:Files in an R Package {#tbl-rpackage .striped .hover}
 
 ---
 
 ## `use_git()`
 
-This directory is an R source package and an RStudio Project.
-Now we make it also a Git repository, with `use_git()`.
+This directory is an R package and an RStudio Project. We can also make it also a Git repository with `use_git()`.
 
 ```r
 use_git()
 ```
 
-The only thing that has changed is the creation of a `.git` directory, which is hidden in most contexts, including the RStudio file browser.
-Its existence is evidence that we have indeed initialized a Git repo here.
-
-If you're using RStudio, it probably requested permission to relaunch itself in this Project, which you should do.
-You can do so manually by quitting, then relaunching RStudio by double clicking on your project file.
-Now, in addition to package development support, in RStudio you have access to a basic Git client in the *Git* tab of the *Environment/History/Build* pane.
+* The only thing that changes is the creation of a `.git` directory, which is hidden in most contexts, including the RStudio file browser. Its existence is evidence that we have indeed initialized a Git repo here.
+* If you're using RStudio, it probably requested permission to relaunch itself in this Project, which you should do. You can do so manually by quitting, then relaunching RStudio by double clicking on your project file.
 
 ---
 
-## Writing functions with `use_r()`
+## `use_r()`
 
-This book does not teach you how to write functions in R.
-To learn more about that take a look at the [Functions chapter](https://r4ds.hadley.nz/functions.html) of R for Data Science and the [Functions chapter](https://adv-r.hadley.nz/functions.html) of Advanced R.
+Now we get to write functions for our package!
+
+Refer to the [functions page](#functions.qmd) for more information.
 
 Where should you put the definition of your function?
-Save it in a `.R` file, in the `R/` subdirectory of your package.
-A reasonable starting position is to make a new `.R` file for each user-facing function in your package and name the file after the function.
-As you add more functions, you'll want to relax this and begin to group related functions together.
 
+* Save it in a `.R` file, in the `R/` sub-directory of your package.
+* A reasonable starting position is to make a new `.R` file for each user-facing function in your package and name the file after the function. As you add more functions, you'll want to relax this and begin to group related functions together.
+* **Note:** The function file should NOT contain any of the other top-level code we have recently executed, such as library calls `library(devtools)`, or other things such as `use_git()`.
+
+You can use the `use_r()` function to help create new files in the `R/` directory:
 ```r
 use_r("function_name")
 ```
 
-**Note:** The function file should NOT contain any of the other top-level code we have recently executed, such as library calls `library(devtools)`, or other things such as `use_git()`.
+---
 
 ## `load_all()` {#sec-whole-game-load-all}
 
-How do we test drive our function though?
-
-For package development, devtools offers a more robust approach.
-
-Call `load_all()` to make the functions you made available for experimentation.
+How do we test drive our functions though? Call `load_all()` to make the functions you made available for experimentation.
 
 ```r
 load_all()
 ```
-Note that `load_all()` has made the functions available, although it does not exist in the global environment.
+
+* `load_all()` simulates the process of building, installing, and attaching the package.
+* As your package accumulates more functions, some exported, some not, some of which call each other, some of which call functions from packages you depend on, `load_all()` gives you a much more accurate sense of how the package is developing than test driving functions defined in the global environment.
+* It also allows much faster iteration than actually building, installing, and attaching the package.
+
+Note that `load_all()` has made the functions available, although it does **not** exist in the global environment. You can check with the following:
 
 ```r
 exists("function-name", where = globalenv(), inherits = FALSE)
@@ -125,45 +122,40 @@ Here's how to get back on track:
 -   Redefine the test input and call your function again.
 -   Run `exists("function-name", where = globalenv(), inherits = FALSE)` again and you should see `FALSE`.
 
-`load_all()` simulates the process of building, installing, and attaching the package.
-As your package accumulates more functions, some exported, some not, some of which call each other, some of which call functions from packages you depend on, `load_all()` gives you a much more accurate sense of how the package is developing than test driving functions defined in the global environment.
-Also `load_all()` allows much faster iteration than actually building, installing, and attaching the package.
-
 ---
 
 ## `check()`
 
-We have informal, empirical evidence that our functions work.
-But how can we be sure that all the moving parts of the package still work?
+We have informal, empirical evidence that our functions work. But how can we be sure that all the moving parts of the package still work?
 
 `R CMD check`, executed in the shell, is the gold standard for checking that an R package is in full working order.
 `check()` is a convenient way to run this without leaving your R session.
 
-Note that `check()` produces rather voluminous output, optimized for interactive consumption.
-
 ```r
 check()
 ```
+Note that `check()` produces rather voluminous output, optimized for interactive consumption.
+
 At this point, we expect 1 warning (and 0 errors, 0 notes):
 
 ```         
 Non-standard license specification:
-  `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-  license
+  `use_mit_license()`, `use_gpl3_license()` 
+   or friends to pick a license
 ```
 
-> [Pick a License, Any License. -- Jeff Atwood](https://blog.codinghorror.com/pick-a-license-any-license/)
+Shout out to this clear description of different licenses: [Pick a License, Any License. -- Jeff Atwood](https://blog.codinghorror.com/pick-a-license-any-license/)
 
 We currently have a placeholder in the `License` field of `DESCRIPTION` that's deliberately invalid and suggests a resolution.
 
 ```         
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+License: `use_mit_license()`, `use_gpl3_license()` 
+          or friends to pick a license
 ```
 
 To configure a valid license for the package, call `use_mit_license()`.
 
-```{r use-mit-license, eval = create}
+```r
 use_mit_license()
 ```
 
@@ -175,24 +167,24 @@ YEAR: 2025
 COPYRIGHT HOLDER: regexcite authors
 ```
 
-Like other license helpers, `use_mit_license()` also puts a copy of the full license in `LICENSE.md` and adds this file to `.Rbuildignore`.
-It's considered a best practice to include a full license in your package's source, such as on GitHub, but CRAN disallows the inclusion of this file in a package tarball.
-
+* Like other license helpers, `use_mit_license()` also puts a copy of the full license in `LICENSE.md` and adds this file to `.Rbuildignore`.
+* It's considered a best practice to include a full license in your package's source, such as on GitHub, but CRAN disallows the inclusion of this file in a package tarball.
 
 ---
 
-## Edit `DESCRIPTION`
+## `DESCRIPTION`
 
 The `DESCRIPTION` file provides metadata about your package.
 
-To add your own metadata, make these edits:
+Make these edits:
 
--   Make yourself the author. If you don't have an ORCID, you can omit the `comment = ...` portion.
--   Write some descriptive text in the `Title` and `Description` fields.
+* Make yourself the author. If you don't have an ORCID (a research ID), you can omit the `comment = ...` portion.
+* Write some descriptive text in the `Title` and `Description` fields.
+* Ensure you have a license
 
 When you're done, `DESCRIPTION` should look similar to this:
 
-```
+```html
 Package: regexcite
 Title: Make Regular Expressions More Exciting
 Version: 0.0.0.9000
@@ -200,8 +192,7 @@ Authors@R:
     person("Jane", "Doe", , "jane@example.com", role = c("aut", "cre"))
 Description: Convenience functions to make some common tasks with string
     manipulation and regular expressions a bit easier.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
@@ -213,25 +204,22 @@ RoxygenNote: 7.1.2
 
 Learn how to write Roxygen statements [on the functions page](#functions.qmd)
 
-But we're not done yet!
-We still need to trigger the conversion of this new roxygen comment into `man/function-name.Rd` with `document()`:
+But we're not done yet! We still need to trigger the conversion of this new roxygen comment into `man/function-name.Rd` with `document()`:
 
 ```r
 document()
 ```
 
-You should now be able to preview your help file like so:
+You should now be able to preview your help file for your function like so:
 
 ```r
 ?function-name
 ```
 
-You'll see a message like "Rendering development documentation for `function-name`", which reminds that you are basically previewing draft documentation.
-That is, this documentation is present in your package's source, but is not yet present in an installed package.
-If it doesn't work for you, you may need to call `load_all()` first, then try again.
+* You'll see a message like "Rendering development documentation for `function-name`", which reminds that you are basically previewing draft documentation. That is, this documentation is present in your package's source, but is not yet present in an installed package.
+* If it doesn't work for you, you may need to call `load_all()` first, then try again.
 
-
-### `NAMESPACE` changes
+#### `NAMESPACE` Updates
 
 In addition to converting `function-name()`'s special comment into `man/function-name.Rd`, the call to `document()` updates the `NAMESPACE` file, based on `@export` tags found in roxygen comments.
 
@@ -243,9 +231,8 @@ Open `NAMESPACE` for inspection. The contents should be:
 export(function-name)
 ```
 
-The export directive in `NAMESPACE` is what makes `function-name()` available to a user after attaching your-package via `library(your-package)`.
-Just as it is entirely possible to author `.Rd` files "by hand", you can manage `NAMESPACE` explicitly yourself.
-But we choose to delegate this to devtools (and roxygen2).
+* The export directive in `NAMESPACE` is what makes `function-name()` available to a user after attaching your-package via `library(your-package)`.
+J* ust as it is entirely possible to author `.Rd` files "by hand", you can manage `NAMESPACE` explicitly yourself. But we choose to delegate this to devtools (and roxygen2).
 
 ---
 
@@ -282,53 +269,32 @@ This is also a good time to restart your R session and ensure you have a clean w
 
 ## `use_testthat()`
 
-We've tested `function-name()` **informally**, in a single example.
-We can, and should, express a concrete expectation about the correct `function-name()` result for a specific input.
+Please see [the tests page](#tests.qmd) for more information on making tests.
 
-First, we declare our intent to write unit tests and to use the testthat package for this, via `use_testthat()`:
+We should test our functions to ensure they follow the behavior we expect.
 
 ```r
 use_testthat()
 ```
 
-This initializes the unit testing machinery for your package.
-It adds `Suggests: testthat` to `DESCRIPTION`, creates the directory `tests/testthat/`, and adds the script `tests/testthat.R`.
-You'll notice that testthat is probably added with a minimum version of 3.0.0 and a second DESCRIPTION field, `Config/testthat/edition: 3`.
-
-
-However, it's still up to YOU to write the actual tests!
+* This initializes the unit testing machinery for your package.
+* It adds `Suggests: testthat` to `DESCRIPTION`, creates the directory `tests/testthat/`, and adds the script `tests/testthat.R`.
 
 The helper `use_test()` opens and/or creates a test file.
-If `R/function-name.R` is the active file in RStudio, you can just call `use_test()`.
-However, we can also provide the basename explicitly:
 
 ```r
 use_test("function-name")
 ```
 
-This creates the file `tests/testthat/test-function-name.R`.
-If it had already existed, `use_test()` would have just opened it.
+Make sure to write the actual tests!
 
-You will notice that there is an example test in the newly created file - delete that code and replace it with something like this:
-
-```r
-test_that("strsplit1() splits a string", {
-  expect_equal(strsplit1("a,b,c", split = ","), c("a", "b", "c"))
-})
-```
-
-This tests that `function-name()` gives the expected result.
-
-Run this test interactively, as you will when you write your own.
-If `test_that()` or `function-name()` can't be found, that suggests that you probably need to call `load_all()`.
+Run your tests as such: 
 
 ```r
 test()
 ```
 
-Your tests are also run whenever you `check()` the package.
-In this way, you basically augment the standard checks with some of your own, that are specific to your package.
-It is a good idea to use the [covr package](https://covr.r-lib.org) to track what proportion of your package's source code is exercised by the tests.
+* Your tests are also run whenever you `check()` the package.
 
 ---
 
@@ -367,7 +333,7 @@ But now we need to rename the function file based on the new function name!
 
 Because this comes up fairly often in real life, we have the `rename_files()` function, which choreographs the renaming of a file in `R/` and its associated companion files below `test/`.
 
-```{r}
+```r
 rename_files("function-name", "new-function-name")
 ```
 

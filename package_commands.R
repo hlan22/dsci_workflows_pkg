@@ -98,7 +98,7 @@ testthat::test()
 
 # --------------- ADD MORE INFO ------------------------------
 
-# adds package to imports feild of DESCRIPTION
+# adds package to imports field of DESCRIPTION
 use_package("ggplot2")
 
 # if renaming functions
@@ -116,4 +116,3 @@ devtools::use_readme_rmd()
 devtools::build_readme()
 
 # --------------- FINAL PRODUCT ------------------------------
-
