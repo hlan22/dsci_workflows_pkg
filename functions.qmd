@@ -1,5 +1,52 @@
 ---
-title: "functions"
+title: "Writing Functions"
 format: html
 ---
 
+## How to Write Functions
+
+## ROxygen Guide
+
+(Taken from [The Whole Game](https://r-pkgs.org/whole-game.html) R Package building guide)
+
+Wouldn't it be nice to get `?` help with your functions, just like we do with other R functions?
+This requires that your package have a special R documentation file, `man/function-name.Rd`, written in an R-specific markup language that is sort of like LaTeX.
+Luckily we don't necessarily have to author that directly.
+
+We write a specially formatted comment right above `function-bame()`, in its source file, and then let a package called [roxygen2](https://roxygen2.r-lib.org) handle the creation of `man/function-name.Rd`.
+
+If you use RStudio, open `R/function-name.R` in the source editor and put the cursor somewhere in the `function-name()` function definition.
+Now do *Code \> Insert roxygen skeleton*.
+A very special comment should appear above your function, in which each line begins with `#'`.
+RStudio only inserts a barebones template, so you will need to edit it to look something like that below.
+
+You should modify it to look something like this:
+
+```r
+#' Split a string
+#'
+#' @param x A character vector with one element.
+#' @param split What to split on.
+#'
+#' @return A character vector.
+#' @export
+#'
+#' @examples
+#' x <- "alfa,bravo,charlie,delta"
+#' strsplit1(x, split = ",")
+strsplit1 <- function(x, split) {
+  strsplit(x, split = split)[[1]]
+}
+```
+But we're not done yet!
+We still need to trigger the conversion of this new roxygen comment into `man/strsplit1.Rd` with `document()`:
+
+```r
+document()
+```
+
+You should now be able to preview your help file like so:
+
+```r
+?function-name
+```
