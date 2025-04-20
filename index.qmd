@@ -24,13 +24,13 @@ By the end of the course, students will be able to:
 ## Outline of Assessments
 
 ##### Assignments
-- [X] [**Assignment 1**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia1.html): (Not Included) Setup and Installation (you can find them [here](https://ubc-dsci.github.io/dsci-310-student/computer-setup.html))
+- [X] [**Assignment 1**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia1.html): Setup and Installation (you can find them [here](https://ubc-dsci.github.io/dsci-310-student/computer-setup.html))
 - [X] [**Assignment 2**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia2.html): Git merge conflicts ([learn more here](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts))
     - [ ] Note: Make a review of the different types of conflicts
-- [X] [**Assignment 3**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia3.html): (Not Included) Dockerfiles
+- [X] [**Assignment 3**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia3.html): Dockerfiles
 - [X] [**Assignment 4**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia4.html): Reproducible reports using Quarto
     - [ ] Note: Need to make a summary page that lists all improvements possible
-- [ ] [**Assignment 5**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia5.html): Packaging (for walk-through, see [this for R](https://r-pkgs.org/whole-game.html) or [this for python](https://py-pkgs.org/03-how-to-package-a-python))
+- [ ] [**Assignment 5**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia5.html): Packaging (for walk-through, see [here for R](https://r-pkgs.org/whole-game.html) or [here for python](https://py-pkgs.org/03-how-to-package-a-python))
     - [ ] Note: Need to learn how to do python packages
     - [X] Note: Need to summarize and streamline R packages
     - [ ] Note: Want to improve and update R packages made from this course
@@ -63,6 +63,7 @@ By the end of the course, students will be able to:
 - [ ] Review the [Textbook](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/)
 - [ ] Review Lecture Notes
 - [ ] Review Lecture Concepts
+- [ ] Review group project [analysis](https://github.com/DSCI-310-2025/dsci-310-group-7-data-dudes) and [package](https://github.com/DSCI-310-2025/pkg.drugage)
 
 ---
 

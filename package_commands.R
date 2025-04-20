@@ -1,5 +1,5 @@
 # --------------- MAKE A PACKAGE ------------------------------
-# All code run in Rstudio console to make package
+# All code run in Rstudio console to make a package!
 
 # load the useful library that contains usethis
 library(devtools)
@@ -10,109 +10,94 @@ devtools::create_package("~/git/wordplay")
 # load again if in new RStudio instance
 library(devtools)
 
-# make package a git repo
 devtools::use_git()
 #> ✔ Initialising Git repo.
 #> ✔ Adding ".Rhistory", ".Rdata", ".httr-oauth", ".DS_Store", and ".quarto" to '.gitignore'.
 
-# creates files for functions in the R/ folder
-devtools::use_r("all_words_summary")
+# make functions in the R/ file
+devtools::use_r("all_words_summary") # makes "R/all_words_summary.R" file
+devtools::use_r("starting_letter_plot")
 devtools::use_r("top_words_plot")
 devtools::use_r("word_characteristics")
 devtools::use_r("word_length_plot")
 
-# --------------- WRITE YOUR FUNCTIONS ------------------------------
 
-# loads all functions locally
+# --------- WRITE YOUR FUNCTIONS --------------------------------
+
+# load functions for practical use
 devtools::load_all()
 
-# checks that functions are not being sourced, that load all works
+# this should be FALSE; meaning the package isn't being sourced, 
+# it is used from the load_all call
 exists("all_words_summary", where = globalenv(), inherits = FALSE)
 #> [1] FALSE
 
-# --------------- COMMIT YOUR WORK ------------------------------
-# (in terminal)
+
+# --------- COMMIT YOUR WORK --------------------------------
+# (in Terminal)
 # git remote add origin https://github.com/hlan22/wordplay.git
 # git remove -v # verifies your push/fetch connection
-# ---------------------------------------------------------------
 
-# ensures package is in working order, gives errors warnings and tests
+
+# --------- OTHER PARTS OF PACKAGE ------------------------------
+
+# check that all parts of the package work
 devtools::check()
 
-# add a license
-devtools::use_mit_license()
+# Add a license (or two)
+use_mit_license()
 
 # updated .Rbuildignore
 
-# make sure updates fix check warnings and errors
+# see that you pass the errors/warnings from check
 devtools::check()
 
-# --------------- ADD ROXYGEN STATEMENTS ------------------------------
+# --------- WRITE ROXYGEN STATEMENTS --------------------------------
 
-# add documentation about functions after roxygen statements
+# write supporting documentation for functions
 devtools::document()
 
-# now after documenting you can see the ? help for your functions :)
+# now you can see the help section for your functions (from roxygen)
 ?word_length_plot
 
-# re-run to make sure everything is working
+# extra fixes/changes
 devtools::document()
 devtools::check()
 
-# install package
+# after checking everything is good we can install our minimum viable product
 devtools::install()
 
-# now you are able to use it! minimum viable product
+# and now we can use it ! :)
 library(wordplay)
 
+# --------- PACKAGE USABLE; LETS IMPROVE --------------------------------
 
-# --------------- PACKAGE USEABLE; ADD MORE ------------------------------
+# create testing directory, adds testthat to suggested, creates script
+use_testthat()
 
-# creates testthat directory, adds to suggested, creates script
-devtools::use_testthat()
-
-# fastest to do this with all R/ function files open
-devtools::use_test()
-
-# however, can create manual testing files too
-devtools::use_test("all_words_summary")
-devtools::use_test("top_words_plot")
-devtools::use_test("word_charactersitics")
-devtools::use_test("word_length_plot")
+# create test file for each of the functions
+use_test("all_words_summary")
+use_test("top_words_plot")
+use_test("word_charactersitics")
+use_test("word_length_plot")
 
 
-# --------------- WRITE TESTS ------------------------------
 
-# check that your tests are passing 
-library(testthat) # i believe is already apart of devtools
-testthat::test()
+test()
 
-# re-run and update package based off of tests (tests are ran with check)
 devtools::check()
 devtools::document()
 devtools::install()
 
-# update and check tests
+load_all()
+test()
+
 library(devtools)
-testthat::test()
 
-# --------------- ADD MORE INFO ------------------------------
-
-# adds package to imports field of DESCRIPTION
-use_package("ggplot2")
-
-# if renaming functions
-rename_files("function_name", "new_function_name")
-# MUST redo document() if so
-
-# initializa a basic README.Rmd for your github
-devtools::use_readme_rmd()
+use_readme_rmd()
 #> ✔ Writing 'README.Rmd'.
 #> ✔ Adding "^README\\.Rmd$" to '.Rbuildignore'.
 #> ☐ Update 'README.Rmd' to include installation instructions.
 #> ✔ Writing '.git/hooks/pre-commit'.
 
-# make the README.md file with plots and examples
 devtools::build_readme()
-
-# --------------- FINAL PRODUCT ------------------------------

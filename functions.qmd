@@ -7,23 +7,153 @@ format: html
 
 To learn more about that take a look at the [Functions chapter](https://r4ds.hadley.nz/functions.html) of R for Data Science and the [Functions chapter](https://adv-r.hadley.nz/functions.html) of Advanced R.
 
+For this course, the following notes are used with help from [chapter 52 of the textbook: Defining functions in R ](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/910-functions-in-r.html)
+
+#### What are functions in R?
+
+* Functions in R are objects. This is referred to as “first-class functions”.
+* The last line of the function returns the object created, or listed there. To return a value early use the special word `return`.
+
+For example:
+
+```{r}
+math_two_numbers <- function(x, y, operation) {
+  if (operation == "add") {
+    return(x + y)
+  }
+  x - y
+}
+
+math_two_numbers (1, 4, "add")
+math_two_numbers (1, 4, "subtract")
+```
+
+* Default values can also be specified in the function definition:
+
+
+```{r}
+math_two_numbers <- function(x, y, operation = "add") {
+  if (operation == "add") {
+    return(x + y)
+  }
+  x - y
+}
+math_two_numbers (1, 4)
+```
+
+#### Lexical scoping in R
+
+R’s lexical scoping follows several rules, including the following:
+
+1. **Name masking**
+  * Object names which are defined inside a function *mask* object names defined outside of that function.
+  * If a variable is defined outside of the function in the global environment, regardless whatever is defined inside the function will be used
+  * If something in the function hasn't been defined, it will look at the next level up continuously until there are no global environments to look at.
+  * Here's an example:
+```{r}
+x <- 10
+
+add_to_x <- function(to_add) {
+    x <- 5
+    to_add + x
+}
+
+add_to_x(2)
+```
+
+
+2. **Dynamic lookup**
+  * R does **not** look up the values for objects it references when it is defined/created, instead it does this *when the function is called*. This can lead to the function returning different things depending on the values of the objects it references outside of the function’s environment.
+  * For example:
+```{r}
+add_to_x <- function(to_add) {
+    to_add + x
+}
+x <- 10
+add_to_x(2)
+x <- 20
+add_to_x(2)
+```
+
+
+3. **A fresh start**
+  * Functions in R have no memory of what happened the last time they were called. This happens because a new function environment is created, R created a new environment in which to execute it.
+  * So if you add 2 to `x` and return it as `x`, then run the function again, it will still add 2 to the *original* `x`.
+  
+4. **Lazy evaluation**
+  * R performs lazy evaluation, meaning it delays the evaluation of the function arguments until its value is needed within/inside the function. Since y is never referenced inside the function, R doesn’t complain, or even notice it. This would not work in python, it would complain:
+
+```python
+# Python code (`add_one(2)` would NOT work)
+def add_one(x, y):
+    x = x + 1
+    return x
+```
+
+```{r}
+# R code (this would work)
+add_one <- function(x, y) {
+    x <- x + 1
+    return(x)
+}
+
+# both below work:
+add_one(2, 1)
+add_one(2)
+```
+
+### Add Exception Handling!
+
+Sometimes our code is correct but we still encounter errors. This commonly occurs with functions when users attempt to use them in weird and creative ways that the developer did not intend.
+
+Often times, R will give a somewhat cryptic error message as to why the input is wrong, but it is not that helpful and time consuming. One way to help this is to have a function fail intentionally when incorrect user input is given. We could instead, for example, check the data type BEFORE we attempt the calculation, and if the wrong type was given throw a purposeful error with a helpful message.
+
+For example:
+
+```{r}
+fahr_to_celsius <- function(temp) {
+  if(!is.numeric(temp)) {
+    stop("`fahr_to_celsius` expects a vector of numeric values")
+  }
+  (temp - 32) * 5/9
+}
+```
+
+### Be careful with quotation issues in R
+
+The functions from the `tidyverse` are beautiful to use interactively - with these functions, we can “pretend” that the data frame column names are objects in the global environment and refer to them without quotations (e.g., "")
+
+However, the beauty of being able to refer to data frame column names in R without quotations, leads to problems when we try to use them in a function. 
+
+Why does `filter` work with non-quoted variable names, but our function `filter_gap` fail? At a very high-level, this is because `filter` is doing more behind the scenes to handle these unquoted column names than we see without looking at the source code. So to make this work for our function, we need to do a little more work too.
+
+In the newest release of the `rlang` R package, there has been the introduction of the `{{` (pronounced “curly curly”) operator. This operator does the necessary work behind the scenes so that you can continue to use unquoted column names with the `tidyverse` functions even when you use them in functions that you write yourself.
+
+To use the `{{` operator, we “embrace” the unquoted column names when we refer to them inside our function body. An important note is that there are several ways to implement the usage of unquoted column names in R, and the `{{` operator only works with the tidyverse functions.
+
+Here’s a function we show when we use the `{{` operator to “embrace” the unquoted column names:
+
+```{r, eval=FALSE}
+filter_gap <- function(col, val) {
+  filter(gapminder, {{col}} == val)
+}
+```
+
+For similar reasons, the walrus operator (`:=`) is needed when writing functions that create new columns using unquoted column names with the tidyverse functions.
+
+
 
 ## ROxygen Guide
 
 (Taken from [The Whole Game](https://r-pkgs.org/whole-game.html) R Package building guide)
 
 Wouldn't it be nice to get `?` help with your functions, just like we do with other R functions?
-This requires that your package have a special R documentation file, `man/function-name.Rd`, written in an R-specific markup language that is sort of like LaTeX.
-Luckily we don't necessarily have to author that directly.
-
-We write a specially formatted comment right above `function-bame()`, in its source file, and then let a package called [roxygen2](https://roxygen2.r-lib.org) handle the creation of `man/function-name.Rd`.
+This requires that your package have a special R documentation file, `man/function-name.Rd`, written in an R-specific markup language that is sort of like LaTeX. We write a specially formatted comment right above the function in its source file, and then let a package called [roxygen2](https://roxygen2.r-lib.org) handle the creation of `man/function-name.Rd`.
 
 If you use RStudio, open `R/function-name.R` in the source editor and put the cursor somewhere in the `function-name()` function definition.
-Now do *Code \> Insert roxygen skeleton*.
-A very special comment should appear above your function, in which each line begins with `#'`.
-RStudio only inserts a barebones template, so you will need to edit it to look something like that below.
-
-You should modify it to look something like this:
+Now left-click, `Code > Insert roxygen skeleton`.
+A comment should appear above your function, in which each line begins with `#'`.
+RStudio only inserts a barebones template, so you should modify it to look something like this:
 
 ```r
 #' Split a string
@@ -51,5 +181,13 @@ document()
 You should now be able to preview your help file like so:
 
 ```r
-?function-name
+?function_name
 ```
+
+### Practice Writing functions
+
+To practice writing functions in R, you can attempt this worksheet: <https://github.com/UBC-DSCI/dsci-310-student/blob/main/practice/worksheet_functions_in_r.ipynb>
+
+*Note*: to access the automated software tests for feedback on your answers, you will want to clone or download [this GitHub repo](https://github.com/UBC-DSCI/dsci-310-student) and navigate to the `practice` directory.
+
+You can also try practicing with [this repo](https://github.com/ttimbers/breast_cancer_predictor).
