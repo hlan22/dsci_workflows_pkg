@@ -3,13 +3,13 @@ title: "Writing Functions"
 format: html
 ---
 
-## How to Write Functions
+## Writing Functions
 
 To learn more about that take a look at the [Functions chapter](https://r4ds.hadley.nz/functions.html) of R for Data Science and the [Functions chapter](https://adv-r.hadley.nz/functions.html) of Advanced R.
 
 For this course, the following notes are used with help from [chapter 52 of the textbook: Defining functions in R ](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/910-functions-in-r.html)
 
-#### What are functions in R?
+### What are functions in R?
 
 * Functions in R are objects. This is referred to as “first-class functions”.
 * The last line of the function returns the object created, or listed there. To return a value early use the special word `return`.
@@ -41,7 +41,7 @@ math_two_numbers <- function(x, y, operation = "add") {
 math_two_numbers (1, 4)
 ```
 
-#### Lexical scoping in R
+### Lexical scoping in R
 
 R’s lexical scoping follows several rules, including the following:
 
@@ -65,6 +65,7 @@ add_to_x(2)
 2. **Dynamic lookup**
   * R does **not** look up the values for objects it references when it is defined/created, instead it does this *when the function is called*. This can lead to the function returning different things depending on the values of the objects it references outside of the function’s environment.
   * For example:
+
 ```{r}
 add_to_x <- function(to_add) {
     to_add + x
@@ -119,7 +120,7 @@ fahr_to_celsius <- function(temp) {
 }
 ```
 
-### Be careful with quotation issues in R
+### Careful with quotations in R!
 
 The functions from the `tidyverse` are beautiful to use interactively - with these functions, we can “pretend” that the data frame column names are objects in the global environment and refer to them without quotations (e.g., "")
 
@@ -141,9 +142,7 @@ filter_gap <- function(col, val) {
 
 For similar reasons, the walrus operator (`:=`) is needed when writing functions that create new columns using unquoted column names with the tidyverse functions.
 
-
-
-## ROxygen Guide
+## ROxygen
 
 (Taken from [The Whole Game](https://r-pkgs.org/whole-game.html) R Package building guide)
 
@@ -184,10 +183,108 @@ You should now be able to preview your help file like so:
 ?function_name
 ```
 
-### Practice Writing functions
+## Practice With Functions
 
 To practice writing functions in R, you can attempt this worksheet: <https://github.com/UBC-DSCI/dsci-310-student/blob/main/practice/worksheet_functions_in_r.ipynb>
 
 *Note*: to access the automated software tests for feedback on your answers, you will want to clone or download [this GitHub repo](https://github.com/UBC-DSCI/dsci-310-student) and navigate to the `practice` directory.
 
 You can also try practicing with [this repo](https://github.com/ttimbers/breast_cancer_predictor).
+
+## `wordplay` Examples
+
+Here is an example of what functions should look like with my package `wordplay`:
+
+```r
+#' A high level summary about all the words
+#'
+#' @param df A data frame containing a column of words
+#' @param column A character column containing a list of words
+#'
+#' @returns A tibble
+#' @export
+#'
+#' @examples
+#' example_words <- data.frame(word_column = c("alfa", "bravo", "charlie", "delta"))
+#' all_words_summary(data = example_words, column = word_column)
+#'
+#' @importFrom dplyr mutate n_distinct %>%
+#' @importFrom tibble tibble
+#' @importFrom stats median sd
+all_words_summary <- function(data, column = "word") {
+  # checks for input data types
+  if (!is.data.frame(data)) {
+    stop("`data` must be a data frame.")
+  }
+  if (!column %in% colnames(data)) {
+    stop(paste("Column", column, "does not exist in the data frame."))
+  }
+  if (!is.character(data[[column]]) && !is.factor(data[[column]])) {
+    stop(paste("Column", column, "must be of type character or factor."))
+  }
+
+  df <- data %>%
+    dplyr::mutate(
+      word_temp = .data[[column]],
+      length = nchar(word_temp))
+
+  tibble::tibble(
+    total_words = nrow(df),
+    unique_words = dplyr::n_distinct(df$word_temp),
+    avg_length = mean(df$length),
+    median_length = stats::median(df$length),
+    sd_length = stats::sd(df$length),
+    longest_word = df$word_temp[which.max(df$length)],
+    shortest_word = df$word_temp[which.min(df$length)]
+  )
+}
+```
+
+**Notice these key things in the function:**
+
+* Formatting follows `package::function`
+* Checks for correct data types at the start of the function, and gives back helpful error message if not correct
+* Includes a default option for the `column` name, which is expected to be "word", but can be changed to whichever.
+
+**Notice these key things in the ROxygen statement:**
+
+* `@ImportFrom` statements that specify each package used and the specific function used
+* The `@examples` give a clear example of all the different parameters
+
+
+## Function Changes
+
+Note that when you update functions and or roxygen statements, you need to update things for your package too! Run the following:
+
+```r
+devtools::document()
+```
+Which:
+
+* Parses your `@param`, `@return`, `@examples`, etc. tags
+* Updates the `.Rd` files in the `man/` folder
+* Updates the `NAMESPACE` (e.g., adds `@export`ed functions)
+
+Then run:
+
+```r
+devtools::test()
+```
+
+```r
+devtools::check()
+```
+Which:
+
+* Performs a full package check: documentation, code style, tests, imports, etc. It's the same check CRAN runs.
+
+For a quick summary - what to run with a change:
+
+```r
+devtools::document()  # update docs
+devtools::load_all()  # use the latest code
+devtools::check()     # make sure it's solid
+devtools::test()      # confirm nothing broke
+devtools::build()     # rebuild the package
+devtools::install()   # reinstall the updated version
+```
