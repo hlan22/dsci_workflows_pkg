@@ -61,15 +61,24 @@ By the end of the course, students will be able to:
 #### Other
 
 - [ ] Review the [Textbook](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/)
-- [ ] Review Lecture Notes
-- [ ] Review Lecture Concepts
+- [ ] Review Lecture Notes (All of my repos and `.txt` files)
+- [ ] Review Lecture Concepts (All of Daniel's repos)
 - [ ] Review group project [analysis](https://github.com/DSCI-310-2025/dsci-310-group-7-data-dudes) and [package](https://github.com/DSCI-310-2025/pkg.drugage)
+- [ ] Grab quarto notes from other repos including: [insurance statistics](https://github.com/hlan22/InsuranceStats/tree/main)
+- [ ] Make a simple numbered list of steps needed to make a new package
+
+Based off professor recommendations, look at:
+
+- [X] [Chapter 52: Functions in R](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/910-functions-in-r.html)
+- [X] [The Whole Game: Package Creation Walk Through](https://r-pkgs.org/whole-game.html)
+- [ ] Practice the tutorial where we created the `is_leap()` function and the course repos - and turn that into a package
+- [ ] Practice copying template repository into organization!
 
 ---
 
 ## Final Exam Information
 
-* The best way to study is to look though the in-class examples, individual assignments, and be comfortable with all the mechanics you were asked to do for your milestone assignments.
+* The best way to study is to look though the *in-class examples*, *individual assignments*, and be comfortable with all the mechanics you were asked to do for your *milestone assignments*.
 * Think of the final as an individual assessment for everything you were asked to do for the project milestones.
 * You will have 2 hours for the exam. For reference, it took [the professor] just under 30 minutes to get though it.
 * Below is the instructions that you will see before the exam. The format is the same as the midterm.

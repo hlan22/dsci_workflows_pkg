@@ -3,3 +3,46 @@ title: "makefiles"
 format: html
 ---
 
+Note: to get the most use out of Makefiles, ensure that you have already split up the code into different R scripts and reference them in the main report.
+
+## Makefiles & Purpose
+
+Makefiles have a lot of different uses! Here are the main ideas we will review:
+
+1. Making a website
+2. Running Code
+3. Compiling a report
+4. Terminal commands
+
+
+#### Making a Website
+
+The following Makefile:
+
+* renders your website (from the `docs/` folder)
+* ensures there is a `.nojekyll` file
+* gives you the ability to clean your repo after rendering
+
+```
+.PHONY render clean
+
+# render your website, make sure .nojekyll file exists
+render:
+	quarto render
+	touch docs/.nojekyll
+
+clean:
+	rm -rf _site
+	rm -rf docs
+```
+
+
+#### Running Code
+
+#### Compiling a report
+
+#### Terminal commands
+
+## `docopt` Package
+
+Using the library `docopt`, you can make your reports incredibly more reproducible! Instead of reading in your data for each script, or even `source()`-ing other scripts, you can instead use the `docopt` library to pass by this. 

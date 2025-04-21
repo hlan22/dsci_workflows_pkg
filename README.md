@@ -44,16 +44,7 @@ This repo is my notes that collect and synthesize information from the textbook,
 
 #### Other
 
-- [ ] Review the [Textbook](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/)
-- [ ] Review Lecture Notes
-- [ ] Review Lecture Concepts
-
-Based off professor recommendations, look at:
-
-- [X] [Chapter 52: Functions in R](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/910-functions-in-r.html)
-- [X] [The Whole Game: Package Creation Walk Through](https://r-pkgs.org/whole-game.html)
-- [ ] practice the tutorial where we created the `is_leap()` function and the course repos - and turn that into a package
-
+See other things to do in the [introduction page](#index.qmd)
 ---
 
 ### Final Exam Information
