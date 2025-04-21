@@ -12,50 +12,50 @@ website:
         
       - section: "Basics"
         contents:
-          - href: intro_to_git.qmd
+          - href: pages/intro_to_git.qmd
             text: "Git Commands"
-          - href: git_concepts.qmd
+          - href: pages/git_concepts.qmd
             text: "Git Concepts"
-          - href: bash_scripts.qmd
+          - href: pages/bash_scripts.qmd
             text: "Bash Scripts"
             
       - section: "General"
         contents: 
-          - href: environments.qmd
+          - href: pages/environments.qmd
             text: "Environments"
-          - href: docker.qmd
+          - href: pages/docker.qmd
             text: "Docker Containers"
-          - href: github_actions.qmd
+          - href: pages/github_actions.qmd
             text: "GitHub Actions"
-          - href: workflows.qmd
+          - href: pages/workflows.qmd
             text: "GitHub Workflows"
-          - href: ci_cd.qmd
+          - href: pages/ci_cd.qmd
             text: "CI & CD"
-          - href: makefiles.qmd
+          - href: pages/makefiles.qmd
             text: "Makefiles"
             
       - section: "Quarto"
         contents: 
-          - href: markdown.qmd
+          - href: pages/markdown.qmd
             name: "Markdown Tips"
-          - href: quarto_docs.qmd
+          - href: pages/quarto_docs.qmd
             text: "Quarto Reports"
-          - href: making_websites.qmd
+          - href: pages/making_websites.qmd
             text: "Quarto Websites"
             
       - section: "Packages"
         contents:
-          - href: making_a_package.qmd
+          - href: pages/making_a_package.qmd
             text: "Making an R Package"
-          - href: functions.qmd
+          - href: pages/functions.qmd
             text: "Functions"
-          - href: tests.qmd
+          - href: pages/tests.qmd
             text: "Testing"
-          - href: validation.qmd
+          - href: pages/validation.qmd
             text: "Validation"
-          - href: dependencies.qmd
+          - href: pages/dependencies.qmd
             text: "Dependencies"
-          - href: supporting.qmd
+          - href: pages/supporting.qmd
             text: "Badges, Licenses & More"
 
 format:

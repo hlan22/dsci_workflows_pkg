@@ -45,6 +45,7 @@ This repo is my notes that collect and synthesize information from the textbook,
 #### Other
 
 See other things to do in the [introduction page](#index.qmd)
+
 ---
 
 ### Final Exam Information
