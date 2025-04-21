@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bash Scripts – DSCI 310 Review</title>
+<title>Testing for Packages – DSCI 310 Review</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,22 +57,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-360dfb76d7d7ff9ffda507c77b5c9c5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-360dfb76d7d7ff9ffda507c77b5c9c5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -102,7 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_to_git.html">Basics</a></li><li class="breadcrumb-item"><a href="./bash_scripts.html">Bash Scripts</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/making_a_package.html">Packages</a></li><li class="breadcrumb-item"><a href="../pages/tests.html">Testing</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">DSCI 310 Review</a> 
+      <a href="../">DSCI 310 Review</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -141,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -156,19 +156,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro_to_git.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/intro_to_git.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git Commands</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./git_concepts.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/git_concepts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git Concepts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bash_scripts.html" class="sidebar-item-text sidebar-link active">
+  <a href="../pages/bash_scripts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bash Scripts</span></a>
   </div>
 </li>
@@ -185,31 +185,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./environments.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/environments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./docker.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/docker.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Docker Containers</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./github_actions.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/github_actions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GitHub Actions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ci_cd.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/workflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitHub Workflows</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/ci_cd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">CI &amp; CD</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./makefiles.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/makefiles.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Makefiles</span></a>
   </div>
 </li>
@@ -226,19 +232,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markdown.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/markdown.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markdown Tips</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./quarto_docs.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/quarto_docs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto Reports</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./making_websites.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/making_websites.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto Websites</span></a>
   </div>
 </li>
@@ -255,37 +261,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./making_a_package.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/making_a_package.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Making an R Package</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tests.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/tests.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./validation.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/validation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Validation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dependencies.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/dependencies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dependencies</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supporting.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/supporting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Badges, Licenses &amp; More</span></a>
   </div>
 </li>
@@ -301,17 +307,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#other-notes" id="toc-other-notes" class="nav-link active" data-scroll-target="#other-notes">Other notes:</a></li>
-  <li><a href="#bash-scripts-for-package-making" id="toc-bash-scripts-for-package-making" class="nav-link" data-scroll-target="#bash-scripts-for-package-making">Bash Scripts for Package Making</a></li>
+  <li><a href="#librarytestthat" id="toc-librarytestthat" class="nav-link active" data-scroll-target="#librarytestthat"><code>library(testthat)</code></a>
+  <ul class="collapse">
+  <li><a href="#thorough-steps-for-an-r-package" id="toc-thorough-steps-for-an-r-package" class="nav-link" data-scroll-target="#thorough-steps-for-an-r-package">Thorough steps for an R Package</a></li>
+  <li><a href="#examples-and-how-to-write-tests" id="toc-examples-and-how-to-write-tests" class="nav-link" data-scroll-target="#examples-and-how-to-write-tests">Examples and How to Write Tests</a></li>
+  </ul></li>
+  <li><a href="#librarycodecov" id="toc-librarycodecov" class="nav-link" data-scroll-target="#librarycodecov"><code>library(codecov)</code></a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_to_git.html">Basics</a></li><li class="breadcrumb-item"><a href="./bash_scripts.html">Bash Scripts</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/making_a_package.html">Packages</a></li><li class="breadcrumb-item"><a href="../pages/tests.html">Testing</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Bash Scripts</h1>
+<h1 class="title">Testing for Packages</h1>
 </div>
 
 
@@ -328,28 +338,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>What are they? A <strong>bash script</strong> is a .sh (shell) document that contains bash commands, which you can run from the terminal. They are often useful if you have the same bash lines you need to run repetitively when working on a project.</p>
-<p>We can make a sample <code>bash_script.sh</code> by typing:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> bash_script.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Here is a sample of what you can put in a bash script:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"hello"</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We can run the file by typing into terminal:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> bash_script.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="other-notes" class="level2">
-<h2 class="anchored" data-anchor-id="other-notes">Other notes:</h2>
-<p>Sometimes there are files in our computer’s filesystem that are prefixed with <code>.</code>, for example <code>.gitignore</code>, <code>.DS_Store</code> and <code>.ipynb_checkpoints</code>. These are known as hidden files, and your computer’s default is to hide them from you, regardless of whether you use a graphical user interface (e.g., Finder, Explorer, Nautilus) or the Bash shell to explore our computer’s filesystem.</p>
-<section id="what-is-ssh-authentication" class="level4">
-<h4 class="anchored" data-anchor-id="what-is-ssh-authentication">What is SSH authentication?</h4>
-<p>SSH stands for secure shell protocol (for authentication). SSH can be use for other forms of authentication as well (beyond GitHub), including logging into remote machines in the cloud. So for many these reasons it is worthwhile learning.</p>
-<p>See this <a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/030-ssh-for-authentication.html">link to SSH part in the textbook</a> for more information on SSH.</p>
+<section id="librarytestthat" class="level1">
+<h1><code>library(testthat)</code></h1>
+<section id="thorough-steps-for-an-r-package" class="level2">
+<h2 class="anchored" data-anchor-id="thorough-steps-for-an-r-package">Thorough steps for an R Package</h2>
+<p>We’ve tested <code>function-name()</code> <strong>informally</strong>, in a single example. We can, and should, express a concrete expectation about the correct <code>function-name()</code> result for a specific input.</p>
+<p>First, we declare our intent to write unit tests and to use the testthat package for this, via <code>use_testthat()</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_testthat</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>This initializes the unit testing machinery for your package.</li>
+<li>It adds <code>Suggests: testthat</code> to <code>DESCRIPTION</code>, creates the directory <code>tests/testthat/</code>, and adds the script <code>tests/testthat.R</code>.</li>
+<li>You’ll notice that testthat is probably added with a minimum version of 3.0.0 and a second DESCRIPTION field, <code>Config/testthat/edition: 3</code>.</li>
+</ul>
+<p>However, it’s still up to YOU to write the actual tests!</p>
+<p>The helper <code>use_test()</code> opens and/or creates a test file. If <code>R/function-name.R</code> is the active file in RStudio, you can just call <code>use_test()</code>. However, we can also provide the basename explicitly:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_test</span>(<span class="st">"function-name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>This creates the file <code>tests/testthat/test-function-name.R</code>.</li>
+<li>If it had already existed, <code>use_test()</code> would have just opened it.</li>
+<li>You will notice that there is an example test in the newly created file - delete that code and replace it with something like this:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"strsplit1() splits a string"</span>, {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">strsplit1</span>(<span class="st">"a,b,c"</span>, <span class="at">split =</span> <span class="st">","</span>), <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This tests that <code>function-name()</code> gives the expected result.</p>
+<p>Run this test interactively, as you will when you write your own. If <code>test_that()</code> or <code>function-name()</code> can’t be found, that suggests that you probably need to call <code>load_all()</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Your tests are also run whenever you <code>check()</code> the package.</li>
+</ul>
+</section>
+<section id="examples-and-how-to-write-tests" class="level2">
+<h2 class="anchored" data-anchor-id="examples-and-how-to-write-tests">Examples and How to Write Tests</h2>
+<p>Here are the updated contents of <code>tests/testthat/test-str_split_one.R</code>. In addition to the change in the function’s name and arguments, we’ve added a couple more tests.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"str_split_one() splits a string"</span>, {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">str_split_one</span>(<span class="st">"a,b,c"</span>, <span class="st">","</span>), <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"str_split_one() errors if input length &gt; 1"</span>, {</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_error</span>(<span class="fu">str_split_one</span>(<span class="fu">c</span>(<span class="st">"a,b"</span>,<span class="st">"c,d"</span>), <span class="st">","</span>))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"str_split_one() exposes features of stringr::str_split()"</span>, {</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">str_split_one</span>(<span class="st">"a,b,c"</span>, <span class="st">","</span>, <span class="at">n =</span> <span class="dv">2</span>), <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b,c"</span>))</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">str_split_one</span>(<span class="st">"a.b"</span>, stringr<span class="sc">::</span><span class="fu">fixed</span>(<span class="st">"."</span>)), <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>))</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="bash-scripts-for-package-making" class="level2">
-<h2 class="anchored" data-anchor-id="bash-scripts-for-package-making">Bash Scripts for Package Making</h2>
-<p>!!!</p>
+<section id="librarycodecov" class="level1">
+<h1><code>library(codecov)</code></h1>
+<p>It is a good idea to use the <a href="https://covr.r-lib.org">covr package</a> to track what proportion of your package’s source code is exercised by the tests.</p>
+<p>Do these steps to integrate it into your package checks:</p>
+<p>Add the badge to your <code>README.Rmd</code> by inputting the following line:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

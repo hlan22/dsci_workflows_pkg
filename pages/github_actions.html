@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Intro to Git Commands – DSCI 310 Review</title>
+<title>github_actions – DSCI 310 Review</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-360dfb76d7d7ff9ffda507c77b5c9c5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-360dfb76d7d7ff9ffda507c77b5c9c5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -68,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -80,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_to_git.html">Basics</a></li><li class="breadcrumb-item"><a href="./intro_to_git.html">Git Commands</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/environments.html">General</a></li><li class="breadcrumb-item"><a href="../pages/github_actions.html">GitHub Actions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -95,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">DSCI 310 Review</a> 
+      <a href="../">DSCI 310 Review</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -107,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -122,19 +156,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro_to_git.html" class="sidebar-item-text sidebar-link active">
+  <a href="../pages/intro_to_git.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git Commands</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./git_concepts.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/git_concepts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git Concepts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bash_scripts.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/bash_scripts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bash Scripts</span></a>
   </div>
 </li>
@@ -151,31 +185,37 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./environments.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/environments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./docker.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/docker.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Docker Containers</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./github_actions.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/github_actions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">GitHub Actions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ci_cd.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/workflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitHub Workflows</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/ci_cd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">CI &amp; CD</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./makefiles.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/makefiles.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Makefiles</span></a>
   </div>
 </li>
@@ -192,19 +232,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markdown.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/markdown.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markdown Tips</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./quarto_docs.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/quarto_docs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto Reports</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./making_websites.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/making_websites.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto Websites</span></a>
   </div>
 </li>
@@ -221,37 +261,37 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./making_a_package.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/making_a_package.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Making an R Package</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tests.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/tests.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./validation.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/validation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Validation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dependencies.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/dependencies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dependencies</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supporting.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/supporting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Badges, Licenses &amp; More</span></a>
   </div>
 </li>
@@ -267,461 +307,107 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#basic-symbols" id="toc-basic-symbols" class="nav-link active" data-scroll-target="#basic-symbols">Basic Symbols</a></li>
-  <li><a href="#general-bash-commands" id="toc-general-bash-commands" class="nav-link" data-scroll-target="#general-bash-commands">General Bash Commands</a></li>
-  <li><a href="#git-specific-commands" id="toc-git-specific-commands" class="nav-link" data-scroll-target="#git-specific-commands">Git-Specific Commands</a></li>
-  <li><a href="#flags" id="toc-flags" class="nav-link" data-scroll-target="#flags">Flags</a></li>
-  <li><a href="#commands-for-undoing" id="toc-commands-for-undoing" class="nav-link" data-scroll-target="#commands-for-undoing">Commands for Undoing</a></li>
+  <li><a href="#github-actions" id="toc-github-actions" class="nav-link active" data-scroll-target="#github-actions">GitHub Actions</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_to_git.html">Basics</a></li><li class="breadcrumb-item"><a href="./intro_to_git.html">Git Commands</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Intro to Git Commands</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/environments.html">General</a></li><li class="breadcrumb-item"><a href="../pages/github_actions.html">GitHub Actions</a></li></ol></nav></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>Below are some useful tables that can help streamline your workflow in Git Bash.</p>
-<section id="basic-symbols" class="level2">
-<h2 class="anchored" data-anchor-id="basic-symbols">Basic Symbols</h2>
-<div id="tbl-symbol" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-symbol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Basic Symbols
-</figcaption>
-<div aria-describedby="tbl-symbol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Symbol</th>
-<th style="text-align: left;">Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code>.</code></td>
-<td style="text-align: left;">Current working directory</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>..</code></td>
-<td style="text-align: left;">Parent working directory</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>~</code></td>
-<td style="text-align: left;">Home directory</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>-&lt;letter&gt;</code></td>
-<td style="text-align: left;">One dash makes bash only look at the first letter</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>--&lt;word&gt;</code></td>
-<td style="text-align: left;">Two dashes makes bash look at the word as a whole</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-</section>
-<section id="general-bash-commands" class="level2">
-<h2 class="anchored" data-anchor-id="general-bash-commands">General Bash Commands</h2>
-<div id="tbl-bash" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bash-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: General Bash Commands
-</figcaption>
-<div aria-describedby="tbl-bash-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 73%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Bash Command</th>
-<th style="text-align: left;">Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code>pwd</code></td>
-<td style="text-align: left;">Prints the current working directory path. Stands for “print working directory”</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>ls</code></td>
-<td style="text-align: left;">Lists files and directories in the current directory. Use <code>ls -l</code> for detailed info and use <code>ls -a</code> to see all files. Stands for “listing”. You can also do <code>ls &lt;folder&gt;</code> of a directory of interest that you aren’t currently in!</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>cd &lt;directory&gt;</code></td>
-<td style="text-align: left;">Steps into <code>&lt;directory&gt;</code>. Use <code>cd ..</code> to go up to parent file. Stands for “change directory”. <code>cd -</code> takes you to the previous directory you were in, and <code>cd ~</code> takes you right back to the computer’s home directory.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>mkdir &lt;directory&gt;</code></td>
-<td style="text-align: left;">Creates a new directory named <code>&lt;directory&gt;</code>.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>rmdir &lt;directory&gt;</code></td>
-<td style="text-align: left;">Deletes an empty directory. Use <code>rm -r &lt;directory&gt;</code> to delete non-empty ones.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>rm &lt;file&gt;</code></td>
-<td style="text-align: left;">Deletes a file. Use <code>rm -r &lt;directory&gt;</code> to remove a directory recursively.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>restore &lt;file&gt;</code></td>
-<td style="text-align: left;">Restores a file to the last commit you pulled (undos changes made)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>touch &lt;file&gt;</code></td>
-<td style="text-align: left;">Creates an empty file named <code>&lt;file&gt;</code>.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>echo "text" &gt; file</code></td>
-<td style="text-align: left;">Writes “text” into <code>file</code>, replacing existing content.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>cat &lt;file&gt;</code></td>
-<td style="text-align: left;">Displays the contents of a file.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>mv &lt;source&gt; &lt;target&gt;</code></td>
-<td style="text-align: left;">Moves or renames a file or directory.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>cp &lt;source&gt; &lt;target&gt;</code></td>
-<td style="text-align: left;">Copies a file. Use <code>-r</code> for recursive copying.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>clear</code></td>
-<td style="text-align: left;">Clears the terminal screen.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>history</code></td>
-<td style="text-align: left;">Shows a list of recently executed commands.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>history &gt; history.txt</code></td>
-<td style="text-align: left;">Places history into a <code>history.txt</code> file.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>grep "pattern" file</code></td>
-<td style="text-align: left;">Searches for “pattern” in a file.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>chmod +x &lt;file&gt;</code></td>
-<td style="text-align: left;">Makes a file executable.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>alt</code>+<code>shift</code>+<code>#</code></td>
-<td style="text-align: left;">Comments out whatever is written in the command line for the history output.</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-</section>
-<section id="git-specific-commands" class="level2">
-<h2 class="anchored" data-anchor-id="git-specific-commands">Git-Specific Commands</h2>
-<div id="tbl-git" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-git-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3: Git Commands
-</figcaption>
-<div aria-describedby="tbl-git-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 32%">
-<col style="width: 67%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Git Command</th>
-<th style="text-align: left;">Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code>git init</code></td>
-<td style="text-align: left;">Initializes a new Git repository in the current directory.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>git clone &lt;repo-url&gt;</code></td>
-<td style="text-align: left;">Clones a remote repository to your local machine.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>git status</code></td>
-<td style="text-align: left;">Shows the current status of the repository.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>git add &lt;file&gt;</code></td>
-<td style="text-align: left;">Stages a file for the next commit. Use <code>git add .</code> to stage all changes.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>git restore &lt;file&gt;</code></td>
-<td style="text-align: left;">Discards any changes in the file in your wd</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>git commit -m "msg"</code></td>
-<td style="text-align: left;">Commits staged changes with a message.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>git log</code></td>
-<td style="text-align: left;">Displays the commit history of the repository.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>git branch</code></td>
-<td style="text-align: left;">Lists all branches in the repository. Use <code>git branch &lt;name&gt;</code> to create a new branch.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>git checkout &lt;branch&gt;</code></td>
-<td style="text-align: left;">Switches to the specified branch.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>git switch -c &lt;branch_name&gt;</code> or <code>git checkout -b &lt;new-branch&gt;</code></td>
-<td style="text-align: left;">To create AND switch to a new branch.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>git fetch --all</code></td>
-<td style="text-align: left;">Fetches all changes to all branches</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>git merge &lt;branch&gt;</code></td>
-<td style="text-align: left;">Merges <code>&lt;branch&gt;</code> into the current branch.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>git pull</code></td>
-<td style="text-align: left;">Fetches and integrates changes from the remote repository.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>git push</code></td>
-<td style="text-align: left;">Pushes committed changes to the remote repository.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>git push origin &lt;branch_name&gt;</code></td>
-<td style="text-align: left;">Pushes changes to a remote branch.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>git remote -v</code></td>
-<td style="text-align: left;">Lists the remote repositories linked to the local repository.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>git reset --hard &lt;commit&gt;</code></td>
-<td style="text-align: left;">Resets the repository to a specific commit, discarding all changes.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>git stash</code></td>
-<td style="text-align: left;">Temporarily saves uncommitted changes. Use <code>git stash pop</code> to reapply them.</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-</section>
-<section id="flags" class="level2">
-<h2 class="anchored" data-anchor-id="flags">Flags</h2>
-<div id="tbl-flags" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-flags-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4: “Flags” for commands
-</figcaption>
-<div aria-describedby="tbl-flags-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 9%">
-<col style="width: 90%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Flag</th>
-<th style="text-align: left;">Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code>-a</code></td>
-<td style="text-align: left;">Stands for “all”; often used to show all entries, including hidden ones (e.g., <code>ls -a</code>).</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>-c</code></td>
-<td style="text-align: left;">Used to pass a command string to be executed (e.g., <code>bash -c "echo Hello"</code>, or <code>git switch -c patch-docs</code> to switch to a branch named patch-docs).</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>-v</code></td>
-<td style="text-align: left;">Stands for “verbose”, meaning it provides detailed output of the command execution (e.g., <code>git branch -v</code> sees all branches in the repo).</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>-f</code></td>
-<td style="text-align: left;">Stands for “force”, often used to override warnings or prompts (e.g., <code>rm -f</code>).</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>-r</code></td>
-<td style="text-align: left;">Stands for “recursive”, allowing commands to act on directories and their contents (e.g., <code>rm -r</code>).</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>-h</code></td>
-<td style="text-align: left;">Stands for “help”; displays usage information for a command (e.g., <code>ls -h</code> for human-readable sizes).</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>-n</code></td>
-<td style="text-align: left;">Often used to indicate a “dry run” where the command is simulated without making actual changes.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>-p</code></td>
-<td style="text-align: left;">Commonly used for “preserve” or “prompt” functionality, depending on the command. In <code>mkdir -p parent/kid</code>, it allows you to make multiple directories without having to do individual commands, so it “preserves” the call for all files.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>-d</code></td>
-<td style="text-align: left;">Often for delete (e.g., <code>git branch -d &lt;branch_name&gt;</code> deletes a local branch)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>--help</code></td>
-<td style="text-align: left;">Can use after most commands to display usage information and available options (e.g., <code>ls --help</code>)</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-</section>
-<section id="commands-for-undoing" class="level2">
-<h2 class="anchored" data-anchor-id="commands-for-undoing">Commands for Undoing</h2>
-<p>Special thanks to <a href="https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git">this</a> and <a href="https://stackoverflow.com/questions/1146973/how-do-i-revert-all-local-changes-in-git-managed-project-to-previous-state">this</a> stack overflow response!</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 24%">
-<col style="width: 37%">
-<col style="width: 37%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Command</th>
-<th>Circumstance</th>
-<th>What It Does</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>git checkout .</code></td>
-<td>You want to discard all uncommitted changes in your working directory.</td>
-<td>Reverts all modified files in the working directory to their state in the last commit, leaving staged changes intact.</td>
-</tr>
-<tr class="even">
-<td><code>git restore .</code></td>
-<td>Same as <code>git checkout .</code>, but for Git version &gt;= 2.23.</td>
-<td>Same as <code>git checkout .</code>, restores working directory files to match the last commit.</td>
-</tr>
-<tr class="odd">
-<td><code>git reset</code></td>
-<td>You want to unstage all changes in the index (staged changes) while keeping working directory changes.</td>
-<td>Resets the index to match the current HEAD, effectively unstaging all changes. Unpushed commits remain unless specified otherwise.</td>
-</tr>
-<tr class="even">
-<td><code>git revert &lt;commit 1&gt; &lt;commit 2&gt;</code></td>
-<td>You want to undo specific commits in a branch’s history without altering the commit history.</td>
-<td>Creates new commits that reverse the changes introduced by the specified commits, preserving history.</td>
-</tr>
-<tr class="odd">
-<td><code>git clean -f</code></td>
-<td>You want to remove untracked files (e.g., new files not yet added to Git).</td>
-<td>Deletes untracked files from the working directory. The <code>-f</code> flag forces the removal.</td>
-</tr>
-<tr class="even">
-<td><code>git clean -fd</code></td>
-<td>You want to remove untracked directories (e.g., generated or temporary directories).</td>
-<td>Deletes untracked directories and their contents. The <code>-fd</code> flag forces removal and includes directories.</td>
-</tr>
-<tr class="odd">
-<td><code>git reset --hard</code></td>
-<td>You want to completely discard all uncommitted changes in both the working directory and index.</td>
-<td>Resets the working directory and index to match the current HEAD, erasing all uncommitted changes.</td>
-</tr>
-<tr class="even">
-<td><code>git reset &lt;commit&gt;</code></td>
-<td>You want to move the branch pointer to a previous commit, discarding later commits.</td>
-<td>Resets the current branch to the specified commit, removing commits after it from history (unless <code>--soft</code> is used).</td>
-</tr>
-<tr class="odd">
-<td><code>git reset --soft &lt;commit&gt;</code></td>
-<td>You want to keep changes from commits but remove the commits themselves.</td>
-<td>Moves the branch pointer to the specified commit, keeping changes in the working directory and index for re-committing.</td>
-</tr>
-<tr class="even">
-<td><code>git checkout &lt;file&gt;</code></td>
-<td>You want to discard changes to a specific file in the working directory.</td>
-<td>Reverts the specified file to its state in the last commit, leaving other files unchanged.</td>
-</tr>
-<tr class="odd">
-<td><code>git restore &lt;file&gt;</code></td>
-<td>Same as <code>git checkout &lt;file&gt;</code>, but for Git version &gt;= 2.23.</td>
-<td>Reverts the specified file to its state in the last commit, similar to <code>git checkout &lt;file&gt;</code>.</td>
-</tr>
-<tr class="even">
-<td><code>git stash</code></td>
-<td>You want to temporarily save uncommitted changes to work on something else.</td>
-<td>Saves uncommitted changes (both staged and unstaged) to a stash, reverting the working directory to the last commit.</td>
-</tr>
-<tr class="odd">
-<td><code>git stash pop</code></td>
-<td>You want to reapply previously stashed changes and remove them from the stash.</td>
-<td>Applies the most recent stashed changes to the working directory and removes them from the stash.</td>
-</tr>
-<tr class="even">
-<td><code>git revert HEAD</code></td>
-<td>You want to undo the most recent commit while keeping the commit history.</td>
-<td>Creates a new commit that reverses the changes made in the last commit (HEAD).</td>
-</tr>
-<tr class="odd">
-<td><code>git clean -f -X</code></td>
-<td>You want to remove only ignored files (e.g., files matching .gitignore patterns).</td>
-<td>Deletes untracked files that are ignored by Git, useful for cleaning build artifacts.</td>
-</tr>
-<tr class="even">
-<td><code>git clean -f -x</code></td>
-<td>You want to remove both ignored and untracked files.</td>
-<td>Deletes all untracked files, including those ignored by Git, with the <code>-f</code> flag to force removal.</td>
-</tr>
-<tr class="odd">
-<td><code>git reset --hard &lt;commit&gt;</code></td>
-<td>You want to reset the branch and working directory to a specific commit, discarding all changes after it.</td>
-<td>Resets the branch, index, and working directory to the specified commit, erasing all subsequent changes.</td>
-</tr>
-<tr class="even">
-<td><code>git reflog</code></td>
-<td>You want to recover a commit or branch that was accidentally reset or deleted.</td>
-<td>Shows a log of all reference changes (e.g., commits, resets), allowing you to find and restore lost commits using their SHA.</td>
-</tr>
-<tr class="odd">
-<td><code>git checkout &lt;commit&gt; -- &lt;file&gt;</code></td>
-<td>You want to restore a specific file from a past commit.</td>
-<td>Reverts the specified file to its state in the given commit, leaving other files unchanged.</td>
-</tr>
-<tr class="even">
-<td><code>git rm --cached &lt;file&gt;</code></td>
-<td>You want to untrack a file but keep it in the working directory.</td>
-<td>Removes the file from the index (stops tracking it) but leaves the file in the working directory.</td>
-</tr>
-</tbody>
-</table>
-<p>Also <a href="https://stackoverflow.com/questions/24127507/is-it-possible-to-center-tables-in-a-markdown-file">check out this stack overflow response</a> for information about aligning tables!</p>
+<section id="github-actions" class="level1">
+<h1>GitHub Actions</h1>
+<p>See the following for more information:</p>
+<ul>
+<li><a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/200-continuous-integration.html">Textbook: CI and workflows</a></li>
+<li><a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html">Textbook: Github actions</a></li>
+</ul>
+<p>We can make github actions to help automate our processes.</p>
+<p>We have two main examples we can work with, one from class and one from the website.</p>
+<p>In order for github actions to work, it needs to be placed in a very specific folder location of: .github/workflows/&lt;file.yml&gt;</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> .github/workflows/</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> .github/workflows/</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> bash.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The following is a sample of a github action you can do, where you run a bash command:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">name:</span> Run a bash command <span class="co"># this is what specifies the automation</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">on:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">workflow_dispatch:</span> <span class="co"># says: manually run this in the github interface...</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">push:</span> <span class="co"># if a push happens to the repo then ...</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">branches:</span> <span class="pp">[</span><span class="ss">main</span><span class="pp">]</span> <span class="co"># if a push happens to the main branch also make these changes</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">paths:</span>  <span class="co"># or only trigger when one of these files is changed</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> <span class="st">'Dockerfile'</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> .github/workflows/bash.yml <span class="co"># or whatever you named the file</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> <span class="st">'conda-linux-64.lock'</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="co"># could also do something like every week update it ... etc.</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">jobs:</span> <span class="co"># specify the jobs you want to create</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">run_bash_command:</span> <span class="co"># name of the job, the one yaml understands</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="ex">name:</span> Run a bash command using github actions <span class="co"># a human-readable name that is nice for us to look at</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="ex">runs-on:</span> ubuntu-latest <span class="co"># operating system you want github to run on, this one is most common for linux, you could say windows-latest or mac-latest too</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="ex">steps:</span> <span class="co"># actual steps to run</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Check out the repo <span class="co"># run git clone and cd into it</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> actions/checkout@v4 <span class="co"># probably automating off something in your repository, so usually your first step</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Run a command manually</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="ex">run:</span> ls <span class="at">-a</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Run multiple commands manually <span class="co"># use a vertical bar |</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="ex">run:</span> <span class="kw">|</span> </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>          <span class="bu">pwd</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ls</span> <span class="at">-a</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Run multiple commands manually with script</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="ex">run:</span> bash bash_script.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then you can just commit this file and the action should work!</p>
+<p>There are also other github actions you can do, of course. Here is one taken from the course textbook that allows you to publish your docker image to docker hub.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Publishes docker image, pinning actions to a commit SHA,</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and updating most recently built image with the latest tag.</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Can be triggered by either pushing a commit that changes the `Dockerfile`,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or manually dispatching the workflow.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">name:</span> Publish Docker image</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">on:</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">workflow_dispatch:</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">push:</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">paths:</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> <span class="st">'Dockerfile'</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> .github/workflows/docker-publish.yml <span class="co"># or whatever you named the file</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> <span class="st">'conda-linux-64.lock'</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ex">jobs:</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">push_to_registry:</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="ex">name:</span> Push Docker image to Docker Hub</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="ex">runs-on:</span> ubuntu-latest</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="ex">steps:</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Check out the repo</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> actions/checkout@v4</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Log in to Docker Hub</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> docker/login-action@v3</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        <span class="ex">with:</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>          <span class="ex">username:</span> <span class="va">${</span><span class="er">{ secrets.DOCKER_USERNAME </span><span class="va">}</span>} <span class="co"># do not change, add as secret</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>          <span class="ex">password:</span> <span class="va">${</span><span class="er">{ secrets.DOCKER_PASSWORD </span><span class="va">}</span>} <span class="co"># do not change, add as secret</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Extract metadata <span class="er">(</span><span class="ex">tags,</span> labels<span class="kw">)</span> <span class="cf">for</span> Docker</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        <span class="ex">id:</span> meta</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> docker/metadata-action@v5</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>        <span class="ex">with:</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>          <span class="ex">images:</span> ttimbers/dsci522-dockerfile-practice <span class="co"># change to your image</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>          <span class="ex">tags:</span> <span class="kw">|</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>            <span class="va">type</span><span class="op">=</span>raw, <span class="va">value</span><span class="op">=</span>{{sha}},enable=<span class="va">${</span><span class="er">{github.ref_type != 'tag' </span><span class="va">}</span>}</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>            <span class="va">type</span><span class="op">=</span>raw, <span class="va">value</span><span class="op">=</span>latest</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Build and push Docker image</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> docker/build-push-action@v6</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>        <span class="ex">with:</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>          <span class="ex">context:</span> .</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>          <span class="ex">file:</span> ./Dockerfile</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>          <span class="ex">push:</span> true</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>          <span class="ex">tags:</span> <span class="va">${</span><span class="er">{ steps.meta.outputs.tags </span><span class="va">}</span>}</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>          <span class="ex">labels:</span> <span class="va">${</span><span class="er">{ steps.meta.outputs.labels </span><span class="va">}</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Checkout <a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html" class="uri">https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html</a> for more customization.</p>
+<p>Also note that in this one you need to add a secret username and password in the repo you’re in, and you also need to edit to proper naming.</p>
 
 
 </section>

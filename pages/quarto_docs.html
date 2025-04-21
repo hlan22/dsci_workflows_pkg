@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Writing Functions – DSCI 310 Review</title>
+<title>Quarto Reports – DSCI 310 Review</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,22 +57,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-360dfb76d7d7ff9ffda507c77b5c9c5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-360dfb76d7d7ff9ffda507c77b5c9c5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -102,7 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./making_a_package.html">Packages</a></li><li class="breadcrumb-item"><a href="./functions.html">Functions</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/markdown.html">Quarto</a></li><li class="breadcrumb-item"><a href="../pages/quarto_docs.html">Quarto Reports</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">DSCI 310 Review</a> 
+      <a href="../">DSCI 310 Review</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -141,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -156,19 +156,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro_to_git.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/intro_to_git.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git Commands</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./git_concepts.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/git_concepts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git Concepts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bash_scripts.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/bash_scripts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bash Scripts</span></a>
   </div>
 </li>
@@ -185,31 +185,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./environments.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/environments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./docker.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/docker.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Docker Containers</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./github_actions.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/github_actions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GitHub Actions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ci_cd.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/workflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitHub Workflows</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/ci_cd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">CI &amp; CD</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./makefiles.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/makefiles.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Makefiles</span></a>
   </div>
 </li>
@@ -226,19 +232,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markdown.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/markdown.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markdown Tips</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./quarto_docs.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/quarto_docs.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Quarto Reports</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./making_websites.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/making_websites.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto Websites</span></a>
   </div>
 </li>
@@ -255,37 +261,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./making_a_package.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/making_a_package.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Making an R Package</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./functions.html" class="sidebar-item-text sidebar-link active">
+  <a href="../pages/functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tests.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/tests.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./validation.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/validation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Validation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dependencies.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/dependencies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dependencies</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supporting.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/supporting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Badges, Licenses &amp; More</span></a>
   </div>
 </li>
@@ -301,17 +307,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-to-write-functions" id="toc-how-to-write-functions" class="nav-link active" data-scroll-target="#how-to-write-functions">How to Write Functions</a></li>
-  <li><a href="#roxygen-guide" id="toc-roxygen-guide" class="nav-link" data-scroll-target="#roxygen-guide">ROxygen Guide</a></li>
+  <li><a href="#table-and-image-labelling-and-referencing" id="toc-table-and-image-labelling-and-referencing" class="nav-link active" data-scroll-target="#table-and-image-labelling-and-referencing">Table and Image: Labelling and Referencing</a></li>
+  <li><a href="#execution-options-for-.qmd-and-.rmd" id="toc-execution-options-for-.qmd-and-.rmd" class="nav-link" data-scroll-target="#execution-options-for-.qmd-and-.rmd">Execution Options for <code>.qmd</code> and <code>.Rmd</code></a></li>
+  <li><a href="#other-introductory-information" id="toc-other-introductory-information" class="nav-link" data-scroll-target="#other-introductory-information">Other introductory information</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./making_a_package.html">Packages</a></li><li class="breadcrumb-item"><a href="./functions.html">Functions</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/markdown.html">Quarto</a></li><li class="breadcrumb-item"><a href="../pages/quarto_docs.html">Quarto Reports</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Writing Functions</h1>
+<h1 class="title">Quarto Reports</h1>
 </div>
 
 
@@ -328,35 +335,98 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="how-to-write-functions" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-write-functions">How to Write Functions</h2>
-<p>To learn more about that take a look at the <a href="https://r4ds.hadley.nz/functions.html">Functions chapter</a> of R for Data Science and the <a href="https://adv-r.hadley.nz/functions.html">Functions chapter</a> of Advanced R.</p>
+<p>See here for more information:</p>
+<ul>
+<li><p><a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/160-reproducible-reports.html">Textbook: Reproducible Reports</a></p></li>
+<li><p><a href="https://github.com/hlan22/dsci-310-assignment-4">My Assignment 4 Changes (where I received 110%)</a></p></li>
+</ul>
+<section id="table-and-image-labelling-and-referencing" class="level2">
+<h2 class="anchored" data-anchor-id="table-and-image-labelling-and-referencing">Table and Image: Labelling and Referencing</h2>
+<p>ahh</p>
 </section>
-<section id="roxygen-guide" class="level2">
-<h2 class="anchored" data-anchor-id="roxygen-guide">ROxygen Guide</h2>
-<p>(Taken from <a href="https://r-pkgs.org/whole-game.html">The Whole Game</a> R Package building guide)</p>
-<p>Wouldn’t it be nice to get <code>?</code> help with your functions, just like we do with other R functions? This requires that your package have a special R documentation file, <code>man/function-name.Rd</code>, written in an R-specific markup language that is sort of like LaTeX. Luckily we don’t necessarily have to author that directly.</p>
-<p>We write a specially formatted comment right above <code>function-bame()</code>, in its source file, and then let a package called <a href="https://roxygen2.r-lib.org">roxygen2</a> handle the creation of <code>man/function-name.Rd</code>.</p>
-<p>If you use RStudio, open <code>R/function-name.R</code> in the source editor and put the cursor somewhere in the <code>function-name()</code> function definition. Now do <em>Code &gt; Insert roxygen skeleton</em>. A very special comment should appear above your function, in which each line begins with <code>#'</code>. RStudio only inserts a barebones template, so you will need to edit it to look something like that below.</p>
-<p>You should modify it to look something like this:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Split a string</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x A character vector with one element.</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param split What to split on.</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return A character vector.</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' x &lt;- "alfa,bravo,charlie,delta"</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#' strsplit1(x, split = ",")</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>strsplit1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, split) {</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">strsplit</span>(x, <span class="at">split =</span> split)[[<span class="dv">1</span>]]</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>But we’re not done yet! We still need to trigger the conversion of this new roxygen comment into <code>man/strsplit1.Rd</code> with <code>document()</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">document</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You should now be able to preview your help file like so:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>?<span class="cf">function</span><span class="sc">-</span>name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="execution-options-for-.qmd-and-.rmd" class="level2">
+<h2 class="anchored" data-anchor-id="execution-options-for-.qmd-and-.rmd">Execution Options for <code>.qmd</code> and <code>.Rmd</code></h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 33%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Execution Option</th>
+<th>Description</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>eval</code></td>
+<td>Evaluate the code chunk (if false, just echos the code into the output).</td>
+<td><code>true</code> <br> <code>false</code></td>
+</tr>
+<tr class="even">
+<td><code>echo</code></td>
+<td>Include the source code in output.</td>
+<td><code>true</code> <br> <code>false</code> <br> <code>fenced</code></td>
+</tr>
+<tr class="odd">
+<td><code>output</code></td>
+<td>Include the results of executing the code in the output.</td>
+<td><code>true</code> <br> <code>false</code> <br> <code>asis</code> (raw markdown, without Quarto’s standard enclosing markdown)</td>
+</tr>
+<tr class="even">
+<td><code>warning</code></td>
+<td>Include warnings in the output.</td>
+<td><code>true</code> <br> <code>false</code></td>
+</tr>
+<tr class="odd">
+<td><code>error</code></td>
+<td>Include errors in the output (note: errors won’t stop document processing).</td>
+<td><code>true</code> <br> <code>false</code></td>
+</tr>
+<tr class="even">
+<td><code>include</code></td>
+<td>Prevent any output (code or results) from being included.</td>
+<td><code>true</code> <br> <code>false</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="other-introductory-information" class="level2">
+<h2 class="anchored" data-anchor-id="other-introductory-information">Other introductory information</h2>
+<ul>
+<li><p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p></li>
+<li><p>Quarto sets up the metadata at the start with 3 dashes at the top of the file. If you move it after/later in the document, it will not understand.</p></li>
+<li><p>The notation at the start is yaml, keys and values, just like github actions files</p></li>
+<li><p>markdown is a short cut version of html, but you can always write pure html in a document too</p></li>
+</ul>
+<p>If you want the proper coloring to show up for code, but not actually run it, you can do:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>myfunc <span class="ot">&lt;-</span> <span class="cf">function</span>(blah) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>   blah <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>But it doesn’t define it!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>myfunc <span class="ot">&lt;-</span> <span class="cf">function</span>(blah) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>   blah <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">myfunc</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>These execution options are yaml key/value combinations, that is why it is false instead of FALSE (not r code, it is yaml).</p>
+<ul>
+<li><p>The reason we say echo - whatever you tell me, i’ll spit back to you</p></li>
+<li><p>what about word wrapping? it is still considered line 9</p></li>
+</ul>
+<p>You can turn off soft wrap long lines, but I don’t like that option.</p>
+<p>If you think about it from a git perspective, you have to find the change in the giant 5-line sentence. That is why you can split up sentences, but as long as there is no space inbetween the sentences, they are rendered as one.</p>
+<ul>
+<li>Semantic line breaks; strategically breaking lines so that it is easier for version control</li>
+</ul>
+<p>ctrl shift p is find a command</p>
 
 
 </section>

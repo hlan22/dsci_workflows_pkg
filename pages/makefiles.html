@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Websites With Quarto – DSCI 310 Review</title>
+<title>makefiles – DSCI 310 Review</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,22 +57,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-360dfb76d7d7ff9ffda507c77b5c9c5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-360dfb76d7d7ff9ffda507c77b5c9c5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -102,7 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./markdown.html">Quarto</a></li><li class="breadcrumb-item"><a href="./making_websites.html">Quarto Websites</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/environments.html">General</a></li><li class="breadcrumb-item"><a href="../pages/makefiles.html">Makefiles</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">DSCI 310 Review</a> 
+      <a href="../">DSCI 310 Review</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -141,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -156,19 +156,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro_to_git.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/intro_to_git.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git Commands</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./git_concepts.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/git_concepts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git Concepts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bash_scripts.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/bash_scripts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bash Scripts</span></a>
   </div>
 </li>
@@ -185,31 +185,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./environments.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/environments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./docker.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/docker.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Docker Containers</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./github_actions.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/github_actions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GitHub Actions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ci_cd.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/workflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitHub Workflows</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/ci_cd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">CI &amp; CD</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./makefiles.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/makefiles.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Makefiles</span></a>
   </div>
 </li>
@@ -226,19 +232,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markdown.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/markdown.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markdown Tips</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./quarto_docs.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/quarto_docs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto Reports</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./making_websites.html" class="sidebar-item-text sidebar-link active">
+  <a href="../pages/making_websites.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto Websites</span></a>
   </div>
 </li>
@@ -255,37 +261,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./making_a_package.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/making_a_package.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Making an R Package</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tests.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/tests.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./validation.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/validation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Validation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dependencies.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/dependencies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dependencies</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supporting.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/supporting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Badges, Licenses &amp; More</span></a>
   </div>
 </li>
@@ -301,114 +307,125 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#website-bones" id="toc-website-bones" class="nav-link active" data-scroll-target="#website-bones">Website “Bones”</a></li>
-  <li><a href="#main-locations" id="toc-main-locations" class="nav-link" data-scroll-target="#main-locations">3 Main Locations</a></li>
+  <li><a href="#what-are-makefiles" id="toc-what-are-makefiles" class="nav-link active" data-scroll-target="#what-are-makefiles">What are <code>Makefile</code>s?</a></li>
+  <li><a href="#docopt-package" id="toc-docopt-package" class="nav-link" data-scroll-target="#docopt-package"><code>docopt</code> Package</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./markdown.html">Quarto</a></li><li class="breadcrumb-item"><a href="./making_websites.html">Quarto Websites</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Websites With Quarto</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/environments.html">General</a></li><li class="breadcrumb-item"><a href="../pages/makefiles.html">Makefiles</a></li></ol></nav></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>Here’s a basic outline as to how to make websites using quarto (and rstudio/vscode)!</p>
-<section id="website-bones" class="level2">
-<h2 class="anchored" data-anchor-id="website-bones">Website “Bones”</h2>
-<p>Start with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> create</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="what-are-makefiles" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-makefiles">What are <code>Makefile</code>s?</h2>
+<p><em>Note</em>: to get the most use out of Makefiles, ensure that you have already split up the code into different R scripts and reference them in the main report.</p>
+<p>Make:</p>
 <ul>
-<li>Select <code>project</code> &gt; <code>website</code> &gt; Directory: <code>/</code> &gt; Title: <code>Final Review</code></li>
+<li>A tool that allows you to save these steps into “targets”</li>
+<li>give it a special name like <code>report</code> or <code>analysis</code> and the <code>Makefile</code> will run everything listed</li>
+<li>similar to making an <code>.sh</code> file and running all scripts</li>
+<li><code>bash analysis.sh</code></li>
+<li>No spaces are allowed in naming conventions, otherwise it will cause errors</li>
+<li>You can also put docker command in make file, like <code>docker compose</code>!</li>
+<li>Finally, you run the <code>Makefile</code> as such:</li>
 </ul>
-<p>Alternatively, create the following files:</p>
-<ul>
-<li><code>_quarto.yml</code></li>
-<li><code>index.qmd</code></li>
-<li><code>&lt;project_name&gt;.Rproj</code></li>
-<li><code>styles.css</code> (not necessary)</li>
-<li>other <code>.qmd</code> files (not necessary)</li>
-<li>Add files to <code>.gitignore</code></li>
-</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> <span class="op">&lt;</span>action you want to run<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="main-locations" class="level2">
-<h2 class="anchored" data-anchor-id="main-locations">3 Main Locations</h2>
-<p>Here are the 3 main locations you can use GitHub Pages for rendering your website!</p>
-<section id="root" class="level4">
-<h4 class="anchored" data-anchor-id="root"><code>/(root)</code></h4>
-<p>You are ready simply by doing:</p>
-<p>Select the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render index.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will make an <code>index.html</code> file that git will look for. If you do not have a index.html file in your root folder, it will instead display your <code>README.md</code>!</p>
-<p>Push all changes, including the rendered page, to the (main branch) repo.</p>
-</section>
-<section id="docs" class="level4">
-<h4 class="anchored" data-anchor-id="docs"><code>docs/</code></h4>
-<p>There are a few tasks necessary:</p>
-<p>Select the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.</p>
+<section id="docopt-package" class="level2">
+<h2 class="anchored" data-anchor-id="docopt-package"><code>docopt</code> Package</h2>
+<p>Learn more about the docopt package here:</p>
 <ul>
-<li>Ensure <code>docs/</code> is not blocked in the <code>.gitignore</code> file</li>
-<li>Set <code>output-dir: docs</code> under project: type: in <code>_quarto.yml</code></li>
+<li><a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/150-scripts.html">Textbook: Making Scripts With Functions and Docopt</a></li>
 </ul>
+<p>Using the library <code>docopt</code>, you can make your reports incredibly more reproducible! Instead of reading in your data for each script, or even <code>source()</code>-ing other scripts, you can instead use the <code>docopt</code> library to pass by this.</p>
 </section>
-<section id="gh-pages-branch" class="level4">
-<h4 class="anchored" data-anchor-id="gh-pages-branch"><code>gh-pages</code> branch</h4>
-<p>Select the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.</p>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<p>Makefiles have a lot of different uses! Here are the main ideas we will review:</p>
+<ol type="1">
+<li><a href="#one">Making a website</a></li>
+<li><a href="#two">Running Code</a></li>
+<li><a href="#three">Compiling a report</a></li>
+<li><a href="#four">Terminal commands</a></li>
+</ol>
+<section id="one" class="level4">
+<h4 class="anchored" data-anchor-id="one">1. Making a Website</h4>
+<p>The following Makefile:</p>
 <ul>
-<li>Delete any <code>docs/</code> folder</li>
-<li>block the <code>docs</code> and <code>_site</code> folder in the <code>.gitignore</code> file</li>
+<li>renders your website (from the <code>docs/</code> folder)</li>
+<li>ensures there is a <code>.nojekyll</code> file</li>
+<li>gives you the ability to clean your repo after rendering</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--orphan</span> gh-pages</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--hard</span> <span class="co"># make sure all changes are committed before running this!</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">"Initialising gh-pages branch"</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Which now you can test-run the website with:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch main</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can still use the regular <code>quarto render</code> or <code>quarto preview</code> to build your site locally, but you will no longer need to manually build and push the site to the main branch!</p>
-<p>Add a github action to make it automatically build:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> .github/workflows/build.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>And copy the following contents into it:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">on:</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">workflow_dispatch:</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">push:</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">branches:</span> main</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ex">name:</span> Quarto Publish</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">jobs:</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">build-deploy:</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">runs-on:</span> ubuntu-latest</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">permissions:</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>      <span class="ex">contents:</span> write</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">steps:</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Check out repository</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> actions/checkout@v4</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Set up Quarto</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> quarto-dev/quarto-actions/setup@v2</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Render and Publish</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> quarto-dev/quarto-actions/publish@v2</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        <span class="ex">with:</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>          <span class="ex">target:</span> gh-pages</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        <span class="ex">env:</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>          <span class="ex">GITHUB_TOKEN:</span> <span class="va">${</span><span class="er">{ secrets.GITHUB_TOKEN </span><span class="va">}</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>.PHONY render clean
+
+# render your website, make sure .nojekyll file exists
+render:
+    quarto render
+    touch docs/.nojekyll
+
+clean:
+    rm -rf _site
+    rm -rf docs</code></pre>
+</section>
+<section id="two" class="level4">
+<h4 class="anchored" data-anchor-id="two">2. Running Code</h4>
+<p>Say we just want to simply run our <code>.R</code> files faster and easier! This is what a data <strong>pipeline</strong> is doing. We can just do the following:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Makefile</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">analysis:</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Rscript</span> 01-load_clean.R</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Rscript</span> 02-eda.R</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Rscript</span> 03-model.R</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Rscript</span> 04-analyze.R</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">download:</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Rscript</span> 01-load_clean.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is very similar how a <code>bash</code> script <code>analysis.sh</code> would work, and you can see the similarities:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># analysis.sh file</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> 01-load_clean.R</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> 02-eda.R</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> 03-model.R</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> 04-analyze.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="three" class="level4">
+<h4 class="anchored" data-anchor-id="three">3. Compiling a report</h4>
+<p>This is where you use the <code>docopt</code> library with specific inputs and/or outputs!</p>
+<pre><code>.PHONY: all clean report
+
+all:
+    # remember to put the code changes in the individual rules
+    #Rscript code/01-load_clean.R --file_path=data/original/titanic.csv --output_path=data/clean/titanic_clean.csv
+    #Rscript code/03-model.R --file_path=data/clean/titanic_clean.csv --output_path=output/model.RDS
+    #Rscript code/04-analyze.R --model=output/model.RDS --output_coef=output/coef.csv --output_fig=output/fig.png
+    make clean
+    make index.html
+
+data/clean/titanic_clean.csv: code/01-load_clean.R data/original/titanic.csv
+    Rscript code/01-load_clean.R --file_path=data/original/titanic.csv --output_path=data/clean/titanic_clean.csv
+
+output/model.RDS: code/03-model.R data/clean/titanic_clean.csv
+    Rscript code/03-model.R --file_path=data/clean/titanic_clean.csv --output_path=output/model.RDS
+
+output/coef.csv output/fig.png: code/04-analyze.R output/model.RDS
+    Rscript code/04-analyze.R --model=output/model.RDS --output_coef=output/coef.csv --output_fig=output/fig.png
+
+index.html: report/report.qmd output/coef.csv output/fig.png
+    quarto render report/report.qmd
+    mv report/report.html index.html
+
+report:
+    make index.html
+
+clean:
+    rm -f output/*
+    rm -f data/clean/*
+    rm -f index.html
+    rm -f *.pdf</code></pre>
+</section>
+<section id="four" class="level4">
+<h4 class="anchored" data-anchor-id="four">4. Terminal commands</h4>
 
 
 </section>

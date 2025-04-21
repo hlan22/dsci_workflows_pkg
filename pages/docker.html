@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ci_cd – DSCI 310 Review</title>
+<title>docker – DSCI 310 Review</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-360dfb76d7d7ff9ffda507c77b5c9c5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-360dfb76d7d7ff9ffda507c77b5c9c5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -68,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -80,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./environments.html">General</a></li><li class="breadcrumb-item"><a href="./ci_cd.html">CI &amp; CD</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/environments.html">General</a></li><li class="breadcrumb-item"><a href="../pages/docker.html">Docker Containers</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -95,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">DSCI 310 Review</a> 
+      <a href="../">DSCI 310 Review</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -107,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -122,19 +156,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro_to_git.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/intro_to_git.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git Commands</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./git_concepts.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/git_concepts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git Concepts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bash_scripts.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/bash_scripts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bash Scripts</span></a>
   </div>
 </li>
@@ -151,31 +185,37 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./environments.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/environments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./docker.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/docker.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Docker Containers</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./github_actions.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/github_actions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GitHub Actions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ci_cd.html" class="sidebar-item-text sidebar-link active">
+  <a href="../pages/workflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitHub Workflows</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/ci_cd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">CI &amp; CD</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./makefiles.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/makefiles.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Makefiles</span></a>
   </div>
 </li>
@@ -192,19 +232,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markdown.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/markdown.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markdown Tips</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./quarto_docs.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/quarto_docs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto Reports</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./making_websites.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/making_websites.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto Websites</span></a>
   </div>
 </li>
@@ -221,37 +261,37 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./making_a_package.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/making_a_package.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Making an R Package</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tests.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/tests.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./validation.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/validation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Validation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dependencies.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/dependencies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dependencies</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supporting.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/supporting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Badges, Licenses &amp; More</span></a>
   </div>
 </li>
@@ -262,34 +302,156 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#docker-and-containers" id="toc-docker-and-containers" class="nav-link active" data-scroll-target="#docker-and-containers">Docker (and) Containers</a>
+  <ul class="collapse">
+  <li><a href="#basic-container" id="toc-basic-container" class="nav-link" data-scroll-target="#basic-container">Basic container</a></li>
+  <li><a href="#an-r-container" id="toc-an-r-container" class="nav-link" data-scroll-target="#an-r-container">An R Container</a></li>
+  <li><a href="#an-rstudio-container" id="toc-an-rstudio-container" class="nav-link" data-scroll-target="#an-rstudio-container">An RStudio Container</a></li>
+  <li><a href="#dockerfiles" id="toc-dockerfiles" class="nav-link" data-scroll-target="#dockerfiles">DockerFiles</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./environments.html">General</a></li><li class="breadcrumb-item"><a href="./ci_cd.html">CI &amp; CD</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">ci_cd</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/environments.html">General</a></li><li class="breadcrumb-item"><a href="../pages/docker.html">Docker Containers</a></li></ol></nav></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
+<section id="docker-and-containers" class="level1">
+<h1>Docker (and) Containers</h1>
+<p>For additional information/resources:</p>
+<ul>
+<li><a href="https://github.com/hlan22/2025-02-10-dockerfile">dockerfile practice</a></li>
+<li><a href="https://github.com/hlan22/2025-02-06-docker">docker practice #2</a></li>
+<li><a href="https://github.com/hlan22/2025-01-30-docker">Docker practice</a></li>
+<li><a href="https://github.com/hlan22/2025-01-28-renv_docker">Docker and Renv</a></li>
+</ul>
+<section id="basic-container" class="level3">
+<h3 class="anchored" data-anchor-id="basic-container">Basic container</h3>
+<p>What is a container?</p>
+<ul>
+<li>they are basically a virtual machine, where you can specify all the software you need to run files you want.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run hello-world</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This command runs a container that executes a script that prints out the hello docker text. When this script runs, it exits and the container exits to give you your prompt back</p>
+</section>
+<section id="an-r-container" class="level3">
+<h3 class="anchored" data-anchor-id="an-r-container">An R Container</h3>
+<p>With this code you can run an R container:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-it</span> rocker/r-ver:4.3.2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can open up and launch R or run <code>R --version</code> to get your current R version.</p>
+</section>
+<section id="an-rstudio-container" class="level3">
+<h3 class="anchored" data-anchor-id="an-rstudio-container">An RStudio Container</h3>
+<p>With this code you can run an RStudio container:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-e</span> PASSWORD=<span class="st">"pizza"</span> <span class="at">-p</span> 8787:8787 rocker/rstudio:4.4.2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here are what the commands mean:</p>
+<ul>
+<li><code>--rm</code> means remove. It is saying to delete the container when I am done with it!</li>
+<li><code>-e</code> stands for environments. It lets you pass in special parameters necessary to run that container.</li>
+<li><code>-p</code> stands for port. It is where you specify the container will be run through on your computer.</li>
+</ul>
+<p>After running it, you can visit <a href="http://localhost:8787" class="uri">http://localhost:8787</a> and view the RStudio container.</p>
+<p>If you create any files in this container instance, all your work will be lost!</p>
+<section id="an-rstudio-tidyverse-container" class="level5">
+<h5 class="anchored" data-anchor-id="an-rstudio-tidyverse-container">An RStudio Tidyverse Container</h5>
+<p>You can also make a Tidyverse container, where tidyverse is already installed! Pretty sweet.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-e</span> PASSWORD=<span class="st">"pizza"</span> <span class="at">-p</span> 8787:8787 rocker/tidyverse:4.4.2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that if you run two sessions at once, you will need to change the port mapping on one of them.</p>
+<ul>
+<li><a href="http://localhost:8888" class="uri">http://localhost:8888</a> is commonly known for jupyterlab</li>
+</ul>
+</section>
+</section>
+<section id="dockerfiles" class="level3">
+<h3 class="anchored" data-anchor-id="dockerfiles">DockerFiles</h3>
+<p>A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.</p>
+<p>You can create it simply with the command <code>code Dockerfile</code>.</p>
+<p>It is a special type of file, so make sure it does NOT end with something like .txt or .sh or anything. It is simply just Dockerfile (with a capital D).</p>
+<p>The following is a sample of what you can do with a Dockerfile:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> rocker/rstudio:4.2.2</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># this builds the base image from rstudio</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># you can run basic bash commands that will run while setting up the container</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> echo <span class="st">"Hello"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> pwd</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># you can install apps and such so that you have them in your image</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt-get install <span class="at">-y</span> git</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># you can copy files onto your image/container</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="ex">COPY</span> renv.lock /home/rstudio/renv.lock</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="ex">COPY</span> README.md /home/rstudio/README.md </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># we can even install packages into the image</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> Rscript <span class="at">-e</span> <span class="st">"install.packages('renv', repos = c(CRAN = 'https://cloud.r-project.org'))"</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># with the renv package we can keep r packages in our image without having to manually download them each time</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># we have to set the working directory first</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="ex">WORKDIR</span> /home/rstudio</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># then we can copy other project files</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="ex">COPY</span> renv/ /home/rstudio/renv</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="ex">COPY</span> bash_script.sh /home/rstudio/bash_script.sh</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="ex">COPY</span> newRpackage_usage.R /home/rstudio/newRpackage_usage.R </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co"># however!</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Installing the remotes package allows us to pin the version of the package we're installing</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> Rscript <span class="at">-e</span> <span class="st">"install.packages('remotes', repos = c(CRAN = 'https://cloud.r-project.org'))"</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co"># now we can install a package like this:</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> Rscript <span class="at">-e</span> <span class="st">"remotes::install_version('cowsay', version='1.0.0')"</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co"># this saves us the hassle of having to copy all of our project files</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># while still keeping the package versions we want!</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> echo <span class="st">"Wow! There are so many things you can do with Dockerfiles!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now that you have completed your super-cool Dockerfile, you can now build your very OWN container! How exciting!</p>
+<section id="building-and-running-mycontainer" class="level4">
+<h4 class="anchored" data-anchor-id="building-and-running-mycontainer">Building and Running ‘mycontainer’</h4>
+<p>Assuming you’ve made your own Dockerfile, you can now build your own container with this command:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">--tag</span> mycontainer .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note you can replace <code>mycontainer</code> with whatever you would like your container to be called. Also note that it is very important to have the <code>.</code> at the end, as that is for your current working directory. This command will look for a Dockerfile within your current directory and then build the container.</p>
+<p>The command <code>docker images</code> will let you see what images you have going.</p>
+<p>After you have built your container, you can now run it using:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-it</span> <span class="at">-e</span> PASSWORD=<span class="st">"pizza"</span> <span class="at">-p</span> 8787:8787 <span class="at">-v</span> /<span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/home/rstudio/work mycontainer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Note you replace<code>mycontainer</code> with the name of the container you just build, and can of course replace the password.</li>
+<li>Also note that the <code>-v</code> stands for volume. It will copy all of your local files into the container (just for you when you run it) for you to be able to use at ease.</li>
+</ul>
+<p>What if I am too lazy to type that long run command? Let’s learn about .yml files where you can run the docker in a much easier way!</p>
+<ul>
+<li>Side note: after you build you container you can also push it to docker so that anyone can use it</li>
+</ul>
+</section>
+<section id="running-docker-easier" class="level4">
+<h4 class="anchored" data-anchor-id="running-docker-easier">Running docker easier</h4>
+<p>We can create a special docker-compose.yml file where we are saved from having to write a long run command line. Note that docker specifically recognizes this file name, so the naming convention is important.</p>
+<p>Here is a sample of what one would look like:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">services:</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">analysis-env:</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">image:</span> hlan22/mycontainer</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">ports:</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> <span class="st">"8787:8787"</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">volumes:</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> .:/home/rstudio/work</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">environment:</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>      <span class="ex">PASSWORD:</span> <span class="st">"pizza"</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># This file is a replacement for having to write the following command line</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># docker run --rm -it -e PASSWORD="pizza" -p 8787:8787 </span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># -v /$(pwd):/home/rstudio/work rocker/tidyverse:4.4.2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To run this file, you just need to type the following:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-compose</span> up</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Although, with this method, you need to remove it manually afterwards with:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-compose</span> rm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
-</header>
-
-
-<p>Continuous Integration and Deployment</p>
-
-
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

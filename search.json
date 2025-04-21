@@ -1,7 +1,7 @@
 [
   {
-    "objectID": "making_a_package.html",
-    "href": "making_a_package.html",
+    "objectID": "pages/making_a_package.html",
+    "href": "pages/making_a_package.html",
     "title": "Steps For Making An R Package",
     "section": "",
     "text": "This explanation has been taken entirely from The Whole Game, edited and simplified by me. Credit is given completely to those authors!",
@@ -11,8 +11,8 @@
     ]
   },
   {
-    "objectID": "making_a_package.html#devtools",
-    "href": "making_a_package.html#devtools",
+    "objectID": "pages/making_a_package.html#devtools",
+    "href": "pages/making_a_package.html#devtools",
     "title": "Steps For Making An R Package",
     "section": "devtools",
     "text": "devtools\nLoad the devtools package, which is the public face of a set of packages that support various aspects of package development. The most obvious of these packages is the usethis package, which you’ll see is also being loaded.\ninstall.packages(\"devtools\")\nlibrary(devtools)\n\nPackage Components\nFeatures commonly seen in released packages:\n\nFunctions to address a specific need\nVersion control and an open development process.\nAccess to established workflows for installation, getting help, and checking quality.\n\nDocumentation for individual functions via roxygen2.\nUnit testing with testthat.\nDocumentation for the package as a whole via an executable README.Rmd.",
@@ -22,8 +22,8 @@
     ]
   },
   {
-    "objectID": "making_a_package.html#create_package",
-    "href": "making_a_package.html#create_package",
+    "objectID": "pages/making_a_package.html#create_package",
+    "href": "pages/making_a_package.html#create_package",
     "title": "Steps For Making An R Package",
     "section": "create_package()",
     "text": "create_package()\nCall create_package() to initialize a new package in a directory on your computer.\n\ncreate_package() will automatically create that directory if it doesn’t exist yet.\nMake a deliberate choice about where to create this package on your computer. It should not be nested inside another RStudio Project, R package, or Git repo.\nPut your chosen path into a create_package() call like this:\n\ncreate_package(\"~/git/pathToPackage\")\nIf you’re working in RStudio, you should find yourself in a new instance of RStudio, opened into your new package (and Project). RStudio has special handling for packages and you should now see a Build tab in the same pane as Environment and History.\nYou probably need to call library(devtools) again, because create_package() has probably dropped you into a fresh R session, in your new package.\nlibrary(devtools)\nWhat’s in this new directory that is an R package and an RStudio Project?\n\n\n\nTable 1: Files in an R Package\n\n\n\n\n\n\n\n\n\nFile\nUse\n\n\n\n\n.Rbuildignore\nLists files that we need to have around but that should not be included when building the R package from source.\n\n\n.Rproj.user\nIf you have it, is a directory used internally by RStudio.\n\n\n.gitignore\nAnticipates Git usage and tells Git to ignore some standard, behind-the-scenes files created by R and RStudio.\n\n\nDESCRIPTION\nProvides metadata about your package.\n\n\nNAMESPACE\nDeclares the functions your package exports for external use and the external functions your package imports from other packages.\n\n\nR/ directory\nThe “business end” of your package. It will soon contain .R files with function definitions.\n\n\n*.Rproj\nThe file that makes this directory an RStudio Project. Even if you don’t use RStudio, this file is harmless.",
@@ -33,8 +33,8 @@
     ]
   },
   {
-    "objectID": "making_a_package.html#use_git",
-    "href": "making_a_package.html#use_git",
+    "objectID": "pages/making_a_package.html#use_git",
+    "href": "pages/making_a_package.html#use_git",
     "title": "Steps For Making An R Package",
     "section": "use_git()",
     "text": "use_git()\nThis directory is an R package and an RStudio Project. We can also make it also a Git repository with use_git().\nuse_git()\n\nThe only thing that changes is the creation of a .git directory, which is hidden in most contexts, including the RStudio file browser. Its existence is evidence that we have indeed initialized a Git repo here.\nIf you’re using RStudio, it probably requested permission to relaunch itself in this Project, which you should do. You can do so manually by quitting, then relaunching RStudio by double clicking on your project file.",
@@ -44,8 +44,8 @@
     ]
   },
   {
-    "objectID": "making_a_package.html#use_r",
-    "href": "making_a_package.html#use_r",
+    "objectID": "pages/making_a_package.html#use_r",
+    "href": "pages/making_a_package.html#use_r",
     "title": "Steps For Making An R Package",
     "section": "use_r()",
     "text": "use_r()\nNow we get to write functions for our package!\nRefer to the functions page for more information.\nWhere should you put the definition of your function?\n\nSave it in a .R file, in the R/ sub-directory of your package.\nA reasonable starting position is to make a new .R file for each user-facing function in your package and name the file after the function. As you add more functions, you’ll want to relax this and begin to group related functions together.\nNote: The function file should NOT contain any of the other top-level code we have recently executed, such as library calls library(devtools), or other things such as use_git().\n\nYou can use the use_r() function to help create new files in the R/ directory:\nuse_r(\"function_name\")",
@@ -55,19 +55,19 @@
     ]
   },
   {
-    "objectID": "making_a_package.html#sec-whole-game-load-all",
-    "href": "making_a_package.html#sec-whole-game-load-all",
+    "objectID": "pages/making_a_package.html#sec-whole-game-load-all",
+    "href": "pages/making_a_package.html#sec-whole-game-load-all",
     "title": "Steps For Making An R Package",
     "section": "load_all()",
-    "text": "load_all()\nHow do we test drive our functions though? Call load_all() to make the functions you made available for experimentation.\nload_all()\n\nload_all() simulates the process of building, installing, and attaching the package.\nAs your package accumulates more functions, some exported, some not, some of which call each other, some of which call functions from packages you depend on, load_all() gives you a much more accurate sense of how the package is developing than test driving functions defined in the global environment.\nIt also allows much faster iteration than actually building, installing, and attaching the package.\n\nNote that load_all() has made the functions available, although it does not exist in the global environment. You can check with the following:\nexists(\"function-name\", where = globalenv(), inherits = FALSE)\nIf you see TRUE instead of FALSE, that indicates you’re still using a script-oriented workflow and sourcing your functions. Here’s how to get back on track:\n\nClean out the global environment and restart R.\nRe-attach devtools with library(devtools) and re-load your functions with load_all().\nRedefine the test input and call your function again.\nRun exists(\"function-name\", where = globalenv(), inherits = FALSE) again and you should see FALSE.",
+    "text": "load_all()\nHow do we test drive our functions though? Call load_all() to make the functions you made available for experimentation.\nload_all()\n\nload_all() simulates the process of building, installing, and attaching the package.\nAs your package accumulates more functions, some exported, some not, some of which call each other, some of which call functions from packages you depend on, load_all() gives you a much more accurate sense of how the package is developing than test driving functions defined in the global environment.\nIt also allows much faster iteration than actually building, installing, and attaching the package.\n\nNote that load_all() has made the functions available, although it does not exist in the global environment. You can check with the following:\nexists(\"function_name\", where = globalenv(), inherits = FALSE)\nIf you see TRUE instead of FALSE, that indicates you’re still using a script-oriented workflow and sourcing your functions. Here’s how to get back on track:\n\nClean out the global environment and restart R.\nRe-attach devtools with library(devtools) and re-load your functions with load_all().\nRedefine the test input and call your function again.\nRun exists(\"function_name\", where = globalenv(), inherits = FALSE) again and you should see FALSE.",
     "crumbs": [
       "Packages",
       "Making an R Package"
     ]
   },
   {
-    "objectID": "making_a_package.html#check",
-    "href": "making_a_package.html#check",
+    "objectID": "pages/making_a_package.html#check",
+    "href": "pages/making_a_package.html#check",
     "title": "Steps For Making An R Package",
     "section": "check()",
     "text": "check()\nWe have informal, empirical evidence that our functions work. But how can we be sure that all the moving parts of the package still work?\nR CMD check, executed in the shell, is the gold standard for checking that an R package is in full working order. check() is a convenient way to run this without leaving your R session.\ncheck()\nNote that check() produces rather voluminous output, optimized for interactive consumption.\nAt this point, we expect 1 warning (and 0 errors, 0 notes):\nNon-standard license specification:\n  `use_mit_license()`, `use_gpl3_license()` \n   or friends to pick a license\nShout out to this clear description of different licenses: Pick a License, Any License. – Jeff Atwood\nWe currently have a placeholder in the License field of DESCRIPTION that’s deliberately invalid and suggests a resolution.\nLicense: `use_mit_license()`, `use_gpl3_license()` \n          or friends to pick a license\nTo configure a valid license for the package, call use_mit_license().\nuse_mit_license()\nThis configures the License field correctly for the MIT license, which promises to name the copyright holders and year in a LICENSE file. Open the newly created LICENSE file and confirm it looks something like this:\nYEAR: 2025\nCOPYRIGHT HOLDER: regexcite authors\n\nLike other license helpers, use_mit_license() also puts a copy of the full license in LICENSE.md and adds this file to .Rbuildignore.\nIt’s considered a best practice to include a full license in your package’s source, such as on GitHub, but CRAN disallows the inclusion of this file in a package tarball.",
@@ -77,8 +77,8 @@
     ]
   },
   {
-    "objectID": "making_a_package.html#description",
-    "href": "making_a_package.html#description",
+    "objectID": "pages/making_a_package.html#description",
+    "href": "pages/making_a_package.html#description",
     "title": "Steps For Making An R Package",
     "section": "DESCRIPTION",
     "text": "DESCRIPTION\nThe DESCRIPTION file provides metadata about your package.\nMake these edits:\n\nMake yourself the author. If you don’t have an ORCID (a research ID), you can omit the comment = ... portion.\nWrite some descriptive text in the Title and Description fields.\nEnsure you have a license\n\nWhen you’re done, DESCRIPTION should look similar to this:\nPackage: regexcite\nTitle: Make Regular Expressions More Exciting\nVersion: 0.0.0.9000\nAuthors@R: \n    person(\"Jane\", \"Doe\", , \"jane@example.com\", role = c(\"aut\", \"cre\"))\nDescription: Convenience functions to make some common tasks with string\n    manipulation and regular expressions a bit easier.\nLicense: MIT + file LICENSE\nEncoding: UTF-8\nRoxygen: list(markdown = TRUE)\nRoxygenNote: 7.1.2",
@@ -88,19 +88,19 @@
     ]
   },
   {
-    "objectID": "making_a_package.html#sec-whole-game-document",
-    "href": "making_a_package.html#sec-whole-game-document",
+    "objectID": "pages/making_a_package.html#sec-whole-game-document",
+    "href": "pages/making_a_package.html#sec-whole-game-document",
     "title": "Steps For Making An R Package",
     "section": "document()",
-    "text": "document()\nLearn how to write Roxygen statements on the functions page\nBut we’re not done yet! We still need to trigger the conversion of this new roxygen comment into man/function-name.Rd with document():\ndocument()\nThe call document() does two main jobs:\n\nConverts our roxygen comments into proper R documentation.\n(Re)generates NAMESPACE.\n\nYou should now be able to preview your help file for your function like so:\n?function-name\n\nYou’ll see a message like “Rendering development documentation for function-name”, which reminds that you are basically previewing draft documentation. That is, this documentation is present in your package’s source, but is not yet present in an installed package.\nIf it doesn’t work for you, you may need to call load_all() first, then try again.\n\n\nNAMESPACE Updates\nIn addition to converting function-name()’s special comment into man/function-name.Rd, the call to document() updates the NAMESPACE file, based on @export tags found in roxygen comments.\nOpen NAMESPACE for inspection. The contents should be:\n# Generated by roxygen2: do not edit by hand\n\nexport(function-name)\n\nThe export directive in NAMESPACE is what makes function-name() available to a user after attaching your-package via library(your-package). J* ust as it is entirely possible to author .Rd files “by hand”, you can manage NAMESPACE explicitly yourself. But we choose to delegate this to devtools (and roxygen2).",
+    "text": "document()\nLearn how to write Roxygen statements on the functions page\nBut we’re not done yet! We still need to trigger the conversion of this new roxygen comment into man/function_name.Rd with document():\ndocument()\nThe call document() does two main jobs:\n\nConverts our roxygen comments into proper R documentation.\n(Re)generates NAMESPACE.\n\nYou should now be able to preview your help file for your function like so:\n?function_name\n\nYou’ll see a message like “Rendering development documentation for function_name”, which reminds that you are basically previewing draft documentation. That is, this documentation is present in your package’s source, but is not yet present in an installed package.\nIf it doesn’t work for you, you may need to call load_all() first, then try again.\n\n\nNAMESPACE Updates\nIn addition to converting function_name()’s special comment into man/function_name.Rd, the call to document() updates the NAMESPACE file, based on @export tags found in roxygen comments.\nOpen NAMESPACE for inspection. The contents should be:\n# Generated by roxygen2: do not edit by hand\n\nexport(function_name)\n\nThe export directive in NAMESPACE is what makes function_name() available to a user after attaching your-package via library(your-package). J* ust as it is entirely possible to author .Rd files “by hand”, you can manage NAMESPACE explicitly yourself. But we choose to delegate this to devtools (and roxygen2).",
     "crumbs": [
       "Packages",
       "Making an R Package"
     ]
   },
   {
-    "objectID": "making_a_package.html#check-again",
-    "href": "making_a_package.html#check-again",
+    "objectID": "pages/making_a_package.html#check-again",
+    "href": "pages/making_a_package.html#check-again",
     "title": "Steps For Making An R Package",
     "section": "check() again",
     "text": "check() again\nYour package should pass R CMD check cleanly now and forever more: 0 errors, 0 warnings, 0 notes.\ncheck()",
@@ -110,41 +110,41 @@
     ]
   },
   {
-    "objectID": "making_a_package.html#install",
-    "href": "making_a_package.html#install",
+    "objectID": "pages/making_a_package.html#install",
+    "href": "pages/making_a_package.html#install",
     "title": "Steps For Making An R Package",
     "section": "install()",
-    "text": "install()\nNow that we know we have a minimum viable product, let’s install your package into your library via install():\ninstall()\nAfter installation is complete, we can attach and use your package like any other package. Let’s revisit our small example from the top.\nlibrary(yourPackage)\n\nstuff &lt;- 1\n\nfunction-name(stuff)\nThis is also a good time to restart your R session and ensure you have a clean workspace.",
+    "text": "install()\nNow that we know we have a minimum viable product, let’s install your package into your library via install():\ninstall()\nAfter installation is complete, we can attach and use your package like any other package. Let’s revisit our small example from the top.\nlibrary(yourPackage)\n\nstuff &lt;- 1\n\nfunction_name(stuff)\nThis is also a good time to restart your R session and ensure you have a clean workspace.",
     "crumbs": [
       "Packages",
       "Making an R Package"
     ]
   },
   {
-    "objectID": "making_a_package.html#use_testthat",
-    "href": "making_a_package.html#use_testthat",
+    "objectID": "pages/making_a_package.html#use_testthat",
+    "href": "pages/making_a_package.html#use_testthat",
     "title": "Steps For Making An R Package",
     "section": "use_testthat()",
-    "text": "use_testthat()\nPlease see the tests page for more information on making tests.\nWe should test our functions to ensure they follow the behavior we expect.\nuse_testthat()\n\nThis initializes the unit testing machinery for your package.\nIt adds Suggests: testthat to DESCRIPTION, creates the directory tests/testthat/, and adds the script tests/testthat.R.\n\nThe helper use_test() opens and/or creates a test file.\nuse_test(\"function-name\")\nMake sure to write the actual tests!\nRun your tests as such:\ntest()\n\nYour tests are also run whenever you check() the package.",
+    "text": "use_testthat()\nPlease see the tests page for more information on making tests.\nWe should test our functions to ensure they follow the behavior we expect.\nuse_testthat()\n\nThis initializes the unit testing machinery for your package.\nIt adds Suggests: testthat to DESCRIPTION, creates the directory tests/testthat/, and adds the script tests/testthat.R.\n\nThe helper use_test() opens and/or creates a test file.\nuse_test(\"function_name\")\nMake sure to write the actual tests!\nRun your tests as such:\ntest()\n\nYour tests are also run whenever you check() the package.",
     "crumbs": [
       "Packages",
       "Making an R Package"
     ]
   },
   {
-    "objectID": "making_a_package.html#use_package",
-    "href": "making_a_package.html#use_package",
+    "objectID": "pages/making_a_package.html#use_package",
+    "href": "pages/making_a_package.html#use_package",
     "title": "Steps For Making An R Package",
     "section": "use_package()",
-    "text": "use_package()\nYou will inevitably want to use a function from another package in your own package. We will need to use package-specific methods for declaring the other packages we need (i.e. our dependencies) and for using these packages in ours. If you plan to submit a package to CRAN, note that this even applies to functions in packages that you think of as “always available”, such as stats::median() or utils::head().\nOne common dilemma when using R’s regular expression functions is uncertainty about whether to request perl = TRUE or perl = FALSE. And then there are often, but not always, other arguments that alter how patterns are matched, such as fixed, ignore.case, and invert. It can be hard to keep track of which functions use which arguments and how the arguments interact, so many users never get to the point where they retain these details without rereading the docs.\nLet’s imagine you decide you’d rather build your package using the stringr (and stringi) package than base R’s regular expression functions.\nFirst, declare your general intent to use some functions from the stringr namespace with use_package():\nuse_package(\"stringr\")\nThis adds the stringr package to the Imports field of DESCRIPTION. And that is all it does.\nLet’s revisit function-name() to make it more stringr-like.\nHere are some changes to include:\n\nRename the function to str_split_one(), to signal that it is a wrapper around stringr::str_split().\nAdopt the argument names from stringr::str_split(). Now we have string and pattern (and n), instead of x and split.\nIntroduce a bit of argument checking and edge case handling. This is unrelated to the switch to stringr and would be equally beneficial in the version built on strsplit().\nUse the package::function() form when calling stringr::str_split(). This specifies that we want to call the str_split() function from the stringr namespace. There is more than one way to call a function from another package.\n\nBut now we need to rename the function file based on the new function name!\nBecause this comes up fairly often in real life, we have the rename_files() function, which choreographs the renaming of a file in R/ and its associated companion files below test/.\nrename_files(\"function-name\", \"new-function-name\")\nHere are the updated contents of R/str_split_one.R. In addition to changing the function definition, we’ve also updated the roxygen header to reflect the new arguments and to include examples that show off the stringr features.\n#' Split a string\n#'\n#' @param string A character vector with, at most, one element.\n#' @inheritParams stringr::str_split\n#'\n#' @return A character vector.\n#' @export\n#'\n#' @examples\n#' x &lt;- \"alfa,bravo,charlie,delta\"\n#' str_split_one(x, pattern = \",\")\n#' str_split_one(x, pattern = \",\", n = 2)\n#'\n#' y &lt;- \"192.168.0.1\"\n#' str_split_one(y, pattern = stringr::fixed(\".\"))\nstr_split_one &lt;- function(string, pattern, n = Inf) {\n  stopifnot(is.character(string), length(string) &lt;= 1)\n  if (length(string) == 1) {\n    stringr::str_split(string = string, pattern = pattern, n = n)[[1]]\n  } else {\n    character()\n  }\n}\nDon’t forget to also update the test file!\nBefore we take the new str_split_one() out for a test drive, we need to call document(). Why? We need to regenerate the NAMESPACE file to include the new imports.\nDon’t be dismayed by the warning about \"Objects listed as exports, but not present in namespace: function-name\". That always happens when you remove something from the namespace.\ndocument()\nTry out the new str_split_one() function by simulating package installation via load_all():\nload_all()\nstr_split_one(\"a, b, c\", pattern = \", \")",
+    "text": "use_package()\nYou will inevitably want to use a function from another package in your own package. We will need to use package-specific methods for declaring the other packages we need (i.e. our dependencies) and for using these packages in ours. If you plan to submit a package to CRAN, note that this even applies to functions in packages that you think of as “always available”, such as stats::median() or utils::head().\nOne common dilemma when using R’s regular expression functions is uncertainty about whether to request perl = TRUE or perl = FALSE. And then there are often, but not always, other arguments that alter how patterns are matched, such as fixed, ignore.case, and invert. It can be hard to keep track of which functions use which arguments and how the arguments interact, so many users never get to the point where they retain these details without rereading the docs.\nLet’s imagine you decide you’d rather build your package using the stringr (and stringi) package than base R’s regular expression functions.\nFirst, declare your general intent to use some functions from the stringr namespace with use_package():\nuse_package(\"stringr\")\nThis adds the stringr package to the Imports field of DESCRIPTION. And that is all it does.\nLet’s revisit function_name() to make it more stringr-like.\nHere are some changes to include:\n\nRename the function to str_split_one(), to signal that it is a wrapper around stringr::str_split().\nAdopt the argument names from stringr::str_split(). Now we have string and pattern (and n), instead of x and split.\nIntroduce a bit of argument checking and edge case handling. This is unrelated to the switch to stringr and would be equally beneficial in the version built on strsplit().\nUse the package::function() form when calling stringr::str_split(). This specifies that we want to call the str_split() function from the stringr namespace. There is more than one way to call a function from another package.\n\nBut now we need to rename the function file based on the new function name!\nBecause this comes up fairly often in real life, we have the rename_files() function, which choreographs the renaming of a file in R/ and its associated companion files below test/.\nrename_files(\"function_name\", \"new-function_name\")\nHere are the updated contents of R/str_split_one.R. In addition to changing the function definition, we’ve also updated the roxygen header to reflect the new arguments and to include examples that show off the stringr features.\n#' Split a string\n#'\n#' @param string A character vector with, at most, one element.\n#' @inheritParams stringr::str_split\n#'\n#' @return A character vector.\n#' @export\n#'\n#' @examples\n#' x &lt;- \"alfa,bravo,charlie,delta\"\n#' str_split_one(x, pattern = \",\")\n#' str_split_one(x, pattern = \",\", n = 2)\n#'\n#' y &lt;- \"192.168.0.1\"\n#' str_split_one(y, pattern = stringr::fixed(\".\"))\nstr_split_one &lt;- function(string, pattern, n = Inf) {\n  stopifnot(is.character(string), length(string) &lt;= 1)\n  if (length(string) == 1) {\n    stringr::str_split(string = string, pattern = pattern, n = n)[[1]]\n  } else {\n    character()\n  }\n}\nDon’t forget to also update the test file!\nBefore we take the new str_split_one() out for a test drive, we need to call document(). Why? We need to regenerate the NAMESPACE file to include the new imports.\nDon’t be dismayed by the warning about \"Objects listed as exports, but not present in namespace: function_name\". That always happens when you remove something from the namespace.\ndocument()\nTry out the new str_split_one() function by simulating package installation via load_all():\nload_all()\nstr_split_one(\"a, b, c\", pattern = \", \")",
     "crumbs": [
       "Packages",
       "Making an R Package"
     ]
   },
   {
-    "objectID": "making_a_package.html#use_github",
-    "href": "making_a_package.html#use_github",
+    "objectID": "pages/making_a_package.html#use_github",
+    "href": "pages/making_a_package.html#use_github",
     "title": "Steps For Making An R Package",
     "section": "use_github()",
     "text": "use_github()\nYou’ve seen us making commits during the development process for your package. By looking at diffs, you can see exactly how each devtools helper function modifies the source files that make up the package.\nHow would you connect your local package and Git repository to a companion repository on GitHub? Here are three approaches:\n\nuse_github() is a helper that we recommend for the long-term.\nSet up the GitHub repo first! It sounds counter-intuitive, but the easiest way to get your work onto GitHub is to initiate there, then use RStudio to start working in a synced local copy. This approach is described in Happy Git’s workflows New project, GitHub first and Existing project, GitHub first.\nCommand line Git can always be used to add a remote repository post hoc. This is described in the Happy Git workflow Existing project, GitHub last.\n\nAny of these approaches will connect your local project to a GitHub repo, public or private, which you can push to or pull from using the Git client built into RStudio.",
@@ -154,8 +154,8 @@
     ]
   },
   {
-    "objectID": "making_a_package.html#use_readme_rmd",
-    "href": "making_a_package.html#use_readme_rmd",
+    "objectID": "pages/making_a_package.html#use_readme_rmd",
+    "href": "pages/making_a_package.html#use_readme_rmd",
     "title": "Steps For Making An R Package",
     "section": "use_readme_rmd()",
     "text": "use_readme_rmd()\nPlease see the README section in the Badges, Licenses & More page for more thorough information!\nNow that your package is on GitHub, the README.md file matters. It is the package’s home page and welcome mat, at least until you decide to give it a website, add a vignette, or submit it to CRAN.\nThe use_readme_rmd() function initializes a basic, executable README.Rmd ready for you to edit:\nuse_readme_rmd()\n\nThis creates README.Rmd,\nadds some lines to .Rbuildignore\ncreates a Git pre-commit hook to help you keep README.Rmd and README.md in sync.\n\nFill out the README.Rmd file!\nDon’t forget to render it to make README.md:\nbuild_readme()",
@@ -165,8 +165,8 @@
     ]
   },
   {
-    "objectID": "making_a_package.html#the-end-check-and-install",
-    "href": "making_a_package.html#the-end-check-and-install",
+    "objectID": "pages/making_a_package.html#the-end-check-and-install",
+    "href": "pages/making_a_package.html#the-end-check-and-install",
     "title": "Steps For Making An R Package",
     "section": "The end: check() and install()",
     "text": "The end: check() and install()\nLet’s run check() again to make sure all is still well.\ncheck()\nYour package should have no errors, warnings or notes. This would be a good time to re-build and install it properly, and celebrate!\ninstall()",
@@ -176,8 +176,8 @@
     ]
   },
   {
-    "objectID": "making_a_package.html#review",
-    "href": "making_a_package.html#review",
+    "objectID": "pages/making_a_package.html#review",
+    "href": "pages/making_a_package.html#review",
     "title": "Steps For Making An R Package",
     "section": "Review",
     "text": "Review\nHere is a review of the key functions you’ve seen in this chapter, organized roughly by their role in the development process.\nThese functions setup parts of the package and are typically called once per package:\n\ncreate_package()\nuse_git()\nuse_mit_license()\nuse_testthat()\nuse_github()\nuse_readme_rmd()\n\nYou will call these functions on a regular basis, as you add functions and tests or take on dependencies:\n\nuse_r()\nuse_test()\nuse_package()\n\nYou will call these functions multiple times per day or per hour, during development:\n\nload_all()\ndocument()\ntest()\ncheck()",
@@ -187,19 +187,19 @@
     ]
   },
   {
-    "objectID": "github_actions.html",
-    "href": "github_actions.html",
-    "title": "github_actions",
+    "objectID": "pages/github_actions.html",
+    "href": "pages/github_actions.html",
+    "title": "GitHub Actions",
     "section": "",
-    "text": "GitHub Actions\nWe can make github actions to help automate our processes.\nWe have two main examples we can work with, one from class and one from the website.\nIn order for github actions to work, it needs to be placed in a very specific folder location of: .github/workflows/&lt;file.yml&gt;\nmkdir -p .github/workflows/\ncd .github/workflows/\ncode bash.yml\nThe following is a sample of a github action you can do, where you run a bash command:\nname: Run a bash command # this is what specifies the automation\n\non:\n  workflow_dispatch: # says: manually run this in the github interface...\n  push: # if a push happens to the repo then ...\n    branches: [main] # if a push happens to the main branch also make these changes\n    paths:  # or only trigger when one of these files is changed\n      - 'Dockerfile'\n      - .github/workflows/bash.yml # or whatever you named the file\n      - 'conda-linux-64.lock'\n      # could also do something like every week update it ... etc.\n\njobs: # specify the jobs you want to create\n  run_bash_command: # name of the job, the one yaml understands\n    name: Run a bash command using github actions # a human-readable name that is nice for us to look at\n    runs-on: ubuntu-latest # operating system you want github to run on, this one is most common for linux, you could say windows-latest or mac-latest too\n    steps: # actual steps to run\n      - name: Check out the repo # run git clone and cd into it\n        uses: actions/checkout@v4 # probably automating off something in your repository, so usually your first step\n      - name: Run a command manually\n        run: ls -a\n      - name: Run multiple commands manually # use a vertical bar |\n        run: | \n          pwd\n          ls -a\n      - name: Run multiple commands manually with script\n        run: bash bash_script.sh\nThen you can just commit this file and the action should work!\nThere are also other github actions you can do, of course. Here is one taken from the course textbook that allows you to publish your docker image to docker hub.\n# Publishes docker image, pinning actions to a commit SHA,\n# and updating most recently built image with the latest tag.\n# Can be triggered by either pushing a commit that changes the `Dockerfile`,\n# or manually dispatching the workflow.\n\nname: Publish Docker image\n\non:\n  workflow_dispatch:\n  push:\n    paths:\n      - 'Dockerfile'\n      - .github/workflows/docker-publish.yml # or whatever you named the file\n      - 'conda-linux-64.lock'\n\njobs:\n  push_to_registry:\n    name: Push Docker image to Docker Hub\n    runs-on: ubuntu-latest\n    steps:\n      - name: Check out the repo\n        uses: actions/checkout@v4\n\n      - name: Log in to Docker Hub\n        uses: docker/login-action@v3\n        with:\n          username: ${{ secrets.DOCKER_USERNAME }} # do not change, add as secret\n          password: ${{ secrets.DOCKER_PASSWORD }} # do not change, add as secret\n\n      - name: Extract metadata (tags, labels) for Docker\n        id: meta\n        uses: docker/metadata-action@v5\n        with:\n          images: ttimbers/dsci522-dockerfile-practice # change to your image\n          tags: |\n            type=raw, value={{sha}},enable=${{github.ref_type != 'tag' }}\n            type=raw, value=latest\n\n      - name: Build and push Docker image\n        uses: docker/build-push-action@v6\n        with:\n          context: .\n          file: ./Dockerfile\n          push: true\n          tags: ${{ steps.meta.outputs.tags }}\n          labels: ${{ steps.meta.outputs.labels }}\nCheckout https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html for more customization.\nAlso note that in this one you need to add a secret username and password in the repo you’re in, and you also need to edit to proper naming.",
+    "text": "GitHub Actions\nSee the following for more information:\n\nTextbook: CI and workflows\nTextbook: Github actions\n\nWe can make github actions to help automate our processes.\nWe have two main examples we can work with, one from class and one from the website.\nIn order for github actions to work, it needs to be placed in a very specific folder location of: .github/workflows/&lt;file.yml&gt;\nmkdir -p .github/workflows/\ncd .github/workflows/\ncode bash.yml\nThe following is a sample of a github action you can do, where you run a bash command:\nname: Run a bash command # this is what specifies the automation\n\non:\n  workflow_dispatch: # says: manually run this in the github interface...\n  push: # if a push happens to the repo then ...\n    branches: [main] # if a push happens to the main branch also make these changes\n    paths:  # or only trigger when one of these files is changed\n      - 'Dockerfile'\n      - .github/workflows/bash.yml # or whatever you named the file\n      - 'conda-linux-64.lock'\n      # could also do something like every week update it ... etc.\n\njobs: # specify the jobs you want to create\n  run_bash_command: # name of the job, the one yaml understands\n    name: Run a bash command using github actions # a human-readable name that is nice for us to look at\n    runs-on: ubuntu-latest # operating system you want github to run on, this one is most common for linux, you could say windows-latest or mac-latest too\n    steps: # actual steps to run\n      - name: Check out the repo # run git clone and cd into it\n        uses: actions/checkout@v4 # probably automating off something in your repository, so usually your first step\n      - name: Run a command manually\n        run: ls -a\n      - name: Run multiple commands manually # use a vertical bar |\n        run: | \n          pwd\n          ls -a\n      - name: Run multiple commands manually with script\n        run: bash bash_script.sh\nThen you can just commit this file and the action should work!\nThere are also other github actions you can do, of course. Here is one taken from the course textbook that allows you to publish your docker image to docker hub.\n# Publishes docker image, pinning actions to a commit SHA,\n# and updating most recently built image with the latest tag.\n# Can be triggered by either pushing a commit that changes the `Dockerfile`,\n# or manually dispatching the workflow.\n\nname: Publish Docker image\n\non:\n  workflow_dispatch:\n  push:\n    paths:\n      - 'Dockerfile'\n      - .github/workflows/docker-publish.yml # or whatever you named the file\n      - 'conda-linux-64.lock'\n\njobs:\n  push_to_registry:\n    name: Push Docker image to Docker Hub\n    runs-on: ubuntu-latest\n    steps:\n      - name: Check out the repo\n        uses: actions/checkout@v4\n\n      - name: Log in to Docker Hub\n        uses: docker/login-action@v3\n        with:\n          username: ${{ secrets.DOCKER_USERNAME }} # do not change, add as secret\n          password: ${{ secrets.DOCKER_PASSWORD }} # do not change, add as secret\n\n      - name: Extract metadata (tags, labels) for Docker\n        id: meta\n        uses: docker/metadata-action@v5\n        with:\n          images: ttimbers/dsci522-dockerfile-practice # change to your image\n          tags: |\n            type=raw, value={{sha}},enable=${{github.ref_type != 'tag' }}\n            type=raw, value=latest\n\n      - name: Build and push Docker image\n        uses: docker/build-push-action@v6\n        with:\n          context: .\n          file: ./Dockerfile\n          push: true\n          tags: ${{ steps.meta.outputs.tags }}\n          labels: ${{ steps.meta.outputs.labels }}\nCheckout https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html for more customization.\nAlso note that in this one you need to add a secret username and password in the repo you’re in, and you also need to edit to proper naming.",
     "crumbs": [
       "General",
       "GitHub Actions"
     ]
   },
   {
-    "objectID": "dependencies.html",
-    "href": "dependencies.html",
+    "objectID": "pages/dependencies.html",
+    "href": "pages/dependencies.html",
     "title": "dependencies",
     "section": "",
     "text": "How to find, list, and include dependencies for your package.\n\ndont include packages you dont need to\nthe recommend section\nwhere you can find all packages AND THEIR CURRENT status number thingy\nrelate to renv",
@@ -209,8 +209,8 @@
     ]
   },
   {
-    "objectID": "intro_to_git.html",
-    "href": "intro_to_git.html",
+    "objectID": "pages/intro_to_git.html",
+    "href": "pages/intro_to_git.html",
     "title": "Intro to Git Commands",
     "section": "",
     "text": "Below are some useful tables that can help streamline your workflow in Git Bash.",
@@ -220,8 +220,8 @@
     ]
   },
   {
-    "objectID": "intro_to_git.html#basic-symbols",
-    "href": "intro_to_git.html#basic-symbols",
+    "objectID": "pages/intro_to_git.html#basic-symbols",
+    "href": "pages/intro_to_git.html#basic-symbols",
     "title": "Intro to Git Commands",
     "section": "Basic Symbols",
     "text": "Basic Symbols\n\n\n\nTable 1: Basic Symbols\n\n\n\n\n\nSymbol\nDefinition\n\n\n\n\n.\nCurrent working directory\n\n\n..\nParent working directory\n\n\n~\nHome directory\n\n\n-&lt;letter&gt;\nOne dash makes bash only look at the first letter\n\n\n--&lt;word&gt;\nTwo dashes makes bash look at the word as a whole",
@@ -231,8 +231,8 @@
     ]
   },
   {
-    "objectID": "intro_to_git.html#general-bash-commands",
-    "href": "intro_to_git.html#general-bash-commands",
+    "objectID": "pages/intro_to_git.html#general-bash-commands",
+    "href": "pages/intro_to_git.html#general-bash-commands",
     "title": "Intro to Git Commands",
     "section": "General Bash Commands",
     "text": "General Bash Commands\n\n\n\nTable 2: General Bash Commands\n\n\n\n\n\n\n\n\n\nBash Command\nMeaning\n\n\n\n\npwd\nPrints the current working directory path. Stands for “print working directory”\n\n\nls\nLists files and directories in the current directory. Use ls -l for detailed info and use ls -a to see all files. Stands for “listing”. You can also do ls &lt;folder&gt; of a directory of interest that you aren’t currently in!\n\n\ncd &lt;directory&gt;\nSteps into &lt;directory&gt;. Use cd .. to go up to parent file. Stands for “change directory”. cd - takes you to the previous directory you were in, and cd ~ takes you right back to the computer’s home directory.\n\n\nmkdir &lt;directory&gt;\nCreates a new directory named &lt;directory&gt;.\n\n\nrmdir &lt;directory&gt;\nDeletes an empty directory. Use rm -r &lt;directory&gt; to delete non-empty ones.\n\n\nrm &lt;file&gt;\nDeletes a file. Use rm -r &lt;directory&gt; to remove a directory recursively.\n\n\nrestore &lt;file&gt;\nRestores a file to the last commit you pulled (undos changes made)\n\n\ntouch &lt;file&gt;\nCreates an empty file named &lt;file&gt;.\n\n\necho \"text\" &gt; file\nWrites “text” into file, replacing existing content.\n\n\ncat &lt;file&gt;\nDisplays the contents of a file.\n\n\nmv &lt;source&gt; &lt;target&gt;\nMoves or renames a file or directory.\n\n\ncp &lt;source&gt; &lt;target&gt;\nCopies a file. Use -r for recursive copying.\n\n\nclear\nClears the terminal screen.\n\n\nhistory\nShows a list of recently executed commands.\n\n\nhistory &gt; history.txt\nPlaces history into a history.txt file.\n\n\ngrep \"pattern\" file\nSearches for “pattern” in a file.\n\n\nchmod +x &lt;file&gt;\nMakes a file executable.\n\n\nalt+shift+#\nComments out whatever is written in the command line for the history output.",
@@ -242,8 +242,8 @@
     ]
   },
   {
-    "objectID": "intro_to_git.html#git-specific-commands",
-    "href": "intro_to_git.html#git-specific-commands",
+    "objectID": "pages/intro_to_git.html#git-specific-commands",
+    "href": "pages/intro_to_git.html#git-specific-commands",
     "title": "Intro to Git Commands",
     "section": "Git-Specific Commands",
     "text": "Git-Specific Commands\n\n\n\nTable 3: Git Commands\n\n\n\n\n\n\n\n\n\nGit Command\nMeaning\n\n\n\n\ngit init\nInitializes a new Git repository in the current directory.\n\n\ngit clone &lt;repo-url&gt;\nClones a remote repository to your local machine.\n\n\ngit status\nShows the current status of the repository.\n\n\ngit add &lt;file&gt;\nStages a file for the next commit. Use git add . to stage all changes.\n\n\ngit restore &lt;file&gt;\nDiscards any changes in the file in your wd\n\n\ngit commit -m \"msg\"\nCommits staged changes with a message.\n\n\ngit log\nDisplays the commit history of the repository.\n\n\ngit branch\nLists all branches in the repository. Use git branch &lt;name&gt; to create a new branch.\n\n\ngit checkout &lt;branch&gt;\nSwitches to the specified branch.\n\n\ngit switch -c &lt;branch_name&gt; or git checkout -b &lt;new-branch&gt;\nTo create AND switch to a new branch.\n\n\ngit fetch --all\nFetches all changes to all branches\n\n\ngit merge &lt;branch&gt;\nMerges &lt;branch&gt; into the current branch.\n\n\ngit pull\nFetches and integrates changes from the remote repository.\n\n\ngit push\nPushes committed changes to the remote repository.\n\n\ngit push origin &lt;branch_name&gt;\nPushes changes to a remote branch.\n\n\ngit remote -v\nLists the remote repositories linked to the local repository.\n\n\ngit reset --hard &lt;commit&gt;\nResets the repository to a specific commit, discarding all changes.\n\n\ngit stash\nTemporarily saves uncommitted changes. Use git stash pop to reapply them.",
@@ -253,8 +253,8 @@
     ]
   },
   {
-    "objectID": "intro_to_git.html#flags",
-    "href": "intro_to_git.html#flags",
+    "objectID": "pages/intro_to_git.html#flags",
+    "href": "pages/intro_to_git.html#flags",
     "title": "Intro to Git Commands",
     "section": "Flags",
     "text": "Flags\n\n\n\nTable 4: “Flags” for commands\n\n\n\n\n\n\n\n\n\nFlag\nDefinition\n\n\n\n\n-a\nStands for “all”; often used to show all entries, including hidden ones (e.g., ls -a).\n\n\n-c\nUsed to pass a command string to be executed (e.g., bash -c \"echo Hello\", or git switch -c patch-docs to switch to a branch named patch-docs).\n\n\n-v\nStands for “verbose”, meaning it provides detailed output of the command execution (e.g., git branch -v sees all branches in the repo).\n\n\n-f\nStands for “force”, often used to override warnings or prompts (e.g., rm -f).\n\n\n-r\nStands for “recursive”, allowing commands to act on directories and their contents (e.g., rm -r).\n\n\n-h\nStands for “help”; displays usage information for a command (e.g., ls -h for human-readable sizes).\n\n\n-n\nOften used to indicate a “dry run” where the command is simulated without making actual changes.\n\n\n-p\nCommonly used for “preserve” or “prompt” functionality, depending on the command. In mkdir -p parent/kid, it allows you to make multiple directories without having to do individual commands, so it “preserves” the call for all files.\n\n\n-d\nOften for delete (e.g., git branch -d &lt;branch_name&gt; deletes a local branch)\n\n\n--help\nCan use after most commands to display usage information and available options (e.g., ls --help)",
@@ -264,8 +264,8 @@
     ]
   },
   {
-    "objectID": "intro_to_git.html#commands-for-undoing",
-    "href": "intro_to_git.html#commands-for-undoing",
+    "objectID": "pages/intro_to_git.html#commands-for-undoing",
+    "href": "pages/intro_to_git.html#commands-for-undoing",
     "title": "Intro to Git Commands",
     "section": "Commands for Undoing",
     "text": "Commands for Undoing\nSpecial thanks to this and this stack overflow response!\n\n\n\n\n\n\n\n\nCommand\nCircumstance\nWhat It Does\n\n\n\n\ngit checkout .\nYou want to discard all uncommitted changes in your working directory.\nReverts all modified files in the working directory to their state in the last commit, leaving staged changes intact.\n\n\ngit restore .\nSame as git checkout ., but for Git version &gt;= 2.23.\nSame as git checkout ., restores working directory files to match the last commit.\n\n\ngit reset\nYou want to unstage all changes in the index (staged changes) while keeping working directory changes.\nResets the index to match the current HEAD, effectively unstaging all changes. Unpushed commits remain unless specified otherwise.\n\n\ngit revert &lt;commit 1&gt; &lt;commit 2&gt;\nYou want to undo specific commits in a branch’s history without altering the commit history.\nCreates new commits that reverse the changes introduced by the specified commits, preserving history.\n\n\ngit clean -f\nYou want to remove untracked files (e.g., new files not yet added to Git).\nDeletes untracked files from the working directory. The -f flag forces the removal.\n\n\ngit clean -fd\nYou want to remove untracked directories (e.g., generated or temporary directories).\nDeletes untracked directories and their contents. The -fd flag forces removal and includes directories.\n\n\ngit reset --hard\nYou want to completely discard all uncommitted changes in both the working directory and index.\nResets the working directory and index to match the current HEAD, erasing all uncommitted changes.\n\n\ngit reset &lt;commit&gt;\nYou want to move the branch pointer to a previous commit, discarding later commits.\nResets the current branch to the specified commit, removing commits after it from history (unless --soft is used).\n\n\ngit reset --soft &lt;commit&gt;\nYou want to keep changes from commits but remove the commits themselves.\nMoves the branch pointer to the specified commit, keeping changes in the working directory and index for re-committing.\n\n\ngit checkout &lt;file&gt;\nYou want to discard changes to a specific file in the working directory.\nReverts the specified file to its state in the last commit, leaving other files unchanged.\n\n\ngit restore &lt;file&gt;\nSame as git checkout &lt;file&gt;, but for Git version &gt;= 2.23.\nReverts the specified file to its state in the last commit, similar to git checkout &lt;file&gt;.\n\n\ngit stash\nYou want to temporarily save uncommitted changes to work on something else.\nSaves uncommitted changes (both staged and unstaged) to a stash, reverting the working directory to the last commit.\n\n\ngit stash pop\nYou want to reapply previously stashed changes and remove them from the stash.\nApplies the most recent stashed changes to the working directory and removes them from the stash.\n\n\ngit revert HEAD\nYou want to undo the most recent commit while keeping the commit history.\nCreates a new commit that reverses the changes made in the last commit (HEAD).\n\n\ngit clean -f -X\nYou want to remove only ignored files (e.g., files matching .gitignore patterns).\nDeletes untracked files that are ignored by Git, useful for cleaning build artifacts.\n\n\ngit clean -f -x\nYou want to remove both ignored and untracked files.\nDeletes all untracked files, including those ignored by Git, with the -f flag to force removal.\n\n\ngit reset --hard &lt;commit&gt;\nYou want to reset the branch and working directory to a specific commit, discarding all changes after it.\nResets the branch, index, and working directory to the specified commit, erasing all subsequent changes.\n\n\ngit reflog\nYou want to recover a commit or branch that was accidentally reset or deleted.\nShows a log of all reference changes (e.g., commits, resets), allowing you to find and restore lost commits using their SHA.\n\n\ngit checkout &lt;commit&gt; -- &lt;file&gt;\nYou want to restore a specific file from a past commit.\nReverts the specified file to its state in the given commit, leaving other files unchanged.\n\n\ngit rm --cached &lt;file&gt;\nYou want to untrack a file but keep it in the working directory.\nRemoves the file from the index (stops tracking it) but leaves the file in the working directory.\n\n\n\nAlso check out this stack overflow response for information about aligning tables!",
@@ -275,48 +275,262 @@
     ]
   },
   {
-    "objectID": "functions.html",
-    "href": "functions.html",
+    "objectID": "pages/functions.html",
+    "href": "pages/functions.html",
     "title": "Writing Functions",
     "section": "",
-    "text": "To learn more about that take a look at the Functions chapter of R for Data Science and the Functions chapter of Advanced R.",
+    "text": "To learn more about that take a look at the Functions chapter of R for Data Science and the Functions chapter of Advanced R.\nFor this course, the following notes are used with help from chapter 52 of the textbook: Defining functions in R\n\n\n\nFunctions in R are objects. This is referred to as “first-class functions”.\nThe last line of the function returns the object created, or listed there. To return a value early use the special word return.\n\nFor example:\n\nmath_two_numbers &lt;- function(x, y, operation) {\n  if (operation == \"add\") {\n    return(x + y)\n  }\n  x - y\n}\n\nmath_two_numbers (1, 4, \"add\")\n\n[1] 5\n\nmath_two_numbers (1, 4, \"subtract\")\n\n[1] -3\n\n\n\nDefault values can also be specified in the function definition:\n\n\nmath_two_numbers &lt;- function(x, y, operation = \"add\") {\n  if (operation == \"add\") {\n    return(x + y)\n  }\n  x - y\n}\nmath_two_numbers (1, 4)\n\n[1] 5\n\n\n\n\n\nR’s lexical scoping follows several rules, including the following:\n\nName masking\n\n\nObject names which are defined inside a function mask object names defined outside of that function.\nIf a variable is defined outside of the function in the global environment, regardless whatever is defined inside the function will be used\nIf something in the function hasn’t been defined, it will look at the next level up continuously until there are no global environments to look at.\nHere’s an example:\n\n\nx &lt;- 10\n\nadd_to_x &lt;- function(to_add) {\n    x &lt;- 5\n    to_add + x\n}\n\nadd_to_x(2)\n\n[1] 7\n\n\n\nDynamic lookup\n\n\nR does not look up the values for objects it references when it is defined/created, instead it does this when the function is called. This can lead to the function returning different things depending on the values of the objects it references outside of the function’s environment.\nFor example:\n\n\nadd_to_x &lt;- function(to_add) {\n    to_add + x\n}\nx &lt;- 10\nadd_to_x(2)\n\n[1] 12\n\nx &lt;- 20\nadd_to_x(2)\n\n[1] 22\n\n\n\nA fresh start\n\n\nFunctions in R have no memory of what happened the last time they were called. This happens because a new function environment is created, R created a new environment in which to execute it.\nSo if you add 2 to x and return it as x, then run the function again, it will still add 2 to the original x.\n\n\nLazy evaluation\n\n\nR performs lazy evaluation, meaning it delays the evaluation of the function arguments until its value is needed within/inside the function. Since y is never referenced inside the function, R doesn’t complain, or even notice it. This would not work in python, it would complain:\n\n# Python code (`add_one(2)` would NOT work)\ndef add_one(x, y):\n    x = x + 1\n    return x\n\n# R code (this would work)\nadd_one &lt;- function(x, y) {\n    x &lt;- x + 1\n    return(x)\n}\n\n# both below work:\nadd_one(2, 1)\n\n[1] 3\n\nadd_one(2)\n\n[1] 3\n\n\n\n\n\nSometimes our code is correct but we still encounter errors. This commonly occurs with functions when users attempt to use them in weird and creative ways that the developer did not intend.\nOften times, R will give a somewhat cryptic error message as to why the input is wrong, but it is not that helpful and time consuming. One way to help this is to have a function fail intentionally when incorrect user input is given. We could instead, for example, check the data type BEFORE we attempt the calculation, and if the wrong type was given throw a purposeful error with a helpful message.\nFor example:\n\nfahr_to_celsius &lt;- function(temp) {\n  if(!is.numeric(temp)) {\n    stop(\"`fahr_to_celsius` expects a vector of numeric values\")\n  }\n  (temp - 32) * 5/9\n}\n\n\n\n\nThe functions from the tidyverse are beautiful to use interactively - with these functions, we can “pretend” that the data frame column names are objects in the global environment and refer to them without quotations (e.g., ““)\nHowever, the beauty of being able to refer to data frame column names in R without quotations, leads to problems when we try to use them in a function.\nWhy does filter work with non-quoted variable names, but our function filter_gap fail? At a very high-level, this is because filter is doing more behind the scenes to handle these unquoted column names than we see without looking at the source code. So to make this work for our function, we need to do a little more work too.\nIn the newest release of the rlang R package, there has been the introduction of the {{ (pronounced “curly curly”) operator. This operator does the necessary work behind the scenes so that you can continue to use unquoted column names with the tidyverse functions even when you use them in functions that you write yourself.\nTo use the {{ operator, we “embrace” the unquoted column names when we refer to them inside our function body. An important note is that there are several ways to implement the usage of unquoted column names in R, and the {{ operator only works with the tidyverse functions.\nHere’s a function we show when we use the {{ operator to “embrace” the unquoted column names:\n\nfilter_gap &lt;- function(col, val) {\n  filter(gapminder, {{col}} == val)\n}\n\nFor similar reasons, the walrus operator (:=) is needed when writing functions that create new columns using unquoted column names with the tidyverse functions.",
     "crumbs": [
       "Packages",
       "Functions"
     ]
   },
   {
-    "objectID": "functions.html#how-to-write-functions",
-    "href": "functions.html#how-to-write-functions",
+    "objectID": "pages/functions.html#writing-functions",
+    "href": "pages/functions.html#writing-functions",
     "title": "Writing Functions",
     "section": "",
-    "text": "To learn more about that take a look at the Functions chapter of R for Data Science and the Functions chapter of Advanced R.",
+    "text": "To learn more about that take a look at the Functions chapter of R for Data Science and the Functions chapter of Advanced R.\nFor this course, the following notes are used with help from chapter 52 of the textbook: Defining functions in R\n\n\n\nFunctions in R are objects. This is referred to as “first-class functions”.\nThe last line of the function returns the object created, or listed there. To return a value early use the special word return.\n\nFor example:\n\nmath_two_numbers &lt;- function(x, y, operation) {\n  if (operation == \"add\") {\n    return(x + y)\n  }\n  x - y\n}\n\nmath_two_numbers (1, 4, \"add\")\n\n[1] 5\n\nmath_two_numbers (1, 4, \"subtract\")\n\n[1] -3\n\n\n\nDefault values can also be specified in the function definition:\n\n\nmath_two_numbers &lt;- function(x, y, operation = \"add\") {\n  if (operation == \"add\") {\n    return(x + y)\n  }\n  x - y\n}\nmath_two_numbers (1, 4)\n\n[1] 5\n\n\n\n\n\nR’s lexical scoping follows several rules, including the following:\n\nName masking\n\n\nObject names which are defined inside a function mask object names defined outside of that function.\nIf a variable is defined outside of the function in the global environment, regardless whatever is defined inside the function will be used\nIf something in the function hasn’t been defined, it will look at the next level up continuously until there are no global environments to look at.\nHere’s an example:\n\n\nx &lt;- 10\n\nadd_to_x &lt;- function(to_add) {\n    x &lt;- 5\n    to_add + x\n}\n\nadd_to_x(2)\n\n[1] 7\n\n\n\nDynamic lookup\n\n\nR does not look up the values for objects it references when it is defined/created, instead it does this when the function is called. This can lead to the function returning different things depending on the values of the objects it references outside of the function’s environment.\nFor example:\n\n\nadd_to_x &lt;- function(to_add) {\n    to_add + x\n}\nx &lt;- 10\nadd_to_x(2)\n\n[1] 12\n\nx &lt;- 20\nadd_to_x(2)\n\n[1] 22\n\n\n\nA fresh start\n\n\nFunctions in R have no memory of what happened the last time they were called. This happens because a new function environment is created, R created a new environment in which to execute it.\nSo if you add 2 to x and return it as x, then run the function again, it will still add 2 to the original x.\n\n\nLazy evaluation\n\n\nR performs lazy evaluation, meaning it delays the evaluation of the function arguments until its value is needed within/inside the function. Since y is never referenced inside the function, R doesn’t complain, or even notice it. This would not work in python, it would complain:\n\n# Python code (`add_one(2)` would NOT work)\ndef add_one(x, y):\n    x = x + 1\n    return x\n\n# R code (this would work)\nadd_one &lt;- function(x, y) {\n    x &lt;- x + 1\n    return(x)\n}\n\n# both below work:\nadd_one(2, 1)\n\n[1] 3\n\nadd_one(2)\n\n[1] 3\n\n\n\n\n\nSometimes our code is correct but we still encounter errors. This commonly occurs with functions when users attempt to use them in weird and creative ways that the developer did not intend.\nOften times, R will give a somewhat cryptic error message as to why the input is wrong, but it is not that helpful and time consuming. One way to help this is to have a function fail intentionally when incorrect user input is given. We could instead, for example, check the data type BEFORE we attempt the calculation, and if the wrong type was given throw a purposeful error with a helpful message.\nFor example:\n\nfahr_to_celsius &lt;- function(temp) {\n  if(!is.numeric(temp)) {\n    stop(\"`fahr_to_celsius` expects a vector of numeric values\")\n  }\n  (temp - 32) * 5/9\n}\n\n\n\n\nThe functions from the tidyverse are beautiful to use interactively - with these functions, we can “pretend” that the data frame column names are objects in the global environment and refer to them without quotations (e.g., ““)\nHowever, the beauty of being able to refer to data frame column names in R without quotations, leads to problems when we try to use them in a function.\nWhy does filter work with non-quoted variable names, but our function filter_gap fail? At a very high-level, this is because filter is doing more behind the scenes to handle these unquoted column names than we see without looking at the source code. So to make this work for our function, we need to do a little more work too.\nIn the newest release of the rlang R package, there has been the introduction of the {{ (pronounced “curly curly”) operator. This operator does the necessary work behind the scenes so that you can continue to use unquoted column names with the tidyverse functions even when you use them in functions that you write yourself.\nTo use the {{ operator, we “embrace” the unquoted column names when we refer to them inside our function body. An important note is that there are several ways to implement the usage of unquoted column names in R, and the {{ operator only works with the tidyverse functions.\nHere’s a function we show when we use the {{ operator to “embrace” the unquoted column names:\n\nfilter_gap &lt;- function(col, val) {\n  filter(gapminder, {{col}} == val)\n}\n\nFor similar reasons, the walrus operator (:=) is needed when writing functions that create new columns using unquoted column names with the tidyverse functions.",
     "crumbs": [
       "Packages",
       "Functions"
     ]
   },
   {
-    "objectID": "functions.html#roxygen-guide",
-    "href": "functions.html#roxygen-guide",
+    "objectID": "pages/functions.html#roxygen",
+    "href": "pages/functions.html#roxygen",
     "title": "Writing Functions",
-    "section": "ROxygen Guide",
-    "text": "ROxygen Guide\n(Taken from The Whole Game R Package building guide)\nWouldn’t it be nice to get ? help with your functions, just like we do with other R functions? This requires that your package have a special R documentation file, man/function-name.Rd, written in an R-specific markup language that is sort of like LaTeX. Luckily we don’t necessarily have to author that directly.\nWe write a specially formatted comment right above function-bame(), in its source file, and then let a package called roxygen2 handle the creation of man/function-name.Rd.\nIf you use RStudio, open R/function-name.R in the source editor and put the cursor somewhere in the function-name() function definition. Now do Code &gt; Insert roxygen skeleton. A very special comment should appear above your function, in which each line begins with #'. RStudio only inserts a barebones template, so you will need to edit it to look something like that below.\nYou should modify it to look something like this:\n#' Split a string\n#'\n#' @param x A character vector with one element.\n#' @param split What to split on.\n#'\n#' @return A character vector.\n#' @export\n#'\n#' @examples\n#' x &lt;- \"alfa,bravo,charlie,delta\"\n#' strsplit1(x, split = \",\")\nstrsplit1 &lt;- function(x, split) {\n  strsplit(x, split = split)[[1]]\n}\nBut we’re not done yet! We still need to trigger the conversion of this new roxygen comment into man/strsplit1.Rd with document():\ndocument()\nYou should now be able to preview your help file like so:\n?function-name",
+    "section": "ROxygen",
+    "text": "ROxygen\n(Taken from The Whole Game R Package building guide)\nWouldn’t it be nice to get ? help with your functions, just like we do with other R functions? This requires that your package have a special R documentation file, man/function-name.Rd, written in an R-specific markup language that is sort of like LaTeX. We write a specially formatted comment right above the function in its source file, and then let a package called roxygen2 handle the creation of man/function-name.Rd.\nIf you use RStudio, open R/function-name.R in the source editor and put the cursor somewhere in the function-name() function definition. Now left-click, Code &gt; Insert roxygen skeleton. A comment should appear above your function, in which each line begins with #'. RStudio only inserts a barebones template, so you should modify it to look something like this:\n#' Split a string\n#'\n#' @param x A character vector with one element.\n#' @param split What to split on.\n#'\n#' @return A character vector.\n#' @export\n#'\n#' @examples\n#' x &lt;- \"alfa,bravo,charlie,delta\"\n#' strsplit1(x, split = \",\")\nstrsplit1 &lt;- function(x, split) {\n  strsplit(x, split = split)[[1]]\n}\nBut we’re not done yet! We still need to trigger the conversion of this new roxygen comment into man/strsplit1.Rd with document():\ndocument()\nYou should now be able to preview your help file like so:\n?function_name",
     "crumbs": [
       "Packages",
       "Functions"
     ]
   },
   {
-    "objectID": "quarto_docs.html#execution-options-for-.qmd-and-.rmd",
-    "href": "quarto_docs.html#execution-options-for-.qmd-and-.rmd",
-    "title": "quarto_docs",
+    "objectID": "pages/functions.html#practice-with-functions",
+    "href": "pages/functions.html#practice-with-functions",
+    "title": "Writing Functions",
+    "section": "Practice With Functions",
+    "text": "Practice With Functions\nTo practice writing functions in R, you can attempt this worksheet: https://github.com/UBC-DSCI/dsci-310-student/blob/main/practice/worksheet_functions_in_r.ipynb\nNote: to access the automated software tests for feedback on your answers, you will want to clone or download this GitHub repo and navigate to the practice directory.\nYou can also try practicing with this repo.",
+    "crumbs": [
+      "Packages",
+      "Functions"
+    ]
+  },
+  {
+    "objectID": "pages/functions.html#wordplay-examples",
+    "href": "pages/functions.html#wordplay-examples",
+    "title": "Writing Functions",
+    "section": "wordplay Examples",
+    "text": "wordplay Examples\nHere is an example of what functions should look like with my package wordplay:\n#' A high level summary about all the words\n#'\n#' @param df A data frame containing a column of words\n#' @param column A character column containing a list of words\n#'\n#' @returns A tibble\n#' @export\n#'\n#' @examples\n#' example_words &lt;- data.frame(word_column = c(\"alfa\", \"bravo\", \"charlie\", \"delta\"))\n#' all_words_summary(data = example_words, column = word_column)\n#'\n#' @importFrom dplyr mutate n_distinct %&gt;%\n#' @importFrom tibble tibble\n#' @importFrom stats median sd\nall_words_summary &lt;- function(data, column = \"word\") {\n  # checks for input data types\n  if (!is.data.frame(data)) {\n    stop(\"`data` must be a data frame.\")\n  }\n  if (!column %in% colnames(data)) {\n    stop(paste(\"Column\", column, \"does not exist in the data frame.\"))\n  }\n  if (!is.character(data[[column]]) && !is.factor(data[[column]])) {\n    stop(paste(\"Column\", column, \"must be of type character or factor.\"))\n  }\n\n  df &lt;- data %&gt;%\n    dplyr::mutate(\n      word_temp = .data[[column]],\n      length = nchar(word_temp))\n\n  tibble::tibble(\n    total_words = nrow(df),\n    unique_words = dplyr::n_distinct(df$word_temp),\n    avg_length = mean(df$length),\n    median_length = stats::median(df$length),\n    sd_length = stats::sd(df$length),\n    longest_word = df$word_temp[which.max(df$length)],\n    shortest_word = df$word_temp[which.min(df$length)]\n  )\n}\nNotice these key things in the function:\n\nFormatting follows package::function\nChecks for correct data types at the start of the function, and gives back helpful error message if not correct\nIncludes a default option for the column name, which is expected to be “word”, but can be changed to whichever.\n\nNotice these key things in the ROxygen statement:\n\n@ImportFrom statements that specify each package used and the specific function used\nThe @examples give a clear example of all the different parameters",
+    "crumbs": [
+      "Packages",
+      "Functions"
+    ]
+  },
+  {
+    "objectID": "pages/functions.html#function-changes",
+    "href": "pages/functions.html#function-changes",
+    "title": "Writing Functions",
+    "section": "Function Changes",
+    "text": "Function Changes\nNote that when you update functions and or roxygen statements, you need to update things for your package too! Run the following:\ndevtools::document()\nWhich:\n\nParses your @param, @return, @examples, etc. tags\nUpdates the .Rd files in the man/ folder\nUpdates the NAMESPACE (e.g., adds @exported functions)\n\nThen run:\ndevtools::test()\ndevtools::check()\nWhich:\n\nPerforms a full package check: documentation, code style, tests, imports, etc. It’s the same check CRAN runs.\n\nFor a quick summary - what to run with a change:\ndevtools::document()  # update docs\ndevtools::load_all()  # use the latest code\ndevtools::check()     # make sure it's solid\ndevtools::test()      # confirm nothing broke\ndevtools::build()     # rebuild the package\ndevtools::install()   # reinstall the updated version",
+    "crumbs": [
+      "Packages",
+      "Functions"
+    ]
+  },
+  {
+    "objectID": "pages/quarto_docs.html",
+    "href": "pages/quarto_docs.html",
+    "title": "Quarto Reports",
+    "section": "",
+    "text": "See here for more information:",
+    "crumbs": [
+      "Quarto",
+      "Quarto Reports"
+    ]
+  },
+  {
+    "objectID": "pages/quarto_docs.html#table-and-image-labelling-and-referencing",
+    "href": "pages/quarto_docs.html#table-and-image-labelling-and-referencing",
+    "title": "Quarto Reports",
+    "section": "Table and Image: Labelling and Referencing",
+    "text": "Table and Image: Labelling and Referencing\nahh",
+    "crumbs": [
+      "Quarto",
+      "Quarto Reports"
+    ]
+  },
+  {
+    "objectID": "pages/quarto_docs.html#execution-options-for-.qmd-and-.rmd",
+    "href": "pages/quarto_docs.html#execution-options-for-.qmd-and-.rmd",
+    "title": "Quarto Reports",
     "section": "Execution Options for .qmd and .Rmd",
     "text": "Execution Options for .qmd and .Rmd\n\n\n\n\n\n\n\n\nExecution Option\nDescription\nValues\n\n\n\n\neval\nEvaluate the code chunk (if false, just echos the code into the output).\ntrue  false\n\n\necho\nInclude the source code in output.\ntrue  false  fenced\n\n\noutput\nInclude the results of executing the code in the output.\ntrue  false  asis (raw markdown, without Quarto’s standard enclosing markdown)\n\n\nwarning\nInclude warnings in the output.\ntrue  false\n\n\nerror\nInclude errors in the output (note: errors won’t stop document processing).\ntrue  false\n\n\ninclude\nPrevent any output (code or results) from being included.\ntrue  false",
     "crumbs": [
       "Quarto",
       "Quarto Reports"
     ]
+  },
+  {
+    "objectID": "pages/quarto_docs.html#other-introductory-information",
+    "href": "pages/quarto_docs.html#other-introductory-information",
+    "title": "Quarto Reports",
+    "section": "Other introductory information",
+    "text": "Other introductory information\n\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\nQuarto sets up the metadata at the start with 3 dashes at the top of the file. If you move it after/later in the document, it will not understand.\nThe notation at the start is yaml, keys and values, just like github actions files\nmarkdown is a short cut version of html, but you can always write pure html in a document too\n\nIf you want the proper coloring to show up for code, but not actually run it, you can do:\nmyfunc &lt;- function(blah) {\n   blah + 1\n}\nBut it doesn’t define it!\n\nmyfunc &lt;- function(blah) {\n   blah + 1\n}\n\nmyfunc(3)\n\n[1] 4\n\n\nThese execution options are yaml key/value combinations, that is why it is false instead of FALSE (not r code, it is yaml).\n\nThe reason we say echo - whatever you tell me, i’ll spit back to you\nwhat about word wrapping? it is still considered line 9\n\nYou can turn off soft wrap long lines, but I don’t like that option.\nIf you think about it from a git perspective, you have to find the change in the giant 5-line sentence. That is why you can split up sentences, but as long as there is no space inbetween the sentences, they are rendered as one.\n\nSemantic line breaks; strategically breaking lines so that it is easier for version control\n\nctrl shift p is find a command",
+    "crumbs": [
+      "Quarto",
+      "Quarto Reports"
+    ]
+  },
+  {
+    "objectID": "pages/validation.html",
+    "href": "pages/validation.html",
+    "title": "Data validation",
+    "section": "",
+    "text": "Here are the notes for data validation in the course textbook.\n\n\nlibrary(pointblank)\n# make sure to do renv lock\n# what about if you WANT to update package to newer\n\n# data is from pointblank library\n# good for a sample data set to check everything is okay\ndata(small_table)\nsmall_table\n\nsmall_table %&gt;% \n  # all values in the 'a' col should be less than 10\n  col_vals_lt(a, value = 10) # lt = less than\n\n# this should fail\nsmall_table %&gt;% \n  col_vals_lt(a, value = 5) # lt = less than\n\n\n\nsmall_table |&gt;\n  col_vals_lt(a, value = 10) |&gt;\n  col_vals_between(d, left = 0, right = 5000) |&gt; # this fails, doesnt check later\n  col_vals_in_set(f, set = c(\"low\", \"mid\", \"high\")) |&gt;\n  # number- letter - number\n  col_vals_regex(b, regex = \"^[0-9]-[a-z]{3}-[0-9]{3}$\") #follows pattern (regular expression)\n\n# absolute value is useful, you can have =1 and will fail every time with something else\n# but you could do 0.8 (80%) of cases should be there\n# then you can account for missing values and such\n\nsmall_table |&gt;\n  col_vals_lt(a, value = 10) |&gt;\n  col_vals_between(d, left = 0, right = 10000) |&gt; # fixed\n  col_vals_in_set(f, set = c(\"low\", \"mid\", \"high\")) |&gt;\n  # number- 3 letters - 3 numbers\n  col_vals_regex(b, regex = \"^[0-9]-[a-z]{3}-[0-9]{3}$\") #follows pattern (regular expression)\n# no error thrown\n\n\n# create agent that you can interrogate\nagent &lt;- small_table |&gt;\n  create_agent() |&gt;  # this will let you know WHY it failed\n  col_vals_lt(a, value = 10) |&gt;\n  col_vals_between(d, left = 0, right = 5000) |&gt;\n  col_vals_in_set(f, set = c(\"low\", \"mid\", \"high\")) |&gt;\n  col_vals_regex(b, regex = \"^[0-9]-[a-z]{3}-[0-9]{3}$\")\n\n\nagent |&gt;\n  interrogate()\n\nagent_object &lt;- agent |&gt;\n  interrogate()\n\nagent_object\n\nget_sundered_data(agent_object, type = \"pass\")\n\nget_sundered_data(agent_object, type = \"fail\")\n\nget_sundered_data(agent_object, type = \"combined\")\n# gives you a .pb_combined column\n# packages will add columns beginning with a period, that is why you shouldn't\n# gives you a true/false value if it pass fails\n\nget_data_extracts(agent_object)\n# extracts failed data\n\n\n\nlibrary(pointblank)\n\nsmall_table %&gt;%\n  col_is_posix(date_time) %&gt;%\n  col_vals_in_set(f, set = c(\"low\", \"mid\", \"high\")) %&gt;%\n  col_vals_lt(a, value = 10) %&gt;%\n  col_vals_regex(b, regex = \"^[0-9]-[a-z]{3}-[0-9]{3}$\") %&gt;%\n  col_vals_between(d, left = 0, right = 5000)",
+    "crumbs": [
+      "Packages",
+      "Validation"
+    ]
+  },
+  {
+    "objectID": "pages/validation.html#pointblank-package",
+    "href": "pages/validation.html#pointblank-package",
+    "title": "Data validation",
+    "section": "",
+    "text": "Here are the notes for data validation in the course textbook.\n\n\nlibrary(pointblank)\n# make sure to do renv lock\n# what about if you WANT to update package to newer\n\n# data is from pointblank library\n# good for a sample data set to check everything is okay\ndata(small_table)\nsmall_table\n\nsmall_table %&gt;% \n  # all values in the 'a' col should be less than 10\n  col_vals_lt(a, value = 10) # lt = less than\n\n# this should fail\nsmall_table %&gt;% \n  col_vals_lt(a, value = 5) # lt = less than\n\n\n\nsmall_table |&gt;\n  col_vals_lt(a, value = 10) |&gt;\n  col_vals_between(d, left = 0, right = 5000) |&gt; # this fails, doesnt check later\n  col_vals_in_set(f, set = c(\"low\", \"mid\", \"high\")) |&gt;\n  # number- letter - number\n  col_vals_regex(b, regex = \"^[0-9]-[a-z]{3}-[0-9]{3}$\") #follows pattern (regular expression)\n\n# absolute value is useful, you can have =1 and will fail every time with something else\n# but you could do 0.8 (80%) of cases should be there\n# then you can account for missing values and such\n\nsmall_table |&gt;\n  col_vals_lt(a, value = 10) |&gt;\n  col_vals_between(d, left = 0, right = 10000) |&gt; # fixed\n  col_vals_in_set(f, set = c(\"low\", \"mid\", \"high\")) |&gt;\n  # number- 3 letters - 3 numbers\n  col_vals_regex(b, regex = \"^[0-9]-[a-z]{3}-[0-9]{3}$\") #follows pattern (regular expression)\n# no error thrown\n\n\n# create agent that you can interrogate\nagent &lt;- small_table |&gt;\n  create_agent() |&gt;  # this will let you know WHY it failed\n  col_vals_lt(a, value = 10) |&gt;\n  col_vals_between(d, left = 0, right = 5000) |&gt;\n  col_vals_in_set(f, set = c(\"low\", \"mid\", \"high\")) |&gt;\n  col_vals_regex(b, regex = \"^[0-9]-[a-z]{3}-[0-9]{3}$\")\n\n\nagent |&gt;\n  interrogate()\n\nagent_object &lt;- agent |&gt;\n  interrogate()\n\nagent_object\n\nget_sundered_data(agent_object, type = \"pass\")\n\nget_sundered_data(agent_object, type = \"fail\")\n\nget_sundered_data(agent_object, type = \"combined\")\n# gives you a .pb_combined column\n# packages will add columns beginning with a period, that is why you shouldn't\n# gives you a true/false value if it pass fails\n\nget_data_extracts(agent_object)\n# extracts failed data\n\n\n\nlibrary(pointblank)\n\nsmall_table %&gt;%\n  col_is_posix(date_time) %&gt;%\n  col_vals_in_set(f, set = c(\"low\", \"mid\", \"high\")) %&gt;%\n  col_vals_lt(a, value = 10) %&gt;%\n  col_vals_regex(b, regex = \"^[0-9]-[a-z]{3}-[0-9]{3}$\") %&gt;%\n  col_vals_between(d, left = 0, right = 5000)",
+    "crumbs": [
+      "Packages",
+      "Validation"
+    ]
+  },
+  {
+    "objectID": "pages/makefiles.html",
+    "href": "pages/makefiles.html",
+    "title": "DSCI 310 Review",
+    "section": "",
+    "text": "Note: to get the most use out of Makefiles, ensure that you have already split up the code into different R scripts and reference them in the main report.\nMake:\n\nA tool that allows you to save these steps into “targets”\ngive it a special name like report or analysis and the Makefile will run everything listed\nsimilar to making an .sh file and running all scripts\nbash analysis.sh\nNo spaces are allowed in naming conventions, otherwise it will cause errors\nYou can also put docker command in make file, like docker compose!\nFinally, you run the Makefile as such:\n\nmake &lt;action you want to run&gt;",
+    "crumbs": [
+      "General",
+      "Makefiles"
+    ]
+  },
+  {
+    "objectID": "pages/makefiles.html#what-are-makefiles",
+    "href": "pages/makefiles.html#what-are-makefiles",
+    "title": "DSCI 310 Review",
+    "section": "",
+    "text": "Note: to get the most use out of Makefiles, ensure that you have already split up the code into different R scripts and reference them in the main report.\nMake:\n\nA tool that allows you to save these steps into “targets”\ngive it a special name like report or analysis and the Makefile will run everything listed\nsimilar to making an .sh file and running all scripts\nbash analysis.sh\nNo spaces are allowed in naming conventions, otherwise it will cause errors\nYou can also put docker command in make file, like docker compose!\nFinally, you run the Makefile as such:\n\nmake &lt;action you want to run&gt;",
+    "crumbs": [
+      "General",
+      "Makefiles"
+    ]
+  },
+  {
+    "objectID": "pages/makefiles.html#docopt-package",
+    "href": "pages/makefiles.html#docopt-package",
+    "title": "DSCI 310 Review",
+    "section": "docopt Package",
+    "text": "docopt Package\nLearn more about the docopt package here:\n\nTextbook: Making Scripts With Functions and Docopt\n\nUsing the library docopt, you can make your reports incredibly more reproducible! Instead of reading in your data for each script, or even source()-ing other scripts, you can instead use the docopt library to pass by this.",
+    "crumbs": [
+      "General",
+      "Makefiles"
+    ]
+  },
+  {
+    "objectID": "pages/makefiles.html#examples",
+    "href": "pages/makefiles.html#examples",
+    "title": "DSCI 310 Review",
+    "section": "Examples",
+    "text": "Examples\nMakefiles have a lot of different uses! Here are the main ideas we will review:\n\nMaking a website\nRunning Code\nCompiling a report\nTerminal commands\n\n\n1. Making a Website\nThe following Makefile:\n\nrenders your website (from the docs/ folder)\nensures there is a .nojekyll file\ngives you the ability to clean your repo after rendering\n\n.PHONY render clean\n\n# render your website, make sure .nojekyll file exists\nrender:\n    quarto render\n    touch docs/.nojekyll\n\nclean:\n    rm -rf _site\n    rm -rf docs\n\n\n2. Running Code\nSay we just want to simply run our .R files faster and easier! This is what a data pipeline is doing. We can just do the following:\n# Makefile\nanalysis:\n    Rscript 01-load_clean.R\n    Rscript 02-eda.R\n    Rscript 03-model.R\n    Rscript 04-analyze.R\n\ndownload:\n    Rscript 01-load_clean.R\nThis is very similar how a bash script analysis.sh would work, and you can see the similarities:\n# analysis.sh file\nRscript 01-load_clean.R\nRscript 02-eda.R\nRscript 03-model.R\nRscript 04-analyze.R\n\n\n3. Compiling a report\nThis is where you use the docopt library with specific inputs and/or outputs!\n.PHONY: all clean report\n\nall:\n    # remember to put the code changes in the individual rules\n    #Rscript code/01-load_clean.R --file_path=data/original/titanic.csv --output_path=data/clean/titanic_clean.csv\n    #Rscript code/03-model.R --file_path=data/clean/titanic_clean.csv --output_path=output/model.RDS\n    #Rscript code/04-analyze.R --model=output/model.RDS --output_coef=output/coef.csv --output_fig=output/fig.png\n    make clean\n    make index.html\n\ndata/clean/titanic_clean.csv: code/01-load_clean.R data/original/titanic.csv\n    Rscript code/01-load_clean.R --file_path=data/original/titanic.csv --output_path=data/clean/titanic_clean.csv\n\noutput/model.RDS: code/03-model.R data/clean/titanic_clean.csv\n    Rscript code/03-model.R --file_path=data/clean/titanic_clean.csv --output_path=output/model.RDS\n\noutput/coef.csv output/fig.png: code/04-analyze.R output/model.RDS\n    Rscript code/04-analyze.R --model=output/model.RDS --output_coef=output/coef.csv --output_fig=output/fig.png\n\nindex.html: report/report.qmd output/coef.csv output/fig.png\n    quarto render report/report.qmd\n    mv report/report.html index.html\n\nreport:\n    make index.html\n\nclean:\n    rm -f output/*\n    rm -f data/clean/*\n    rm -f index.html\n    rm -f *.pdf\n\n\n4. Terminal commands",
+    "crumbs": [
+      "General",
+      "Makefiles"
+    ]
+  },
+  {
+    "objectID": "pages/making_websites.html",
+    "href": "pages/making_websites.html",
+    "title": "Websites With Quarto",
+    "section": "",
+    "text": "Here’s a basic outline as to how to make websites using quarto (and rstudio/vscode)!",
+    "crumbs": [
+      "Quarto",
+      "Quarto Websites"
+    ]
+  },
+  {
+    "objectID": "pages/making_websites.html#website-bones",
+    "href": "pages/making_websites.html#website-bones",
+    "title": "Websites With Quarto",
+    "section": "Website “Bones”",
+    "text": "Website “Bones”\nStart with:\nquarto create\n\nSelect project &gt; website &gt; Directory: / &gt; Title: Final Review\n\nAlternatively, create the following files:\n\n_quarto.yml\nindex.qmd\n&lt;project_name&gt;.Rproj\nstyles.css (not necessary)\nother .qmd files (not necessary)\nAdd files to .gitignore",
+    "crumbs": [
+      "Quarto",
+      "Quarto Websites"
+    ]
+  },
+  {
+    "objectID": "pages/making_websites.html#main-locations",
+    "href": "pages/making_websites.html#main-locations",
+    "title": "Websites With Quarto",
+    "section": "3 Main Locations",
+    "text": "3 Main Locations\nHere are the 3 main locations you can use GitHub Pages for rendering your website!\n\n/(root)\nYou are ready simply by doing:\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\nquarto render index.qmd\nThis will make an index.html file that git will look for. If you do not have a index.html file in your root folder, it will instead display your README.md!\nPush all changes, including the rendered page, to the (main branch) repo.\n\n\ndocs/\nThere are a few tasks necessary:\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nEnsure docs/ is not blocked in the .gitignore file\nSet output-dir: docs under project: type: in _quarto.yml\n\n\n\ngh-pages branch\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nDelete any docs/ folder\nblock the docs and _site folder in the .gitignore file\n\ngit checkout --orphan gh-pages\ngit reset --hard # make sure all changes are committed before running this!\ngit commit --allow-empty -m \"Initialising gh-pages branch\"\ngit push origin gh-pages\nWhich now you can test-run the website with:\ngit switch main\nquarto publish gh-pages\nYou can still use the regular quarto render or quarto preview to build your site locally, but you will no longer need to manually build and push the site to the main branch!\nAdd a github action to make it automatically build:\ncode .github/workflows/build.yml\nAnd copy the following contents into it:\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}",
+    "crumbs": [
+      "Quarto",
+      "Quarto Websites"
+    ]
+  },
+  {
+    "objectID": "CODE_OF_CONDUCT.html",
+    "href": "CODE_OF_CONDUCT.html",
+    "title": "wordplay Code of Conduct",
+    "section": "",
+    "text": "We are dedicated to providing a welcoming and supportive environment for all people, regardless of background or identity. As such, we do not tolerate behavior that is disrespectful to our group members that excludes, intimidates, or causes discomfort to others. We do not tolerate discrimination or harassment based on characteristics that include, but are not limited to, gender identity and expression, sexual orientation, disability, physical appearance, body size, citizenship, nationality, ethnic or social origin, pregnancy, familial status, veteran status, genetic information, religion or belief (or lack thereof), membership of a national minority, property, age, education, socio-economic status, technical choices, and experience level.\nEveryone who contributes or participates in the project is required to conform to this Code of Conduct. Each member is expected to assist with the enforcement of the Code of Conduct.\n\n\n\nEveryone is expected to show respect and courtesy to others. All interactions should be professional regardless of platform: either online or in-person. In order to foster a positive and professional environment we encourage the following kinds of behaviors in all events and platforms: - Use welcoming and inclusive language - Be respectful of different viewpoints and experiences - Gracefully accept constructive criticism - Focus on what is best for the community - Show courtesy and respect towards other community members Note: See the four social rules for further recommendations.\n\n\n\nExamples of unacceptable behavior by participants at any event/platform include: - written or verbal comments which have the effect of excluding people on the basis of membership of any specific group - causing someone to fear for their safety, such as through stalking, following, or intimidation - violent threats or language directed against another person - the display of sexual or violent images - unwelcome sexual attention - nonconsensual or unwelcome physical contact - sustained disruption of talks, events or communications - insults or put downs - sexist, racist, homophobic, transphobic, ableist, or exclusionary jokes - excessive swearing - incitement to violence, suicide, or self-harm - continuing to initiate interaction (including photography or recording) with someone after being asked to stop publication of private communication without consent\n\n\n\nAnyone who is asked to stop any inappropriate behavior are expected to comply immediately. This applies to any events and platforms, either online or in-person. If a participant engages in behavior that violates this code of conduct, a group member may warn the offender and/or investigate the Code of Conduct violation and impose appropriate sanctions.\n\n\n\nIf someone violates the Code of Conduct at any time, or in an online space outside of organised project work time, a group member will report the violation(s).\n\n\n\nDerived from the UBC Data Science 100 CoC and Carpentries Code of Conduct. Further derived from the DSCI 310 Group 07 Code of Conduct."
+  },
+  {
+    "objectID": "CODE_OF_CONDUCT.html#diversity-and-inclusivity",
+    "href": "CODE_OF_CONDUCT.html#diversity-and-inclusivity",
+    "title": "wordplay Code of Conduct",
+    "section": "",
+    "text": "We are dedicated to providing a welcoming and supportive environment for all people, regardless of background or identity. As such, we do not tolerate behavior that is disrespectful to our group members that excludes, intimidates, or causes discomfort to others. We do not tolerate discrimination or harassment based on characteristics that include, but are not limited to, gender identity and expression, sexual orientation, disability, physical appearance, body size, citizenship, nationality, ethnic or social origin, pregnancy, familial status, veteran status, genetic information, religion or belief (or lack thereof), membership of a national minority, property, age, education, socio-economic status, technical choices, and experience level.\nEveryone who contributes or participates in the project is required to conform to this Code of Conduct. Each member is expected to assist with the enforcement of the Code of Conduct."
+  },
+  {
+    "objectID": "CODE_OF_CONDUCT.html#expected-behavior",
+    "href": "CODE_OF_CONDUCT.html#expected-behavior",
+    "title": "wordplay Code of Conduct",
+    "section": "",
+    "text": "Everyone is expected to show respect and courtesy to others. All interactions should be professional regardless of platform: either online or in-person. In order to foster a positive and professional environment we encourage the following kinds of behaviors in all events and platforms: - Use welcoming and inclusive language - Be respectful of different viewpoints and experiences - Gracefully accept constructive criticism - Focus on what is best for the community - Show courtesy and respect towards other community members Note: See the four social rules for further recommendations."
+  },
+  {
+    "objectID": "CODE_OF_CONDUCT.html#unacceptable-behavior",
+    "href": "CODE_OF_CONDUCT.html#unacceptable-behavior",
+    "title": "wordplay Code of Conduct",
+    "section": "",
+    "text": "Examples of unacceptable behavior by participants at any event/platform include: - written or verbal comments which have the effect of excluding people on the basis of membership of any specific group - causing someone to fear for their safety, such as through stalking, following, or intimidation - violent threats or language directed against another person - the display of sexual or violent images - unwelcome sexual attention - nonconsensual or unwelcome physical contact - sustained disruption of talks, events or communications - insults or put downs - sexist, racist, homophobic, transphobic, ableist, or exclusionary jokes - excessive swearing - incitement to violence, suicide, or self-harm - continuing to initiate interaction (including photography or recording) with someone after being asked to stop publication of private communication without consent"
+  },
+  {
+    "objectID": "CODE_OF_CONDUCT.html#consequences-of-unacceptable-behavior",
+    "href": "CODE_OF_CONDUCT.html#consequences-of-unacceptable-behavior",
+    "title": "wordplay Code of Conduct",
+    "section": "",
+    "text": "Anyone who is asked to stop any inappropriate behavior are expected to comply immediately. This applies to any events and platforms, either online or in-person. If a participant engages in behavior that violates this code of conduct, a group member may warn the offender and/or investigate the Code of Conduct violation and impose appropriate sanctions."
+  },
+  {
+    "objectID": "CODE_OF_CONDUCT.html#incident-reporting-guidelines",
+    "href": "CODE_OF_CONDUCT.html#incident-reporting-guidelines",
+    "title": "wordplay Code of Conduct",
+    "section": "",
+    "text": "If someone violates the Code of Conduct at any time, or in an online space outside of organised project work time, a group member will report the violation(s)."
+  },
+  {
+    "objectID": "CODE_OF_CONDUCT.html#attribution",
+    "href": "CODE_OF_CONDUCT.html#attribution",
+    "title": "wordplay Code of Conduct",
+    "section": "",
+    "text": "Derived from the UBC Data Science 100 CoC and Carpentries Code of Conduct. Further derived from the DSCI 310 Group 07 Code of Conduct."
   },
   {
     "objectID": "index.html",
@@ -343,7 +557,7 @@
     "href": "index.html#outline-of-assessments",
     "title": "DSCI 310 Final Exam Review",
     "section": "Outline of Assessments",
-    "text": "Outline of Assessments\n\nAssignments\n\nAssignment 1: (Not Included) Setup and Installation (you can find them here)\nAssignment 2: Git merge conflicts (learn more here)\n\nNote: Make a review of the different types of conflicts\n\nAssignment 3: (Not Included) Dockerfiles\nAssignment 4: Reproducible reports using Quarto\n\nNote: Need to make a summary page that lists all improvements possible\n\nAssignment 5: Packaging (for walk-through, see this for R or this for python)\n\nNote: Need to learn how to do python packages\nNote: Need to summarize and streamline R packages\nNote: Want to improve and update R packages made from this course\nNote: Want to go over potential conflicts you can run into, and main things to know in a time crunch\n\n\n\n\nTutorials\n\nTutorial 1: Setup\nTutorial 2: Git Basics\n\nNote: Transfer git basics info from dsci-review repo\n\nTutorial 3: R and Python Environments (renv and conda)\nTutorial 4: Environments and Docker Containers\nTutorial 5: Bash Scripts and Github Actions\nTutorial 6: Refactoring a Quarto Report\nTutorial 7: Quarto and Github Pages\nTutorial 8: Writing Tests using testthat for R or pytest for Python\nTutorial 9: Create a Quarto Website (using gh-pages)\n\nNote: Making a Website (through main, docs, and gh-pages)\n\nTutorial 10: Packaging (work period for Assignment 5)\nTutorial 11: Packaging with Continuous Integration and Continuous Deployment\n\n\n\nMilestones\n\nMilestone 1: Data Analysis, Docker, Git basics\nMilestone 2: Abstract code, Quarto doc, Makefile\n\nNote: Transfer information about Makefiles from dsci-review repo\n\nMilestone 3: Abstract functions, Testing, Validation\nMilestone 4: Packaging, Documentation, and Fixing previous issues\n\n\n\nOther\n\nReview the Textbook\nReview Lecture Notes\nReview Lecture Concepts",
+    "text": "Outline of Assessments\n\nAssignments\n\nAssignment 1: Setup and Installation (you can find them here)\nAssignment 2: Git merge conflicts (learn more here)\n\nNote: Make a review of the different types of conflicts\n\nAssignment 3: Dockerfiles\nAssignment 4: Reproducible reports using Quarto\n\nNote: Need to make a summary page that lists all improvements possible\n\nAssignment 5: Packaging (for walk-through, see here for R or here for python)\n\nNote: Need to learn how to do python packages\nNote: Need to summarize and streamline R packages\nNote: Want to improve and update R packages made from this course\nNote: Want to go over potential conflicts you can run into, and main things to know in a time crunch\n\n\n\n\nTutorials\n\nTutorial 1: Setup\nTutorial 2: Git Basics\n\nNote: Transfer git basics info from dsci-review repo\n\nTutorial 3: R and Python Environments (renv and conda)\nTutorial 4: Environments and Docker Containers\nTutorial 5: Bash Scripts and Github Actions\nTutorial 6: Refactoring a Quarto Report\nTutorial 7: Quarto and Github Pages\nTutorial 8: Writing Tests using testthat for R or pytest for Python\nTutorial 9: Create a Quarto Website (using gh-pages)\n\nNote: Making a Website (through main, docs, and gh-pages)\n\nTutorial 10: Packaging (work period for Assignment 5)\nTutorial 11: Packaging with Continuous Integration and Continuous Deployment\n\n\n\nMilestones\n\nMilestone 1: Data Analysis, Docker, Git basics\nMilestone 2: Abstract code, Quarto doc, Makefile\n\nNote: Transfer information about Makefiles from dsci-review repo\n\nMilestone 3: Abstract functions, Testing, Validation\nMilestone 4: Packaging, Documentation, and Fixing previous issues\n\n\n\nOther\n\nReview the Textbook\nReview Lecture Notes (All of my repos and .txt files)\nReview Lecture Concepts (All of Daniel’s repos)\nReview group project analysis and package\nGrab quarto notes from other repos including: insurance statistics\nMake a simple numbered list of steps needed to make a new package\nKnow how to save images, .csv, and .RDS things to an output folder for reproducible results!\n\nBased off professor recommendations, look at:\n\nChapter 52: Functions in R\nThe Whole Game: Package Creation Walk Through\nPractice the tutorial where we created the is_leap() function and the course repos - and turn that into a package\nPractice copying template repository into organization!",
     "crumbs": [
       "Introduction"
     ]
@@ -369,8 +583,8 @@
     ]
   },
   {
-    "objectID": "git_concepts.html",
-    "href": "git_concepts.html",
+    "objectID": "pages/git_concepts.html",
+    "href": "pages/git_concepts.html",
     "title": "Basic Git Concepts",
     "section": "",
     "text": "GitHub is the remote repository where you commit changes to the version control history. At a minimum, you should at least push your work to GitHub at the end of every work session.",
@@ -380,8 +594,8 @@
     ]
   },
   {
-    "objectID": "git_concepts.html#branches",
-    "href": "git_concepts.html#branches",
+    "objectID": "pages/git_concepts.html#branches",
+    "href": "pages/git_concepts.html#branches",
     "title": "Basic Git Concepts",
     "section": "Branches",
     "text": "Branches\n\nThe benefits of branches:\n\nBranches allow you to have a playground for developing and testing new additions to your code, as well as fixes. This playground lets your explore, experiment and test in a safe place - away from others that might be using or depending on the current version of your code.\nThis is perhaps more obviously useful if your project is deployed and has users (e.g., a data visualization dashboard, an R or Python package, a phone app, etc), but this can also be useful for code that make up a data analyses. Because, in addition to the reasons stated above for branching, branching also lets you organize units of work into smaller, more manageable chunks that are easier for collaborators to check over and review.\nSeveral branch playgrounds can co-exist, one for each new code addition or fix being worked on. This allows for parallelization of work!\n\n\n\nCreating a pull-request:\n\nTo create a pull request, you click the green button Compare & pull request. In the new page, add a message to describe the changes you have made, scroll down to review the changed files, and the click the green button that reads Create pull request. If you are working together in a team, you could also designate certain team members to review your work and assign relevant labels, via the right hand side panel.\nThe next step is for a collaborator to review your work and merge it in if they approve it.\nTutorial 2 is all about creating branches and pull requests. It also makes you create two branches and see the conflict when you try and pull them both despite them editing the same place. This ends in a merge conflict that you can solve in the github interface.",
@@ -391,8 +605,8 @@
     ]
   },
   {
-    "objectID": "git_concepts.html#github-worklow-and-git-flow",
-    "href": "git_concepts.html#github-worklow-and-git-flow",
+    "objectID": "pages/git_concepts.html#github-worklow-and-git-flow",
+    "href": "pages/git_concepts.html#github-worklow-and-git-flow",
     "title": "Basic Git Concepts",
     "section": "GitHub Worklow and Git Flow",
     "text": "GitHub Worklow and Git Flow\n\nGitHub Workflow\n\nFeatures a single “main” branch that also serves as the deployment branch, we call this main.\n\nEvery new contribution is done on a new branch (with a meaningful name) created from main.\nContributions from that new branch are sent back to main by means of a pull request, which ideally is reviewed & tested before merging.\n\n\n\n\nGit Flow\n\nTwo “main” branches that last forever, main for deployment and develop where things are tested before they are released to main.\nThree supporting branches: feature, release & hotfix. Both feature & release branches are created from develop. feature branches should be merged into develop before they are incorporated into a release. release branches eventually get merged into main after adequate review and testing.",
@@ -402,8 +616,8 @@
     ]
   },
   {
-    "objectID": "git_concepts.html#merge-conflicts",
-    "href": "git_concepts.html#merge-conflicts",
+    "objectID": "pages/git_concepts.html#merge-conflicts",
+    "href": "pages/git_concepts.html#merge-conflicts",
     "title": "Basic Git Concepts",
     "section": "Merge conflicts",
     "text": "Merge conflicts\n\nIMPORTANT: You must know how to deal with multiple types of merge conflicts\nYou need to know how to resolve basic file merge conflicts, but also branch merge conflicts\nThe two main types of branch merge conflict resolutions involve:\n\nManually push back in changes\nRestructure commits so that changes are pushed at a later date\n\n\n\nMerge Branches\nWhat happens when a branch falls behind main? There are two ways you can update the branch.\n\nUsing merge\n\n\nHow to catch up a branch that has fallen behind the main branch using the command line:\n\nrun git pull origin main to pull any changes from the remote version of main that we might not have\nrun git switch &lt;branch&gt; to make sure we are on the branch we want to catch up\nrun git merge main to merge the changes\nrun git push origin &lt;branch&gt; to push our updated branch to the remote\n\n\nThis bash code is rewritten below for copying convenience:\ngit pull origin main\ngit switch &lt;branch&gt;\ngit merge main\ngit push origin &lt;branch&gt;\n\nUsing rebase\n\nMake sure everything is committed in your new branch\nMove to the main branch: git switch main\nMake sure the main branch is up to date: git pull origin main\nMove back over to your branch: git switch &lt;branch&gt;\nUpdate the changes from main: git rebase main\n\n\nThis bash code is rewritten below for copying convenience:\ngit switch main\ngit pull origin main\ngit switch &lt;branch&gt;\ngit rebase main\n\n\nPersonal Access Tokens (PAT)\nPATs are important!",
@@ -413,41 +627,41 @@
     ]
   },
   {
-    "objectID": "making_websites.html",
-    "href": "making_websites.html",
-    "title": "Websites With Quarto",
+    "objectID": "pages/workflows.html",
+    "href": "pages/workflows.html",
+    "title": "GitHub Workflows",
     "section": "",
-    "text": "Here’s a basic outline as to how to make websites using quarto (and rstudio/vscode)!",
+    "text": "Fun fact: there is no difference between using .yml or .yaml!\n\nSee the following for more information:\n\nTextbook: CI and workflows\nTextbook: Github actions",
     "crumbs": [
-      "Quarto",
-      "Quarto Websites"
+      "General",
+      "GitHub Workflows"
     ]
   },
   {
-    "objectID": "making_websites.html#website-bones",
-    "href": "making_websites.html#website-bones",
-    "title": "Websites With Quarto",
-    "section": "Website “Bones”",
-    "text": "Website “Bones”\nStart with:\nquarto create\n\nSelect project &gt; website &gt; Directory: / &gt; Title: Final Review\n\nAlternatively, create the following files:\n\n_quarto.yml\nindex.qmd\n&lt;project_name&gt;.Rproj\nstyles.css (not necessary)\nother .qmd files (not necessary)\nAdd files to .gitignore",
+    "objectID": "pages/workflows.html#githubworkflows",
+    "href": "pages/workflows.html#githubworkflows",
+    "title": "GitHub Workflows",
+    "section": "",
+    "text": "Fun fact: there is no difference between using .yml or .yaml!\n\nSee the following for more information:\n\nTextbook: CI and workflows\nTextbook: Github actions",
     "crumbs": [
-      "Quarto",
-      "Quarto Websites"
+      "General",
+      "GitHub Workflows"
     ]
   },
   {
-    "objectID": "making_websites.html#main-locations",
-    "href": "making_websites.html#main-locations",
-    "title": "Websites With Quarto",
-    "section": "3 Main Locations",
-    "text": "3 Main Locations\nHere are the 3 main locations you can use GitHub Pages for rendering your website!\n\n/(root)\nYou are ready simply by doing:\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\nquarto render index.qmd\nThis will make an index.html file that git will look for. If you do not have a index.html file in your root folder, it will instead display your README.md!\nPush all changes, including the rendered page, to the (main branch) repo.\n\n\ndocs/\nThere are a few tasks necessary:\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nEnsure docs/ is not blocked in the .gitignore file\nSet output-dir: docs under project: type: in _quarto.yml\n\n\n\ngh-pages branch\nSelect the right option in Settings &gt; Pages &gt; Build and deployment &gt; Branch.\n\nDelete any docs/ folder\nblock the docs and _site folder in the .gitignore file\n\ngit checkout --orphan gh-pages\ngit reset --hard # make sure all changes are committed before running this!\ngit commit --allow-empty -m \"Initialising gh-pages branch\"\ngit push origin gh-pages\nWhich now you can test-run the website with:\ngit switch main\nquarto publish gh-pages\nYou can still use the regular quarto render or quarto preview to build your site locally, but you will no longer need to manually build and push the site to the main branch!\nAdd a github action to make it automatically build:\ncode .github/workflows/build.yml\nAnd copy the following contents into it:\non:\n  workflow_dispatch:\n  push:\n    branches: main\n\nname: Quarto Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: write\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Render and Publish\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}",
+    "objectID": "pages/workflows.html#examples",
+    "href": "pages/workflows.html#examples",
+    "title": "GitHub Workflows",
+    "section": "Examples",
+    "text": "Examples\n\n1. Run a Bash Command\nTitled: bash.yml\n(this one contains comments explaining what each line means for learning ability)\nname: Run a bash command # this is what specifies the automation\n\non:\n  workflow_dispatch: # says: manually run this in the github interface...\n  push: # if a push happens to the repo then ...\n    branches: [main] # if a push happens to the main branch also make these changes\n    paths:  # or only trigger when one of these files is changed\n      - 'Dockerfile'\n      - .github/workflows/bash.yml # or whatever you named the file\n      - 'conda-linux-64.lock'\n      # could also do something like every week update it ... etc.\n\njobs: # specify the jobs you want to create\n  run_bash_command: # name of the job, the one yaml understands\n    name: Run a bash command using github actions # a human-readable name that is nice for us to look at\n    runs-on: ubuntu-latest # operating system you want github to run on, this one is most common for linux, you could say windows-latest or mac-latest too\n    steps: # actual steps to run\n      - name: Check out the repo # run git clone and cd into it\n        uses: actions/checkout@v4 # probably automating off something in your repository, so usually your first step\n      - name: Run a command manually\n        run: ls -a\n      - name: Run multiple commands manually # use a vertical bar |\n        run: | \n          pwd\n          ls -a\n      - name: Run multiple commands manually with script\n        run: bash scripts/bash.sh",
     "crumbs": [
-      "Quarto",
-      "Quarto Websites"
+      "General",
+      "GitHub Workflows"
     ]
   },
   {
-    "objectID": "markdown.html",
-    "href": "markdown.html",
+    "objectID": "pages/markdown.html",
+    "href": "pages/markdown.html",
     "title": "Markdown Tips",
     "section": "",
     "text": "Each time I forget how to do something in Rmarkdown, I often need to visit multiple websites to figure out my goal. I am just using this as a central location for all this information!\nHere’s a very basic guide for all-things you need to know for latex writing in Rmarkdown!",
@@ -457,8 +671,8 @@
     ]
   },
   {
-    "objectID": "markdown.html#basic-symbols",
-    "href": "markdown.html#basic-symbols",
+    "objectID": "pages/markdown.html#basic-symbols",
+    "href": "pages/markdown.html#basic-symbols",
     "title": "Markdown Tips",
     "section": "Basic Symbols",
     "text": "Basic Symbols\n\n\n\n\n\n\n\n\n\nAimed Result\nWhat to Type\nOther Info\n\n\n\n\n\\(\\rightarrow\\)\n$\\rightarrow$\ncan also do left, up, down\n\n\n\\(\\Rightarrow\\)\n$\\Rightarrow$\ncan also do left, up, down\n\n\n\\(\\leftrightarrow\\)\n$\\leftrightarrow$\nalso $\\updownarrow$\n\n\n\\(\\swarrow\\)\n$\\swarrow$\n(sw= SouthWest) also do nw, ne, se\n\n\n\\(\\rightharpoonup\\)\n$\\rightharpoonup$\n\\(\\leftharpoonup\\), \\(\\leftharpoondown\\), \\(\\rightharpoondown\\), \\(\\upharpoonright\\), \\(\\downharpoonleft\\), \\(\\upharpoonleft\\), \\(\\downharpoonright\\)\n\n\n\\(\\longrightarrow\\)\n$\\longrightarrow$\nOften used in functions/sequences\n\n\n\\(\\to\\)\n$\\to$\nUsed in Limits (equivalent to right arrow)\n\n\n————–\n————–\n————\n\n\n\\(\\infty\\)\n$\\infty$\nDon’t get why not shorten infinity to inf…\n\n\n\\(\\approx\\)\n$\\approx$\n\\(\\thickapprox\\) $\\thickapprox$\n\n\n\\(\\sim\\)\n$\\sim$\n$N \\sim Pois(\\lambda)$\n\n\n————–\n————–\n————\n\n\n\\(\\mid\\) \\(\\mathbb{P}(A \\mid B)\\)\n$\\mid$ $\\mathbb{P}(A \\mid B)$\nJust typing | does the same, so what is the use?\n\n\n\\(x \\ge y, y \\le z\\)\n$x \\ge y, y \\le z$\ngreater-than-or-equal\n\n\n\\(\\cdots, \\dots\\)\n$\\cdots, \\dots$\nUseful for $x_{1} + x_{2} + \\cdots + x_{n}$\n\n\n\\(A \\subset B\\), \\(B \\subseteq C\\)\n$A \\subset B$, $B \\subseteq C$\ncool~\n\n\n\\(A \\cup B\\), \\(B \\cap C\\)\n$A \\cup B$, $B \\cap C$\ncool maths\n\n\n————–\n————–\n————\n\n\n\\(\\sin(x), \\cos(x), \\tan(x), \\log(x)\\)\n$\\sin(x), \\cos(x), \\tan(x), \\log(x)$\ncool to not have to do a \\text{} in front of it!",
@@ -468,8 +682,8 @@
     ]
   },
   {
-    "objectID": "markdown.html#letters",
-    "href": "markdown.html#letters",
+    "objectID": "pages/markdown.html#letters",
+    "href": "pages/markdown.html#letters",
     "title": "Markdown Tips",
     "section": "Letters",
     "text": "Letters\n\n\n\n\n\n\n\n\nAimed Result\nWhat to Type\nOther Info\n\n\n\n\n\\(\\mathbb{E}\\)\n$\\mathbb{E}$\n$\\mathbb{E}(x) = $\n\n\n\\(\\pi\\)\n$\\pi$\n(Can also do \\(\\Pi\\): $\\Pi$)\n\n\n\\(\\ell\\)\n$\\ell$\nUseful for log-likelihood\n\n\n\\(\\partial\\)\n$\\partial$\npartial derivatives! ‘del’\n\n\n—————\n—————–\n—————————–\n\n\nComparing similar letters\n\n\n\n\n\\(P,\\mathrm{P}, \\mathbb{P}\\)\n$P,\\mathrm{P}, \\mathbb{P}$\n(mathrm for “math roman font”)\n\n\n\\(\\sum \\Sigma\\)\n$\\sum \\Sigma$\nsame but different\n\n\n\\(\\in\\)\n\n\n\n\n\\(\\Pi, \\prod\\)\n$\\Pi, \\prod$",
@@ -479,8 +693,8 @@
     ]
   },
   {
-    "objectID": "markdown.html#greek-alphabet",
-    "href": "markdown.html#greek-alphabet",
+    "objectID": "pages/markdown.html#greek-alphabet",
+    "href": "pages/markdown.html#greek-alphabet",
     "title": "Markdown Tips",
     "section": "Greek Alphabet",
     "text": "Greek Alphabet\n\n\n\n\n\n\n\n\n\n\n\n\\(\\alpha A\\)\n$\\alpha A$\n\\(\\beta B\\)\n$\\beta B$\n\\(\\gamma \\Gamma\\)\n$\\gamma \\Gamma$\n\n\n\\(\\delta \\Delta\\)\n$\\delta \\Delta$\n\\(\\epsilon \\varepsilon E\\)\n$\\epsilon \\varepsilon E$\n\\(\\zeta Z \\sigma\\)\n$\\zeta Z \\sigma$\n\n\n\\(\\eta H\\)\n$\\eta H$\n\\(\\theta \\vartheta \\Theta\\)\n$\\theta \\vartheta \\Theta$\n\\(\\iota I\\)\n$\\iota I$\n\n\n\\(\\kappa K\\)\n$\\kappa K$\n\\(\\lambda \\Lambda\\)\n$\\lambda \\Lambda$\n\\(\\mu M\\)\n$\\mu M$\n\n\n\\(\\nu N\\)\n$\\nu N$\n\\(\\xi\\Xi\\)\n$\\xi\\Xi$\n\\(o O\\)\n$o O$ (omicron)\n\n\n\\(\\pi \\Pi\\)\n$\\pi \\Pi$\n\\(\\rho\\varrho P\\)\n$\\rho\\varrho P$\n\\(\\sigma \\Sigma\\)\n$\\sigma \\Sigma$\n\n\n\\(\\tau T\\)\n$\\tau T$\n\\(\\upsilon \\Upsilon\\)\n$\\upsilon \\Upsilon$\n\\(\\phi \\varphi \\Phi\\)\n$\\phi \\varphi \\Phi$\n\n\n\\(\\chi X\\)\n$\\chi X$\n\\(\\psi \\Psi\\)\n$\\psi \\Psi$\n\\(\\omega \\Omega\\)\n$\\omega \\Omega$",
@@ -490,8 +704,8 @@
     ]
   },
   {
-    "objectID": "markdown.html#different-fonts",
-    "href": "markdown.html#different-fonts",
+    "objectID": "pages/markdown.html#different-fonts",
+    "href": "pages/markdown.html#different-fonts",
     "title": "Markdown Tips",
     "section": "Different Fonts",
     "text": "Different Fonts\n\n\n\n\\(N\\)\n$N$\n\n\n\\(\\mathcal{N}\\)\n$\\mathcal{N}$\n\n\n\\(\\mathbf{N}\\)\n$\\mathbf{N}$\n\n\n\\(\\mathbb{N}\\)\n$\\mathbb{N}$\n\n\n\\(\\mathscr{N}\\)\n$\\mathscr{N}$",
@@ -501,8 +715,8 @@
     ]
   },
   {
-    "objectID": "markdown.html#actions-on-letters",
-    "href": "markdown.html#actions-on-letters",
+    "objectID": "pages/markdown.html#actions-on-letters",
+    "href": "pages/markdown.html#actions-on-letters",
     "title": "Markdown Tips",
     "section": "Actions on Letters",
     "text": "Actions on Letters\n(Also a way with HTML to write a table that looks the same)\n\n\nTable1.3:Actions_on_Letters\n\n\n\n\nAimed Result\nWhat to Type\nOther Info\n\n\n\n\n\\(\\bar x, \\overline{x}\\)\n$\\bar x, \\overline{x}$\nDiff: how many letters it can cover\n\n\n\\(\\hat x\\) `\n\\(\\hat x\\)`\nhow to cover multiple\n\n\n\\(\\tilde{x}\\) `\n\\(\\tilde{x}\\)`\n\n\n\n\\(\\binom{n}{k}\\) `\n\\(\\binom{n}{k}\\)`",
@@ -512,8 +726,8 @@
     ]
   },
   {
-    "objectID": "markdown.html#math-equations",
-    "href": "markdown.html#math-equations",
+    "objectID": "pages/markdown.html#math-equations",
+    "href": "pages/markdown.html#math-equations",
     "title": "Markdown Tips",
     "section": "Math Equations",
     "text": "Math Equations\n\n\n\n\n\n\n\n\nAimed Result\nWhat to Type\nOther Info\n\n\n\n\n\\(\\frac{1}{n}\\)\n$\\frac{1}{n}$\n\n\n\n\n\n\n\n\n—\n—\n—\n\n\nwriting multiple aligned equations\nwrap in $$\\begin{aligned} \\end{aligned}$$\nsplit lines with \\\\ and line up equal signs with &=\n\n\n\\(\\left[ x^\\frac{y}{z} \\right]\\)\nwrap in $\\left[ x^\\frac{y}{z} \\right]$\nlarger brackets that cover whole equation\n\n\n\n\n\n\n\n—\n—\n—\n\n\n\\(\\lim_{x \\to \\infty} f(x)\\) or \\[\\lim_{x \\to \\infty} f(x)\\]\n$\\lim_{x \\to \\infty} f(x)$\nIf you use $$ around original equation or $\\underset{}$, it will put \\(x \\to \\infty\\) below. Ex: $$\\lim_{x \\to \\infty} f(x)$$ and $\\underset{x \\to \\infty} {\\text{lim}} f(x)$ both make the 2nd option shown. (although $$ makes it larger)\n\n\n\\(\\sum_{n=1}^{\\infty} 2^{-n} = 1\\) or \\[\\sum_{i=1}^{n} X_i\\]\n$\\sum_{i=1}^{n} X_i$\n(same as above)\n\n\n\\(\\prod_{i=a}^{b} f(i)\\) or \\[\\prod_{i=a}^{b} f(i)\\]\n$\\prod_{i=a}^{b} f(i)$\n(same as above)\n\n\n\\(\\int_{a}^{b} x^2 dx\\)\n$\\int_{a}^{b} x^2 dx$\nIntegrals are written the same with $$ or $\n\n\n—\n—\n—\n\n\n\\(\\underset{x \\to \\infty} {\\text{lim}} f(x)\\)\n$\\underset{x \\to \\infty} {\\text{lim}}$\n\n\n\n\\(\\underset{\\text{this is cool}} {\\underbrace{x=4}}\\)\n$\\underset{\\text{this is cool}} {\\underbrace{x=4}}$\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHere may be a better way of showing how to align equations:\n$$\n\\begin{align}\nx &= 1 + y \\\\\n  &= 3 \\\\\n\\end{align}\n$$\nAnd a good way of showing how to make if statements:\n$$\nZ^{re} = \n\\begin{cases}\n0     & \\text{if } Z \\le a \\\\\nZ - a & \\text{if } a &lt; Z \\le a + b  \\\\\nb    & Z &gt; a + b\n\\end{cases}\n$$\nNote: if you accidentally press 0 on the additional part of the keyboard, it will change the cursor to be a dash below the character instead of in front!",
@@ -523,8 +737,8 @@
     ]
   },
   {
-    "objectID": "bash_scripts.html",
-    "href": "bash_scripts.html",
+    "objectID": "pages/bash_scripts.html",
+    "href": "pages/bash_scripts.html",
     "title": "Bash Scripts",
     "section": "",
     "text": "What are they? A bash script is a .sh (shell) document that contains bash commands, which you can run from the terminal. They are often useful if you have the same bash lines you need to run repetitively when working on a project.\nWe can make a sample bash_script.sh by typing:\nHere is a sample of what you can put in a bash script:\nWe can run the file by typing into terminal:",
@@ -534,8 +748,8 @@
     ]
   },
   {
-    "objectID": "bash_scripts.html#other-notes",
-    "href": "bash_scripts.html#other-notes",
+    "objectID": "pages/bash_scripts.html#other-notes",
+    "href": "pages/bash_scripts.html#other-notes",
     "title": "Bash Scripts",
     "section": "Other notes:",
     "text": "Other notes:\nSometimes there are files in our computer’s filesystem that are prefixed with ., for example .gitignore, .DS_Store and .ipynb_checkpoints. These are known as hidden files, and your computer’s default is to hide them from you, regardless of whether you use a graphical user interface (e.g., Finder, Explorer, Nautilus) or the Bash shell to explore our computer’s filesystem.\n\nWhat is SSH authentication?\nSSH stands for secure shell protocol (for authentication). SSH can be use for other forms of authentication as well (beyond GitHub), including logging into remote machines in the cloud. So for many these reasons it is worthwhile learning.\nSee this link to SSH part in the textbook for more information on SSH.",
@@ -545,8 +759,8 @@
     ]
   },
   {
-    "objectID": "bash_scripts.html#bash-scripts-for-package-making",
-    "href": "bash_scripts.html#bash-scripts-for-package-making",
+    "objectID": "pages/bash_scripts.html#bash-scripts-for-package-making",
+    "href": "pages/bash_scripts.html#bash-scripts-for-package-making",
     "title": "Bash Scripts",
     "section": "Bash Scripts for Package Making",
     "text": "Bash Scripts for Package Making\n!!!",
@@ -556,8 +770,8 @@
     ]
   },
   {
-    "objectID": "supporting.html#contribution-document",
-    "href": "supporting.html#contribution-document",
+    "objectID": "pages/supporting.html#contribution-document",
+    "href": "pages/supporting.html#contribution-document",
     "title": "Supporting Information For Packages",
     "section": "Contribution Document",
     "text": "Contribution Document",
@@ -567,8 +781,8 @@
     ]
   },
   {
-    "objectID": "supporting.html#code-of-conduct",
-    "href": "supporting.html#code-of-conduct",
+    "objectID": "pages/supporting.html#code-of-conduct",
+    "href": "pages/supporting.html#code-of-conduct",
     "title": "Supporting Information For Packages",
     "section": "Code of Conduct",
     "text": "Code of Conduct",
@@ -578,8 +792,8 @@
     ]
   },
   {
-    "objectID": "supporting.html#licenses",
-    "href": "supporting.html#licenses",
+    "objectID": "pages/supporting.html#licenses",
+    "href": "pages/supporting.html#licenses",
     "title": "Supporting Information For Packages",
     "section": "Licenses",
     "text": "Licenses",
@@ -589,8 +803,8 @@
     ]
   },
   {
-    "objectID": "supporting.html#readme.md-outline",
-    "href": "supporting.html#readme.md-outline",
+    "objectID": "pages/supporting.html#readme.md-outline",
+    "href": "pages/supporting.html#readme.md-outline",
     "title": "Supporting Information For Packages",
     "section": "README.md Outline",
     "text": "README.md Outline\nNow that your package is on GitHub, the README.md file matters. It is the package’s home page and welcome mat, at least until you decide to give it a website, add a vignette, or submit it to CRAN.\nThe use_readme_rmd() function initializes a basic, executable README.Rmd ready for you to edit:\nuse_readme_rmd()\nIn addition to creating README.Rmd, this adds some lines to .Rbuildignore, and creates a Git pre-commit hook to help you keep README.Rmd and README.md in sync.\nREADME.Rmd already has sections that prompt you to:\n\nDescribe the purpose of the package.\nProvide installation instructions. If a GitHub remote is detected when use_readme_rmd() is called, this section is pre-filled with instructions on how to install from GitHub.\nShow a bit of usage.\n\nHow to populate this skeleton? Copy stuff liberally from DESCRIPTION and any formal and informal tests or examples you have. Anything is better than nothing. This is helpful because people probably won’t install your package and comb through individual help files to figure out how to use it.\nWe like to write the README in R Markdown, so it can feature actual usage. The inclusion of live code also makes it less likely that your README grows stale and out-of-sync with your actual package.\nTo make your own edits, if RStudio has not already done so, open README.Rmd for editing. Make sure it shows some usage of str_split_one().\nThe README.Rmd we use is here: README.Rmd.\nDon’t forget to render it to make README.md! The pre-commit hook should remind you if you try to commit README.Rmd, but not README.md, and also when README.md appears to be out-of-date.\nThe very best way to render README.Rmd is with build_readme(), because it takes care to render with the most current version of your package, i.e. it installs a temporary copy from the current source.\nbuild_readme()\nYou can see the rendered README.md simply by visiting regexcite on GitHub.",
@@ -600,8 +814,8 @@
     ]
   },
   {
-    "objectID": "tests.html",
-    "href": "tests.html",
+    "objectID": "pages/tests.html",
+    "href": "pages/tests.html",
     "title": "Testing for Packages",
     "section": "",
     "text": "We’ve tested function-name() informally, in a single example. We can, and should, express a concrete expectation about the correct function-name() result for a specific input.\nFirst, we declare our intent to write unit tests and to use the testthat package for this, via use_testthat():\nuse_testthat()\n\nThis initializes the unit testing machinery for your package.\nIt adds Suggests: testthat to DESCRIPTION, creates the directory tests/testthat/, and adds the script tests/testthat.R.\nYou’ll notice that testthat is probably added with a minimum version of 3.0.0 and a second DESCRIPTION field, Config/testthat/edition: 3.\n\nHowever, it’s still up to YOU to write the actual tests!\nThe helper use_test() opens and/or creates a test file. If R/function-name.R is the active file in RStudio, you can just call use_test(). However, we can also provide the basename explicitly:\nuse_test(\"function-name\")\n\nThis creates the file tests/testthat/test-function-name.R.\nIf it had already existed, use_test() would have just opened it.\nYou will notice that there is an example test in the newly created file - delete that code and replace it with something like this:\n\ntest_that(\"strsplit1() splits a string\", {\n  expect_equal(strsplit1(\"a,b,c\", split = \",\"), c(\"a\", \"b\", \"c\"))\n})\nThis tests that function-name() gives the expected result.\nRun this test interactively, as you will when you write your own. If test_that() or function-name() can’t be found, that suggests that you probably need to call load_all().\ntest()\n\nYour tests are also run whenever you check() the package.\n\n\n\n\nHere are the updated contents of tests/testthat/test-str_split_one.R. In addition to the change in the function’s name and arguments, we’ve added a couple more tests.\ntest_that(\"str_split_one() splits a string\", {\n  expect_equal(str_split_one(\"a,b,c\", \",\"), c(\"a\", \"b\", \"c\"))\n})\n\ntest_that(\"str_split_one() errors if input length &gt; 1\", {\n  expect_error(str_split_one(c(\"a,b\",\"c,d\"), \",\"))\n})\n\ntest_that(\"str_split_one() exposes features of stringr::str_split()\", {\n  expect_equal(str_split_one(\"a,b,c\", \",\", n = 2), c(\"a\", \"b,c\"))\n  expect_equal(str_split_one(\"a.b\", stringr::fixed(\".\")), c(\"a\", \"b\"))\n})",
@@ -611,8 +825,8 @@
     ]
   },
   {
-    "objectID": "tests.html#thorough-steps-for-an-r-package",
-    "href": "tests.html#thorough-steps-for-an-r-package",
+    "objectID": "pages/tests.html#thorough-steps-for-an-r-package",
+    "href": "pages/tests.html#thorough-steps-for-an-r-package",
     "title": "Testing for Packages",
     "section": "",
     "text": "We’ve tested function-name() informally, in a single example. We can, and should, express a concrete expectation about the correct function-name() result for a specific input.\nFirst, we declare our intent to write unit tests and to use the testthat package for this, via use_testthat():\nuse_testthat()\n\nThis initializes the unit testing machinery for your package.\nIt adds Suggests: testthat to DESCRIPTION, creates the directory tests/testthat/, and adds the script tests/testthat.R.\nYou’ll notice that testthat is probably added with a minimum version of 3.0.0 and a second DESCRIPTION field, Config/testthat/edition: 3.\n\nHowever, it’s still up to YOU to write the actual tests!\nThe helper use_test() opens and/or creates a test file. If R/function-name.R is the active file in RStudio, you can just call use_test(). However, we can also provide the basename explicitly:\nuse_test(\"function-name\")\n\nThis creates the file tests/testthat/test-function-name.R.\nIf it had already existed, use_test() would have just opened it.\nYou will notice that there is an example test in the newly created file - delete that code and replace it with something like this:\n\ntest_that(\"strsplit1() splits a string\", {\n  expect_equal(strsplit1(\"a,b,c\", split = \",\"), c(\"a\", \"b\", \"c\"))\n})\nThis tests that function-name() gives the expected result.\nRun this test interactively, as you will when you write your own. If test_that() or function-name() can’t be found, that suggests that you probably need to call load_all().\ntest()\n\nYour tests are also run whenever you check() the package.",
@@ -622,8 +836,8 @@
     ]
   },
   {
-    "objectID": "tests.html#examples-and-how-to-write-tests",
-    "href": "tests.html#examples-and-how-to-write-tests",
+    "objectID": "pages/tests.html#examples-and-how-to-write-tests",
+    "href": "pages/tests.html#examples-and-how-to-write-tests",
     "title": "Testing for Packages",
     "section": "",
     "text": "Here are the updated contents of tests/testthat/test-str_split_one.R. In addition to the change in the function’s name and arguments, we’ve added a couple more tests.\ntest_that(\"str_split_one() splits a string\", {\n  expect_equal(str_split_one(\"a,b,c\", \",\"), c(\"a\", \"b\", \"c\"))\n})\n\ntest_that(\"str_split_one() errors if input length &gt; 1\", {\n  expect_error(str_split_one(c(\"a,b\",\"c,d\"), \",\"))\n})\n\ntest_that(\"str_split_one() exposes features of stringr::str_split()\", {\n  expect_equal(str_split_one(\"a,b,c\", \",\", n = 2), c(\"a\", \"b,c\"))\n  expect_equal(str_split_one(\"a.b\", stringr::fixed(\".\")), c(\"a\", \"b\"))\n})",
@@ -633,8 +847,8 @@
     ]
   },
   {
-    "objectID": "environments.html",
-    "href": "environments.html",
+    "objectID": "pages/environments.html",
+    "href": "pages/environments.html",
     "title": "Environments",
     "section": "",
     "text": "Create an RStudio project fpr the repo\nInstall renv package if you haven’t already\nInitialize project as an renv project\nInstall new R package (.lock file will not update until you use it)\nCreate (and save) R script that uses the new R package\n\ninstall.packages(\"renv\")\nrenv::init()\ninstall.packages(\"cowsay\")\nrenv::snapshot()\nAnd there you have an R environment!",
@@ -644,8 +858,8 @@
     ]
   },
   {
-    "objectID": "environments.html#r-environments-renv",
-    "href": "environments.html#r-environments-renv",
+    "objectID": "pages/environments.html#r-environments-renv",
+    "href": "pages/environments.html#r-environments-renv",
     "title": "Environments",
     "section": "",
     "text": "Create an RStudio project fpr the repo\nInstall renv package if you haven’t already\nInitialize project as an renv project\nInstall new R package (.lock file will not update until you use it)\nCreate (and save) R script that uses the new R package\n\ninstall.packages(\"renv\")\nrenv::init()\ninstall.packages(\"cowsay\")\nrenv::snapshot()\nAnd there you have an R environment!",
@@ -655,8 +869,8 @@
     ]
   },
   {
-    "objectID": "environments.html#python-environments",
-    "href": "environments.html#python-environments",
+    "objectID": "pages/environments.html#python-environments",
+    "href": "pages/environments.html#python-environments",
     "title": "Environments",
     "section": "Python Environments",
     "text": "Python Environments",
@@ -666,8 +880,8 @@
     ]
   },
   {
-    "objectID": "ci_cd.html",
-    "href": "ci_cd.html",
+    "objectID": "pages/ci_cd.html",
+    "href": "pages/ci_cd.html",
     "title": "ci_cd",
     "section": "",
     "text": "Continuous Integration and Deployment",
@@ -677,11 +891,11 @@
     ]
   },
   {
-    "objectID": "docker.html",
-    "href": "docker.html",
-    "title": "docker",
+    "objectID": "pages/docker.html",
+    "href": "pages/docker.html",
+    "title": "Docker (and) Containers",
     "section": "",
-    "text": "Containers\n\nBasic container\nWhat is a container?\n\nthey are basically a virtual machine, where you can specify all the software you need to run files you want.\n\ndocker run hello-world\nThis command runs a container that executes a script that prints out the hello docker text. When this script runs, it exits and the container exits to give you your prompt back\n\n\nAn R Container\nWith this code you can run an R container:\ndocker run --rm -it rocker/r-ver:4.3.2\nYou can open up and launch R or run R --version to get your current R version.\n\n\nAn RStudio Container\nWith this code you can run an RStudio container:\ndocker run --rm -e PASSWORD=\"pizza\" -p 8787:8787 rocker/rstudio:4.4.2\nHere are what the commands mean:\n\n--rm means remove. It is saying to delete the container when I am done with it!\n-e stands for environments. It lets you pass in special parameters necessary to run that container.\n-p stands for port. It is where you specify the container will be run through on your computer.\n\nAfter running it, you can visit http://localhost:8787 and view the RStudio container.\nIf you create any files in this container instance, all your work will be lost!\n\nAn RStudio Tidyverse Container\nYou can also make a Tidyverse container, where tidyverse is already installed! Pretty sweet.\ndocker run --rm -e PASSWORD=\"pizza\" -p 8787:8787 rocker/tidyverse:4.4.2\nNote that if you run two sessions at once, you will need to change the port mapping on one of them.\n\nhttp://localhost:8888 is commonly known for jupyterlab\n\n\n\n\nDockerFiles\nA Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.\nYou can create it simply with the command code Dockerfile.\nIt is a special type of file, so make sure it does NOT end with something like .txt or .sh or anything. It is simply just Dockerfile (with a capital D).\nThe following is a sample of what you can do with a Dockerfile:\nFROM rocker/rstudio:4.2.2\n# this builds the base image from rstudio\n\n# you can run basic bash commands that will run while setting up the container\nRUN echo \"Hello\"\nRUN pwd\n\n# you can install apps and such so that you have them in your image\nRUN apt-get install -y git\n\n# you can copy files onto your image/container\nCOPY renv.lock /home/rstudio/renv.lock\nCOPY README.md /home/rstudio/README.md \n\n# we can even install packages into the image\nRUN Rscript -e \"install.packages('renv', repos = c(CRAN = 'https://cloud.r-project.org'))\"\n# with the renv package we can keep r packages in our image without having to manually download them each time\n# we have to set the working directory first\nWORKDIR /home/rstudio\n# then we can copy other project files\nCOPY renv/ /home/rstudio/renv\nCOPY bash_script.sh /home/rstudio/bash_script.sh\nCOPY newRpackage_usage.R /home/rstudio/newRpackage_usage.R \n\n# however!\n# Installing the remotes package allows us to pin the version of the package we're installing\nRUN Rscript -e \"install.packages('remotes', repos = c(CRAN = 'https://cloud.r-project.org'))\"\n# now we can install a package like this:\nRUN Rscript -e \"remotes::install_version('cowsay', version='1.0.0')\"\n# this saves us the hassle of having to copy all of our project files\n# while still keeping the package versions we want!\n\nRUN echo \"Wow! There are so many things you can do with Dockerfiles!\"\nNow that you have completed your super-cool Dockerfile, you can now build your very OWN container! How exciting!\n\nBuilding and Running ‘mycontainer’\nAssuming you’ve made your own Dockerfile, you can now build your own container with this command:\ndocker build --tag mycontainer .\nNote you can replace mycontainer with whatever you would like your container to be called. Also note that it is very important to have the . at the end, as that is for your current working directory. This command will look for a Dockerfile within your current directory and then build the container.\nThe command docker images will let you see what images you have going.\nAfter you have built your container, you can now run it using:\ndocker run --rm -it -e PASSWORD=\"pizza\" -p 8787:8787 -v /$(pwd):/home/rstudio/work mycontainer\n\nNote you replacemycontainer with the name of the container you just build, and can of course replace the password.\nAlso note that the -v stands for volume. It will copy all of your local files into the container (just for you when you run it) for you to be able to use at ease.\n\nWhat if I am too lazy to type that long run command? Let’s learn about .yml files where you can run the docker in a much easier way!\n\nSide note: after you build you container you can also push it to docker so that anyone can use it\n\n\n\nRunning docker easier\nWe can create a special docker-compose.yml file where we are saved from having to write a long run command line. Note that docker specifically recognizes this file name, so the naming convention is important.\nHere is a sample of what one would look like:\nservices:\n  analysis-env:\n    image: hlan22/mycontainer\n    ports:\n      - \"8787:8787\"\n    volumes:\n      - .:/home/rstudio/work\n    environment:\n      PASSWORD: \"pizza\"\n\n# This file is a replacement for having to write the following command line\n# docker run --rm -it -e PASSWORD=\"pizza\" -p 8787:8787 \n# -v /$(pwd):/home/rstudio/work rocker/tidyverse:4.4.2\nTo run this file, you just need to type the following:\ndocker-compose up\nAlthough, with this method, you need to remove it manually afterwards with:\ndocker-compose rm",
+    "text": "Docker (and) Containers\nFor additional information/resources:\n\ndockerfile practice\ndocker practice #2\nDocker practice\nDocker and Renv\n\n\nBasic container\nWhat is a container?\n\nthey are basically a virtual machine, where you can specify all the software you need to run files you want.\n\ndocker run hello-world\nThis command runs a container that executes a script that prints out the hello docker text. When this script runs, it exits and the container exits to give you your prompt back\n\n\nAn R Container\nWith this code you can run an R container:\ndocker run --rm -it rocker/r-ver:4.3.2\nYou can open up and launch R or run R --version to get your current R version.\n\n\nAn RStudio Container\nWith this code you can run an RStudio container:\ndocker run --rm -e PASSWORD=\"pizza\" -p 8787:8787 rocker/rstudio:4.4.2\nHere are what the commands mean:\n\n--rm means remove. It is saying to delete the container when I am done with it!\n-e stands for environments. It lets you pass in special parameters necessary to run that container.\n-p stands for port. It is where you specify the container will be run through on your computer.\n\nAfter running it, you can visit http://localhost:8787 and view the RStudio container.\nIf you create any files in this container instance, all your work will be lost!\n\nAn RStudio Tidyverse Container\nYou can also make a Tidyverse container, where tidyverse is already installed! Pretty sweet.\ndocker run --rm -e PASSWORD=\"pizza\" -p 8787:8787 rocker/tidyverse:4.4.2\nNote that if you run two sessions at once, you will need to change the port mapping on one of them.\n\nhttp://localhost:8888 is commonly known for jupyterlab\n\n\n\n\nDockerFiles\nA Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.\nYou can create it simply with the command code Dockerfile.\nIt is a special type of file, so make sure it does NOT end with something like .txt or .sh or anything. It is simply just Dockerfile (with a capital D).\nThe following is a sample of what you can do with a Dockerfile:\nFROM rocker/rstudio:4.2.2\n# this builds the base image from rstudio\n\n# you can run basic bash commands that will run while setting up the container\nRUN echo \"Hello\"\nRUN pwd\n\n# you can install apps and such so that you have them in your image\nRUN apt-get install -y git\n\n# you can copy files onto your image/container\nCOPY renv.lock /home/rstudio/renv.lock\nCOPY README.md /home/rstudio/README.md \n\n# we can even install packages into the image\nRUN Rscript -e \"install.packages('renv', repos = c(CRAN = 'https://cloud.r-project.org'))\"\n# with the renv package we can keep r packages in our image without having to manually download them each time\n# we have to set the working directory first\nWORKDIR /home/rstudio\n# then we can copy other project files\nCOPY renv/ /home/rstudio/renv\nCOPY bash_script.sh /home/rstudio/bash_script.sh\nCOPY newRpackage_usage.R /home/rstudio/newRpackage_usage.R \n\n# however!\n# Installing the remotes package allows us to pin the version of the package we're installing\nRUN Rscript -e \"install.packages('remotes', repos = c(CRAN = 'https://cloud.r-project.org'))\"\n# now we can install a package like this:\nRUN Rscript -e \"remotes::install_version('cowsay', version='1.0.0')\"\n# this saves us the hassle of having to copy all of our project files\n# while still keeping the package versions we want!\n\nRUN echo \"Wow! There are so many things you can do with Dockerfiles!\"\nNow that you have completed your super-cool Dockerfile, you can now build your very OWN container! How exciting!\n\nBuilding and Running ‘mycontainer’\nAssuming you’ve made your own Dockerfile, you can now build your own container with this command:\ndocker build --tag mycontainer .\nNote you can replace mycontainer with whatever you would like your container to be called. Also note that it is very important to have the . at the end, as that is for your current working directory. This command will look for a Dockerfile within your current directory and then build the container.\nThe command docker images will let you see what images you have going.\nAfter you have built your container, you can now run it using:\ndocker run --rm -it -e PASSWORD=\"pizza\" -p 8787:8787 -v /$(pwd):/home/rstudio/work mycontainer\n\nNote you replacemycontainer with the name of the container you just build, and can of course replace the password.\nAlso note that the -v stands for volume. It will copy all of your local files into the container (just for you when you run it) for you to be able to use at ease.\n\nWhat if I am too lazy to type that long run command? Let’s learn about .yml files where you can run the docker in a much easier way!\n\nSide note: after you build you container you can also push it to docker so that anyone can use it\n\n\n\nRunning docker easier\nWe can create a special docker-compose.yml file where we are saved from having to write a long run command line. Note that docker specifically recognizes this file name, so the naming convention is important.\nHere is a sample of what one would look like:\nservices:\n  analysis-env:\n    image: hlan22/mycontainer\n    ports:\n      - \"8787:8787\"\n    volumes:\n      - .:/home/rstudio/work\n    environment:\n      PASSWORD: \"pizza\"\n\n# This file is a replacement for having to write the following command line\n# docker run --rm -it -e PASSWORD=\"pizza\" -p 8787:8787 \n# -v /$(pwd):/home/rstudio/work rocker/tidyverse:4.4.2\nTo run this file, you just need to type the following:\ndocker-compose up\nAlthough, with this method, you need to remove it manually afterwards with:\ndocker-compose rm",
     "crumbs": [
       "General",
       "Docker Containers"

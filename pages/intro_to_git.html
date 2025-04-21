@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Markdown Tips – DSCI 310 Review</title>
+<title>Intro to Git Commands – DSCI 310 Review</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-360dfb76d7d7ff9ffda507c77b5c9c5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-360dfb76d7d7ff9ffda507c77b5c9c5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -67,37 +67,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -109,7 +80,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./markdown.html">Quarto</a></li><li class="breadcrumb-item"><a href="./markdown.html">Markdown Tips</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/intro_to_git.html">Basics</a></li><li class="breadcrumb-item"><a href="../pages/intro_to_git.html">Git Commands</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -124,7 +95,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">DSCI 310 Review</a> 
+      <a href="../">DSCI 310 Review</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -136,7 +107,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -151,19 +122,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro_to_git.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/intro_to_git.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Git Commands</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./git_concepts.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/git_concepts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git Concepts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bash_scripts.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/bash_scripts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bash Scripts</span></a>
   </div>
 </li>
@@ -180,31 +151,37 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./environments.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/environments.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./docker.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/docker.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Docker Containers</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./github_actions.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/github_actions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GitHub Actions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ci_cd.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/workflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitHub Workflows</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/ci_cd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">CI &amp; CD</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./makefiles.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/makefiles.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Makefiles</span></a>
   </div>
 </li>
@@ -221,19 +198,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markdown.html" class="sidebar-item-text sidebar-link active">
+  <a href="../pages/markdown.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markdown Tips</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./quarto_docs.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/quarto_docs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto Reports</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./making_websites.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/making_websites.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Quarto Websites</span></a>
   </div>
 </li>
@@ -250,37 +227,37 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./making_a_package.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/making_a_package.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Making an R Package</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tests.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/tests.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./validation.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/validation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Validation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dependencies.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/dependencies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dependencies</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supporting.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/supporting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Badges, Licenses &amp; More</span></a>
   </div>
 </li>
@@ -297,29 +274,19 @@ window.Quarto = {
    
   <ul>
   <li><a href="#basic-symbols" id="toc-basic-symbols" class="nav-link active" data-scroll-target="#basic-symbols">Basic Symbols</a></li>
-  <li><a href="#letters" id="toc-letters" class="nav-link" data-scroll-target="#letters">Letters</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a>
-  <ul class="collapse">
-  <li><a href="#greek-alphabet" id="toc-greek-alphabet" class="nav-link" data-scroll-target="#greek-alphabet">Greek Alphabet</a></li>
-  </ul></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a>
-  <ul class="collapse">
-  <li><a href="#different-fonts" id="toc-different-fonts" class="nav-link" data-scroll-target="#different-fonts">Different Fonts</a></li>
-  <li><a href="#actions-on-letters" id="toc-actions-on-letters" class="nav-link" data-scroll-target="#actions-on-letters">Actions on Letters</a></li>
-  <li><a href="#math-equations" id="toc-math-equations" class="nav-link" data-scroll-target="#math-equations">Math Equations</a></li>
-  </ul></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"></a></li>
-  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"></a></li>
+  <li><a href="#general-bash-commands" id="toc-general-bash-commands" class="nav-link" data-scroll-target="#general-bash-commands">General Bash Commands</a></li>
+  <li><a href="#git-specific-commands" id="toc-git-specific-commands" class="nav-link" data-scroll-target="#git-specific-commands">Git-Specific Commands</a></li>
+  <li><a href="#flags" id="toc-flags" class="nav-link" data-scroll-target="#flags">Flags</a></li>
+  <li><a href="#commands-for-undoing" id="toc-commands-for-undoing" class="nav-link" data-scroll-target="#commands-for-undoing">Commands for Undoing</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./markdown.html">Quarto</a></li><li class="breadcrumb-item"><a href="./markdown.html">Markdown Tips</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/intro_to_git.html">Basics</a></li><li class="breadcrumb-item"><a href="../pages/intro_to_git.html">Git Commands</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Markdown Tips</h1>
+<h1 class="title">Intro to Git Commands</h1>
 </div>
 
 
@@ -336,511 +303,431 @@ window.Quarto = {
 </header>
 
 
-<p>Each time I forget how to do something in Rmarkdown, I often need to visit multiple websites to figure out my goal. I am just using this as a central location for all this information!</p>
-<p>Here’s a very basic guide for all-things you need to know for latex writing in Rmarkdown!</p>
+<p>Below are some useful tables that can help streamline your workflow in Git Bash.</p>
 <section id="basic-symbols" class="level2">
 <h2 class="anchored" data-anchor-id="basic-symbols">Basic Symbols</h2>
-<style>
-/* Narrow and center-align Markdown tables in HTML output */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: auto; /* This keeps the table only as wide as needed */
-}
-
-table th, table td {
-  padding: 1px; /* Minimal padding to reduce column width */
-  /* text-align: center; Center-aligns content in each cell */
-}
-</style>
+<div id="tbl-symbol" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-symbol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Basic Symbols
+</figcaption>
+<div aria-describedby="tbl-symbol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
-<colgroup>
-<col style="width: 35%">
-<col style="width: 35%">
-<col style="width: 30%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>Aimed Result</th>
-<th>What to Type</th>
-<th>Other Info</th>
+<th style="text-align: left;">Symbol</th>
+<th style="text-align: left;">Definition</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><span class="math inline">\(\rightarrow\)</span></td>
-<td><code>$\rightarrow$</code></td>
-<td>can also do left, up, down</td>
+<td style="text-align: left;"><code>.</code></td>
+<td style="text-align: left;">Current working directory</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(\Rightarrow\)</span></td>
-<td><code>$\Rightarrow$</code></td>
-<td>can also do left, up, down</td>
+<td style="text-align: left;"><code>..</code></td>
+<td style="text-align: left;">Parent working directory</td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(\leftrightarrow\)</span></td>
-<td><code>$\leftrightarrow$</code></td>
-<td>also <code>$\updownarrow$</code></td>
+<td style="text-align: left;"><code>~</code></td>
+<td style="text-align: left;">Home directory</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(\swarrow\)</span></td>
-<td><code>$\swarrow$</code></td>
-<td>(sw= SouthWest) also do nw, ne, se</td>
+<td style="text-align: left;"><code>-&lt;letter&gt;</code></td>
+<td style="text-align: left;">One dash makes bash only look at the first letter</td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(\rightharpoonup\)</span></td>
-<td><code>$\rightharpoonup$</code></td>
-<td><span class="math inline">\(\leftharpoonup\)</span>, <span class="math inline">\(\leftharpoondown\)</span>, <span class="math inline">\(\rightharpoondown\)</span>, <span class="math inline">\(\upharpoonright\)</span>, <span class="math inline">\(\downharpoonleft\)</span>, <span class="math inline">\(\upharpoonleft\)</span>, <span class="math inline">\(\downharpoonright\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\longrightarrow\)</span></td>
-<td><code>$\longrightarrow$</code></td>
-<td>Often used in functions/sequences</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\to\)</span></td>
-<td><code>$\to$</code></td>
-<td>Used in Limits (equivalent to right arrow)</td>
-</tr>
-<tr class="even">
-<td>————–</td>
-<td>————–</td>
-<td>————</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\infty\)</span></td>
-<td><code>$\infty$</code></td>
-<td>Don’t get why not shorten infinity to inf…</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\approx\)</span></td>
-<td><code>$\approx$</code></td>
-<td><span class="math inline">\(\thickapprox\)</span> <code>$\thickapprox$</code></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\sim\)</span></td>
-<td><code>$\sim$</code></td>
-<td><code>$N \sim Pois(\lambda)$</code></td>
-</tr>
-<tr class="even">
-<td>————–</td>
-<td>————–</td>
-<td>————</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\mid\)</span> <span class="math inline">\(\mathbb{P}(A \mid B)\)</span></td>
-<td><code>$\mid$</code> <code>$\mathbb{P}(A \mid B)$</code></td>
-<td>Just typing <code>|</code> does the same, so what is the use?</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(x \ge y, y \le z\)</span></td>
-<td><code>$x \ge y, y \le z$</code></td>
-<td><strong>g</strong>reater-than-or-<strong>e</strong>qual</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\cdots, \dots\)</span></td>
-<td><code>$\cdots, \dots$</code></td>
-<td>Useful for <code>$x_{1} + x_{2} + \cdots + x_{n}$</code></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(A \subset B\)</span>, <span class="math inline">\(B \subseteq C\)</span></td>
-<td><code>$A \subset B$, $B \subseteq C$</code></td>
-<td>cool~</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(A \cup B\)</span>, <span class="math inline">\(B \cap C\)</span></td>
-<td><code>$A \cup B$, $B \cap C$</code></td>
-<td>cool maths</td>
-</tr>
-<tr class="even">
-<td>————–</td>
-<td>————–</td>
-<td>————</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\sin(x), \cos(x), \tan(x), \log(x)\)</span></td>
-<td><code>$\sin(x), \cos(x), \tan(x), \log(x)$</code></td>
-<td>cool to not have to do a <code>\text{}</code> in front of it!</td>
+<td style="text-align: left;"><code>--&lt;word&gt;</code></td>
+<td style="text-align: left;">Two dashes makes bash look at the word as a whole</td>
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 </section>
-<section id="letters" class="level2">
-<h2 class="anchored" data-anchor-id="letters">Letters</h2>
+<section id="general-bash-commands" class="level2">
+<h2 class="anchored" data-anchor-id="general-bash-commands">General Bash Commands</h2>
+<div id="tbl-bash" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bash-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: General Bash Commands
+</figcaption>
+<div aria-describedby="tbl-bash-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
+<col style="width: 26%">
+<col style="width: 73%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Bash Command</th>
+<th style="text-align: left;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>pwd</code></td>
+<td style="text-align: left;">Prints the current working directory path. Stands for “print working directory”</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>ls</code></td>
+<td style="text-align: left;">Lists files and directories in the current directory. Use <code>ls -l</code> for detailed info and use <code>ls -a</code> to see all files. Stands for “listing”. You can also do <code>ls &lt;folder&gt;</code> of a directory of interest that you aren’t currently in!</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>cd &lt;directory&gt;</code></td>
+<td style="text-align: left;">Steps into <code>&lt;directory&gt;</code>. Use <code>cd ..</code> to go up to parent file. Stands for “change directory”. <code>cd -</code> takes you to the previous directory you were in, and <code>cd ~</code> takes you right back to the computer’s home directory.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>mkdir &lt;directory&gt;</code></td>
+<td style="text-align: left;">Creates a new directory named <code>&lt;directory&gt;</code>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>rmdir &lt;directory&gt;</code></td>
+<td style="text-align: left;">Deletes an empty directory. Use <code>rm -r &lt;directory&gt;</code> to delete non-empty ones.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>rm &lt;file&gt;</code></td>
+<td style="text-align: left;">Deletes a file. Use <code>rm -r &lt;directory&gt;</code> to remove a directory recursively.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>restore &lt;file&gt;</code></td>
+<td style="text-align: left;">Restores a file to the last commit you pulled (undos changes made)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>touch &lt;file&gt;</code></td>
+<td style="text-align: left;">Creates an empty file named <code>&lt;file&gt;</code>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>echo "text" &gt; file</code></td>
+<td style="text-align: left;">Writes “text” into <code>file</code>, replacing existing content.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>cat &lt;file&gt;</code></td>
+<td style="text-align: left;">Displays the contents of a file.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>mv &lt;source&gt; &lt;target&gt;</code></td>
+<td style="text-align: left;">Moves or renames a file or directory.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>cp &lt;source&gt; &lt;target&gt;</code></td>
+<td style="text-align: left;">Copies a file. Use <code>-r</code> for recursive copying.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>clear</code></td>
+<td style="text-align: left;">Clears the terminal screen.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>history</code></td>
+<td style="text-align: left;">Shows a list of recently executed commands.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>history &gt; history.txt</code></td>
+<td style="text-align: left;">Places history into a <code>history.txt</code> file.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>grep "pattern" file</code></td>
+<td style="text-align: left;">Searches for “pattern” in a file.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>chmod +x &lt;file&gt;</code></td>
+<td style="text-align: left;">Makes a file executable.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>alt</code>+<code>shift</code>+<code>#</code></td>
+<td style="text-align: left;">Comments out whatever is written in the command line for the history output.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="git-specific-commands" class="level2">
+<h2 class="anchored" data-anchor-id="git-specific-commands">Git-Specific Commands</h2>
+<div id="tbl-git" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-git-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Git Commands
+</figcaption>
+<div aria-describedby="tbl-git-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 67%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Git Command</th>
+<th style="text-align: left;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>git init</code></td>
+<td style="text-align: left;">Initializes a new Git repository in the current directory.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git clone &lt;repo-url&gt;</code></td>
+<td style="text-align: left;">Clones a remote repository to your local machine.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>git status</code></td>
+<td style="text-align: left;">Shows the current status of the repository.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git add &lt;file&gt;</code></td>
+<td style="text-align: left;">Stages a file for the next commit. Use <code>git add .</code> to stage all changes.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>git restore &lt;file&gt;</code></td>
+<td style="text-align: left;">Discards any changes in the file in your wd</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git commit -m "msg"</code></td>
+<td style="text-align: left;">Commits staged changes with a message.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>git log</code></td>
+<td style="text-align: left;">Displays the commit history of the repository.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git branch</code></td>
+<td style="text-align: left;">Lists all branches in the repository. Use <code>git branch &lt;name&gt;</code> to create a new branch.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>git checkout &lt;branch&gt;</code></td>
+<td style="text-align: left;">Switches to the specified branch.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git switch -c &lt;branch_name&gt;</code> or <code>git checkout -b &lt;new-branch&gt;</code></td>
+<td style="text-align: left;">To create AND switch to a new branch.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>git fetch --all</code></td>
+<td style="text-align: left;">Fetches all changes to all branches</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git merge &lt;branch&gt;</code></td>
+<td style="text-align: left;">Merges <code>&lt;branch&gt;</code> into the current branch.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>git pull</code></td>
+<td style="text-align: left;">Fetches and integrates changes from the remote repository.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git push</code></td>
+<td style="text-align: left;">Pushes committed changes to the remote repository.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>git push origin &lt;branch_name&gt;</code></td>
+<td style="text-align: left;">Pushes changes to a remote branch.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git remote -v</code></td>
+<td style="text-align: left;">Lists the remote repositories linked to the local repository.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>git reset --hard &lt;commit&gt;</code></td>
+<td style="text-align: left;">Resets the repository to a specific commit, discarding all changes.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>git stash</code></td>
+<td style="text-align: left;">Temporarily saves uncommitted changes. Use <code>git stash pop</code> to reapply them.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="flags" class="level2">
+<h2 class="anchored" data-anchor-id="flags">Flags</h2>
+<div id="tbl-flags" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-flags-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: “Flags” for commands
+</figcaption>
+<div aria-describedby="tbl-flags-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 90%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Flag</th>
+<th style="text-align: left;">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>-a</code></td>
+<td style="text-align: left;">Stands for “all”; often used to show all entries, including hidden ones (e.g., <code>ls -a</code>).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>-c</code></td>
+<td style="text-align: left;">Used to pass a command string to be executed (e.g., <code>bash -c "echo Hello"</code>, or <code>git switch -c patch-docs</code> to switch to a branch named patch-docs).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>-v</code></td>
+<td style="text-align: left;">Stands for “verbose”, meaning it provides detailed output of the command execution (e.g., <code>git branch -v</code> sees all branches in the repo).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>-f</code></td>
+<td style="text-align: left;">Stands for “force”, often used to override warnings or prompts (e.g., <code>rm -f</code>).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>-r</code></td>
+<td style="text-align: left;">Stands for “recursive”, allowing commands to act on directories and their contents (e.g., <code>rm -r</code>).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>-h</code></td>
+<td style="text-align: left;">Stands for “help”; displays usage information for a command (e.g., <code>ls -h</code> for human-readable sizes).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>-n</code></td>
+<td style="text-align: left;">Often used to indicate a “dry run” where the command is simulated without making actual changes.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>-p</code></td>
+<td style="text-align: left;">Commonly used for “preserve” or “prompt” functionality, depending on the command. In <code>mkdir -p parent/kid</code>, it allows you to make multiple directories without having to do individual commands, so it “preserves” the call for all files.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>-d</code></td>
+<td style="text-align: left;">Often for delete (e.g., <code>git branch -d &lt;branch_name&gt;</code> deletes a local branch)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>--help</code></td>
+<td style="text-align: left;">Can use after most commands to display usage information and available options (e.g., <code>ls --help</code>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="commands-for-undoing" class="level2">
+<h2 class="anchored" data-anchor-id="commands-for-undoing">Commands for Undoing</h2>
+<p>Special thanks to <a href="https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git">this</a> and <a href="https://stackoverflow.com/questions/1146973/how-do-i-revert-all-local-changes-in-git-managed-project-to-previous-state">this</a> stack overflow response!</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
 <col style="width: 37%">
-<col style="width: 34%">
-<col style="width: 28%">
+<col style="width: 37%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Aimed Result</th>
-<th>What to Type</th>
-<th>Other Info</th>
+<th>Command</th>
+<th>Circumstance</th>
+<th>What It Does</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><span class="math inline">\(\mathbb{E}\)</span></td>
-<td><code>$\mathbb{E}$</code></td>
-<td><code>$\mathbb{E}(x) = $</code></td>
+<td><code>git checkout .</code></td>
+<td>You want to discard all uncommitted changes in your working directory.</td>
+<td>Reverts all modified files in the working directory to their state in the last commit, leaving staged changes intact.</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(\pi\)</span></td>
-<td><code>$\pi$</code></td>
-<td>(Can also do <span class="math inline">\(\Pi\)</span>: <code>$\Pi$</code>)</td>
+<td><code>git restore .</code></td>
+<td>Same as <code>git checkout .</code>, but for Git version &gt;= 2.23.</td>
+<td>Same as <code>git checkout .</code>, restores working directory files to match the last commit.</td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(\ell\)</span></td>
-<td><code>$\ell$</code></td>
-<td>Useful for log-likelihood</td>
+<td><code>git reset</code></td>
+<td>You want to unstage all changes in the index (staged changes) while keeping working directory changes.</td>
+<td>Resets the index to match the current HEAD, effectively unstaging all changes. Unpushed commits remain unless specified otherwise.</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(\partial\)</span></td>
-<td><code>$\partial$</code></td>
-<td>partial derivatives! ‘del’</td>
+<td><code>git revert &lt;commit 1&gt; &lt;commit 2&gt;</code></td>
+<td>You want to undo specific commits in a branch’s history without altering the commit history.</td>
+<td>Creates new commits that reverse the changes introduced by the specified commits, preserving history.</td>
 </tr>
 <tr class="odd">
-<td>—————</td>
-<td>—————–</td>
-<td>—————————–</td>
+<td><code>git clean -f</code></td>
+<td>You want to remove untracked files (e.g., new files not yet added to Git).</td>
+<td>Deletes untracked files from the working directory. The <code>-f</code> flag forces the removal.</td>
 </tr>
 <tr class="even">
-<td>Comparing similar letters</td>
-<td></td>
-<td></td>
+<td><code>git clean -fd</code></td>
+<td>You want to remove untracked directories (e.g., generated or temporary directories).</td>
+<td>Deletes untracked directories and their contents. The <code>-fd</code> flag forces removal and includes directories.</td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(P,\mathrm{P}, \mathbb{P}\)</span></td>
-<td><code>$P,\mathrm{P}, \mathbb{P}$</code></td>
-<td>(mathrm for “math roman font”)</td>
+<td><code>git reset --hard</code></td>
+<td>You want to completely discard all uncommitted changes in both the working directory and index.</td>
+<td>Resets the working directory and index to match the current HEAD, erasing all uncommitted changes.</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(\sum \Sigma\)</span></td>
-<td><code>$\sum \Sigma$</code></td>
-<td>same but different</td>
+<td><code>git reset &lt;commit&gt;</code></td>
+<td>You want to move the branch pointer to a previous commit, discarding later commits.</td>
+<td>Resets the current branch to the specified commit, removing commits after it from history (unless <code>--soft</code> is used).</td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(\in\)</span></td>
-<td></td>
-<td></td>
+<td><code>git reset --soft &lt;commit&gt;</code></td>
+<td>You want to keep changes from commits but remove the commits themselves.</td>
+<td>Moves the branch pointer to the specified commit, keeping changes in the working directory and index for re-committing.</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(\Pi, \prod\)</span></td>
-<td><code>$\Pi, \prod$</code></td>
-<td></td>
+<td><code>git checkout &lt;file&gt;</code></td>
+<td>You want to discard changes to a specific file in the working directory.</td>
+<td>Reverts the specified file to its state in the last commit, leaving other files unchanged.</td>
+</tr>
+<tr class="odd">
+<td><code>git restore &lt;file&gt;</code></td>
+<td>Same as <code>git checkout &lt;file&gt;</code>, but for Git version &gt;= 2.23.</td>
+<td>Reverts the specified file to its state in the last commit, similar to <code>git checkout &lt;file&gt;</code>.</td>
+</tr>
+<tr class="even">
+<td><code>git stash</code></td>
+<td>You want to temporarily save uncommitted changes to work on something else.</td>
+<td>Saves uncommitted changes (both staged and unstaged) to a stash, reverting the working directory to the last commit.</td>
+</tr>
+<tr class="odd">
+<td><code>git stash pop</code></td>
+<td>You want to reapply previously stashed changes and remove them from the stash.</td>
+<td>Applies the most recent stashed changes to the working directory and removes them from the stash.</td>
+</tr>
+<tr class="even">
+<td><code>git revert HEAD</code></td>
+<td>You want to undo the most recent commit while keeping the commit history.</td>
+<td>Creates a new commit that reverses the changes made in the last commit (HEAD).</td>
+</tr>
+<tr class="odd">
+<td><code>git clean -f -X</code></td>
+<td>You want to remove only ignored files (e.g., files matching .gitignore patterns).</td>
+<td>Deletes untracked files that are ignored by Git, useful for cleaning build artifacts.</td>
+</tr>
+<tr class="even">
+<td><code>git clean -f -x</code></td>
+<td>You want to remove both ignored and untracked files.</td>
+<td>Deletes all untracked files, including those ignored by Git, with the <code>-f</code> flag to force removal.</td>
+</tr>
+<tr class="odd">
+<td><code>git reset --hard &lt;commit&gt;</code></td>
+<td>You want to reset the branch and working directory to a specific commit, discarding all changes after it.</td>
+<td>Resets the branch, index, and working directory to the specified commit, erasing all subsequent changes.</td>
+</tr>
+<tr class="even">
+<td><code>git reflog</code></td>
+<td>You want to recover a commit or branch that was accidentally reset or deleted.</td>
+<td>Shows a log of all reference changes (e.g., commits, resets), allowing you to find and restore lost commits using their SHA.</td>
+</tr>
+<tr class="odd">
+<td><code>git checkout &lt;commit&gt; -- &lt;file&gt;</code></td>
+<td>You want to restore a specific file from a past commit.</td>
+<td>Reverts the specified file to its state in the given commit, leaving other files unchanged.</td>
+</tr>
+<tr class="even">
+<td><code>git rm --cached &lt;file&gt;</code></td>
+<td>You want to untrack a file but keep it in the working directory.</td>
+<td>Removes the file from the index (stops tracking it) but leaves the file in the working directory.</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="section" class="level1">
-<h1></h1>
-<section id="greek-alphabet" class="level2">
-<h2 class="anchored" data-anchor-id="greek-alphabet">Greek Alphabet</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 20%">
-<col style="width: 15%">
-<col style="width: 12%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(\alpha A\)</span></td>
-<td><code>$\alpha A$</code></td>
-<td><span class="math inline">\(\beta B\)</span></td>
-<td><code>$\beta B$</code></td>
-<td><span class="math inline">\(\gamma \Gamma\)</span></td>
-<td><code>$\gamma \Gamma$</code></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\delta \Delta\)</span></td>
-<td><code>$\delta \Delta$</code></td>
-<td><span class="math inline">\(\epsilon \varepsilon E\)</span></td>
-<td><code>$\epsilon \varepsilon E$</code></td>
-<td><span class="math inline">\(\zeta Z \sigma\)</span></td>
-<td><code>$\zeta Z \sigma$</code></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\eta H\)</span></td>
-<td><code>$\eta H$</code></td>
-<td><span class="math inline">\(\theta \vartheta \Theta\)</span></td>
-<td><code>$\theta \vartheta \Theta$</code></td>
-<td><span class="math inline">\(\iota I\)</span></td>
-<td><code>$\iota I$</code></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\kappa K\)</span></td>
-<td><code>$\kappa K$</code></td>
-<td><span class="math inline">\(\lambda \Lambda\)</span></td>
-<td><code>$\lambda \Lambda$</code></td>
-<td><span class="math inline">\(\mu M\)</span></td>
-<td><code>$\mu M$</code></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\nu N\)</span></td>
-<td><code>$\nu N$</code></td>
-<td><span class="math inline">\(\xi\Xi\)</span></td>
-<td><code>$\xi\Xi$</code></td>
-<td><span class="math inline">\(o O\)</span></td>
-<td><code>$o O$</code> (omicron)</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\pi \Pi\)</span></td>
-<td><code>$\pi \Pi$</code></td>
-<td><span class="math inline">\(\rho\varrho P\)</span></td>
-<td><code>$\rho\varrho P$</code></td>
-<td><span class="math inline">\(\sigma \Sigma\)</span></td>
-<td><code>$\sigma \Sigma$</code></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\tau T\)</span></td>
-<td><code>$\tau T$</code></td>
-<td><span class="math inline">\(\upsilon \Upsilon\)</span></td>
-<td><code>$\upsilon \Upsilon$</code></td>
-<td><span class="math inline">\(\phi \varphi \Phi\)</span></td>
-<td><code>$\phi \varphi \Phi$</code></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\chi X\)</span></td>
-<td><code>$\chi X$</code></td>
-<td><span class="math inline">\(\psi \Psi\)</span></td>
-<td><code>$\psi \Psi$</code></td>
-<td><span class="math inline">\(\omega \Omega\)</span></td>
-<td><code>$\omega \Omega$</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="section-1" class="level1">
-<h1></h1>
-<section id="different-fonts" class="level2">
-<h2 class="anchored" data-anchor-id="different-fonts">Different Fonts</h2>
-<table class="caption-top table">
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(N\)</span></td>
-<td><code>$N$</code></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\mathcal{N}\)</span></td>
-<td><code>$\mathcal{N}$</code></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\mathbf{N}\)</span></td>
-<td><code>$\mathbf{N}$</code></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\mathbb{N}\)</span></td>
-<td><code>$\mathbb{N}$</code></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\mathscr{N}\)</span></td>
-<td><code>$\mathscr{N}$</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="actions-on-letters" class="level2">
-<h2 class="anchored" data-anchor-id="actions-on-letters">Actions on Letters</h2>
-<p>(Also a way with HTML to write a table that looks the same)</p>
-<table>
-<caption>
-<span id="tab:table2">Table1.3:</span>Actions_on_Letters
-</caption>
-</table><table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Aimed Result</th>
-<th>What to Type</th>
-<th>Other Info</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(\bar x, \overline{x}\)</span></td>
-<td><code>$\bar x, \overline{x}$</code></td>
-<td>Diff: how many letters it can cover</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><span class="math inline">\(\hat x\)</span> `</td>
-<td><span class="math inline">\(\hat x\)</span>`</td>
-<td>how to cover multiple</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(\tilde{x}\)</span> `</td>
-<td><span class="math inline">\(\tilde{x}\)</span>`</td>
-<td></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><span class="math inline">\(\binom{n}{k}\)</span> `</td>
-<td><span class="math inline">\(\binom{n}{k}\)</span>`</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="math-equations" class="level2">
-<h2 class="anchored" data-anchor-id="math-equations">Math Equations</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 35%">
-<col style="width: 35%">
-<col style="width: 30%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Aimed Result</th>
-<th>What to Type</th>
-<th>Other Info</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(\frac{1}{n}\)</span></td>
-<td><code>$\frac{1}{n}$</code></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>—</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr class="even">
-<td>writing multiple aligned equations</td>
-<td>wrap in <code>$$\begin{aligned} \end{aligned}$$</code></td>
-<td>split lines with <code>\\</code> and line up equal signs with <code>&amp;=</code></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\left[ x^\frac{y}{z} \right]\)</span></td>
-<td>wrap in <code>$\left[ x^\frac{y}{z} \right]$</code></td>
-<td>larger brackets that cover whole equation</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>—</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\lim_{x \to \infty} f(x)\)</span> or <span class="math display">\[\lim_{x \to \infty} f(x)\]</span></td>
-<td><code>$\lim_{x \to \infty} f(x)$</code></td>
-<td>If you use <code>$$</code> around original equation or <code>$\underset{}$</code>, it will put <span class="math inline">\(x \to \infty\)</span> below. Ex: <code>$$\lim_{x \to \infty} f(x)$$</code> and <code>$\underset{x \to \infty} {\text{lim}} f(x)$</code> both make the 2nd option shown. (although <code>$$</code> makes it larger)</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\sum_{n=1}^{\infty} 2^{-n} = 1\)</span> or <span class="math display">\[\sum_{i=1}^{n} X_i\]</span></td>
-<td><code>$\sum_{i=1}^{n} X_i$</code></td>
-<td>(same as above)</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\prod_{i=a}^{b} f(i)\)</span> or <span class="math display">\[\prod_{i=a}^{b} f(i)\]</span></td>
-<td><code>$\prod_{i=a}^{b} f(i)$</code></td>
-<td>(same as above)</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\int_{a}^{b} x^2 dx\)</span></td>
-<td><code>$\int_{a}^{b} x^2 dx$</code></td>
-<td>Integrals are written the same with <code>$$</code> or <code>$</code></td>
-</tr>
-<tr class="even">
-<td>—</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\underset{x \to \infty} {\text{lim}} f(x)\)</span></td>
-<td><code>$\underset{x \to \infty} {\text{lim}}$</code></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\underset{\text{this is cool}} {\underbrace{x=4}}\)</span></td>
-<td><code>$\underset{\text{this is cool}} {\underbrace{x=4}}$</code></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Here may be a better way of showing how to align equations:</p>
-<pre><code>$$
-\begin{align}
-x &amp;= 1 + y \\
-  &amp;= 3 \\
-\end{align}
-$$</code></pre>
-<p>And a good way of showing how to make if statements:</p>
-<pre><code>$$
-Z^{re} = 
-\begin{cases}
-0     &amp; \text{if } Z \le a \\
-Z - a &amp; \text{if } a &lt; Z \le a + b  \\
-b    &amp; Z &gt; a + b
-\end{cases}
-$$</code></pre>
-<p>Note: if you accidentally press 0 on the additional part of the keyboard, it will change the cursor to be a dash below the character instead of in front!</p>
-<hr>
-</section>
-</section>
-<section id="section-2" class="level1">
-<h1></h1>
-</section>
-<section id="section-3" class="level1">
-<h1></h1>
-</section>
-<section id="section-4" class="level1">
-<h1></h1>
-<blockquote class="blockquote">
-<p>Credit for Sources Used:</p>
-<p>It is no longer useful for me, but still good to give thanks and credit!</p>
-</blockquote>
-<ul>
-<li><p>https://www.geeksforgeeks.org/arrow-symbols-in-latex/ (used for different types of arrows)</p></li>
-<li><p>https://stackoverflow.com/questions/70565733/how-to-manually-create-a-simple-table-and-present-it-with-knitrkable-in-r-markd (used for making a different type of table)</p></li>
-<li><p>https://www.overleaf.com/learn/latex/Integrals%2C_sums_and_limits (used for math equations, middle section)</p></li>
-<li><p>https://rpruim.github.io/s341/S19/from-class/MathinRmd.html (used for letters/symbols)</p></li>
-<li><p>https://stackoverflow.com/questions/39671612/how-to-type-tilde-in-formulas-in-rmarkdown (this is the website that would always come up over the years for the tilde and I owe it so much of my time, thank you!)</p></li>
-<li><p>https://tex.stackexchange.com/questions/78736/bigger-parentheses-in-equations (large brackets)</p></li>
-<li><p>https://tex.stackexchange.com/questions/225523/how-to-write-partial-differential-equation-ex-dq-dt-ds-dt-with-real-partial-d (partial derivatives)</p></li>
-<li><p>https://tex.stackexchange.com/questions/47170/how-to-write-conditional-equations-with-one-sided-curly-brackets (if cases)</p></li>
-<li><p>https://tex.stackexchange.com/questions/535648/special-n-character (fonts)</p></li>
-</ul>
-<p>This may be useful (not used yet):</p>
-<ul>
-<li>https://mystmd.org/guide/math</li>
-<li>https://bookdown.org/yihui/rmarkdown/markdown-syntax.html</li>
-<li>https://wiki.snowdrift.coop/editorial/markdown#:~:text=For%20capital%20letters%20or%20Roman,also%20work%20for%20lower%2Dcase. (want to include images)</li>
-</ul>
-<p>Also hope to talk about how to do the colored boxes like in:</p>
-<ul>
-<li>file:///C:/Users/Heidi/Documents/research_work/weekly_work/week8/week8_precipitation_changes.html</li>
-<li>And it would be cool to figure out how to do roman numerals</li>
-</ul>
+<p>Also <a href="https://stackoverflow.com/questions/24127507/is-it-possible-to-center-tables-in-a-markdown-file">check out this stack overflow response</a> for information about aligning tables!</p>
 
 
 </section>
