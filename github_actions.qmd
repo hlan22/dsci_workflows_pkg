@@ -1,10 +1,13 @@
 ---
-title: "github_actions"
+# title: "github_actions"
 format: html
 ---
-
-
 # GitHub Actions
+
+See the following for more information:
+
+- [Textbook: CI and workflows](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/200-continuous-integration.html)
+- [Textbook: Github actions](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html)
 
 We can make github actions to help automate our processes.
 

@@ -61,11 +61,12 @@ By the end of the course, students will be able to:
 #### Other
 
 - [ ] Review the [Textbook](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/)
-- [ ] Review Lecture Notes (All of my repos and `.txt` files)
+- [X] Review Lecture Notes (All of my repos and `.txt` files)
 - [ ] Review Lecture Concepts (All of Daniel's repos)
 - [ ] Review group project [analysis](https://github.com/DSCI-310-2025/dsci-310-group-7-data-dudes) and [package](https://github.com/DSCI-310-2025/pkg.drugage)
 - [ ] Grab quarto notes from other repos including: [insurance statistics](https://github.com/hlan22/InsuranceStats/tree/main)
 - [ ] Make a simple numbered list of steps needed to make a new package
+- [ ] Know how to save images, `.csv`, and `.RDS` things to an `output` folder for reproducible results!
 
 Based off professor recommendations, look at:
 

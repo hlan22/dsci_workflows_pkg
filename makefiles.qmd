@@ -1,21 +1,44 @@
 ---
-title: "makefiles"
+# title: "makefiles"
 format: html
 ---
 
-Note: to get the most use out of Makefiles, ensure that you have already split up the code into different R scripts and reference them in the main report.
+## What are `Makefile`s?
 
-## Makefiles & Purpose
+*Note*: to get the most use out of Makefiles, ensure that you have already split up the code into different R scripts and reference them in the main report.
+
+Make:
+
+  - A tool that allows you to save these steps into "targets"
+  - give it a special name like `report` or `analysis` and the `Makefile` will run everything listed
+  - similar to making an `.sh` file and running all scripts
+  - `bash analysis.sh`
+  - No spaces are allowed in naming conventions, otherwise it will cause errors
+  - You can also put docker command in make file, like `docker compose`!
+  - Finally, you run the `Makefile` as such:
+  
+```bash
+make <action you want to run>
+```
+
+## `docopt` Package
+
+Learn more about the docopt package here:
+
+- [Textbook: Making Scripts With Functions and Docopt](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/150-scripts.html)
+
+Using the library `docopt`, you can make your reports incredibly more reproducible! Instead of reading in your data for each script, or even `source()`-ing other scripts, you can instead use the `docopt` library to pass by this. 
+
+## Examples
 
 Makefiles have a lot of different uses! Here are the main ideas we will review:
 
-1. Making a website
-2. Running Code
-3. Compiling a report
-4. Terminal commands
+1. [Making a website](#one)
+2. [Running Code](#two)
+3. [Compiling a report](#three)
+4. [Terminal commands](#four)
 
-
-#### Making a Website
+#### 1. Making a Website {#one}
 
 The following Makefile:
 
@@ -37,12 +60,69 @@ clean:
 ```
 
 
-#### Running Code
+#### 2. Running Code {#two}
 
-#### Compiling a report
+Say we just want to simply run our `.R` files faster and easier! This is what a data **pipeline** is doing. We can just do the following:
 
-#### Terminal commands
+```bash
+# Makefile
+analysis:
+	Rscript 01-load_clean.R
+	Rscript 02-eda.R
+	Rscript 03-model.R
+	Rscript 04-analyze.R
 
-## `docopt` Package
+download:
+	Rscript 01-load_clean.R
+```
 
-Using the library `docopt`, you can make your reports incredibly more reproducible! Instead of reading in your data for each script, or even `source()`-ing other scripts, you can instead use the `docopt` library to pass by this. 
+This is very similar how a `bash` script `analysis.sh` would work, and you can see the similarities:
+
+```bash
+# analysis.sh file
+Rscript 01-load_clean.R
+Rscript 02-eda.R
+Rscript 03-model.R
+Rscript 04-analyze.R
+```
+
+#### 3. Compiling a report {#three}
+
+This is where you use the `docopt` library with specific inputs and/or outputs!
+
+```
+.PHONY: all clean report
+
+all:
+	# remember to put the code changes in the individual rules
+	#Rscript code/01-load_clean.R --file_path=data/original/titanic.csv --output_path=data/clean/titanic_clean.csv
+	#Rscript code/03-model.R --file_path=data/clean/titanic_clean.csv --output_path=output/model.RDS
+	#Rscript code/04-analyze.R --model=output/model.RDS --output_coef=output/coef.csv --output_fig=output/fig.png
+	make clean
+	make index.html
+
+data/clean/titanic_clean.csv: code/01-load_clean.R data/original/titanic.csv
+	Rscript code/01-load_clean.R --file_path=data/original/titanic.csv --output_path=data/clean/titanic_clean.csv
+
+output/model.RDS: code/03-model.R data/clean/titanic_clean.csv
+	Rscript code/03-model.R --file_path=data/clean/titanic_clean.csv --output_path=output/model.RDS
+
+output/coef.csv output/fig.png: code/04-analyze.R output/model.RDS
+	Rscript code/04-analyze.R --model=output/model.RDS --output_coef=output/coef.csv --output_fig=output/fig.png
+
+index.html: report/report.qmd output/coef.csv output/fig.png
+	quarto render report/report.qmd
+	mv report/report.html index.html
+
+report:
+	make index.html
+
+clean:
+	rm -f output/*
+	rm -f data/clean/*
+	rm -f index.html
+	rm -f *.pdf
+```
+
+#### 4. Terminal commands {#four}
+

@@ -1,6 +1,93 @@
 ---
-title: "validation"
+title: "Data validation"
 format: html
 ---
 
 ## `pointblank` Package
+
+[Here](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/131-data_validation-r-pointblank.html) are the notes for data validation in the course textbook.
+
+#### `pointblank` Showcase
+
+```r
+library(pointblank)
+# make sure to do renv lock
+# what about if you WANT to update package to newer
+
+# data is from pointblank library
+# good for a sample data set to check everything is okay
+data(small_table)
+small_table
+
+small_table %>% 
+  # all values in the 'a' col should be less than 10
+  col_vals_lt(a, value = 10) # lt = less than
+
+# this should fail
+small_table %>% 
+  col_vals_lt(a, value = 5) # lt = less than
+
+
+
+small_table |>
+  col_vals_lt(a, value = 10) |>
+  col_vals_between(d, left = 0, right = 5000) |> # this fails, doesnt check later
+  col_vals_in_set(f, set = c("low", "mid", "high")) |>
+  # number- letter - number
+  col_vals_regex(b, regex = "^[0-9]-[a-z]{3}-[0-9]{3}$") #follows pattern (regular expression)
+
+# absolute value is useful, you can have =1 and will fail every time with something else
+# but you could do 0.8 (80%) of cases should be there
+# then you can account for missing values and such
+
+small_table |>
+  col_vals_lt(a, value = 10) |>
+  col_vals_between(d, left = 0, right = 10000) |> # fixed
+  col_vals_in_set(f, set = c("low", "mid", "high")) |>
+  # number- 3 letters - 3 numbers
+  col_vals_regex(b, regex = "^[0-9]-[a-z]{3}-[0-9]{3}$") #follows pattern (regular expression)
+# no error thrown
+
+
+# create agent that you can interrogate
+agent <- small_table |>
+  create_agent() |>  # this will let you know WHY it failed
+  col_vals_lt(a, value = 10) |>
+  col_vals_between(d, left = 0, right = 5000) |>
+  col_vals_in_set(f, set = c("low", "mid", "high")) |>
+  col_vals_regex(b, regex = "^[0-9]-[a-z]{3}-[0-9]{3}$")
+
+
+agent |>
+  interrogate()
+
+agent_object <- agent |>
+  interrogate()
+
+agent_object
+
+get_sundered_data(agent_object, type = "pass")
+
+get_sundered_data(agent_object, type = "fail")
+
+get_sundered_data(agent_object, type = "combined")
+# gives you a .pb_combined column
+# packages will add columns beginning with a period, that is why you shouldn't
+# gives you a true/false value if it pass fails
+
+get_data_extracts(agent_object)
+# extracts failed data
+```
+
+#### Validation Showcase
+
+```r
+library(pointblank)
+
+small_table %>%
+  col_is_posix(date_time) %>%
+  col_vals_in_set(f, set = c("low", "mid", "high")) %>%
+  col_vals_lt(a, value = 10) %>%
+  col_vals_regex(b, regex = "^[0-9]-[a-z]{3}-[0-9]{3}$") %>%
+  col_vals_between(d, left = 0, right = 5000)
+```

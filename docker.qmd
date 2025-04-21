@@ -1,9 +1,16 @@
 ---
-title: "docker"
+#title: "docker"
 format: html
 ---
 
-# Containers
+# Docker (and) Containers
+
+For additional information/resources:
+
+- [dockerfile practice](https://github.com/hlan22/2025-02-10-dockerfile)
+- [docker practice #2](https://github.com/hlan22/2025-02-06-docker)
+- [Docker practice](https://github.com/hlan22/2025-01-30-docker)
+- [Docker and Renv](https://github.com/hlan22/2025-01-28-renv_docker)
 
 ### Basic container
 
