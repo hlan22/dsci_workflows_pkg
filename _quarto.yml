@@ -4,7 +4,7 @@ project:
 website:
   title: "DSCI 310 Review"
   sidebar:
-    style: "docked"
+    style: "floating"
     search: true
     contents:
       - text: "Introduction"
@@ -62,7 +62,7 @@ format:
   html:
     code-copy: true
     theme:
-      - cosmo
+      - darkly
       - brand
     css: styles.css
     toc: true

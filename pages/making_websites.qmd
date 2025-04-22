@@ -9,6 +9,8 @@ execute:
 
 Here's a basic outline as to how to make websites using quarto (and rstudio/vscode)!
 
+* Fun fact! This website was made with the [darkly theme](https://bootswatch.com/darkly/). The default is cosmo if you want to change it back :)
+
 ## Website "Bones"
 
 Start with:
