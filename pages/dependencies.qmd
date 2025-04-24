@@ -12,3 +12,21 @@ How to find, list, and include dependencies for your package.
 - where you can find all packages AND THEIR CURRENT status number thingy
 
 - relate to renv
+
+
+## 'tidyverse' Guide
+
+# Tidyverse Package Summary
+
+| Package     | Purpose                                                 | Common Functions                                             |
+|-------------|---------------------------------------------------------|--------------------------------------------------------------|
+| **ggplot2** | Data visualization using the Grammar of Graphics        | `ggplot()`, `geom_point()`, `geom_line()`, `facet_wrap()`, `aes()`, `labs()`, `theme()` |
+| **dplyr**   | Data manipulation and transformation                    | `filter()`, `select()`, `mutate()`, `arrange()`, `summarize()`, `group_by()` |
+| **tidyr**   | Reshaping and tidying data                              | `pivot_longer()`, `pivot_wider()`, `separate()`, `unite()`, `drop_na()` |
+| **readr**   | Reading rectangular data (e.g., CSVs, TSVs)             | `read_csv()`, `read_tsv()`, `read_delim()`, `write_csv()`    |
+| **purrr**   | Functional programming with lists and vectors           | `map()`, `map_df()`, `map_dbl()`, `map_chr()`, `pmap()`, `walk()` |
+| **tibble**  | A modern reimagining of data frames                     | `tibble()`, `as_tibble()`, `add_column()`, `tribble()`       |
+| **stringr** | String manipulation using consistent syntax             | `str_detect()`, `str_replace()`, `str_sub()`, `str_to_lower()`, `str_split()` |
+| **forcats** | Handling categorical variables (factors)                | `fct_reorder()`, `fct_infreq()`, `fct_rev()`, `fct_lump()`, `fct_recode()` |
+
+> These packages are loaded together with `library(tidyverse)` and are designed to work seamlessly with each other.
