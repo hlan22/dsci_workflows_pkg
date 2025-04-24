@@ -38,7 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4379b0ccadffce622b03caf4c46266b3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6cfa8cdc6b5cb5793c6a2444e6919eee.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-76357d7ed5f5a2be43f0a70307aabb6b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -268,8 +268,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#tidyverse-guide" id="toc-tidyverse-guide" class="nav-link active" data-scroll-target="#tidyverse-guide">‘tidyverse’ Guide</a></li>
+  <li><a href="#tidyverse-package-summary" id="toc-tidyverse-package-summary" class="nav-link" data-scroll-target="#tidyverse-package-summary">Tidyverse Package Summary</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -300,8 +307,73 @@ ul.task-list li input[type="checkbox"] {
 <li><p>where you can find all packages AND THEIR CURRENT status number thingy</p></li>
 <li><p>relate to renv</p></li>
 </ul>
+<section id="tidyverse-guide" class="level2">
+<h2 class="anchored" data-anchor-id="tidyverse-guide">‘tidyverse’ Guide</h2>
+</section>
+<section id="tidyverse-package-summary" class="level1">
+<h1>Tidyverse Package Summary</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 43%">
+<col style="width: 46%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Package</th>
+<th>Purpose</th>
+<th>Common Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>ggplot2</strong></td>
+<td>Data visualization using the Grammar of Graphics</td>
+<td><code>ggplot()</code>, <code>geom_point()</code>, <code>geom_line()</code>, <code>facet_wrap()</code>, <code>aes()</code>, <code>labs()</code>, <code>theme()</code></td>
+</tr>
+<tr class="even">
+<td><strong>dplyr</strong></td>
+<td>Data manipulation and transformation</td>
+<td><code>filter()</code>, <code>select()</code>, <code>mutate()</code>, <code>arrange()</code>, <code>summarize()</code>, <code>group_by()</code></td>
+</tr>
+<tr class="odd">
+<td><strong>tidyr</strong></td>
+<td>Reshaping and tidying data</td>
+<td><code>pivot_longer()</code>, <code>pivot_wider()</code>, <code>separate()</code>, <code>unite()</code>, <code>drop_na()</code></td>
+</tr>
+<tr class="even">
+<td><strong>readr</strong></td>
+<td>Reading rectangular data (e.g., CSVs, TSVs)</td>
+<td><code>read_csv()</code>, <code>read_tsv()</code>, <code>read_delim()</code>, <code>write_csv()</code></td>
+</tr>
+<tr class="odd">
+<td><strong>purrr</strong></td>
+<td>Functional programming with lists and vectors</td>
+<td><code>map()</code>, <code>map_df()</code>, <code>map_dbl()</code>, <code>map_chr()</code>, <code>pmap()</code>, <code>walk()</code></td>
+</tr>
+<tr class="even">
+<td><strong>tibble</strong></td>
+<td>A modern reimagining of data frames</td>
+<td><code>tibble()</code>, <code>as_tibble()</code>, <code>add_column()</code>, <code>tribble()</code></td>
+</tr>
+<tr class="odd">
+<td><strong>stringr</strong></td>
+<td>String manipulation using consistent syntax</td>
+<td><code>str_detect()</code>, <code>str_replace()</code>, <code>str_sub()</code>, <code>str_to_lower()</code>, <code>str_split()</code></td>
+</tr>
+<tr class="even">
+<td><strong>forcats</strong></td>
+<td>Handling categorical variables (factors)</td>
+<td><code>fct_reorder()</code>, <code>fct_infreq()</code>, <code>fct_rev()</code>, <code>fct_lump()</code>, <code>fct_recode()</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p>These packages are loaded together with <code>library(tidyverse)</code> and are designed to work seamlessly with each other.</p>
+</blockquote>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
