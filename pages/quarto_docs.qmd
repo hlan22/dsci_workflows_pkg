@@ -37,9 +37,69 @@ Side note: you can only copy a code block easily when you specify the code type 
 
 </details>
 
-## Table and Image: Labelling and Referencing
+#### Quick Summary
+
+* `[]()`: [Website Link](pages/quarto_docs.qmd)
+
+* Image that you can reference with `@fig-name`
+
+```html
+![Title](../outputs/something.png){#fig-name width=65%}
+```
+
+* Table you can reference with `@tbl-pop-sd`
+
+```r
+#| label: tbl-pop-sd
+#| tbl-cap: Standard deviation of historical (1906-1972) horse populations for each Canadian province
+horses_sd_table <- read_csv("../results/horses_sd.csv")
+largest_sd <- horses_sd_table$Province[1]
+knitr::kable(horses_sd_table)
+```
+
+* An RDS object you can reference
+
+```r
+# Load the saved model
+model <- readRDS("outputs/my_model.rds")
+
+# Display model summary
+summary(model)
+```
+
+* Inline code (using backticks instead of `'`): '{r} largest_sd'
+
+* References
+  
+  * At the end of the sentence (author, year): `[@tidyverse]`
+  * Mentioning the author as part of the sentence: `@ttimbers-horses`
+  * Mentioning two at once: `[@horses1; and @horses2]`
+  * Make sure to include a bibtek file, specify it in the top description, and also write a `# References` line at the bottom of your report!
+
+* (Example) File description:
+
+```html
+title: "DSCI 310: Historical Horse Population in Canada"
+author: "Tiffany Timbers & Jordan Bourak"
+format:
+  html:
+    embed-resources: true
+editor: source
+toc: true
+bibliography: references.bib
+execute:
+  echo: false
+  warning: false
+```
+
+
+<details>
+<summary>Tables and Images: Labelling and Referencing </summary>
 
 * Info about figures: <https://quarto.org/docs/authoring/figures.html>
+</details>
+
+
 
 <details>
 <summary>Execution Options for `.qmd` and `.Rmd` </summary>

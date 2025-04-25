@@ -150,6 +150,51 @@ For similar reasons, the walrus operator (`:=`) is needed when writing functions
 
 </details>
 
+
+<details>
+<summary>Practice with Refactoring</summary>
+
+Initial code:
+
+```r
+# Load data
+data(mtcars)
+
+# Fit model
+model <- lm(mpg ~ wt, data = mtcars)
+
+# Summarize
+summary(model)
+
+# Plot
+plot(mtcars$wt, mtcars$mpg, main = "MPG vs Weight")
+abline(model, col = "blue")
+```
+
+Refactored code:
+
+```r
+# Define a function to fit and summarize a linear model
+fit_and_summarize <- function(data, formula) {
+  model <- lm(formula, data = data)
+  print(summary(model))
+  return(model)
+}
+
+# Define a function to plot the regression line
+plot_lm <- function(model, data, xvar, yvar) {
+  plot(data[[xvar]], data[[yvar]], main = paste(yvar, "vs", xvar))
+  abline(model, col = "blue")
+}
+
+# Use the functions
+data(mtcars)
+mod <- fit_and_summarize(mtcars, mpg ~ wt)
+plot_lm(mod, mtcars, "wt", "mpg")
+```
+
+</details>
+
 ## ROxygen
 
 (Taken from [The Whole Game](https://r-pkgs.org/whole-game.html) R Package building guide)
@@ -199,7 +244,9 @@ To practice writing functions in R, you can attempt this worksheet: <https://git
 
 You can also try practicing with [this repo](https://github.com/ttimbers/breast_cancer_predictor).
 
-## `wordplay` Examples
+
+<details>
+<summary> `wordplay` Examples </summary>
 
 Here is an example of what functions should look like with my package `wordplay`:
 
@@ -259,6 +306,7 @@ all_words_summary <- function(data, column = "word") {
 * `@ImportFrom` statements that specify each package used and the specific function used
 * The `@examples` give a clear example of all the different parameters
 
+</details>
 
 ## Function Changes
 

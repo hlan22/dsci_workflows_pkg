@@ -2,7 +2,7 @@
 title: "Websites With Quarto"
 format:
   html:
-    code-copy: true
+    code-copy: true # note: this is already in the _quarto.yml file, dont need
 execute:
   eval: false
 ---
@@ -55,7 +55,8 @@ There are a few tasks necessary:
 Select the right option in Settings > Pages > Build and deployment > Branch.
 
 * Ensure `docs/` is not blocked in the `.gitignore` file
-* Set `output-dir: docs` under project: type: in `_quarto.yml`
+* Set `output-dir: docs` under `project:` type: in `_quarto.yml`
+* You DO need a `_quarto.yml` file, in order for git to recognize it is a website
 
 #### `gh-pages` branch
 

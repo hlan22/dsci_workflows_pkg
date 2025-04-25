@@ -3,7 +3,7 @@ title: "Data validation"
 format: html
 ---
 
-## `pointblank` Package
+Using the `pointblank` Package :)
 
 [Here](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/131-data_validation-r-pointblank.html) are the notes for data validation in the course textbook.
 

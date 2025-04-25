@@ -1,7 +1,19 @@
 ---
-# title: "github_actions"
 format: html
 ---
+
+FOR MOST (COMPLICATED) GITHUB ACTIONS, CHECK OUT: <https://github.com/r-lib/actions/tree/v2/examples>
+
+* In particular, the:
+  
+  * `test-coverage`
+  * `pkgdown`
+  * `R-CMD-Check`
+  
+* Or alternatively, just go to <https://github.com/DSCI-310-2025/pkg.drugage/blob/master/.github/workflows/R-CMD-check.yaml> and make sure you have those 3. But run all the package commands first.
+
+You can also check out pyhon ci or ci-cd examples at: https://github.com/ttimbers/pycounts_tt_2024/blob/main/.github/workflows/ci.yml
+
 
 See the following for more information:
 
@@ -9,19 +21,30 @@ See the following for more information:
 - [Textbook: Github actions](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html)
 - Test coverage: <https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-actions-testing.html#setting-up-github-actions-workflows-to-check-tests-and-test-coverage>
 
+
+
+* Continuous Integration: Add automatic checks and code coverage to your package: <https://r-pkgs.org/software-development-practices.html#sec-sw-dev-practices-gha>
+
+* Continuous Deployment: Add a website for your package: <https://r-pkgs.org/website.html>
+
+
 # GitHub Actions
 
-We can make github actions to help automate our processes.
-
-We have two main examples we can work with, one from class and one from the website.
-
-In order for github actions to work, it needs to be placed in a very specific folder location of: .github/workflows/<file.yml>
+We can make github actions to help automate our processes. In order for github actions to work, it needs to be placed in a very specific folder location of: `.github/workflows/<file.yml>`. To create the directory, and an example file:
 
 ```bash
 mkdir -p .github/workflows/
 cd .github/workflows/
 code bash.yml
 ```
+
+* Fun fact: there is no difference between using `.yml` or `.yaml`!
+
+## Examples
+
+<details>
+<summary>Making a Bash Action</summary>
+
 The following is a sample of a github action you can do, where you run a bash command:
 
 ```bash
@@ -55,9 +78,15 @@ jobs: # specify the jobs you want to create
 ```
 
 Then you can just commit this file and the action should work!
+</details>
 
 
-There are also other github actions you can do, of course. Here is one taken from the course textbook that allows you to publish your docker image to docker hub.
+There are also other github actions you can do, of course. 
+
+<details>
+<summary>Publish your Docker Image</summary>
+
+Here is one taken from the course textbook that allows you to publish your docker image to docker hub.
 
 ```bash
 # Publishes docker image, pinning actions to a commit SHA,
@@ -111,55 +140,114 @@ jobs:
 Checkout <https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html> for more customization.
 
 Also note that in this one you need to add a secret username and password in the repo you're in, and you also need to edit to proper naming.
+</details>
 
 
-## `.github/workflows/`
+<details>
+<summary>Continuous Integration</summary>
 
-* Fun fact: there is no difference between using `.yml` or `.yaml`!
+Here is what continuous integration example looks like **for python**:
 
-See the following for more information:
+```bash
+name: ci
 
-- [Textbook: CI and workflows](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/200-continuous-integration.html)
-- [Textbook: Github actions](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html)
+on: [push, pull_request]
 
-## Examples
+jobs:
+  ci:
+    # Set up operating system
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
 
-#### 1. Run a Bash Command
+    # Define job steps
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
 
-Titled: `bash.yml` 
+      - name: Check-out repository
+        uses: actions/checkout@v3
 
-(this one contains comments explaining what each line means for learning ability)
+      - name: Install poetry
+        uses: snok/install-poetry@v1
 
+      - name: Install package
+        run: poetry install
+
+      - name: Test with pytest
+        run: poetry run pytest tests/ --cov=pycounts_tt_2024 --cov-report=xml
+
+      - name: Use Codecov to track coverage
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage.xml   # coverage report
+
+      - name: Build documentation
+        run: poetry run make html --directory docs/
+        
 ```
-name: Run a bash command # this is what specifies the automation
+</details>
 
+<details>
+<summary>Continuous Deployment</summary>
+
+Here is what you can do for continuous deployment:
+
+```bash
+code .github/workflows/build.yml
+```
+
+
+
+</details>
+
+
+<details>
+<summary>gh-pages </summary>
+
+Here is an example if you need to run some simple r code, but i would recommend changing the packages to exactly what you need, nothing more, nothing less.
+
+```bash
+code .github/workflows/build.yml
+```
+
+```bash
 on:
-  workflow_dispatch: # says: manually run this in the github interface...
-  push: # if a push happens to the repo then ...
-    branches: [main] # if a push happens to the main branch also make these changes
-    paths:  # or only trigger when one of these files is changed
-      - 'Dockerfile'
-      - .github/workflows/bash.yml # or whatever you named the file
-      - 'conda-linux-64.lock'
-      # could also do something like every week update it ... etc.
+  workflow_dispatch:
+  push:
+    branches: main
 
-jobs: # specify the jobs you want to create
-  run_bash_command: # name of the job, the one yaml understands
-    name: Run a bash command using github actions # a human-readable name that is nice for us to look at
-    runs-on: ubuntu-latest # operating system you want github to run on, this one is most common for linux, you could say windows-latest or mac-latest too
-    steps: # actual steps to run
-      - name: Check out the repo # run git clone and cd into it
-        uses: actions/checkout@v4 # probably automating off something in your repository, so usually your first step
-      - name: Run a command manually
-        run: ls -a
-      - name: Run multiple commands manually # use a vertical bar |
+name: Quarto Publish
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+      
+      - name: Install minimal R dependencies
         run: | 
-          pwd
-          ls -a
-      - name: Run multiple commands manually with script
-        run: bash scripts/bash.sh
+          Rscript -e 'install.packages(c("knitr", "rmarkdown"), repos = "https://cloud.r-project.org")'
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 
-
-# Continuous Integration and Deployment
+</details>
