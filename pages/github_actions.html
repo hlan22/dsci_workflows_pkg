@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/environments.html">General</a></li><li class="breadcrumb-item"><a href="../pages/github_actions.html">GitHub Actions</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/environments.html">General</a></li><li class="breadcrumb-item"><a href="../pages/github_actions.html">GitHub Actions (CI&amp;CD)</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -198,19 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/github_actions.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">GitHub Actions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../pages/workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GitHub Workflows</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../pages/ci_cd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">CI &amp; CD</span></a>
+ <span class="menu-text">GitHub Actions (CI&amp;CD)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -307,23 +295,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#github-actions" id="toc-github-actions" class="nav-link active" data-scroll-target="#github-actions">GitHub Actions</a></li>
+  <li><a href="#github-actions" id="toc-github-actions" class="nav-link active" data-scroll-target="#github-actions">GitHub Actions</a>
+  <ul class="collapse">
+  <li><a href="#githubworkflows" id="toc-githubworkflows" class="nav-link" data-scroll-target="#githubworkflows"><code>.github/workflows/</code></a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  </ul></li>
+  <li><a href="#continuous-integration-and-deployment" id="toc-continuous-integration-and-deployment" class="nav-link" data-scroll-target="#continuous-integration-and-deployment">Continuous Integration and Deployment</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/environments.html">General</a></li><li class="breadcrumb-item"><a href="../pages/github_actions.html">GitHub Actions</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/environments.html">General</a></li><li class="breadcrumb-item"><a href="../pages/github_actions.html">GitHub Actions (CI&amp;CD)</a></li></ol></nav></header>
 
 
 
 
-<section id="github-actions" class="level1">
-<h1>GitHub Actions</h1>
 <p>See the following for more information:</p>
 <ul>
 <li><a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/200-continuous-integration.html">Textbook: CI and workflows</a></li>
 <li><a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html">Textbook: Github actions</a></li>
+<li>Test coverage: <a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-actions-testing.html#setting-up-github-actions-workflows-to-check-tests-and-test-coverage" class="uri">https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-actions-testing.html#setting-up-github-actions-workflows-to-check-tests-and-test-coverage</a></li>
 </ul>
+<section id="github-actions" class="level1">
+<h1>GitHub Actions</h1>
 <p>We can make github actions to help automate our processes.</p>
 <p>We have two main examples we can work with, one from class and one from the website.</p>
 <p>In order for github actions to work, it needs to be placed in a very specific folder location of: .github/workflows/&lt;file.yml&gt;</p>
@@ -408,6 +402,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>          <span class="ex">labels:</span> <span class="va">${</span><span class="er">{ steps.meta.outputs.labels </span><span class="va">}</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Checkout <a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html" class="uri">https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html</a> for more customization.</p>
 <p>Also note that in this one you need to add a secret username and password in the repo you’re in, and you also need to edit to proper naming.</p>
+<section id="githubworkflows" class="level2">
+<h2 class="anchored" data-anchor-id="githubworkflows"><code>.github/workflows/</code></h2>
+<ul>
+<li>Fun fact: there is no difference between using <code>.yml</code> or <code>.yaml</code>!</li>
+</ul>
+<p>See the following for more information:</p>
+<ul>
+<li><a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/200-continuous-integration.html">Textbook: CI and workflows</a></li>
+<li><a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html">Textbook: Github actions</a></li>
+</ul>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<section id="run-a-bash-command" class="level4">
+<h4 class="anchored" data-anchor-id="run-a-bash-command">1. Run a Bash Command</h4>
+<p>Titled: <code>bash.yml</code></p>
+<p>(this one contains comments explaining what each line means for learning ability)</p>
+<pre><code>name: Run a bash command # this is what specifies the automation
+
+on:
+  workflow_dispatch: # says: manually run this in the github interface...
+  push: # if a push happens to the repo then ...
+    branches: [main] # if a push happens to the main branch also make these changes
+    paths:  # or only trigger when one of these files is changed
+      - 'Dockerfile'
+      - .github/workflows/bash.yml # or whatever you named the file
+      - 'conda-linux-64.lock'
+      # could also do something like every week update it ... etc.
+
+jobs: # specify the jobs you want to create
+  run_bash_command: # name of the job, the one yaml understands
+    name: Run a bash command using github actions # a human-readable name that is nice for us to look at
+    runs-on: ubuntu-latest # operating system you want github to run on, this one is most common for linux, you could say windows-latest or mac-latest too
+    steps: # actual steps to run
+      - name: Check out the repo # run git clone and cd into it
+        uses: actions/checkout@v4 # probably automating off something in your repository, so usually your first step
+      - name: Run a command manually
+        run: ls -a
+      - name: Run multiple commands manually # use a vertical bar |
+        run: | 
+          pwd
+          ls -a
+      - name: Run multiple commands manually with script
+        run: bash scripts/bash.sh</code></pre>
+</section>
+</section>
+</section>
+<section id="continuous-integration-and-deployment" class="level1">
+<h1>Continuous Integration and Deployment</h1>
 
 
 </section>

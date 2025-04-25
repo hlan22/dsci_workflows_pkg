@@ -198,19 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/github_actions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GitHub Actions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../pages/workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GitHub Workflows</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../pages/ci_cd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">CI &amp; CD</span></a>
+ <span class="menu-text">GitHub Actions (CI&amp;CD)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -308,8 +296,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#table-and-image-labelling-and-referencing" id="toc-table-and-image-labelling-and-referencing" class="nav-link active" data-scroll-target="#table-and-image-labelling-and-referencing">Table and Image: Labelling and Referencing</a></li>
-  <li><a href="#execution-options-for-.qmd-and-.rmd" id="toc-execution-options-for-.qmd-and-.rmd" class="nav-link" data-scroll-target="#execution-options-for-.qmd-and-.rmd">Execution Options for <code>.qmd</code> and <code>.Rmd</code></a></li>
-  <li><a href="#other-introductory-information" id="toc-other-introductory-information" class="nav-link" data-scroll-target="#other-introductory-information">Other introductory information</a></li>
   </ul>
 </nav>
     </div>
@@ -340,12 +326,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/160-reproducible-reports.html">Textbook: Reproducible Reports</a></p></li>
 <li><p><a href="https://github.com/hlan22/dsci-310-assignment-4">My Assignment 4 Changes (where I received 110%)</a></p></li>
 </ul>
+<details>
+<summary>
+How to make a dropdown menu
+</summary>
+<p>I figured I would start with this first, since I will be using it throughout the page. It won’t be useful for a final exam, but it is useful for making a final exam website!</p>
+<p>Here is what it looks like in raw markdown:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span>How to make a dropdown menu<span class="dt">&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>blah blah blah</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And here is it so that it is easy to copy and paste to use:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">details</span><span class="dt">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">summary</span><span class="dt">&gt;</span> <span class="dt">&lt;/</span><span class="kw">summary</span><span class="dt">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">details</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Side note: you can only copy a code block easily when you specify the code type in the <code>'''</code> backticks section!</p>
+</details>
 <section id="table-and-image-labelling-and-referencing" class="level2">
 <h2 class="anchored" data-anchor-id="table-and-image-labelling-and-referencing">Table and Image: Labelling and Referencing</h2>
-<p>ahh</p>
-</section>
-<section id="execution-options-for-.qmd-and-.rmd" class="level2">
-<h2 class="anchored" data-anchor-id="execution-options-for-.qmd-and-.rmd">Execution Options for <code>.qmd</code> and <code>.Rmd</code></h2>
+<ul>
+<li>Info about figures: <a href="https://quarto.org/docs/authoring/figures.html" class="uri">https://quarto.org/docs/authoring/figures.html</a></li>
+</ul>
+<details>
+<summary>
+Execution Options for <code>.qmd</code> and <code>.Rmd</code>
+</summary>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 26%">
@@ -392,9 +398,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</section>
-<section id="other-introductory-information" class="level2">
-<h2 class="anchored" data-anchor-id="other-introductory-information">Other introductory information</h2>
+</details>
+<details>
+<summary>
+Random introductory information
+</summary>
 <ul>
 <li><p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p></li>
 <li><p>Quarto sets up the metadata at the start with 3 dashes at the top of the file. If you move it after/later in the document, it will not understand.</p></li>
@@ -402,16 +410,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>markdown is a short cut version of html, but you can always write pure html in a document too</p></li>
 </ul>
 <p>If you want the proper coloring to show up for code, but not actually run it, you can do:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>myfunc <span class="ot">&lt;-</span> <span class="cf">function</span>(blah) {</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>   blah <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>myfunc <span class="ot">&lt;-</span> <span class="cf">function</span>(blah) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>   blah <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>But it doesn’t define it!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>myfunc <span class="ot">&lt;-</span> <span class="cf">function</span>(blah) {</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>   blah <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">myfunc</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>myfunc <span class="ot">&lt;-</span> <span class="cf">function</span>(blah) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>   blah <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">myfunc</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
@@ -424,9 +432,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You can turn off soft wrap long lines, but I don’t like that option.</p>
 <p>If you think about it from a git perspective, you have to find the change in the giant 5-line sentence. That is why you can split up sentences, but as long as there is no space inbetween the sentences, they are rendered as one.</p>
 <ul>
-<li>Semantic line breaks; strategically breaking lines so that it is easier for version control</li>
+<li><p>Semantic line breaks; strategically breaking lines so that it is easier for version control</p></li>
+<li><p><code>ctrl</code> <code>shift</code> <code>p</code> is find a command</p></li>
 </ul>
-<p>ctrl shift p is find a command</p>
+</details>
 
 
 </section>

@@ -2,82 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://hlan22.github.io/dsci_workflows_pkg/CODE_OF_CONDUCT.html</loc>
-    <lastmod>2025-04-24T19:35:29.703Z</lastmod>
+    <lastmod>2025-04-25T06:03:39.391Z</lastmod>
   </url>
   <url>
     <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/git_concepts.html</loc>
-    <lastmod>2025-04-24T19:35:29.704Z</lastmod>
+    <lastmod>2025-04-25T06:03:39.392Z</lastmod>
   </url>
   <url>
     <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/dependencies.html</loc>
-    <lastmod>2025-04-24T19:35:29.703Z</lastmod>
+    <lastmod>2025-04-25T06:03:39.392Z</lastmod>
   </url>
   <url>
     <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/makefiles.html</loc>
-    <lastmod>2025-04-24T19:35:29.704Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/workflows.html</loc>
-    <lastmod>2025-04-24T19:35:29.705Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/github_actions.html</loc>
-    <lastmod>2025-04-24T19:35:29.704Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/validation.html</loc>
-    <lastmod>2025-04-24T19:35:29.705Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/intro_to_git.html</loc>
-    <lastmod>2025-04-24T19:35:29.704Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/tests.html</loc>
-    <lastmod>2025-04-24T19:35:29.705Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/bash_scripts.html</loc>
-    <lastmod>2025-04-24T19:35:29.703Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/supporting.html</loc>
-    <lastmod>2025-04-24T19:35:29.704Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/ci_cd.html</loc>
-    <lastmod>2025-04-24T19:35:29.703Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/quarto_docs.html</loc>
-    <lastmod>2025-04-24T19:35:29.704Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/functions.html</loc>
-    <lastmod>2025-04-24T19:35:29.704Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/markdown.html</loc>
-    <lastmod>2025-04-24T19:35:29.704Z</lastmod>
+    <lastmod>2025-04-25T06:03:39.393Z</lastmod>
   </url>
   <url>
     <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/making_a_package.html</loc>
-    <lastmod>2025-04-24T19:35:29.704Z</lastmod>
+    <lastmod>2025-04-25T06:03:39.393Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/markdown.html</loc>
+    <lastmod>2025-04-25T06:03:39.393Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/functions.html</loc>
+    <lastmod>2025-04-25T06:03:39.392Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/quarto_docs.html</loc>
+    <lastmod>2025-04-25T06:03:39.393Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/bash_scripts.html</loc>
+    <lastmod>2025-04-25T06:03:39.392Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/supporting.html</loc>
+    <lastmod>2025-04-25T06:03:39.393Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/tests.html</loc>
+    <lastmod>2025-04-25T06:03:39.393Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/intro_to_git.html</loc>
+    <lastmod>2025-04-25T06:03:39.393Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/validation.html</loc>
+    <lastmod>2025-04-25T06:03:39.393Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/github_actions.html</loc>
+    <lastmod>2025-04-25T06:03:39.393Z</lastmod>
   </url>
   <url>
     <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/making_websites.html</loc>
-    <lastmod>2025-04-24T19:35:29.704Z</lastmod>
+    <lastmod>2025-04-25T06:03:39.393Z</lastmod>
   </url>
   <url>
     <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/environments.html</loc>
-    <lastmod>2025-04-24T19:35:29.704Z</lastmod>
+    <lastmod>2025-04-25T06:03:39.392Z</lastmod>
   </url>
   <url>
     <loc>https://hlan22.github.io/dsci_workflows_pkg/pages/docker.html</loc>
-    <lastmod>2025-04-24T19:35:29.703Z</lastmod>
+    <lastmod>2025-04-25T06:03:39.392Z</lastmod>
   </url>
   <url>
     <loc>https://hlan22.github.io/dsci_workflows_pkg/index.html</loc>
-    <lastmod>2025-04-24T19:35:29.703Z</lastmod>
+    <lastmod>2025-04-25T06:03:39.392Z</lastmod>
   </url>
 </urlset>
