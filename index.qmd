@@ -6,6 +6,8 @@ Welcome to my website for my DSCI 310 final exam review!
 
 This is a review of DSCI 310, but specifically for topics that will be covered on the final. This means there will be less emphasis on topics such as Docker containers, git basics, Renv, etc.
 
+See my midterm notes at: <file:///C:/Users/heidi/git/dsci310/midterm_study_notes.html>
+
 ---
 
 ## Learning Outcomes

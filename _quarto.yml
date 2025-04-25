@@ -26,11 +26,7 @@ website:
           - href: pages/docker.qmd
             text: "Docker Containers"
           - href: pages/github_actions.qmd
-            text: "GitHub Actions"
-          - href: pages/workflows.qmd
-            text: "GitHub Workflows"
-          - href: pages/ci_cd.qmd
-            text: "CI & CD"
+            text: "GitHub Actions (CI&CD)"
           - href: pages/makefiles.qmd
             text: "Makefiles"
             

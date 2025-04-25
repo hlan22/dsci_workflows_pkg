@@ -10,12 +10,12 @@ This repo is my notes that collect and synthesize information from the textbook,
 ##### Assignments
 - [X] [**Assignment 1**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia1.html): (Not Included) Setup and Installation (you can find them [here](https://ubc-dsci.github.io/dsci-310-student/computer-setup.html))
 - [X] [**Assignment 2**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia2.html): Git merge conflicts ([learn more here](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts))
-    - [ ] Note: Make a review of the different types of conflicts
+    - [X] Note: Make a review of the different types of conflicts
 - [X] [**Assignment 3**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia3.html): (Not Included) Dockerfiles
 - [X] [**Assignment 4**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia4.html): Reproducible reports using Quarto
     - [ ] Note: Need to make a summary page that lists all improvements possible
 - [ ] [**Assignment 5**](https://ubc-dsci.github.io/dsci-310-student/individual_assignment/ia5.html): Packaging (for walk-through, see [this for R](https://r-pkgs.org/whole-game.html) or [this for python](https://py-pkgs.org/03-how-to-package-a-python))
-    - [ ] Note: Need to learn how to do python packages
+    - [ ] ~~Note: Need to learn how to do python packages~~
     - [ ] Note: Need to summarize and streamline R packages
     - [ ] Note: Want to improve and update R packages made from this course
     - [ ] Note: Want to go over potential conflicts you can run into, and main things to know in a time crunch
@@ -23,7 +23,7 @@ This repo is my notes that collect and synthesize information from the textbook,
 ##### Tutorials
 - [X] [**Tutorial 1**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t1.html): Setup
 - [X] [**Tutorial 2**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t2.html): Git Basics
-    - [ ] Note: Transfer git basics info from dsci-review repo
+    - [X] Note: Transfer git basics info from dsci-review repo
 - [ ] [**Tutorial 3**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t3.html): R and Python Environments (`renv` and `conda`)
 - [X] [**Tutorial 4**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t4.html): Environments and Docker Containers
 - [ ] [**Tutorial 5**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t5.html): Bash Scripts and Github Actions
@@ -31,7 +31,7 @@ This repo is my notes that collect and synthesize information from the textbook,
 - [ ] [**Tutorial 7**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t7.html): Quarto and Github Pages
 - [ ] [**Tutorial 8**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t8.html): Writing Tests using `testthat` for R or `pytest` for Python
 - [ ] [**Tutorial 9**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t9.html): Create a Quarto Website (using `gh-pages`)
-    - [ ] Note: Making a Website (through main, docs, and gh-pages)
+    - [X] Note: Making a Website (through main, docs, and gh-pages)
 - [X] [**Tutorial 10**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t10.html): Packaging (work period for Assignment 5)
 - [ ] [**Tutorial 11**](https://ubc-dsci.github.io/dsci-310-student/tutorials/t11.html): Packaging with Continuous Integration and Continuous Deployment
 

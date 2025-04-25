@@ -3,6 +3,8 @@ title: "Testing for Packages"
 format: html
 ---
 
+Here is where we talked about testthat in the textbook: <https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/142-R-testing-example.html>
+
 # `library(testthat)`
 
 ## Thorough steps for an R Package

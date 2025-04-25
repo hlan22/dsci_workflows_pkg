@@ -1,6 +1,8 @@
 ---
 title: "Quarto Reports"
-format: html
+format:
+  html:
+    code-copy: true
 ---
 
 See here for more information:
@@ -9,12 +11,38 @@ See here for more information:
 
 - [My Assignment 4 Changes (where I received 110%)](https://github.com/hlan22/dsci-310-assignment-4)
 
+<details>
+<summary>How to make a dropdown menu</summary>
+I figured I would start with this first, since I will be using it throughout the page. It won't be useful for a final exam, but it is useful for making a final exam website!
+
+Here is what it looks like in raw markdown:
+
+```html
+<details>
+<summary>How to make a dropdown menu</summary>
+blah blah blah
+</details>
+```
+
+And here is it so that it is easy to copy and paste to use:
+
+```html
+<details>
+<summary> </summary>
+
+</details>
+```
+
+Side note: you can only copy a code block easily when you specify the code type in the `'''` backticks section!
+
+</details>
+
 ## Table and Image: Labelling and Referencing
 
-ahh
+* Info about figures: <https://quarto.org/docs/authoring/figures.html>
 
-
-## Execution Options for `.qmd` and `.Rmd`
+<details>
+<summary>Execution Options for `.qmd` and `.Rmd` </summary>
 
 | Execution Option | Description | Values |
 |-------------------|------------------------|-----------------------------|
@@ -24,8 +52,12 @@ ahh
 | `warning` | Include warnings in the output. | `true` <br> `false` |
 | `error` | Include errors in the output (note: errors won't stop document processing). | `true` <br> `false` |
 | `include` | Prevent any output (code or results) from being included. | `true` <br> `false` |
+</details>
 
-## Other introductory information
+
+
+<details>
+<summary>Random introductory information </summary>
 
 * Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
 
@@ -72,5 +104,6 @@ That is why you can split up sentences, but as long as there is no space inbetwe
 
 * Semantic line breaks; strategically breaking lines so that it is easier for version control
 
+* `ctrl` `shift` `p` is find a command
 
-ctrl shift p is find a command
+</details>

@@ -2,12 +2,14 @@
 # title: "github_actions"
 format: html
 ---
-# GitHub Actions
 
 See the following for more information:
 
 - [Textbook: CI and workflows](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/200-continuous-integration.html)
 - [Textbook: Github actions](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html)
+- Test coverage: <https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-actions-testing.html#setting-up-github-actions-workflows-to-check-tests-and-test-coverage>
+
+# GitHub Actions
 
 We can make github actions to help automate our processes.
 
@@ -109,3 +111,55 @@ jobs:
 Checkout <https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html> for more customization.
 
 Also note that in this one you need to add a secret username and password in the repo you're in, and you also need to edit to proper naming.
+
+
+## `.github/workflows/`
+
+* Fun fact: there is no difference between using `.yml` or `.yaml`!
+
+See the following for more information:
+
+- [Textbook: CI and workflows](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/200-continuous-integration.html)
+- [Textbook: Github actions](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html)
+
+## Examples
+
+#### 1. Run a Bash Command
+
+Titled: `bash.yml` 
+
+(this one contains comments explaining what each line means for learning ability)
+
+```
+name: Run a bash command # this is what specifies the automation
+
+on:
+  workflow_dispatch: # says: manually run this in the github interface...
+  push: # if a push happens to the repo then ...
+    branches: [main] # if a push happens to the main branch also make these changes
+    paths:  # or only trigger when one of these files is changed
+      - 'Dockerfile'
+      - .github/workflows/bash.yml # or whatever you named the file
+      - 'conda-linux-64.lock'
+      # could also do something like every week update it ... etc.
+
+jobs: # specify the jobs you want to create
+  run_bash_command: # name of the job, the one yaml understands
+    name: Run a bash command using github actions # a human-readable name that is nice for us to look at
+    runs-on: ubuntu-latest # operating system you want github to run on, this one is most common for linux, you could say windows-latest or mac-latest too
+    steps: # actual steps to run
+      - name: Check out the repo # run git clone and cd into it
+        uses: actions/checkout@v4 # probably automating off something in your repository, so usually your first step
+      - name: Run a command manually
+        run: ls -a
+      - name: Run multiple commands manually # use a vertical bar |
+        run: | 
+          pwd
+          ls -a
+      - name: Run multiple commands manually with script
+        run: bash scripts/bash.sh
+```
+
+
+
+# Continuous Integration and Deployment
