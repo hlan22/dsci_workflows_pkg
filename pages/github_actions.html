@@ -297,10 +297,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#github-actions" id="toc-github-actions" class="nav-link active" data-scroll-target="#github-actions">GitHub Actions</a>
   <ul class="collapse">
-  <li><a href="#githubworkflows" id="toc-githubworkflows" class="nav-link" data-scroll-target="#githubworkflows"><code>.github/workflows/</code></a></li>
   <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   </ul></li>
-  <li><a href="#continuous-integration-and-deployment" id="toc-continuous-integration-and-deployment" class="nav-link" data-scroll-target="#continuous-integration-and-deployment">Continuous Integration and Deployment</a></li>
   </ul>
 </nav>
     </div>
@@ -310,20 +308,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<p>FOR MOST (COMPLICATED) GITHUB ACTIONS, CHECK OUT: <a href="https://github.com/r-lib/actions/tree/v2/examples" class="uri">https://github.com/r-lib/actions/tree/v2/examples</a></p>
+<ul>
+<li><p>In particular, the:</p>
+<ul>
+<li><code>test-coverage</code></li>
+<li><code>pkgdown</code></li>
+<li><code>R-CMD-Check</code></li>
+</ul></li>
+<li><p>Or alternatively, just go to <a href="https://github.com/DSCI-310-2025/pkg.drugage/blob/master/.github/workflows/R-CMD-check.yaml" class="uri">https://github.com/DSCI-310-2025/pkg.drugage/blob/master/.github/workflows/R-CMD-check.yaml</a> and make sure you have those 3. But run all the package commands first.</p></li>
+</ul>
+<p>You can also check out pyhon ci or ci-cd examples at: https://github.com/ttimbers/pycounts_tt_2024/blob/main/.github/workflows/ci.yml</p>
 <p>See the following for more information:</p>
 <ul>
-<li><a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/200-continuous-integration.html">Textbook: CI and workflows</a></li>
-<li><a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html">Textbook: Github actions</a></li>
-<li>Test coverage: <a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-actions-testing.html#setting-up-github-actions-workflows-to-check-tests-and-test-coverage" class="uri">https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-actions-testing.html#setting-up-github-actions-workflows-to-check-tests-and-test-coverage</a></li>
+<li><p><a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/200-continuous-integration.html">Textbook: CI and workflows</a></p></li>
+<li><p><a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html">Textbook: Github actions</a></p></li>
+<li><p>Test coverage: <a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-actions-testing.html#setting-up-github-actions-workflows-to-check-tests-and-test-coverage" class="uri">https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-actions-testing.html#setting-up-github-actions-workflows-to-check-tests-and-test-coverage</a></p></li>
+<li><p>Continuous Integration: Add automatic checks and code coverage to your package: <a href="https://r-pkgs.org/software-development-practices.html#sec-sw-dev-practices-gha" class="uri">https://r-pkgs.org/software-development-practices.html#sec-sw-dev-practices-gha</a></p></li>
+<li><p>Continuous Deployment: Add a website for your package: <a href="https://r-pkgs.org/website.html" class="uri">https://r-pkgs.org/website.html</a></p></li>
 </ul>
 <section id="github-actions" class="level1">
 <h1>GitHub Actions</h1>
-<p>We can make github actions to help automate our processes.</p>
-<p>We have two main examples we can work with, one from class and one from the website.</p>
-<p>In order for github actions to work, it needs to be placed in a very specific folder location of: .github/workflows/&lt;file.yml&gt;</p>
+<p>We can make github actions to help automate our processes. In order for github actions to work, it needs to be placed in a very specific folder location of: <code>.github/workflows/&lt;file.yml&gt;</code>. To create the directory, and an example file:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> .github/workflows/</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> .github/workflows/</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> bash.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Fun fact: there is no difference between using <code>.yml</code> or <code>.yaml</code>!</li>
+</ul>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<details>
+<summary>
+Making a Bash Action
+</summary>
 <p>The following is a sample of a github action you can do, where you run a bash command:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">name:</span> Run a bash command <span class="co"># this is what specifies the automation</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -352,8 +370,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ls</span> <span class="at">-a</span></span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Run multiple commands manually with script</span>
 <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="ex">run:</span> bash bash_script.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Then you can just commit this file and the action should work!</p>
-<p>There are also other github actions you can do, of course. Here is one taken from the course textbook that allows you to publish your docker image to docker hub.</p>
+Then you can just commit this file and the action should work!
+</details>
+<p>There are also other github actions you can do, of course.</p>
+<details>
+<summary>
+Publish your Docker Image
+</summary>
+<p>Here is one taken from the course textbook that allows you to publish your docker image to docker hub.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Publishes docker image, pinning actions to a commit SHA,</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and updating most recently built image with the latest tag.</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Can be triggered by either pushing a commit that changes the `Dockerfile`,</span></span>
@@ -401,58 +425,102 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>          <span class="ex">tags:</span> <span class="va">${</span><span class="er">{ steps.meta.outputs.tags </span><span class="va">}</span>}</span>
 <span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>          <span class="ex">labels:</span> <span class="va">${</span><span class="er">{ steps.meta.outputs.labels </span><span class="va">}</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Checkout <a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html" class="uri">https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html</a> for more customization.</p>
-<p>Also note that in this one you need to add a secret username and password in the repo you’re in, and you also need to edit to proper naming.</p>
-<section id="githubworkflows" class="level2">
-<h2 class="anchored" data-anchor-id="githubworkflows"><code>.github/workflows/</code></h2>
-<ul>
-<li>Fun fact: there is no difference between using <code>.yml</code> or <code>.yaml</code>!</li>
-</ul>
-<p>See the following for more information:</p>
-<ul>
-<li><a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/200-continuous-integration.html">Textbook: CI and workflows</a></li>
-<li><a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/201-github_actions.html">Textbook: Github actions</a></li>
-</ul>
-</section>
-<section id="examples" class="level2">
-<h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<section id="run-a-bash-command" class="level4">
-<h4 class="anchored" data-anchor-id="run-a-bash-command">1. Run a Bash Command</h4>
-<p>Titled: <code>bash.yml</code></p>
-<p>(this one contains comments explaining what each line means for learning ability)</p>
-<pre><code>name: Run a bash command # this is what specifies the automation
+Also note that in this one you need to add a secret username and password in the repo you’re in, and you also need to edit to proper naming.
+</details>
+<details>
+<summary>
+Continuous Integration
+</summary>
+<p>Here is what continuous integration example looks like <strong>for python</strong>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">name:</span> ci</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">on:</span> [push, pull_request]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">jobs:</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">ci:</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set up operating system</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">runs-on:</span> <span class="va">${</span><span class="er">{ matrix.os </span><span class="va">}</span>}</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">strategy:</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>      <span class="ex">matrix:</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="ex">os:</span> [macos-latest, ubuntu-latest]</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define job steps</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">steps:</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Set up Python</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> actions/setup-python@v4</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="ex">with:</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>          <span class="ex">python-version:</span> <span class="st">"3.9"</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Check-out repository</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> actions/checkout@v3</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Install poetry</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> snok/install-poetry@v1</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Install package</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        <span class="ex">run:</span> poetry install</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Test with pytest</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        <span class="ex">run:</span> poetry run pytest tests/ <span class="at">--cov</span><span class="op">=</span>pycounts_tt_2024 <span class="at">--cov-report</span><span class="op">=</span>xml</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Use Codecov to track coverage</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> codecov/codecov-action@v3</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        <span class="ex">with:</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>          <span class="ex">files:</span> ./coverage.xml   <span class="co"># coverage report</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Build documentation</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>        <span class="ex">run:</span> poetry run make html <span class="at">--directory</span> docs/</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>        </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<details>
+<summary>
+Continuous Deployment
+</summary>
+<p>Here is what you can do for continuous deployment:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> .github/workflows/build.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<details>
+<summary>
+gh-pages
+</summary>
+<p>Here is an example if you need to run some simple r code, but i would recommend changing the packages to exactly what you need, nothing more, nothing less.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> .github/workflows/build.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">on:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">workflow_dispatch:</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">push:</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">branches:</span> main</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">name:</span> Quarto Publish</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">jobs:</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">build-deploy:</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">runs-on:</span> ubuntu-latest</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">permissions:</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>      <span class="ex">contents:</span> write</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">steps:</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Check out repository</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> actions/checkout@v4</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Set up R</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> r-lib/actions/setup-r@v2</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Install minimal R dependencies</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        <span class="ex">run:</span> <span class="kw">|</span> </span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>          <span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">'install.packages(c("knitr", "rmarkdown"), repos = "https://cloud.r-project.org")'</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Set up Quarto</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> quarto-dev/quarto-actions/setup@v2</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> name: Render and Publish</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        <span class="ex">uses:</span> quarto-dev/quarto-actions/publish@v2</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        <span class="ex">with:</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>          <span class="ex">target:</span> gh-pages</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>        <span class="ex">env:</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>          <span class="ex">GITHUB_TOKEN:</span> <span class="va">${</span><span class="er">{ secrets.GITHUB_TOKEN </span><span class="va">}</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 
-on:
-  workflow_dispatch: # says: manually run this in the github interface...
-  push: # if a push happens to the repo then ...
-    branches: [main] # if a push happens to the main branch also make these changes
-    paths:  # or only trigger when one of these files is changed
-      - 'Dockerfile'
-      - .github/workflows/bash.yml # or whatever you named the file
-      - 'conda-linux-64.lock'
-      # could also do something like every week update it ... etc.
 
-jobs: # specify the jobs you want to create
-  run_bash_command: # name of the job, the one yaml understands
-    name: Run a bash command using github actions # a human-readable name that is nice for us to look at
-    runs-on: ubuntu-latest # operating system you want github to run on, this one is most common for linux, you could say windows-latest or mac-latest too
-    steps: # actual steps to run
-      - name: Check out the repo # run git clone and cd into it
-        uses: actions/checkout@v4 # probably automating off something in your repository, so usually your first step
-      - name: Run a command manually
-        run: ls -a
-      - name: Run multiple commands manually # use a vertical bar |
-        run: | 
-          pwd
-          ls -a
-      - name: Run multiple commands manually with script
-        run: bash scripts/bash.sh</code></pre>
 </section>
-</section>
-</section>
-<section id="continuous-integration-and-deployment" class="level1">
-<h1>Continuous Integration and Deployment</h1>
-
-
 </section>
 
 </main> <!-- /main -->
